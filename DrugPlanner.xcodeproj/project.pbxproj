@@ -10,9 +10,7 @@
 		849D02721ED6430F0093CA15 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849D02711ED6430F0093CA15 /* Main.storyboard */; };
 		F340908E1ED5FB7D00548661 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F340908D1ED5FB7D00548661 /* AppDelegate.swift */; };
 		F34090901ED5FB7D00548661 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F340908F1ED5FB7D00548661 /* ViewController.swift */; };
-		F34090931ED5FB7D00548661 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F34090911ED5FB7D00548661 /* Main.storyboard */; };
 		F34090951ED5FB7D00548661 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F34090941ED5FB7D00548661 /* Assets.xcassets */; };
-		F34090981ED5FB7D00548661 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F34090961ED5FB7D00548661 /* LaunchScreen.storyboard */; };
 		F34090A31ED5FB7D00548661 /* DrugPlannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34090A21ED5FB7D00548661 /* DrugPlannerTests.swift */; };
 		F34090AE1ED5FB7D00548661 /* DrugPlannerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34090AD1ED5FB7D00548661 /* DrugPlannerUITests.swift */; };
 /* End PBXBuildFile section */
@@ -39,9 +37,7 @@
 		F340908A1ED5FB7D00548661 /* DrugPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrugPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F340908D1ED5FB7D00548661 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F340908F1ED5FB7D00548661 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		F34090921ED5FB7D00548661 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F34090941ED5FB7D00548661 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		F34090971ED5FB7D00548661 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F34090991ED5FB7D00548661 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F340909E1ED5FB7D00548661 /* DrugPlannerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DrugPlannerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F34090A21ED5FB7D00548661 /* DrugPlannerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugPlannerTests.swift; sourceTree = "<group>"; };
@@ -102,9 +98,7 @@
 				F340908D1ED5FB7D00548661 /* AppDelegate.swift */,
 				F340908F1ED5FB7D00548661 /* ViewController.swift */,
 				849D02711ED6430F0093CA15 /* Main.storyboard */,
-				F34090911ED5FB7D00548661 /* Main.storyboard */,
 				F34090941ED5FB7D00548661 /* Assets.xcassets */,
-				F34090961ED5FB7D00548661 /* LaunchScreen.storyboard */,
 				F34090991ED5FB7D00548661 /* Info.plist */,
 			);
 			path = DrugPlanner;
@@ -235,9 +229,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F34090981ED5FB7D00548661 /* LaunchScreen.storyboard in Resources */,
 				F34090951ED5FB7D00548661 /* Assets.xcassets in Resources */,
-				F34090931ED5FB7D00548661 /* Main.storyboard in Resources */,
 				849D02721ED6430F0093CA15 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -298,25 +290,6 @@
 			targetProxy = F34090AA1ED5FB7D00548661 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		F34090911ED5FB7D00548661 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F34090921ED5FB7D00548661 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		F34090961ED5FB7D00548661 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F34090971ED5FB7D00548661 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		F34090B01ED5FB7D00548661 /* Debug */ = {
