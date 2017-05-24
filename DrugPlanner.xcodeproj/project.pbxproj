@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		849D02721ED6430F0093CA15 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849D02711ED6430F0093CA15 /* Main.storyboard */; };
 		F340908E1ED5FB7D00548661 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F340908D1ED5FB7D00548661 /* AppDelegate.swift */; };
 		F34090901ED5FB7D00548661 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F340908F1ED5FB7D00548661 /* ViewController.swift */; };
 		F34090931ED5FB7D00548661 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F34090911ED5FB7D00548661 /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		849D02711ED6430F0093CA15 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		F340908A1ED5FB7D00548661 /* DrugPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrugPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F340908D1ED5FB7D00548661 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F340908F1ED5FB7D00548661 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 			children = (
 				F340908D1ED5FB7D00548661 /* AppDelegate.swift */,
 				F340908F1ED5FB7D00548661 /* ViewController.swift */,
+				849D02711ED6430F0093CA15 /* Main.storyboard */,
 				F34090911ED5FB7D00548661 /* Main.storyboard */,
 				F34090941ED5FB7D00548661 /* Assets.xcassets */,
 				F34090961ED5FB7D00548661 /* LaunchScreen.storyboard */,
@@ -235,6 +238,7 @@
 				F34090981ED5FB7D00548661 /* LaunchScreen.storyboard in Resources */,
 				F34090951ED5FB7D00548661 /* Assets.xcassets in Resources */,
 				F34090931ED5FB7D00548661 /* Main.storyboard in Resources */,
+				849D02721ED6430F0093CA15 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
