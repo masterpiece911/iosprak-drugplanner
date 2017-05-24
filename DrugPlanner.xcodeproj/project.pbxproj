@@ -1,0 +1,530 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F340908E1ED5FB7D00548661 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F340908D1ED5FB7D00548661 /* AppDelegate.swift */; };
+		F34090901ED5FB7D00548661 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F340908F1ED5FB7D00548661 /* ViewController.swift */; };
+		F34090931ED5FB7D00548661 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F34090911ED5FB7D00548661 /* Main.storyboard */; };
+		F34090951ED5FB7D00548661 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F34090941ED5FB7D00548661 /* Assets.xcassets */; };
+		F34090981ED5FB7D00548661 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F34090961ED5FB7D00548661 /* LaunchScreen.storyboard */; };
+		F34090A31ED5FB7D00548661 /* DrugPlannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34090A21ED5FB7D00548661 /* DrugPlannerTests.swift */; };
+		F34090AE1ED5FB7D00548661 /* DrugPlannerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34090AD1ED5FB7D00548661 /* DrugPlannerUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F340909F1ED5FB7D00548661 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F34090821ED5FB7D00548661 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F34090891ED5FB7D00548661;
+			remoteInfo = DrugPlanner;
+		};
+		F34090AA1ED5FB7D00548661 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F34090821ED5FB7D00548661 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F34090891ED5FB7D00548661;
+			remoteInfo = DrugPlanner;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F340908A1ED5FB7D00548661 /* DrugPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrugPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F340908D1ED5FB7D00548661 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F340908F1ED5FB7D00548661 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F34090921ED5FB7D00548661 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F34090941ED5FB7D00548661 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F34090971ED5FB7D00548661 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F34090991ED5FB7D00548661 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F340909E1ED5FB7D00548661 /* DrugPlannerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DrugPlannerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F34090A21ED5FB7D00548661 /* DrugPlannerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugPlannerTests.swift; sourceTree = "<group>"; };
+		F34090A41ED5FB7D00548661 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F34090A91ED5FB7D00548661 /* DrugPlannerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DrugPlannerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F34090AD1ED5FB7D00548661 /* DrugPlannerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugPlannerUITests.swift; sourceTree = "<group>"; };
+		F34090AF1ED5FB7D00548661 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F34090871ED5FB7D00548661 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F340909B1ED5FB7D00548661 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F34090A61ED5FB7D00548661 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F34090811ED5FB7D00548661 = {
+			isa = PBXGroup;
+			children = (
+				F340908C1ED5FB7D00548661 /* DrugPlanner */,
+				F34090A11ED5FB7D00548661 /* DrugPlannerTests */,
+				F34090AC1ED5FB7D00548661 /* DrugPlannerUITests */,
+				F340908B1ED5FB7D00548661 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F340908B1ED5FB7D00548661 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F340908A1ED5FB7D00548661 /* DrugPlanner.app */,
+				F340909E1ED5FB7D00548661 /* DrugPlannerTests.xctest */,
+				F34090A91ED5FB7D00548661 /* DrugPlannerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F340908C1ED5FB7D00548661 /* DrugPlanner */ = {
+			isa = PBXGroup;
+			children = (
+				F340908D1ED5FB7D00548661 /* AppDelegate.swift */,
+				F340908F1ED5FB7D00548661 /* ViewController.swift */,
+				F34090911ED5FB7D00548661 /* Main.storyboard */,
+				F34090941ED5FB7D00548661 /* Assets.xcassets */,
+				F34090961ED5FB7D00548661 /* LaunchScreen.storyboard */,
+				F34090991ED5FB7D00548661 /* Info.plist */,
+			);
+			path = DrugPlanner;
+			sourceTree = "<group>";
+		};
+		F34090A11ED5FB7D00548661 /* DrugPlannerTests */ = {
+			isa = PBXGroup;
+			children = (
+				F34090A21ED5FB7D00548661 /* DrugPlannerTests.swift */,
+				F34090A41ED5FB7D00548661 /* Info.plist */,
+			);
+			path = DrugPlannerTests;
+			sourceTree = "<group>";
+		};
+		F34090AC1ED5FB7D00548661 /* DrugPlannerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				F34090AD1ED5FB7D00548661 /* DrugPlannerUITests.swift */,
+				F34090AF1ED5FB7D00548661 /* Info.plist */,
+			);
+			path = DrugPlannerUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F34090891ED5FB7D00548661 /* DrugPlanner */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F34090B21ED5FB7D00548661 /* Build configuration list for PBXNativeTarget "DrugPlanner" */;
+			buildPhases = (
+				F34090861ED5FB7D00548661 /* Sources */,
+				F34090871ED5FB7D00548661 /* Frameworks */,
+				F34090881ED5FB7D00548661 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DrugPlanner;
+			productName = DrugPlanner;
+			productReference = F340908A1ED5FB7D00548661 /* DrugPlanner.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F340909D1ED5FB7D00548661 /* DrugPlannerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F34090B51ED5FB7D00548661 /* Build configuration list for PBXNativeTarget "DrugPlannerTests" */;
+			buildPhases = (
+				F340909A1ED5FB7D00548661 /* Sources */,
+				F340909B1ED5FB7D00548661 /* Frameworks */,
+				F340909C1ED5FB7D00548661 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F34090A01ED5FB7D00548661 /* PBXTargetDependency */,
+			);
+			name = DrugPlannerTests;
+			productName = DrugPlannerTests;
+			productReference = F340909E1ED5FB7D00548661 /* DrugPlannerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F34090A81ED5FB7D00548661 /* DrugPlannerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F34090B81ED5FB7D00548661 /* Build configuration list for PBXNativeTarget "DrugPlannerUITests" */;
+			buildPhases = (
+				F34090A51ED5FB7D00548661 /* Sources */,
+				F34090A61ED5FB7D00548661 /* Frameworks */,
+				F34090A71ED5FB7D00548661 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F34090AB1ED5FB7D00548661 /* PBXTargetDependency */,
+			);
+			name = DrugPlannerUITests;
+			productName = DrugPlannerUITests;
+			productReference = F34090A91ED5FB7D00548661 /* DrugPlannerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F34090821ED5FB7D00548661 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "Gruppe 9";
+				TargetAttributes = {
+					F34090891ED5FB7D00548661 = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Automatic;
+					};
+					F340909D1ED5FB7D00548661 = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = F34090891ED5FB7D00548661;
+					};
+					F34090A81ED5FB7D00548661 = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = F34090891ED5FB7D00548661;
+					};
+				};
+			};
+			buildConfigurationList = F34090851ED5FB7D00548661 /* Build configuration list for PBXProject "DrugPlanner" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F34090811ED5FB7D00548661;
+			productRefGroup = F340908B1ED5FB7D00548661 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F34090891ED5FB7D00548661 /* DrugPlanner */,
+				F340909D1ED5FB7D00548661 /* DrugPlannerTests */,
+				F34090A81ED5FB7D00548661 /* DrugPlannerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F34090881ED5FB7D00548661 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F34090981ED5FB7D00548661 /* LaunchScreen.storyboard in Resources */,
+				F34090951ED5FB7D00548661 /* Assets.xcassets in Resources */,
+				F34090931ED5FB7D00548661 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F340909C1ED5FB7D00548661 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F34090A71ED5FB7D00548661 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F34090861ED5FB7D00548661 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F34090901ED5FB7D00548661 /* ViewController.swift in Sources */,
+				F340908E1ED5FB7D00548661 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F340909A1ED5FB7D00548661 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F34090A31ED5FB7D00548661 /* DrugPlannerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F34090A51ED5FB7D00548661 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F34090AE1ED5FB7D00548661 /* DrugPlannerUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F34090A01ED5FB7D00548661 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F34090891ED5FB7D00548661 /* DrugPlanner */;
+			targetProxy = F340909F1ED5FB7D00548661 /* PBXContainerItemProxy */;
+		};
+		F34090AB1ED5FB7D00548661 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F34090891ED5FB7D00548661 /* DrugPlanner */;
+			targetProxy = F34090AA1ED5FB7D00548661 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F34090911ED5FB7D00548661 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F34090921ED5FB7D00548661 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F34090961ED5FB7D00548661 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F34090971ED5FB7D00548661 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F34090B01ED5FB7D00548661 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F34090B11ED5FB7D00548661 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F34090B31ED5FB7D00548661 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = DrugPlanner/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.DrugPlanner;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		F34090B41ED5FB7D00548661 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = DrugPlanner/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.DrugPlanner;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		F34090B61ED5FB7D00548661 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = DrugPlannerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.DrugPlannerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DrugPlanner.app/DrugPlanner";
+			};
+			name = Debug;
+		};
+		F34090B71ED5FB7D00548661 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = DrugPlannerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.DrugPlannerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DrugPlanner.app/DrugPlanner";
+			};
+			name = Release;
+		};
+		F34090B91ED5FB7D00548661 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = DrugPlannerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.DrugPlannerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = DrugPlanner;
+			};
+			name = Debug;
+		};
+		F34090BA1ED5FB7D00548661 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = DrugPlannerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.DrugPlannerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = DrugPlanner;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F34090851ED5FB7D00548661 /* Build configuration list for PBXProject "DrugPlanner" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F34090B01ED5FB7D00548661 /* Debug */,
+				F34090B11ED5FB7D00548661 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F34090B21ED5FB7D00548661 /* Build configuration list for PBXNativeTarget "DrugPlanner" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F34090B31ED5FB7D00548661 /* Debug */,
+				F34090B41ED5FB7D00548661 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		F34090B51ED5FB7D00548661 /* Build configuration list for PBXNativeTarget "DrugPlannerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F34090B61ED5FB7D00548661 /* Debug */,
+				F34090B71ED5FB7D00548661 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		F34090B81ED5FB7D00548661 /* Build configuration list for PBXNativeTarget "DrugPlannerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F34090B91ED5FB7D00548661 /* Debug */,
+				F34090BA1ED5FB7D00548661 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F34090821ED5FB7D00548661 /* Project object */;
+}
