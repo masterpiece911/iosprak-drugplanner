@@ -7,12 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6742310372BA213BDD780B2B /* Pods_DrugPlannerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B39F3B70FE7DDC2C0F299B1F /* Pods_DrugPlannerUITests.framework */; };
+		7F73776B4E178FA0C07D1C7D /* Pods_DrugPlanner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6239CF361B80DB6CA7CCE126 /* Pods_DrugPlanner.framework */; };
 		849D02721ED6430F0093CA15 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849D02711ED6430F0093CA15 /* Main.storyboard */; };
+		E7F5438527B59468692A44BD /* Pods_DrugPlannerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EBD4FD25B3CA40A5D1551B1 /* Pods_DrugPlannerTests.framework */; };
 		F340908E1ED5FB7D00548661 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F340908D1ED5FB7D00548661 /* AppDelegate.swift */; };
 		F34090901ED5FB7D00548661 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F340908F1ED5FB7D00548661 /* ViewController.swift */; };
 		F34090951ED5FB7D00548661 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F34090941ED5FB7D00548661 /* Assets.xcassets */; };
 		F34090A31ED5FB7D00548661 /* DrugPlannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34090A21ED5FB7D00548661 /* DrugPlannerTests.swift */; };
 		F34090AE1ED5FB7D00548661 /* DrugPlannerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34090AD1ED5FB7D00548661 /* DrugPlannerUITests.swift */; };
+		F35389901ED9F4DD008159EB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F353898F1ED9F4DD008159EB /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,7 +37,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0086F8ADEB7C6C616D1C4FDA /* Pods-DrugPlannerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrugPlannerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DrugPlannerTests/Pods-DrugPlannerTests.release.xcconfig"; sourceTree = "<group>"; };
+		0B68DA9E6BCE96DC5AF3AD15 /* Pods-DrugPlannerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrugPlannerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DrugPlannerTests/Pods-DrugPlannerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		2A4DD3D20A90B65201C53441 /* Pods-DrugPlannerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrugPlannerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DrugPlannerUITests/Pods-DrugPlannerUITests.release.xcconfig"; sourceTree = "<group>"; };
+		3C9A457204B3CD450D32B3B6 /* Pods-DrugPlanner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrugPlanner.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DrugPlanner/Pods-DrugPlanner.debug.xcconfig"; sourceTree = "<group>"; };
+		6239CF361B80DB6CA7CCE126 /* Pods_DrugPlanner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DrugPlanner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		849D02711ED6430F0093CA15 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		9EBD4FD25B3CA40A5D1551B1 /* Pods_DrugPlannerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DrugPlannerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B39F3B70FE7DDC2C0F299B1F /* Pods_DrugPlannerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DrugPlannerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6DBAEFE5AAB9A0B959F4BFB /* Pods-DrugPlanner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrugPlanner.release.xcconfig"; path = "Pods/Target Support Files/Pods-DrugPlanner/Pods-DrugPlanner.release.xcconfig"; sourceTree = "<group>"; };
+		D0F67A4B79DBDC7A78589EF6 /* Pods-DrugPlannerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrugPlannerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DrugPlannerUITests/Pods-DrugPlannerUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F340908A1ED5FB7D00548661 /* DrugPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrugPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F340908D1ED5FB7D00548661 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F340908F1ED5FB7D00548661 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -45,6 +58,7 @@
 		F34090A91ED5FB7D00548661 /* DrugPlannerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DrugPlannerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F34090AD1ED5FB7D00548661 /* DrugPlannerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugPlannerUITests.swift; sourceTree = "<group>"; };
 		F34090AF1ED5FB7D00548661 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F353898F1ED9F4DD008159EB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F73776B4E178FA0C07D1C7D /* Pods_DrugPlanner.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7F5438527B59468692A44BD /* Pods_DrugPlannerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,12 +82,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6742310372BA213BDD780B2B /* Pods_DrugPlannerUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		217316C84298D661F896A246 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3C9A457204B3CD450D32B3B6 /* Pods-DrugPlanner.debug.xcconfig */,
+				C6DBAEFE5AAB9A0B959F4BFB /* Pods-DrugPlanner.release.xcconfig */,
+				0B68DA9E6BCE96DC5AF3AD15 /* Pods-DrugPlannerTests.debug.xcconfig */,
+				0086F8ADEB7C6C616D1C4FDA /* Pods-DrugPlannerTests.release.xcconfig */,
+				D0F67A4B79DBDC7A78589EF6 /* Pods-DrugPlannerUITests.debug.xcconfig */,
+				2A4DD3D20A90B65201C53441 /* Pods-DrugPlannerUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		3F1CD9E0B8C6771E85AC0C7A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6239CF361B80DB6CA7CCE126 /* Pods_DrugPlanner.framework */,
+				9EBD4FD25B3CA40A5D1551B1 /* Pods_DrugPlannerTests.framework */,
+				B39F3B70FE7DDC2C0F299B1F /* Pods_DrugPlannerUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F34090811ED5FB7D00548661 = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +119,8 @@
 				F34090A11ED5FB7D00548661 /* DrugPlannerTests */,
 				F34090AC1ED5FB7D00548661 /* DrugPlannerUITests */,
 				F340908B1ED5FB7D00548661 /* Products */,
+				217316C84298D661F896A246 /* Pods */,
+				3F1CD9E0B8C6771E85AC0C7A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -100,6 +142,7 @@
 				849D02711ED6430F0093CA15 /* Main.storyboard */,
 				F34090941ED5FB7D00548661 /* Assets.xcassets */,
 				F34090991ED5FB7D00548661 /* Info.plist */,
+				F353898F1ED9F4DD008159EB /* GoogleService-Info.plist */,
 			);
 			path = DrugPlanner;
 			sourceTree = "<group>";
@@ -129,9 +172,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F34090B21ED5FB7D00548661 /* Build configuration list for PBXNativeTarget "DrugPlanner" */;
 			buildPhases = (
+				7E23EC2F67407D62A0B5F7A7 /* [CP] Check Pods Manifest.lock */,
 				F34090861ED5FB7D00548661 /* Sources */,
 				F34090871ED5FB7D00548661 /* Frameworks */,
 				F34090881ED5FB7D00548661 /* Resources */,
+				9B87A52D421CD3CC7D1DEF2A /* [CP] Embed Pods Frameworks */,
+				33A68528C2CA27510A9282C9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -146,9 +192,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F34090B51ED5FB7D00548661 /* Build configuration list for PBXNativeTarget "DrugPlannerTests" */;
 			buildPhases = (
+				98F61A7DFD4F6EF12F4B715E /* [CP] Check Pods Manifest.lock */,
 				F340909A1ED5FB7D00548661 /* Sources */,
 				F340909B1ED5FB7D00548661 /* Frameworks */,
 				F340909C1ED5FB7D00548661 /* Resources */,
+				62D6F942B463BDB48CD0DDF3 /* [CP] Embed Pods Frameworks */,
+				F076FCD9EEBD24604C67312C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -164,9 +213,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F34090B81ED5FB7D00548661 /* Build configuration list for PBXNativeTarget "DrugPlannerUITests" */;
 			buildPhases = (
+				8D5CD4712308CF61815C76D6 /* [CP] Check Pods Manifest.lock */,
 				F34090A51ED5FB7D00548661 /* Sources */,
 				F34090A61ED5FB7D00548661 /* Frameworks */,
 				F34090A71ED5FB7D00548661 /* Resources */,
+				C347E72E46E665D715153358 /* [CP] Embed Pods Frameworks */,
+				D82E22CE56E29519D792EFC3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -231,6 +283,7 @@
 			files = (
 				F34090951ED5FB7D00548661 /* Assets.xcassets in Resources */,
 				849D02721ED6430F0093CA15 /* Main.storyboard in Resources */,
+				F35389901ED9F4DD008159EB /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,6 +302,144 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		33A68528C2CA27510A9282C9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DrugPlanner/Pods-DrugPlanner-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		62D6F942B463BDB48CD0DDF3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DrugPlannerTests/Pods-DrugPlannerTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7E23EC2F67407D62A0B5F7A7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8D5CD4712308CF61815C76D6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		98F61A7DFD4F6EF12F4B715E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9B87A52D421CD3CC7D1DEF2A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DrugPlanner/Pods-DrugPlanner-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C347E72E46E665D715153358 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DrugPlannerUITests/Pods-DrugPlannerUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D82E22CE56E29519D792EFC3 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DrugPlannerUITests/Pods-DrugPlannerUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F076FCD9EEBD24604C67312C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DrugPlannerTests/Pods-DrugPlannerTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F34090861ED5FB7D00548661 /* Sources */ = {
@@ -389,6 +580,7 @@
 		};
 		F34090B31ED5FB7D00548661 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3C9A457204B3CD450D32B3B6 /* Pods-DrugPlanner.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = DrugPlanner/Info.plist;
@@ -402,6 +594,7 @@
 		};
 		F34090B41ED5FB7D00548661 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C6DBAEFE5AAB9A0B959F4BFB /* Pods-DrugPlanner.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = DrugPlanner/Info.plist;
@@ -415,6 +608,7 @@
 		};
 		F34090B61ED5FB7D00548661 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0B68DA9E6BCE96DC5AF3AD15 /* Pods-DrugPlannerTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -430,6 +624,7 @@
 		};
 		F34090B71ED5FB7D00548661 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0086F8ADEB7C6C616D1C4FDA /* Pods-DrugPlannerTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -445,6 +640,7 @@
 		};
 		F34090B91ED5FB7D00548661 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D0F67A4B79DBDC7A78589EF6 /* Pods-DrugPlannerUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = DrugPlannerUITests/Info.plist;
@@ -459,6 +655,7 @@
 		};
 		F34090BA1ED5FB7D00548661 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2A4DD3D20A90B65201C53441 /* Pods-DrugPlannerUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = DrugPlannerUITests/Info.plist;
