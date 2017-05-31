@@ -14,6 +14,8 @@ import Firebase
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    var ref : DatabaseReference!
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -21,6 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window?.tintColor = UIColor.red
         FirebaseApp.configure()
+        
+        ref = Database.database().reference()
         
         return true
     }
