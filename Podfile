@@ -7,6 +7,7 @@ target 'DrugPlanner' do
 
   # Pods for DrugPlanner
   pod 'Firebase/Core'
+  pod 'Firebase/Database'
 
   target 'DrugPlannerTests' do
     inherit! :search_paths

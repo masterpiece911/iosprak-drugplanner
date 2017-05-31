@@ -10,13 +10,13 @@
 		6742310372BA213BDD780B2B /* Pods_DrugPlannerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B39F3B70FE7DDC2C0F299B1F /* Pods_DrugPlannerUITests.framework */; };
 		7F73776B4E178FA0C07D1C7D /* Pods_DrugPlanner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6239CF361B80DB6CA7CCE126 /* Pods_DrugPlanner.framework */; };
 		849D02721ED6430F0093CA15 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849D02711ED6430F0093CA15 /* Main.storyboard */; };
+		84B9E4A91EDED3940070BB7D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84B9E4A81EDED3940070BB7D /* GoogleService-Info.plist */; };
 		E7F5438527B59468692A44BD /* Pods_DrugPlannerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EBD4FD25B3CA40A5D1551B1 /* Pods_DrugPlannerTests.framework */; };
 		F340908E1ED5FB7D00548661 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F340908D1ED5FB7D00548661 /* AppDelegate.swift */; };
 		F34090901ED5FB7D00548661 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F340908F1ED5FB7D00548661 /* ViewController.swift */; };
 		F34090951ED5FB7D00548661 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F34090941ED5FB7D00548661 /* Assets.xcassets */; };
 		F34090A31ED5FB7D00548661 /* DrugPlannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34090A21ED5FB7D00548661 /* DrugPlannerTests.swift */; };
 		F34090AE1ED5FB7D00548661 /* DrugPlannerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34090AD1ED5FB7D00548661 /* DrugPlannerUITests.swift */; };
-		F35389901ED9F4DD008159EB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F353898F1ED9F4DD008159EB /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +43,7 @@
 		3C9A457204B3CD450D32B3B6 /* Pods-DrugPlanner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrugPlanner.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DrugPlanner/Pods-DrugPlanner.debug.xcconfig"; sourceTree = "<group>"; };
 		6239CF361B80DB6CA7CCE126 /* Pods_DrugPlanner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DrugPlanner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		849D02711ED6430F0093CA15 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		84B9E4A81EDED3940070BB7D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9EBD4FD25B3CA40A5D1551B1 /* Pods_DrugPlannerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DrugPlannerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B39F3B70FE7DDC2C0F299B1F /* Pods_DrugPlannerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DrugPlannerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6DBAEFE5AAB9A0B959F4BFB /* Pods-DrugPlanner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrugPlanner.release.xcconfig"; path = "Pods/Target Support Files/Pods-DrugPlanner/Pods-DrugPlanner.release.xcconfig"; sourceTree = "<group>"; };
@@ -58,7 +59,6 @@
 		F34090A91ED5FB7D00548661 /* DrugPlannerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DrugPlannerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F34090AD1ED5FB7D00548661 /* DrugPlannerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugPlannerUITests.swift; sourceTree = "<group>"; };
 		F34090AF1ED5FB7D00548661 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F353898F1ED9F4DD008159EB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,7 +142,7 @@
 				849D02711ED6430F0093CA15 /* Main.storyboard */,
 				F34090941ED5FB7D00548661 /* Assets.xcassets */,
 				F34090991ED5FB7D00548661 /* Info.plist */,
-				F353898F1ED9F4DD008159EB /* GoogleService-Info.plist */,
+				84B9E4A81EDED3940070BB7D /* GoogleService-Info.plist */,
 			);
 			path = DrugPlanner;
 			sourceTree = "<group>";
@@ -283,7 +283,7 @@
 			files = (
 				F34090951ED5FB7D00548661 /* Assets.xcassets in Resources */,
 				849D02721ED6430F0093CA15 /* Main.storyboard in Resources */,
-				F35389901ED9F4DD008159EB /* GoogleService-Info.plist in Resources */,
+				84B9E4A91EDED3940070BB7D /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
