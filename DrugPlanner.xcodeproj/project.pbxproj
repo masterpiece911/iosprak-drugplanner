@@ -15,6 +15,7 @@
 		84B9E4AF1EE7FC280070BB7D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B9E4AE1EE7FC280070BB7D /* MainViewController.swift */; };
 		84B9E4B11EE7FC5D0070BB7D /* InventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B9E4B01EE7FC5D0070BB7D /* InventoryViewController.swift */; };
 		84B9E4B31EE7FC880070BB7D /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B9E4B21EE7FC880070BB7D /* HistoryViewController.swift */; };
+		84B9E4B81EE7FFDA0070BB7D /* AgendaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B9E4B71EE7FFDA0070BB7D /* AgendaTableViewCell.swift */; };
 		E7F5438527B59468692A44BD /* Pods_DrugPlannerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EBD4FD25B3CA40A5D1551B1 /* Pods_DrugPlannerTests.framework */; };
 		F316749F1EE7FBF800355FFD /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = F316749E1EE7FBF800355FFD /* .gitignore */; };
 		F340908E1ED5FB7D00548661 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F340908D1ED5FB7D00548661 /* AppDelegate.swift */; };
@@ -52,6 +53,7 @@
 		84B9E4AE1EE7FC280070BB7D /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		84B9E4B01EE7FC5D0070BB7D /* InventoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryViewController.swift; sourceTree = "<group>"; };
 		84B9E4B21EE7FC880070BB7D /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		84B9E4B71EE7FFDA0070BB7D /* AgendaTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgendaTableViewCell.swift; sourceTree = "<group>"; };
 		9EBD4FD25B3CA40A5D1551B1 /* Pods_DrugPlannerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DrugPlannerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B39F3B70FE7DDC2C0F299B1F /* Pods_DrugPlannerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DrugPlannerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6DBAEFE5AAB9A0B959F4BFB /* Pods-DrugPlanner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrugPlanner.release.xcconfig"; path = "Pods/Target Support Files/Pods-DrugPlanner/Pods-DrugPlanner.release.xcconfig"; sourceTree = "<group>"; };
@@ -120,6 +122,31 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		84B9E4B41EE7FF340070BB7D /* Agenda Views */ = {
+			isa = PBXGroup;
+			children = (
+				84B9E4AC1EE7FBC80070BB7D /* AgendaViewController.swift */,
+				84B9E4B71EE7FFDA0070BB7D /* AgendaTableViewCell.swift */,
+			);
+			name = "Agenda Views";
+			sourceTree = "<group>";
+		};
+		84B9E4B51EE7FF580070BB7D /* Inventory Views */ = {
+			isa = PBXGroup;
+			children = (
+				84B9E4B01EE7FC5D0070BB7D /* InventoryViewController.swift */,
+			);
+			name = "Inventory Views";
+			sourceTree = "<group>";
+		};
+		84B9E4B61EE7FF6E0070BB7D /* History Views */ = {
+			isa = PBXGroup;
+			children = (
+				84B9E4B21EE7FC880070BB7D /* HistoryViewController.swift */,
+			);
+			name = "History Views";
+			sourceTree = "<group>";
+		};
 		F34090811ED5FB7D00548661 = {
 			isa = PBXGroup;
 			children = (
@@ -146,15 +173,15 @@
 		F340908C1ED5FB7D00548661 /* DrugPlanner */ = {
 			isa = PBXGroup;
 			children = (
+				84B9E4B61EE7FF6E0070BB7D /* History Views */,
+				84B9E4B51EE7FF580070BB7D /* Inventory Views */,
+				84B9E4B41EE7FF340070BB7D /* Agenda Views */,
 				F340908D1ED5FB7D00548661 /* AppDelegate.swift */,
 				849D02711ED6430F0093CA15 /* Main.storyboard */,
 				F34090941ED5FB7D00548661 /* Assets.xcassets */,
 				F34090991ED5FB7D00548661 /* Info.plist */,
 				84B9E4A81EDED3940070BB7D /* GoogleService-Info.plist */,
 				84B9E4AE1EE7FC280070BB7D /* MainViewController.swift */,
-				84B9E4AC1EE7FBC80070BB7D /* AgendaViewController.swift */,
-				84B9E4B01EE7FC5D0070BB7D /* InventoryViewController.swift */,
-				84B9E4B21EE7FC880070BB7D /* HistoryViewController.swift */,
 			);
 			path = DrugPlanner;
 			sourceTree = "<group>";
@@ -460,6 +487,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84B9E4AF1EE7FC280070BB7D /* MainViewController.swift in Sources */,
+				84B9E4B81EE7FFDA0070BB7D /* AgendaTableViewCell.swift in Sources */,
 				84B9E4B11EE7FC5D0070BB7D /* InventoryViewController.swift in Sources */,
 				F340908E1ED5FB7D00548661 /* AppDelegate.swift in Sources */,
 				84B9E4B31EE7FC880070BB7D /* HistoryViewController.swift in Sources */,
