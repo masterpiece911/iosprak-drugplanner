@@ -12,7 +12,7 @@
         <!--AgendaTableViewController-->
         <scene sceneID="ig0-TZ-juA">
             <objects>
-                <tableViewController title="AgendaTableViewController" id="c9m-DM-BOc" sceneMemberID="viewController">
+                <tableViewController title="AgendaTableViewController" id="c9m-DM-BOc" customClass="AgendaViewController" customModule="DrugPlanner" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="iXF-OX-k49">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -43,7 +43,7 @@
         <!--InventoryTableViewController-->
         <scene sceneID="jbH-oM-kRL">
             <objects>
-                <tableViewController title="InventoryTableViewController" id="P2h-6x-1AU" sceneMemberID="viewController">
+                <tableViewController title="InventoryTableViewController" id="P2h-6x-1AU" customClass="InventoryViewController" customModule="DrugPlanner" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ra0-t9-Pmv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -71,10 +71,10 @@
             </objects>
             <point key="canvasLocation" x="2198" y="0.0"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Main View Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                <tabBarController id="49e-Tb-3d3" customClass="MainViewController" customModule="DrugPlanner" customModuleProvider="target" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
@@ -151,7 +151,7 @@
         <!--HistoryTableViewController-->
         <scene sceneID="ZUv-Wa-odf">
             <objects>
-                <tableViewController title="HistoryTableViewController" id="WvB-fU-7Pe" sceneMemberID="viewController">
+                <tableViewController title="HistoryTableViewController" id="WvB-fU-7Pe" customClass="HistoryViewController" customModule="DrugPlanner" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="BUZ-Zs-twX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
