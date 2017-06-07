@@ -13,6 +13,8 @@ class AgendaTableViewCell: UITableViewCell {
     @IBOutlet var drugImage : UIImageView?
     @IBOutlet var nameLabel : UILabel?
     @IBOutlet var hintLabel : UILabel?
+    
+    var scheduleID : Int!
 
     override func awakeFromNib() {
         super.awakeFromNib()

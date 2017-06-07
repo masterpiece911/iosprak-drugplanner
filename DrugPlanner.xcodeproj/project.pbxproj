@@ -16,6 +16,8 @@
 		84B9E4B11EE7FC5D0070BB7D /* InventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B9E4B01EE7FC5D0070BB7D /* InventoryViewController.swift */; };
 		84B9E4B31EE7FC880070BB7D /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B9E4B21EE7FC880070BB7D /* HistoryViewController.swift */; };
 		84B9E4B81EE7FFDA0070BB7D /* AgendaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B9E4B71EE7FFDA0070BB7D /* AgendaTableViewCell.swift */; };
+		84B9E4BA1EE811F50070BB7D /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B9E4B91EE811F50070BB7D /* HistoryTableViewCell.swift */; };
+		84B9E4BC1EE8130E0070BB7D /* HistoryKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B9E4BB1EE8130E0070BB7D /* HistoryKind.swift */; };
 		E7F5438527B59468692A44BD /* Pods_DrugPlannerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EBD4FD25B3CA40A5D1551B1 /* Pods_DrugPlannerTests.framework */; };
 		F316749F1EE7FBF800355FFD /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = F316749E1EE7FBF800355FFD /* .gitignore */; };
 		F340908E1ED5FB7D00548661 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F340908D1ED5FB7D00548661 /* AppDelegate.swift */; };
@@ -54,6 +56,8 @@
 		84B9E4B01EE7FC5D0070BB7D /* InventoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryViewController.swift; sourceTree = "<group>"; };
 		84B9E4B21EE7FC880070BB7D /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		84B9E4B71EE7FFDA0070BB7D /* AgendaTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgendaTableViewCell.swift; sourceTree = "<group>"; };
+		84B9E4B91EE811F50070BB7D /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
+		84B9E4BB1EE8130E0070BB7D /* HistoryKind.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryKind.swift; sourceTree = "<group>"; };
 		9EBD4FD25B3CA40A5D1551B1 /* Pods_DrugPlannerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DrugPlannerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B39F3B70FE7DDC2C0F299B1F /* Pods_DrugPlannerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DrugPlannerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6DBAEFE5AAB9A0B959F4BFB /* Pods-DrugPlanner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrugPlanner.release.xcconfig"; path = "Pods/Target Support Files/Pods-DrugPlanner/Pods-DrugPlanner.release.xcconfig"; sourceTree = "<group>"; };
@@ -143,6 +147,8 @@
 			isa = PBXGroup;
 			children = (
 				84B9E4B21EE7FC880070BB7D /* HistoryViewController.swift */,
+				84B9E4B91EE811F50070BB7D /* HistoryTableViewCell.swift */,
+				84B9E4BB1EE8130E0070BB7D /* HistoryKind.swift */,
 			);
 			name = "History Views";
 			sourceTree = "<group>";
@@ -488,8 +494,10 @@
 			files = (
 				84B9E4AF1EE7FC280070BB7D /* MainViewController.swift in Sources */,
 				84B9E4B81EE7FFDA0070BB7D /* AgendaTableViewCell.swift in Sources */,
+				84B9E4BA1EE811F50070BB7D /* HistoryTableViewCell.swift in Sources */,
 				84B9E4B11EE7FC5D0070BB7D /* InventoryViewController.swift in Sources */,
 				F340908E1ED5FB7D00548661 /* AppDelegate.swift in Sources */,
+				84B9E4BC1EE8130E0070BB7D /* HistoryKind.swift in Sources */,
 				84B9E4B31EE7FC880070BB7D /* HistoryViewController.swift in Sources */,
 				84B9E4AD1EE7FBC80070BB7D /* AgendaViewController.swift in Sources */,
 			);
