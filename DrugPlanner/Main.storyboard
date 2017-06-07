@@ -18,13 +18,51 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="OOg-OT-wcM" customClass="AgendaTableViewCell" customModule="DrugPlanner" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="50" id="OOg-OT-wcM" customClass="AgendaTableViewCell" customModule="DrugPlanner" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OOg-OT-wcM" id="fmn-0J-yKm">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="49"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xvE-P6-6mC">
+                                            <rect key="frame" x="20" y="0.0" width="302" height="50"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="AS2-qd-d6g">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                </imageView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="qhk-QO-K4c">
+                                                    <rect key="frame" x="60" y="0.0" width="242" height="50"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Drug Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3df-Ow-qhr">
+                                                            <rect key="frame" x="0.0" y="0.0" width="90" height="29.5"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Hints" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tbv-jS-kLG">
+                                                            <rect key="frame" x="0.0" y="29.5" width="39" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="xvE-P6-6mC" firstAttribute="top" secondItem="fmn-0J-yKm" secondAttribute="top" id="2it-DH-euo"/>
+                                        <constraint firstAttribute="bottom" secondItem="xvE-P6-6mC" secondAttribute="bottom" id="HuJ-7a-uaJ"/>
+                                        <constraint firstItem="xvE-P6-6mC" firstAttribute="leading" secondItem="fmn-0J-yKm" secondAttribute="leading" constant="20" id="tol-Mu-jOc"/>
+                                        <constraint firstAttribute="trailing" secondItem="xvE-P6-6mC" secondAttribute="trailing" constant="20" id="uau-Vd-ajg"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="hintLabel" destination="Tbv-jS-kLG" id="rUS-Od-EQt"/>
+                                    <outlet property="imageView" destination="AS2-qd-d6g" id="0xx-W0-r48"/>
+                                    <outlet property="nameLabel" destination="3df-Ow-qhr" id="Nif-p9-C5j"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -32,9 +70,11 @@
                             <outlet property="delegate" destination="c9m-DM-BOc" id="FhN-V4-MbA"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Your Agenda" id="mIr-dE-c1w">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="QBM-Tc-x72"/>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ica-o9-6ny" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

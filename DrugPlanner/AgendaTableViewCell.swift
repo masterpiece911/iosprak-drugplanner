@@ -9,6 +9,10 @@
 import UIKit
 
 class AgendaTableViewCell: UITableViewCell {
+    
+    @IBOutlet var drugImage : UIImageView?
+    @IBOutlet var nameLabel : UILabel?
+    @IBOutlet var hintLabel : UILabel?
 
     override func awakeFromNib() {
         super.awakeFromNib()
