@@ -16,10 +16,11 @@
 		84B9E4B11EE7FC5D0070BB7D /* InventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B9E4B01EE7FC5D0070BB7D /* InventoryViewController.swift */; };
 		84B9E4B31EE7FC880070BB7D /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B9E4B21EE7FC880070BB7D /* HistoryViewController.swift */; };
 		84B9E4B81EE7FFDA0070BB7D /* AgendaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B9E4B71EE7FFDA0070BB7D /* AgendaTableViewCell.swift */; };
-		84B9E4BA1EE811F50070BB7D /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B9E4B91EE811F50070BB7D /* HistoryTableViewCell.swift */; };
-		84B9E4BC1EE8130E0070BB7D /* HistoryKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B9E4BB1EE8130E0070BB7D /* HistoryKind.swift */; };
 		E7F5438527B59468692A44BD /* Pods_DrugPlannerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EBD4FD25B3CA40A5D1551B1 /* Pods_DrugPlannerTests.framework */; };
 		F316749F1EE7FBF800355FFD /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = F316749E1EE7FBF800355FFD /* .gitignore */; };
+		F31674A41EE98C4100355FFD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31674A31EE98C4100355FFD /* LoginViewController.swift */; };
+		F31674A61EE98C9400355FFD /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F31674A51EE98C9400355FFD /* Login.storyboard */; };
+		F31674AA1EEBEA1E00355FFD /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31674A91EEBEA1E00355FFD /* RegisterViewController.swift */; };
 		F340908E1ED5FB7D00548661 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F340908D1ED5FB7D00548661 /* AppDelegate.swift */; };
 		F34090951ED5FB7D00548661 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F34090941ED5FB7D00548661 /* Assets.xcassets */; };
 		F34090A31ED5FB7D00548661 /* DrugPlannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34090A21ED5FB7D00548661 /* DrugPlannerTests.swift */; };
@@ -56,13 +57,14 @@
 		84B9E4B01EE7FC5D0070BB7D /* InventoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryViewController.swift; sourceTree = "<group>"; };
 		84B9E4B21EE7FC880070BB7D /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		84B9E4B71EE7FFDA0070BB7D /* AgendaTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgendaTableViewCell.swift; sourceTree = "<group>"; };
-		84B9E4B91EE811F50070BB7D /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
-		84B9E4BB1EE8130E0070BB7D /* HistoryKind.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryKind.swift; sourceTree = "<group>"; };
 		9EBD4FD25B3CA40A5D1551B1 /* Pods_DrugPlannerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DrugPlannerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B39F3B70FE7DDC2C0F299B1F /* Pods_DrugPlannerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DrugPlannerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6DBAEFE5AAB9A0B959F4BFB /* Pods-DrugPlanner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrugPlanner.release.xcconfig"; path = "Pods/Target Support Files/Pods-DrugPlanner/Pods-DrugPlanner.release.xcconfig"; sourceTree = "<group>"; };
 		D0F67A4B79DBDC7A78589EF6 /* Pods-DrugPlannerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrugPlannerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DrugPlannerUITests/Pods-DrugPlannerUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F316749E1EE7FBF800355FFD /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		F31674A31EE98C4100355FFD /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		F31674A51EE98C9400355FFD /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		F31674A91EEBEA1E00355FFD /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		F340908A1ED5FB7D00548661 /* DrugPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrugPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F340908D1ED5FB7D00548661 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F34090941ED5FB7D00548661 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -147,10 +149,17 @@
 			isa = PBXGroup;
 			children = (
 				84B9E4B21EE7FC880070BB7D /* HistoryViewController.swift */,
-				84B9E4B91EE811F50070BB7D /* HistoryTableViewCell.swift */,
-				84B9E4BB1EE8130E0070BB7D /* HistoryKind.swift */,
 			);
 			name = "History Views";
+			sourceTree = "<group>";
+		};
+		F31674A01EE98BFA00355FFD /* Login View */ = {
+			isa = PBXGroup;
+			children = (
+				F31674A31EE98C4100355FFD /* LoginViewController.swift */,
+				F31674A91EEBEA1E00355FFD /* RegisterViewController.swift */,
+			);
+			name = "Login View";
 			sourceTree = "<group>";
 		};
 		F34090811ED5FB7D00548661 = {
@@ -179,6 +188,7 @@
 		F340908C1ED5FB7D00548661 /* DrugPlanner */ = {
 			isa = PBXGroup;
 			children = (
+				F31674A01EE98BFA00355FFD /* Login View */,
 				84B9E4B61EE7FF6E0070BB7D /* History Views */,
 				84B9E4B51EE7FF580070BB7D /* Inventory Views */,
 				84B9E4B41EE7FF340070BB7D /* Agenda Views */,
@@ -188,6 +198,7 @@
 				F34090991ED5FB7D00548661 /* Info.plist */,
 				84B9E4A81EDED3940070BB7D /* GoogleService-Info.plist */,
 				84B9E4AE1EE7FC280070BB7D /* MainViewController.swift */,
+				F31674A51EE98C9400355FFD /* Login.storyboard */,
 			);
 			path = DrugPlanner;
 			sourceTree = "<group>";
@@ -329,6 +340,7 @@
 				F316749F1EE7FBF800355FFD /* .gitignore in Resources */,
 				F34090951ED5FB7D00548661 /* Assets.xcassets in Resources */,
 				849D02721ED6430F0093CA15 /* Main.storyboard in Resources */,
+				F31674A61EE98C9400355FFD /* Login.storyboard in Resources */,
 				84B9E4A91EDED3940070BB7D /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -492,12 +504,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F31674A41EE98C4100355FFD /* LoginViewController.swift in Sources */,
 				84B9E4AF1EE7FC280070BB7D /* MainViewController.swift in Sources */,
 				84B9E4B81EE7FFDA0070BB7D /* AgendaTableViewCell.swift in Sources */,
-				84B9E4BA1EE811F50070BB7D /* HistoryTableViewCell.swift in Sources */,
+				F31674AA1EEBEA1E00355FFD /* RegisterViewController.swift in Sources */,
 				84B9E4B11EE7FC5D0070BB7D /* InventoryViewController.swift in Sources */,
 				F340908E1ED5FB7D00548661 /* AppDelegate.swift in Sources */,
-				84B9E4BC1EE8130E0070BB7D /* HistoryKind.swift in Sources */,
 				84B9E4B31EE7FC880070BB7D /* HistoryViewController.swift in Sources */,
 				84B9E4AD1EE7FBC80070BB7D /* AgendaViewController.swift in Sources */,
 			);
