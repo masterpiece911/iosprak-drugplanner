@@ -92,4 +92,12 @@ class InventoryViewController: UITableViewController {
     }
     */
 
+    @IBAction func saveNewInventoryItem(segue:UIStoryboardSegue) {
+    
+    }
+    
+    @IBAction func cancelNewInventoryItem(segue:UIStoryboardSegue) {
+        
+    }
+    
 }
