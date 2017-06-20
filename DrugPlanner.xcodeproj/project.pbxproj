@@ -17,6 +17,8 @@
 		84B9E4B31EE7FC880070BB7D /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B9E4B21EE7FC880070BB7D /* HistoryViewController.swift */; };
 		84B9E4B81EE7FFDA0070BB7D /* AgendaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B9E4B71EE7FFDA0070BB7D /* AgendaTableViewCell.swift */; };
 		E7F5438527B59468692A44BD /* Pods_DrugPlannerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EBD4FD25B3CA40A5D1551B1 /* Pods_DrugPlannerTests.framework */; };
+		F04907BE1EF8F6D5001852D0 /* HistoryHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04907BD1EF8F6D5001852D0 /* HistoryHeaderTableViewCell.swift */; };
+		F04907C01EF8F6ED001852D0 /* HistoryContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04907BF1EF8F6ED001852D0 /* HistoryContentTableViewCell.swift */; };
 		F316749F1EE7FBF800355FFD /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = F316749E1EE7FBF800355FFD /* .gitignore */; };
 		F31674A41EE98C4100355FFD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31674A31EE98C4100355FFD /* LoginViewController.swift */; };
 		F31674A61EE98C9400355FFD /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F31674A51EE98C9400355FFD /* Login.storyboard */; };
@@ -62,6 +64,8 @@
 		B39F3B70FE7DDC2C0F299B1F /* Pods_DrugPlannerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DrugPlannerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6DBAEFE5AAB9A0B959F4BFB /* Pods-DrugPlanner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrugPlanner.release.xcconfig"; path = "Pods/Target Support Files/Pods-DrugPlanner/Pods-DrugPlanner.release.xcconfig"; sourceTree = "<group>"; };
 		D0F67A4B79DBDC7A78589EF6 /* Pods-DrugPlannerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrugPlannerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DrugPlannerUITests/Pods-DrugPlannerUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		F04907BD1EF8F6D5001852D0 /* HistoryHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		F04907BF1EF8F6ED001852D0 /* HistoryContentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryContentTableViewCell.swift; sourceTree = "<group>"; };
 		F316749E1EE7FBF800355FFD /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		F31674A31EE98C4100355FFD /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F31674A51EE98C9400355FFD /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -152,6 +156,8 @@
 			isa = PBXGroup;
 			children = (
 				84B9E4B21EE7FC880070BB7D /* HistoryViewController.swift */,
+				F04907BD1EF8F6D5001852D0 /* HistoryHeaderTableViewCell.swift */,
+				F04907BF1EF8F6ED001852D0 /* HistoryContentTableViewCell.swift */,
 			);
 			name = "History Views";
 			sourceTree = "<group>";
@@ -509,9 +515,11 @@
 			files = (
 				F31674A41EE98C4100355FFD /* LoginViewController.swift in Sources */,
 				F332EF201EF16C360040714C /* InventoryTableViewCell.swift in Sources */,
+				F04907BE1EF8F6D5001852D0 /* HistoryHeaderTableViewCell.swift in Sources */,
 				84B9E4AF1EE7FC280070BB7D /* MainViewController.swift in Sources */,
 				84B9E4B81EE7FFDA0070BB7D /* AgendaTableViewCell.swift in Sources */,
 				F31674AA1EEBEA1E00355FFD /* RegisterViewController.swift in Sources */,
+				F04907C01EF8F6ED001852D0 /* HistoryContentTableViewCell.swift in Sources */,
 				84B9E4B11EE7FC5D0070BB7D /* InventoryViewController.swift in Sources */,
 				F340908E1ED5FB7D00548661 /* AppDelegate.swift in Sources */,
 				84B9E4B31EE7FC880070BB7D /* HistoryViewController.swift in Sources */,
