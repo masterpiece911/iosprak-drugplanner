@@ -11,7 +11,7 @@ import UIKit
 class CreateInventoryItemTableViewController: UITableViewController {
 
     @IBOutlet weak var nameField: UITextField!
-    @IBOutlet weak var typePicker: UIPickerView!
+    @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var amountField: UITextField!
     @IBOutlet weak var doseField: UITextField!
     @IBOutlet weak var amountUnitLabel: UILabel!
