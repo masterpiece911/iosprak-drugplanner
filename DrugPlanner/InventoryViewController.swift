@@ -9,6 +9,8 @@
 import UIKit
 
 class InventoryViewController: UITableViewController {
+    
+    var items : [InventoryItem] = getInventoryItems()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,23 +31,26 @@ class InventoryViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return items.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "inventoryCell", for: indexPath) as! InventoryTableViewCell
 
         // Configure the cell...
-
+        let index = indexPath.row
+        cell.drugName.text = items[index].name
+        cell.expiryDate.text = items[index].expiryDate.description
+        cell.number.text = items[index].amount.description
+        
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.
@@ -94,6 +99,7 @@ class InventoryViewController: UITableViewController {
 
     @IBAction func saveNewInventoryItem(segue:UIStoryboardSegue) {
     
+        
     }
     
     @IBAction func cancelNewInventoryItem(segue:UIStoryboardSegue) {
