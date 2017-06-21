@@ -75,9 +75,6 @@ class InventoryViewController: UITableViewController {
 
         // Configure the cell...
         let index = indexPath.row
-        cell.drugName.text = items[index].InventoryItemName
-        cell.expiryDate.text = items[index].InventoryItemExpiryDate.description
-        cell.number.text = items[index].InventoryItemAmount.description
         
         return cell
     }
