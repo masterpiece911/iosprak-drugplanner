@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class InventoryViewController: UITableViewController {
     
@@ -15,6 +16,7 @@ class InventoryViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
 //        ref = delegate.ref;
 
@@ -73,8 +75,9 @@ class InventoryViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "inventoryCell", for: indexPath) as! InventoryTableViewCell
 
-        // Configure the cell...
-        let index = indexPath.row
+//        let user = Auth.auth().addStateDidChangeListener{ (auth, user) in
+//        // Configure the cell...
+//        let index = indexPath.row
         
         return cell
     }
@@ -124,13 +127,13 @@ class InventoryViewController: UITableViewController {
     }
     */
 
-    @IBAction func saveNewInventoryItem(segue:UIStoryboardSegue) {
-    
-        
-    }
-    
-    @IBAction func cancelNewInventoryItem(segue:UIStoryboardSegue) {
-        
-    }
-    
+//    @IBAction func saveNewInventoryItem(segue:UIStoryboardSegue) {
+//    
+//        
+//    }
+//    
+//    @IBAction func cancelNewInventoryItem(segue:UIStoryboardSegue) {
+//        
+//    }
+//    
 }
