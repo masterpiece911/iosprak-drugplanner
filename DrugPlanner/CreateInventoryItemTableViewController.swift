@@ -24,6 +24,9 @@ class CreateInventoryItemTableViewController: UITableViewController {
             typeLabel.text? = type
         }
     }
+    
+    var expiryDate : Date?
+    
    let datePicker = UIDatePicker()
     var selDate: String?
     
@@ -92,6 +95,7 @@ class CreateInventoryItemTableViewController: UITableViewController {
         dateF.dateStyle = .medium
         dateF.timeStyle = .none
         expiryDatePicker.text = dateF.string(from: datePicker.date)
+        expiryDate = datePicker.date
         self.view.endEditing(true)
     }
 
