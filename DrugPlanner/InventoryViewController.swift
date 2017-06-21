@@ -12,13 +12,14 @@ import Firebase
 class InventoryViewController: UITableViewController {
     
     var items : [InventoryItem] = getInventoryItems()
-//    let delegate = UIApplication.shared.delegate as! AppDelegate
+    var ref : DatabaseReference!
+    let delegate = UIApplication.shared.delegate as! AppDelegate
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
-//        ref = delegate.ref;
+        ref = delegate.ref;
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -53,9 +54,7 @@ class InventoryViewController: UITableViewController {
 
     
     // TODO: Add new Med Action
-    func addMedicine() {
-        
-    }
+
     
     // MARK: - Table view data source
 
