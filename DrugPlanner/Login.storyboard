@@ -148,6 +148,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Back to Login"/>
                                 <connections>
+                                    <action selector="registerBtnTapped:" destination="Asn-IR-Z18" eventType="touchUpInside" id="E8N-q8-cEl"/>
                                     <segue destination="coc-qz-Auy" kind="presentation" id="ex2-26-n8l"/>
                                 </connections>
                             </button>
