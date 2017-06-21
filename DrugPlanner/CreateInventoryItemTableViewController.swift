@@ -11,13 +11,19 @@ import UIKit
 class CreateInventoryItemTableViewController: UITableViewController {
 
     @IBOutlet weak var nameField: UITextField!
-    @IBOutlet weak var typePicker: UIPickerView!
+    @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var amountField: UITextField!
     @IBOutlet weak var doseField: UITextField!
     @IBOutlet weak var amountUnitLabel: UILabel!
     @IBOutlet weak var doseUnitLabel: UILabel!
     @IBOutlet weak var expiryDatePicker: UIDatePicker!
     @IBOutlet weak var noteField: UITextField!
+    
+    var type:String = "" {
+        didSet {
+            typeLabel.text? = type
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,5 +48,12 @@ class CreateInventoryItemTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
 
+    @IBAction func unwindWithSelectedType(segue : UIStoryboardSegue) {
+        if let typePickerViewController = segue.source as? ChooseTypeTableViewController {
+            if let selectedType = typePickerViewController.selectedType {
+                type = selectedType
+            }
+        }
+    }
 
 }

@@ -21,6 +21,7 @@
 		F04907C01EF8F6ED001852D0 /* HistoryContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04907BF1EF8F6ED001852D0 /* HistoryContentTableViewCell.swift */; };
 		F04907C21EF9084F001852D0 /* CreateInventoryItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04907C11EF9084F001852D0 /* CreateInventoryItemTableViewController.swift */; };
 		F04907C41EF90949001852D0 /* InventoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04907C31EF90949001852D0 /* InventoryItem.swift */; };
+		F04907CA1EFA6F2F001852D0 /* ChooseTypeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04907C91EFA6F2F001852D0 /* ChooseTypeTableViewController.swift */; };
 		F316749F1EE7FBF800355FFD /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = F316749E1EE7FBF800355FFD /* .gitignore */; };
 		F31674A41EE98C4100355FFD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31674A31EE98C4100355FFD /* LoginViewController.swift */; };
 		F31674A61EE98C9400355FFD /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F31674A51EE98C9400355FFD /* Login.storyboard */; };
@@ -70,6 +71,7 @@
 		F04907BF1EF8F6ED001852D0 /* HistoryContentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryContentTableViewCell.swift; sourceTree = "<group>"; };
 		F04907C11EF9084F001852D0 /* CreateInventoryItemTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateInventoryItemTableViewController.swift; sourceTree = "<group>"; };
 		F04907C31EF90949001852D0 /* InventoryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryItem.swift; sourceTree = "<group>"; };
+		F04907C91EFA6F2F001852D0 /* ChooseTypeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseTypeTableViewController.swift; sourceTree = "<group>"; };
 		F316749E1EE7FBF800355FFD /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		F31674A31EE98C4100355FFD /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F31674A51EE98C9400355FFD /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				F332EF1F1EF16C360040714C /* InventoryTableViewCell.swift */,
 				F04907C11EF9084F001852D0 /* CreateInventoryItemTableViewController.swift */,
 				F04907C31EF90949001852D0 /* InventoryItem.swift */,
+				F04907C91EFA6F2F001852D0 /* ChooseTypeTableViewController.swift */,
 			);
 			name = "Inventory Views";
 			sourceTree = "<group>";
@@ -519,6 +522,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F04907CA1EFA6F2F001852D0 /* ChooseTypeTableViewController.swift in Sources */,
 				F31674A41EE98C4100355FFD /* LoginViewController.swift in Sources */,
 				F332EF201EF16C360040714C /* InventoryTableViewCell.swift in Sources */,
 				F04907BE1EF8F6D5001852D0 /* HistoryHeaderTableViewCell.swift in Sources */,
