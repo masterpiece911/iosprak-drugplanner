@@ -25,7 +25,9 @@ class CreateInventoryItemTableViewController: UITableViewController {
         }
     }
     
-    let datePicker = UIDatePicker()
+    var expiryDate : Date?
+    
+   let datePicker = UIDatePicker()
     var selDate: String?
     
     var item : InventoryItem?
@@ -56,7 +58,7 @@ class CreateInventoryItemTableViewController: UITableViewController {
                 typePickerViewController.selectedType = type
             }
         } else if (segue.identifier == "SaveInventoryItem") {
-            //item = InventoryItem(name: nameField.text, type: DrugType(typeLabel.text), amount: amountField.text, dose: doseField.text, expiryDate: <#T##Date#>, notes: <#T##String#>)
+            item = InventoryItem(name: nameField.text!, type: DrugType(rawValue: typeLabel.text!)!, amount: Int(amountField.text!)!, dose: Int(doseField.text!)!, expiryDate: expiryDate!, notes: noteField.text!)
         }
         
     }
@@ -79,17 +81,25 @@ class CreateInventoryItemTableViewController: UITableViewController {
         }
     }
     
+
     func createDatePicker(){
+        datePicker.datePickerMode = .date
         let toolBar = UIToolbar()
         toolBar.sizeToFit()
         let done = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed))
         toolBar.setItems([done], animated: false)
         expiryDatePicker.inputAccessoryView = toolBar
         expiryDatePicker.inputView = datePicker
+   
     }
     
+    
     func donePressed(){
-        expiryDatePicker.text = "\(datePicker.date)"
+        let dateF = DateFormatter()
+        dateF.dateStyle = .medium
+        dateF.timeStyle = .none
+        expiryDatePicker.text = dateF.string(from: datePicker.date)
+        expiryDate = datePicker.date
         self.view.endEditing(true)
     }
 
@@ -101,5 +111,6 @@ class CreateInventoryItemTableViewController: UITableViewController {
         }
     }
 }
+
 
 
