@@ -16,11 +16,16 @@ class CreateInventoryItemTableViewController: UITableViewController {
     @IBOutlet weak var doseField: UITextField!
     @IBOutlet weak var amountUnitLabel: UILabel!
     @IBOutlet weak var doseUnitLabel: UILabel!
-    @IBOutlet weak var expiryDatePicker: UIDatePicker!
+    @IBOutlet weak var expiryDatePicker: UITextField!
     @IBOutlet weak var noteField: UITextField!
     
-   let datePicker = UIDatePicker
-    var selDate: String?
+    var type:String = "" {
+        didSet {
+            typeLabel.text? = type
+        }
+    }
+   /*let datePicker = UIDatePicker
+    var selDate: String?*/
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +49,7 @@ class CreateInventoryItemTableViewController: UITableViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-   func createDatePicker(){
+ /*  func createDatePicker(){
     let toolBar = UIToolbar()
     toolBar.sizeToFit()
     let done = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: nil)
@@ -53,7 +58,13 @@ class CreateInventoryItemTableViewController: UITableViewController {
     expiryDatePicker.inputView = datePicker
    
         
-    }
+    }*/
 
-}
+    @IBAction func unwindWithSelectedType(segue : UIStoryboardSegue) {
+        if let typePickerViewController = segue.source as? ChooseTypeTableViewController {
+            if let selectedType = typePickerViewController.selectedType {
+                type = selectedType
+            }
+        }
+    }
 
