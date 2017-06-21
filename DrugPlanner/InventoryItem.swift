@@ -20,10 +20,18 @@ struct InventoryItem {
 }
 
 
-enum DrugType {
+enum DrugType : String{
     
-    case mg
-    case ml
-    case tablet
+    case mg = "Powder"
+    case ml = "Drops"
+    case pill = "Pills"
     
+}
+
+func getInventoryItems() -> [InventoryItem] {
+    
+    var items : [InventoryItem] = []
+    items.append(InventoryItem(name: "Iboprofen", type: DrugType.pill, amount: 50, dose: 400, expiryDate: Date.init(timeIntervalSinceNow: 31557600), notes: "take with water"))
+    items.append(InventoryItem(name: "Aspirin", type: DrugType.pill, amount: 18, dose: 500, expiryDate: Date.init(timeIntervalSinceNow: 31557600), notes: "take with water"))
+    return items
 }
