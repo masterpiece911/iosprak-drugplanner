@@ -534,7 +534,7 @@
             </objects>
             <point key="canvasLocation" x="5025" y="-751"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Settings-->
         <scene sceneID="uh6-Uf-YmR">
             <objects>
                 <tableViewController id="DnV-xW-ArH" sceneMemberID="viewController">
@@ -557,11 +557,11 @@
                             <outlet property="delegate" destination="DnV-xW-ArH" id="5oO-lJ-Ctt"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="7KQ-qy-b7H"/>
+                    <navigationItem key="navigationItem" title="Settings" id="7KQ-qy-b7H"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aEs-Iu-cJO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3430" y="12"/>
+            <point key="canvasLocation" x="-3498" y="11"/>
         </scene>
         <!--Settings-->
         <scene sceneID="WAu-tg-ZKw">
