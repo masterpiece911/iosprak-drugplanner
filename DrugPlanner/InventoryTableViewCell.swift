@@ -11,7 +11,7 @@ import UIKit
 class InventoryTableViewCell: UITableViewCell {
 
     @IBOutlet weak var number: UILabel!
-    @IBOutlet weak var haltbarkeit: UILabel!
+    @IBOutlet weak var expiryDate: UILabel!
     @IBOutlet weak var drugName: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
