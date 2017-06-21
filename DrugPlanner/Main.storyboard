@@ -271,7 +271,7 @@
         <scene sceneID="eSK-8Z-gKS">
             <objects>
                 <tableViewController id="eFu-16-zrN" customClass="CreateInventoryItemTableViewController" customModule="DrugPlanner" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="1Do-rf-Q1K">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="1Do-rf-Q1K">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -328,7 +328,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="23g-Pv-xac" kind="show" identifier="PickType" id="7Jk-gq-0Rg"/>
+                                            <segue destination="23g-Pv-xac" kind="show" id="olN-c2-nUF"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
