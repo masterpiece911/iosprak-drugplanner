@@ -74,18 +74,24 @@ class CreateInventoryItemTableViewController: UITableViewController {
         }
     }
     
-    /*  func createDatePicker(){
-    let toolBar = UIToolbar()
-    toolBar.sizeToFit()
-    let done = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed))
-    toolBar.setItems([done], animated: false)
-    expiryDatePicker.inputAccessoryView = toolBar
-    expiryDatePicker.inputView = datePicker
+
+    func createDatePicker(){
+        datePicker.datePickerMode = .date
+        let toolBar = UIToolbar()
+        toolBar.sizeToFit()
+        let done = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed))
+        toolBar.setItems([done], animated: false)
+        expiryDatePicker.inputAccessoryView = toolBar
+        expiryDatePicker.inputView = datePicker
    
-        
     }
+    
+    
     func donePressed(){
-    expiryDatePicker.text = "\(datePicker.date)"
+        let dateF = DateFormatter()
+        dateF.dateStyle = .medium
+        dateF.timeStyle = .none
+        expiryDatePicker.text = dateF.string(from: datePicker.date)
         self.view.endEditing(true)
     }
 
@@ -99,4 +105,4 @@ class CreateInventoryItemTableViewController: UITableViewController {
 }
 
 
-}
+
