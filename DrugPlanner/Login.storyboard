@@ -12,7 +12,7 @@
         <!--Login View Controller-->
         <scene sceneID="yZs-jH-Bd2">
             <objects>
-                <viewController id="coc-qz-Auy" customClass="LoginViewController" customModule="DrugPlanner" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Login" id="coc-qz-Auy" customClass="LoginViewController" customModule="DrugPlanner" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Lee-P7-mY3"/>
                         <viewControllerLayoutGuide type="bottom" id="DIb-ca-JkI"/>
@@ -143,7 +143,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2r0-Gh-coD">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="Login" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2r0-Gh-coD">
                                 <rect key="frame" x="142" y="568" width="93" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Back to Login"/>
