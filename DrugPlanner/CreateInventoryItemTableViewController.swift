@@ -19,6 +19,9 @@ class CreateInventoryItemTableViewController: UITableViewController {
     @IBOutlet weak var expiryDatePicker: UIDatePicker!
     @IBOutlet weak var noteField: UITextField!
     
+   let datePicker = UIDatePicker
+    var selDate: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -41,6 +44,16 @@ class CreateInventoryItemTableViewController: UITableViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-
+   func createDatePicker(){
+    let toolBar = UIToolbar()
+    toolBar.sizeToFit()
+    let done = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: nil)
+    toolBar.setItems([done], animated: false)
+    expiryDatePicker.inputAccessoryView = toolBar
+    expiryDatePicker.inputView = datePicker
+   
+        
+    }
 
 }
+
