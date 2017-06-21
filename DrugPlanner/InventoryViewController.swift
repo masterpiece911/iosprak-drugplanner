@@ -126,14 +126,14 @@ class InventoryViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
-//    @IBAction func saveNewInventoryItem(segue:UIStoryboardSegue) {
-//    
-//        
-//    }
-//    
-//    @IBAction func cancelNewInventoryItem(segue:UIStoryboardSegue) {
-//        
-//    }
-//    
+    
+    @IBAction func saveNewInventoryItem(segue:UIStoryboardSegue) {
+  
+      
+    }
+  
+    @IBAction func cancelNewInventoryItem(segue:UIStoryboardSegue) {
+     
+    }
+    
 }
