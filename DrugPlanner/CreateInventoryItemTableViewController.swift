@@ -24,11 +24,12 @@ class CreateInventoryItemTableViewController: UITableViewController {
             typeLabel.text? = type
         }
     }
-   /*let datePicker = UIDatePicker
-    var selDate: String?*/
+   let datePicker = UIDatePicker()
+    var selDate: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        createDatePicker()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -76,13 +77,17 @@ class CreateInventoryItemTableViewController: UITableViewController {
     /*  func createDatePicker(){
     let toolBar = UIToolbar()
     toolBar.sizeToFit()
-    let done = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: nil)
+    let done = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed))
     toolBar.setItems([done], animated: false)
     expiryDatePicker.inputAccessoryView = toolBar
     expiryDatePicker.inputView = datePicker
    
         
-    }*/
+    }
+    func donePressed(){
+    expiryDatePicker.text = "\(datePicker.date)"
+        self.view.endEditing(true)
+    }
 
     @IBAction func unwindWithSelectedType(segue : UIStoryboardSegue) {
         if let typePickerViewController = segue.source as? ChooseTypeTableViewController {
@@ -91,5 +96,7 @@ class CreateInventoryItemTableViewController: UITableViewController {
             }
         }
     }
+}
+
 
 }

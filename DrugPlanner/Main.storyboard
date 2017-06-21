@@ -534,6 +534,52 @@
             </objects>
             <point key="canvasLocation" x="5025" y="-751"/>
         </scene>
+        <!--Root View Controller-->
+        <scene sceneID="uh6-Uf-YmR">
+            <objects>
+                <tableViewController id="DnV-xW-ArH" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="z8m-UB-NY2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="P6F-wS-p4m">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="P6F-wS-p4m" id="jqa-ql-nMC">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="DnV-xW-ArH" id="te1-F1-JAd"/>
+                            <outlet property="delegate" destination="DnV-xW-ArH" id="5oO-lJ-Ctt"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="7KQ-qy-b7H"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aEs-Iu-cJO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3430" y="12"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="WAu-tg-ZKw">
+            <objects>
+                <navigationController id="KIW-h3-qyz" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Settings" image="Settings" selectedImage="Settings-Filled" id="Wif-Gp-fhk"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4OP-CQ-UcY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="DnV-xW-ArH" kind="relationship" relationship="rootViewController" id="JKj-OG-6bZ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tt5-Ym-0XJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4381" y="12"/>
+        </scene>
         <!--Main View Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
@@ -548,6 +594,7 @@
                         <segue destination="mcS-bC-fsA" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="jps-65-Yyk" kind="relationship" relationship="viewControllers" id="Nbg-ac-gJ9"/>
                         <segue destination="40p-Sv-GST" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="KIW-h3-qyz" kind="relationship" relationship="viewControllers" id="lpg-oM-3lx"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -718,5 +765,7 @@
         <image name="History-Filled" width="25" height="25"/>
         <image name="Inventory" width="25" height="25"/>
         <image name="Inventory-Filled" width="25" height="25"/>
+        <image name="Settings" width="16" height="16"/>
+        <image name="Settings-Filled" width="16" height="16"/>
     </resources>
 </document>
