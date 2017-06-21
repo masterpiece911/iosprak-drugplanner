@@ -55,6 +55,24 @@ class CreateInventoryItemTableViewController: UITableViewController {
         
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.section {
+        case 0:
+            nameField.becomeFirstResponder()
+
+        case 2:
+            amountField.becomeFirstResponder()
+        case 3:
+            doseField.becomeFirstResponder()
+        case 4:
+            expiryDatePicker.becomeFirstResponder()
+        case 5:
+            noteField.becomeFirstResponder()
+        default:
+            break
+        }
+    }
+    
     /*  func createDatePicker(){
     let toolBar = UIToolbar()
     toolBar.sizeToFit()
