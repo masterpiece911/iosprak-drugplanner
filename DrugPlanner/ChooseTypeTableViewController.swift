@@ -45,7 +45,7 @@ class ChooseTypeTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -57,6 +57,8 @@ class ChooseTypeTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TypeCell", for: indexPath)
 
         cell.textLabel?.text = types[indexPath.row]
+        
+        
         
         if indexPath.row == selectedTypeIndex {
             cell.accessoryType = .checkmark
