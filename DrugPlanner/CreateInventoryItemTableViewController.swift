@@ -51,6 +51,7 @@ class CreateInventoryItemTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
   func createDatePicker(){
+    datePicker.datePickerMode = .date
     let toolBar = UIToolbar()
     toolBar.sizeToFit()
     let done = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed))
@@ -61,7 +62,10 @@ class CreateInventoryItemTableViewController: UITableViewController {
         
     }
     func donePressed(){
-    expiryDatePicker.text = "\(datePicker.date)"
+        let dateF = DateFormatter()
+        dateF.dateStyle = .medium
+        dateF.timeStyle = .none
+    expiryDatePicker.text = dateF.string(from: datePicker.date)
         self.view.endEditing(true)
     }
 
