@@ -30,7 +30,16 @@ class CreateInventoryItemTableViewController: UITableViewController {
    let datePicker = UIDatePicker()
     var selDate: String?
     
-    var item : InventoryItem?
+    private var item : InventoryItem!
+    
+    var inventoryItem : InventoryItem {
+        get {
+            return item
+        }
+        set {
+            item = newValue
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,6 +71,34 @@ class CreateInventoryItemTableViewController: UITableViewController {
         }
         
     }
+    
+    func inventoryItemEntered() -> Bool {
+        
+        var entered = true
+        
+        if let text = nameField.text, !text.isEmpty{
+        } else {
+            entered = false
+        }
+        if let text = amountField.text, !text.isEmpty {
+        } else {
+            entered = false
+        }
+        if let text = doseField.text, !text.isEmpty {
+        } else {
+            entered = false
+        }
+        if let text = expiryDatePicker.text, !text.isEmpty {
+        } else {
+            entered = false
+        }
+        if type == "" {
+            entered = false
+        }
+        
+        return entered
+    }
+    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
@@ -110,6 +147,23 @@ class CreateInventoryItemTableViewController: UITableViewController {
             }
         }
     }
+    
+    @IBAction func confirmInventory(_ sender: Any) {
+        
+        if (inventoryItemEntered()) {
+            performSegue(withIdentifier: "SaveInventoryItem", sender: self)
+        } else {
+            let incompleteInventoryItemController = UIAlertController(title: "Incomplete Information", message: "Please fill out all fields before proceeding.", preferredStyle: .alert)
+            
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            
+            incompleteInventoryItemController.addAction(okAction)
+            
+            present(incompleteInventoryItemController, animated: true, completion: nil)
+        }
+        
+    }
+    
 }
 
 
