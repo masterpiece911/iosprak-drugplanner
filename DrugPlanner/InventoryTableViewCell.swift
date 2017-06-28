@@ -13,6 +13,7 @@ class InventoryTableViewCell: UITableViewCell {
     @IBOutlet weak var numberLabel: UILabel!
     @IBOutlet weak var expiryDateLabel: UILabel!
     @IBOutlet weak var drugNameLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
