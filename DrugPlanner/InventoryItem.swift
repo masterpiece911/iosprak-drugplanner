@@ -143,6 +143,25 @@ enum DrugType : String{
     
 }
 
+func getDrugTypeDescriptions(for drug : DrugType) -> [String:String] {
+    var descriptions = [String : String] ()
+    
+    switch drug {
+    case .mg:
+        descriptions["doseUnit"] = "mg"
+        descriptions["amountUnit"] = "mg"
+    case .ml:
+        descriptions["doseUnit"] = "ml"
+        descriptions["amountUnit"] = "ml"
+    case .pill:
+        descriptions["doseUnit"] = "mg"
+        descriptions["amountUnit"] = "Pills"
+    }
+    
+    return descriptions
+    
+}
+
 func getInventoryItems() -> [InventoryItem] {
     
     var items : [InventoryItem] = []
