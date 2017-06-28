@@ -473,7 +473,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="done" id="fwH-Yp-VuZ">
                             <connections>
-                                <segue destination="F7F-OJ-Ldg" kind="unwind" identifier="SaveInventoryItem" unwindAction="saveNewInventoryItemWithSegue:" id="Fr5-QF-NuX"/>
+                                <action selector="confirmInventory:" destination="eFu-16-zrN" id="Scq-yT-Vla"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -486,6 +486,7 @@
                         <outlet property="nameField" destination="yBu-3h-f0u" id="JRk-C1-MBs"/>
                         <outlet property="noteField" destination="FiA-Uc-dtb" id="4PU-45-kep"/>
                         <outlet property="typeLabel" destination="vJL-so-9Ri" id="A7U-YJ-cbw"/>
+                        <segue destination="F7F-OJ-Ldg" kind="unwind" identifier="SaveInventoryItem" unwindAction="saveNewInventoryItemWithSegue:" id="eVh-lr-zdH"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jdQ-yL-OmS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -552,15 +553,20 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fx6-W0-amW">
-                                                    <rect key="frame" x="103" y="6" width="138" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fx6-W0-amW">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                                     <state key="normal" title="Logout"/>
                                                     <connections>
                                                         <action selector="logout:" destination="DnV-xW-ArH" eventType="touchUpInside" id="cEE-xu-muK"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="Fx6-W0-amW" secondAttribute="trailing" id="DKW-fZ-btW"/>
+                                                <constraint firstItem="Fx6-W0-amW" firstAttribute="leading" secondItem="jqa-ql-nMC" secondAttribute="leading" id="bFO-e5-Gmi"/>
+                                                <constraint firstItem="Fx6-W0-amW" firstAttribute="top" secondItem="jqa-ql-nMC" secondAttribute="top" id="n2O-mN-s5a"/>
+                                                <constraint firstAttribute="bottom" secondItem="Fx6-W0-amW" secondAttribute="bottom" id="yRg-Sa-F42"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
