@@ -144,9 +144,9 @@ class InventoryViewController: UITableViewController {
                            "expiryDate": date,
                            "type": createInventoryController.typeLabel.text!] as [String : Any]
             
-            let itemRef = self.ref.child("Inventory");
+            let usersRef = self.ref.child("Users").child((Auth.auth().currentUser?.uid)!).child("Inventory");
             
-            itemRef.childByAutoId().setValue(newItem)
+            usersRef.childByAutoId().setValue(newItem)
         }
       
     }
