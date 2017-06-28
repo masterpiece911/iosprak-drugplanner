@@ -127,7 +127,27 @@ class InventoryViewController: UITableViewController {
     */
     
     @IBAction func saveNewInventoryItem(segue:UIStoryboardSegue) {
-  
+
+        
+        if let createInventoryController = segue.source as? CreateInventoryItemTableViewController {
+            
+            let dateF = DateFormatter()
+            dateF.dateStyle = .medium
+            dateF.timeStyle = .none
+            let date = dateF.string(from: createInventoryController.expiryDate!)
+            
+            
+            let newItem = ["name": createInventoryController.nameField.text!,
+                           "amount": Int(createInventoryController.amountField.text!)!,
+                           "dose": Int(createInventoryController.doseField.text!)!,
+                           "notes": createInventoryController.noteField.text!,
+                           "expiryDate": date,
+                           "type": createInventoryController.typeLabel.text!] as [String : Any]
+            
+            let usersRef = self.ref.child("Users").child((Auth.auth().currentUser?.uid)!).child("Inventory");
+            
+            usersRef.childByAutoId().setValue(newItem)
+        }
       
     }
   
