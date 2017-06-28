@@ -78,6 +78,18 @@ class InventoryViewController: UITableViewController {
 //        // Configure the cell...
 //        let index = indexPath.row
         
+        let item = items[indexPath.row]
+        
+        cell.drugNameLabel.text = item.InventoryItemName
+        
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
+        
+        cell.expiryDateLabel.text = formatter.string(from: item.InventoryItemExpiryDate)
+        
+        cell.numberLabel.text = String(item.InventoryItemAmount)
+        
         return cell
     }
 
@@ -116,15 +128,22 @@ class InventoryViewController: UITableViewController {
     }
     */
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+
+        if(segue.identifier == "InventoryDetail") {
+            
+            if let destination = segue.destination as? InventoryDetailTableViewController,
+                    let itemIndex = tableView.indexPathForSelectedRow?.row {
+                destination.item = items[itemIndex]
+            }
+            
+        }
+        
     }
-    */
+    
+    
     
     @IBAction func saveNewInventoryItem(segue:UIStoryboardSegue) {
 
@@ -151,8 +170,12 @@ class InventoryViewController: UITableViewController {
       
     }
   
-    @IBAction func cancelNewInventoryItem(segue:UIStoryboardSegue) {
+    @IBAction func cancelInventoryItem(segue:UIStoryboardSegue) {
      
+    }
+    
+    @IBAction func editInventoryItem(segue:UIStoryboardSegue) {
+        
     }
     
 }
