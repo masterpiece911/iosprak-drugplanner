@@ -124,7 +124,7 @@ class CreateInventoryItemTableViewController: UITableViewController {
 
     func createDatePicker(){
         datePicker.datePickerMode = .date
-        datePicker.minimumDate = Date(timeIntervalSinceNow: 0)
+        datePicker.minimumDate = Date(timeIntervalSinceNow: 24 * 60 * 60)
         let toolBar = UIToolbar()
         toolBar.sizeToFit()
         let done = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed))
