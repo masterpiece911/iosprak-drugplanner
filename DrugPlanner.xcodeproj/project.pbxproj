@@ -17,6 +17,7 @@
 		84B9E4B31EE7FC880070BB7D /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B9E4B21EE7FC880070BB7D /* HistoryViewController.swift */; };
 		84B9E4B81EE7FFDA0070BB7D /* AgendaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B9E4B71EE7FFDA0070BB7D /* AgendaTableViewCell.swift */; };
 		E7F5438527B59468692A44BD /* Pods_DrugPlannerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EBD4FD25B3CA40A5D1551B1 /* Pods_DrugPlannerTests.framework */; };
+		F001E44A1F03C980005DACF4 /* InventoryDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F001E4491F03C980005DACF4 /* InventoryDetailTableViewController.swift */; };
 		F04907BE1EF8F6D5001852D0 /* HistoryHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04907BD1EF8F6D5001852D0 /* HistoryHeaderTableViewCell.swift */; };
 		F04907C01EF8F6ED001852D0 /* HistoryContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04907BF1EF8F6ED001852D0 /* HistoryContentTableViewCell.swift */; };
 		F04907C21EF9084F001852D0 /* CreateInventoryItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04907C11EF9084F001852D0 /* CreateInventoryItemTableViewController.swift */; };
@@ -68,6 +69,7 @@
 		B39F3B70FE7DDC2C0F299B1F /* Pods_DrugPlannerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DrugPlannerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6DBAEFE5AAB9A0B959F4BFB /* Pods-DrugPlanner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrugPlanner.release.xcconfig"; path = "Pods/Target Support Files/Pods-DrugPlanner/Pods-DrugPlanner.release.xcconfig"; sourceTree = "<group>"; };
 		D0F67A4B79DBDC7A78589EF6 /* Pods-DrugPlannerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrugPlannerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DrugPlannerUITests/Pods-DrugPlannerUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		F001E4491F03C980005DACF4 /* InventoryDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryDetailTableViewController.swift; sourceTree = "<group>"; };
 		F04907BD1EF8F6D5001852D0 /* HistoryHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		F04907BF1EF8F6ED001852D0 /* HistoryContentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryContentTableViewCell.swift; sourceTree = "<group>"; };
 		F04907C11EF9084F001852D0 /* CreateInventoryItemTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateInventoryItemTableViewController.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 				F04907C11EF9084F001852D0 /* CreateInventoryItemTableViewController.swift */,
 				F04907C31EF90949001852D0 /* InventoryItem.swift */,
 				F04907C91EFA6F2F001852D0 /* ChooseTypeTableViewController.swift */,
+				F001E4491F03C980005DACF4 /* InventoryDetailTableViewController.swift */,
 			);
 			name = "Inventory Views";
 			sourceTree = "<group>";
@@ -544,6 +547,7 @@
 				F33E087F1EFA851000CAF516 /* SettingsViewController.swift in Sources */,
 				F04907C01EF8F6ED001852D0 /* HistoryContentTableViewCell.swift in Sources */,
 				84B9E4B11EE7FC5D0070BB7D /* InventoryViewController.swift in Sources */,
+				F001E44A1F03C980005DACF4 /* InventoryDetailTableViewController.swift in Sources */,
 				F340908E1ED5FB7D00548661 /* AppDelegate.swift in Sources */,
 				F04907C41EF90949001852D0 /* InventoryItem.swift in Sources */,
 				84B9E4B31EE7FC880070BB7D /* HistoryViewController.swift in Sources */,
