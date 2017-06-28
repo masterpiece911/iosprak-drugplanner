@@ -44,7 +44,10 @@ class CreateInventoryItemTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         createDatePicker()
-
+        
+        amountUnitLabel.text = ""
+        doseUnitLabel.text = ""
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -144,6 +147,10 @@ class CreateInventoryItemTableViewController: UITableViewController {
         if let typePickerViewController = segue.source as? ChooseTypeTableViewController {
             if let selectedType = typePickerViewController.selectedType {
                 type = selectedType
+                let descriptions = getDrugTypeDescriptions(for: DrugType(rawValue: type)!)
+                amountUnitLabel.text = descriptions["amountUnit"]!
+                doseUnitLabel.text = descriptions["doseUnit"]!
+                
             }
         }
     }
