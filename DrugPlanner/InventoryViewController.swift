@@ -75,8 +75,6 @@ class InventoryViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "inventoryCell", for: indexPath) as! InventoryTableViewCell
 
 //        let user = Auth.auth().addStateDidChangeListener{ (auth, user) in
-//        // Configure the cell...
-//        let index = indexPath.row
         
         let item = items[indexPath.row]
         
@@ -150,18 +148,21 @@ class InventoryViewController: UITableViewController {
         
         if let createInventoryController = segue.source as? CreateInventoryItemTableViewController {
             
+            let unformattedItem = createInventoryController.inventoryItem
+            
             let dateF = DateFormatter()
             dateF.dateStyle = .medium
             dateF.timeStyle = .none
-            let date = dateF.string(from: createInventoryController.expiryDate!)
+            let date = dateF.string(from: unformattedItem.InventoryItemExpiryDate)
             
             
-            let newItem = ["name": createInventoryController.nameField.text!,
-                           "amount": Int(createInventoryController.amountField.text!)!,
-                           "dose": Int(createInventoryController.doseField.text!)!,
-                           "notes": createInventoryController.noteField.text!,
+            
+            let newItem = ["name": unformattedItem.InventoryItemName,
+                           "amount": unformattedItem.InventoryItemAmount,
+                           "dose": unformattedItem.InventoryItemDose,
+                           "notes": unformattedItem.InventoryItemNotes,
                            "expiryDate": date,
-                           "type": createInventoryController.typeLabel.text!] as [String : Any]
+                           "type": unformattedItem.InventoryItemType.rawValue] as [String : Any]
             
             let usersRef = self.ref.child("Users").child((Auth.auth().currentUser?.uid)!).child("Inventory");
             
