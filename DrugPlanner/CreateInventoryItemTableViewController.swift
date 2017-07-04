@@ -134,7 +134,21 @@ class CreateInventoryItemTableViewController: UITableViewController {
         }
     }
     
-
+    // MARK: - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if(segue.identifier == "PickType") {
+            if let typePickerViewController = segue.destination as? ChooseTypeTableViewController {
+                typePickerViewController.selectedType = type
+            }
+        } else if (segue.identifier == "SaveInventoryItem") {
+            item = InventoryItem(name: nameField.text!, type: DrugType(rawValue: typeLabel.text!)!, amount: Int(amountField.text!)!, dose: Int(doseField.text!)!, expiryDate: expiryDate!, notes: noteField.text!)
+        }
+        
+    }
+    
     @IBAction func unwindWithSelectedType(segue : UIStoryboardSegue) {
         if let typePickerViewController = segue.source as? ChooseTypeTableViewController {
             if let selectedType = typePickerViewController.selectedType {
@@ -159,21 +173,6 @@ class CreateInventoryItemTableViewController: UITableViewController {
             incompleteInventoryItemController.addAction(okAction)
             
             present(incompleteInventoryItemController, animated: true, completion: nil)
-        }
-        
-    }
-    
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if(segue.identifier == "PickType") {
-            if let typePickerViewController = segue.destination as? ChooseTypeTableViewController {
-                typePickerViewController.selectedType = type
-            }
-        } else if (segue.identifier == "SaveInventoryItem") {
-            item = InventoryItem(name: nameField.text!, type: DrugType(rawValue: typeLabel.text!)!, amount: Int(amountField.text!)!, dose: Int(doseField.text!)!, expiryDate: expiryDate!, notes: noteField.text!)
         }
         
     }
@@ -205,7 +204,6 @@ class CreateInventoryItemTableViewController: UITableViewController {
         return entered
     }
 
-    
 }
 
 
