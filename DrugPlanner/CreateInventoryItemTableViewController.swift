@@ -80,48 +80,6 @@ class CreateInventoryItemTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
-        if(segue.identifier == "PickType") {
-            if let typePickerViewController = segue.destination as? ChooseTypeTableViewController {
-                typePickerViewController.selectedType = type
-            }
-        } else if (segue.identifier == "SaveInventoryItem") {
-            item = InventoryItem(name: nameField.text!, type: DrugType(rawValue: typeLabel.text!)!, amount: Int(amountField.text!)!, dose: Int(doseField.text!)!, expiryDate: expiryDate!, notes: noteField.text!)
-        }
-        
-    }
-    
-    func inventoryItemEntered() -> Bool {
-        
-        var entered = true
-        
-        if let text = nameField.text, !text.isEmpty{
-        } else {
-            entered = false
-        }
-        if let text = amountField.text, !text.isEmpty {
-        } else {
-            entered = false
-        }
-        if let text = doseField.text, !text.isEmpty {
-        } else {
-            entered = false
-        }
-        if let text = expiryDatePicker.text, !text.isEmpty {
-        } else {
-            entered = false
-        }
-        if type == "" {
-            entered = false
-        }
-        
-        return entered
-    }
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -204,6 +162,49 @@ class CreateInventoryItemTableViewController: UITableViewController {
         }
         
     }
+    
+    // MARK: - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if(segue.identifier == "PickType") {
+            if let typePickerViewController = segue.destination as? ChooseTypeTableViewController {
+                typePickerViewController.selectedType = type
+            }
+        } else if (segue.identifier == "SaveInventoryItem") {
+            item = InventoryItem(name: nameField.text!, type: DrugType(rawValue: typeLabel.text!)!, amount: Int(amountField.text!)!, dose: Int(doseField.text!)!, expiryDate: expiryDate!, notes: noteField.text!)
+        }
+        
+    }
+    
+    func inventoryItemEntered() -> Bool {
+        
+        var entered = true
+        
+        if let text = nameField.text, !text.isEmpty{
+        } else {
+            entered = false
+        }
+        if let text = amountField.text, !text.isEmpty {
+        } else {
+            entered = false
+        }
+        if let text = doseField.text, !text.isEmpty {
+        } else {
+            entered = false
+        }
+        if let text = expiryDatePicker.text, !text.isEmpty {
+        } else {
+            entered = false
+        }
+        if type == "" {
+            entered = false
+        }
+        
+        return entered
+    }
+
     
 }
 
