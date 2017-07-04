@@ -33,7 +33,7 @@ class CreateInventoryItemTableViewController: UITableViewController {
     
     var expiryDate : Date?
     
-   let datePicker = UIDatePicker()
+    let datePicker = UIDatePicker()
     var selDate: String?
     
     private var item : InventoryItem!
@@ -47,12 +47,26 @@ class CreateInventoryItemTableViewController: UITableViewController {
         }
     }
     
+    var dateF : DateFormatter = DateFormatter()
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        dateF = DateFormatter()
+        dateF.dateStyle = .medium
+        dateF.timeStyle = .none
+        
         createDatePicker()
         
         amountUnitLabel.text = ""
         doseUnitLabel.text = ""
+        
+        expiryDatePicker.addTarget(self, action: #selector(datePickerSelected), for: .editingDidBegin)
+        expiryDatePicker.addTarget(self, action: #selector(datePickerUnselected), for: .editingDidEnd)
+
+        
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -131,24 +145,33 @@ class CreateInventoryItemTableViewController: UITableViewController {
     func createDatePicker(){
         datePicker.datePickerMode = .date
         datePicker.minimumDate = Date(timeIntervalSinceNow: 24 * 60 * 60)
-        let toolBar = UIToolbar()
-        toolBar.sizeToFit()
-        let done = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed))
-        toolBar.setItems([done], animated: false)
-        expiryDatePicker.inputAccessoryView = toolBar
+        datePicker.addTarget(self, action: #selector(datePickerChanged), for: .valueChanged)
         expiryDatePicker.inputView = datePicker
-   
     }
     
-    
-    func donePressed(){
-        let dateF = DateFormatter()
-        dateF.dateStyle = .medium
-        dateF.timeStyle = .none
+    func datePickerChanged() {
         expiryDatePicker.text = dateF.string(from: datePicker.date)
-        expiryDate = datePicker.date
-        self.view.endEditing(true)
     }
+    
+    func datePickerSelected() {
+        if let dPtext = expiryDatePicker.text {
+            dateF.dateStyle = .medium
+            dateF.timeStyle = .none
+            
+            if let previousDate = dateF.date(from: dPtext) {
+                datePicker.setDate(previousDate, animated: false)
+            } else {
+                datePicker.setDate(datePicker.minimumDate!, animated: false)
+            }
+        }
+    }
+    
+    func datePickerUnselected() {
+        if expiryDatePicker.text != nil {
+           expiryDate = datePicker.date
+        }
+    }
+    
 
     @IBAction func unwindWithSelectedType(segue : UIStoryboardSegue) {
         if let typePickerViewController = segue.source as? ChooseTypeTableViewController {
