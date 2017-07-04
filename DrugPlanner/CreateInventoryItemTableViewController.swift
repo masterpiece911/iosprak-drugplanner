@@ -22,6 +22,12 @@ class CreateInventoryItemTableViewController: UITableViewController {
     var type:String = "" {
         didSet {
             typeLabel.text? = type
+            
+            let descriptions = getDrugTypeDescriptions(for: DrugType(rawValue: type)!)
+            
+            amountUnitLabel.text = descriptions["amountUnit"]
+            doseUnitLabel.text = descriptions["doseUnit"]
+            
         }
     }
     
