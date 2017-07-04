@@ -65,6 +65,7 @@ class CreateInventoryItemTableViewController: UITableViewController {
         
         expiryDatePicker.addTarget(self, action: #selector(datePickerSelected), for: .editingDidBegin)
         expiryDatePicker.addTarget(self, action: #selector(datePickerUnselected), for: .editingDidEnd)
+        
 
         
         
@@ -168,7 +169,7 @@ class CreateInventoryItemTableViewController: UITableViewController {
     }
     
     func datePickerUnselected() {
-        if expiryDatePicker.text != "" {
+        if expiryDatePicker.text != "" && expiryDate != nil {
            expiryDate = datePicker.date
         } else {
            expiryDate = nil
