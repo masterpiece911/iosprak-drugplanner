@@ -151,6 +151,7 @@ class CreateInventoryItemTableViewController: UITableViewController {
     
     func datePickerChanged() {
         expiryDatePicker.text = dateF.string(from: datePicker.date)
+        expiryDate = datePicker.date
     }
     
     func datePickerSelected() {
@@ -167,8 +168,10 @@ class CreateInventoryItemTableViewController: UITableViewController {
     }
     
     func datePickerUnselected() {
-        if expiryDatePicker.text != nil {
+        if expiryDatePicker.text != "" {
            expiryDate = datePicker.date
+        } else {
+           expiryDate = nil
         }
     }
     
