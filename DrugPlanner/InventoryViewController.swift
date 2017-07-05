@@ -12,7 +12,6 @@ import Firebase
 class InventoryViewController: UITableViewController {
     
     var items = [InventoryItem]()
-//    var items : [InventoryItem] = getInventoryItems()
     var ref : DatabaseReference!
     let delegate = UIApplication.shared.delegate as! AppDelegate
     var userID : String!
@@ -163,9 +162,15 @@ class InventoryViewController: UITableViewController {
 
         if(segue.identifier == "InventoryDetail") {
             
-            if let destination = segue.destination as? InventoryDetailTableViewController,
-                    let itemIndex = tableView.indexPathForSelectedRow?.row {
-                destination.item = items[itemIndex]
+            if let cell = sender as? UITableViewCell {
+                let indexPath = tableView.indexPath(for: cell)
+                if let index = indexPath?.row {
+                    
+                    let selectedItem = items[index]
+                    if let destination = segue.destination as? InventoryDetailTableViewController {
+                        destination.item = selectedItem
+                    }
+                }
             }
             
         }
@@ -194,7 +199,7 @@ class InventoryViewController: UITableViewController {
                            "dose": unformattedItem.InventoryItemDose,
                            "notes": unformattedItem.InventoryItemNotes,
                            "expiryDate": date,
-                           "type": unformattedItem.InventoryItemType.rawValue] as [NSObject : Any]
+                           "type": unformattedItem.InventoryItemType.rawValue] as [String : Any]
             
             let usersRef = self.ref.child("Users").child(userID).child("Inventory");
             
@@ -208,6 +213,10 @@ class InventoryViewController: UITableViewController {
     }
     
     @IBAction func editInventoryItem(segue:UIStoryboardSegue) {
+        
+    }
+    
+    @IBAction func deleteInventoryItem(segue:UIStoryboardSegue) {
         
     }
     

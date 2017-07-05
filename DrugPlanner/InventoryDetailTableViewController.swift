@@ -18,19 +18,24 @@ class InventoryDetailTableViewController: UITableViewController {
     @IBOutlet weak var expiryDatePicker: UITextField!
     @IBOutlet weak var notesField: UITextField!
     
-    var item : InventoryItem = InventoryItem()
+    let datePicker = UIDatePicker()
+    
+    var expiryDate : Date?
+    
+    var item : InventoryItem!
+    
+    let dateF : DateFormatter = DateFormatter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .none
+        dateF.dateStyle = .medium
+        dateF.timeStyle = .none
         
         nameField.text = item.InventoryItemName
         amountField.text = String(item.InventoryItemAmount)
         doseField.text = String(item.InventoryItemDose)
-        expiryDatePicker.text = formatter.string(from: item.InventoryItemExpiryDate)
+        expiryDatePicker.text = dateF.string(from: item.InventoryItemExpiryDate)
         notesField.text = item.InventoryItemNotes
         
         let descriptions = getDrugTypeDescriptions(for: item.InventoryItemType)
@@ -38,21 +43,60 @@ class InventoryDetailTableViewController: UITableViewController {
         amountLabel.text = descriptions["amountUnit"]!
         doseLabel.text = descriptions["doseUnit"]!
         
+        self.title = "Edit " + item.InventoryItemName
+        
+        createDatePicker()
+        
+        expiryDatePicker.addTarget(self, action: #selector(datePickerSelected), for: .editingDidBegin)
+        expiryDatePicker.addTarget(self, action: #selector(datePickerUnselected), for: .editingDidEnd)
+        expiryDatePicker.addTarget(self, action: #selector(datePickerChanged), for: .valueChanged)
+        
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    func createDatePicker() {
+        datePicker.datePickerMode = .date
+        datePicker.minimumDate = Date(timeIntervalSinceNow: 24 * 60 * 60)
+        expiryDatePicker.inputView = datePicker
     }
-    */
+    
+    func datePickerChanged() {
+        expiryDatePicker.text = dateF.string(from: datePicker.date)
+        expiryDate = datePicker.date
+    }
+    
+    func datePickerSelected() {
+        if let dPtext = expiryDatePicker.text {
+            
+            if let previousDate = dateF.date(from : dPtext) {
+                datePicker.setDate(previousDate, animated: false)
+            } else {
+                datePicker.setDate(datePicker.minimumDate!, animated: false)
+                expiryDatePicker.text = dateF.string(from: datePicker.date)
+            }
+        }
+    }
+    
+    func datePickerUnselected() {
+        if expiryDatePicker.text != "" && expiryDate != nil {
+            expiryDate = datePicker.date
+        } else {
+            expiryDate = nil
+        }
+    }
+
+    
+    
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+    }
 
 }
