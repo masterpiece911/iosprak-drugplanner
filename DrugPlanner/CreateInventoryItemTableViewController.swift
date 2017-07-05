@@ -65,6 +65,8 @@ class CreateInventoryItemTableViewController: UITableViewController {
         
         expiryDatePicker.addTarget(self, action: #selector(datePickerSelected), for: .editingDidBegin)
         expiryDatePicker.addTarget(self, action: #selector(datePickerUnselected), for: .editingDidEnd)
+        expiryDatePicker.addTarget(self, action: #selector(datePickerChanged), for: .valueChanged)
+
         
 
         
@@ -104,7 +106,6 @@ class CreateInventoryItemTableViewController: UITableViewController {
     func createDatePicker(){
         datePicker.datePickerMode = .date
         datePicker.minimumDate = Date(timeIntervalSinceNow: 24 * 60 * 60)
-        datePicker.addTarget(self, action: #selector(datePickerChanged), for: .valueChanged)
         expiryDatePicker.inputView = datePicker
     }
     
@@ -115,13 +116,12 @@ class CreateInventoryItemTableViewController: UITableViewController {
     
     func datePickerSelected() {
         if let dPtext = expiryDatePicker.text {
-            dateF.dateStyle = .medium
-            dateF.timeStyle = .none
             
             if let previousDate = dateF.date(from: dPtext) {
                 datePicker.setDate(previousDate, animated: false)
             } else {
                 datePicker.setDate(datePicker.minimumDate!, animated: false)
+                expiryDatePicker.text = dateF.string(from: datePicker.date)
             }
         }
     }
