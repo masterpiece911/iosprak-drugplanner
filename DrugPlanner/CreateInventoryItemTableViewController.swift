@@ -144,7 +144,7 @@ class CreateInventoryItemTableViewController: UITableViewController {
                 typePickerViewController.selectedType = type
             }
         } else if (segue.identifier == "SaveInventoryItem") {
-            item = InventoryItem(name: nameField.text!, type: DrugType(rawValue: typeLabel.text!)!, amount: Int(amountField.text!)!, dose: Int(doseField.text!)!, expiryDate: expiryDate!, notes: noteField.text!)
+            item = InventoryItem(key: "test", name: nameField.text!, type: DrugType(rawValue: typeLabel.text!)!, amount: Int(amountField.text!)!, dose: Int(doseField.text!)!, expiryDate: expiryDate!, notes: noteField.text!)
         }
         
     }

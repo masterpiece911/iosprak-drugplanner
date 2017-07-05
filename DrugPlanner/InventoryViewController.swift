@@ -11,15 +11,45 @@ import Firebase
 
 class InventoryViewController: UITableViewController {
     
-    var items : [InventoryItem] = getInventoryItems()
+    var items = [InventoryItem]()
+//    var items : [InventoryItem] = getInventoryItems()
     var ref : DatabaseReference!
     let delegate = UIApplication.shared.delegate as! AppDelegate
+    var userID : String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        userID = Auth.auth().currentUser?.uid
         
         ref = delegate.ref;
+        
+        ref.child("Users").child(userID!).child("Inventory").observe(DataEventType.value, with: { (snapshot) in
+            
+            let value = snapshot.value as? NSDictionary
+            var alreadyIn = false;
+            
+            for val in (value)! {
+                
+                var obj = val.value as! NSDictionary
+                var date = obj["expiryDate"] as? String
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateStyle = .medium
+                let dateFormatted = dateFormatter.date(from: date!)!
+                let item = InventoryItem(key: val.key as! String,name: (obj["name"] as? String)!, type: DrugType(rawValue: (obj["type"] as? String)!)!, amount: (obj["amount"] as? Int)!, dose: (obj["dose"] as? Int)!, expiryDate: dateFormatted, notes: (obj["notes"] as? String)!)
+                
+                for i in self.items{
+                    if(i.InventoryItemKey == item.InventoryItemKey){
+                        alreadyIn = true;
+                    }
+                }
+                
+                if(!alreadyIn){
+                    self.items.append(item);
+                }
+                self.tableView.reloadData()
+            }
+        })
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -64,6 +94,7 @@ class InventoryViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(items)
         // #warning Incomplete implementation, return the number of rows
         return items.count
     }
@@ -156,15 +187,16 @@ class InventoryViewController: UITableViewController {
             let date = dateF.string(from: unformattedItem.InventoryItemExpiryDate)
             
             
+            items.append(unformattedItem);
             
             let newItem = ["name": unformattedItem.InventoryItemName,
                            "amount": unformattedItem.InventoryItemAmount,
                            "dose": unformattedItem.InventoryItemDose,
                            "notes": unformattedItem.InventoryItemNotes,
                            "expiryDate": date,
-                           "type": unformattedItem.InventoryItemType.rawValue] as [String : Any]
+                           "type": unformattedItem.InventoryItemType.rawValue] as [NSObject : Any]
             
-            let usersRef = self.ref.child("Users").child((Auth.auth().currentUser?.uid)!).child("Inventory");
+            let usersRef = self.ref.child("Users").child(userID).child("Inventory");
             
             usersRef.childByAutoId().setValue(newItem)
         }
