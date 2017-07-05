@@ -13,6 +13,7 @@ class InventoryItem: NSObject, NSCoding {
     
     
     struct ItemKeys{
+        static let Key = "key";
         static let Name = "name";
         static let ItemType = "type";
         static let Amount = "amount";
@@ -21,7 +22,7 @@ class InventoryItem: NSObject, NSCoding {
         static let Notes = "notes";
     }
     
-    
+    private var key : String!
     private var name : String!
     private var type : DrugType!
     private var amount : Int!
@@ -31,7 +32,8 @@ class InventoryItem: NSObject, NSCoding {
     
     override init() {}
     
-    init(name: String, type: DrugType, amount: Int, dose: Int, expiryDate: Date, notes: String){
+    init(key: String, name: String, type: DrugType, amount: Int, dose: Int, expiryDate: Date, notes: String){
+        self.key = key;
         self.name = name;
         self.type = type;
         self.amount = amount;
@@ -41,6 +43,10 @@ class InventoryItem: NSObject, NSCoding {
     }
     
     required init?(coder decoder: NSCoder) {
+        if let keyObj = decoder.decodeObject(forKey: ItemKeys.Key)
+            as? String {
+            key = keyObj;
+        }
         if let nameObj = decoder.decodeObject(forKey: ItemKeys.Name)
             as? String {
             name = nameObj;
@@ -75,6 +81,15 @@ class InventoryItem: NSObject, NSCoding {
         coder.encode(expiryDate, forKey: ItemKeys.ExpiryDate);
         coder.encode(notes, forKey: ItemKeys.Notes);
 
+    }
+    
+    var InventoryItemKey: String {
+        get{
+            return key;
+        }
+        set{
+            key = newValue;
+        }
     }
     
     var InventoryItemName: String {
@@ -165,7 +180,7 @@ func getDrugTypeDescriptions(for drug : DrugType) -> [String:String] {
 func getInventoryItems() -> [InventoryItem] {
     
     var items : [InventoryItem] = []
-    items.append(InventoryItem(name: "Iboprofen", type: DrugType.pill, amount: 50, dose: 400, expiryDate: Date.init(timeIntervalSinceNow: 31557600), notes: "take with water"))
-    items.append(InventoryItem(name: "Aspirin", type: DrugType.pill, amount: 18, dose: 500, expiryDate: Date.init(timeIntervalSinceNow: 31557600), notes: "take with water"))
+    items.append(InventoryItem(key: "test1", name: "Iboprofen", type: DrugType.pill, amount: 50, dose: 400, expiryDate: Date.init(timeIntervalSinceNow: 31557600), notes: "take with water"))
+    items.append(InventoryItem(key: "test2", name: "Aspirin", type: DrugType.pill, amount: 18, dose: 500, expiryDate: Date.init(timeIntervalSinceNow: 31557600), notes: "take with water"))
     return items
 }
