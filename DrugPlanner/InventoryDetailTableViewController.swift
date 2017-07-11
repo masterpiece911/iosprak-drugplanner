@@ -20,9 +20,9 @@ class InventoryDetailTableViewController: UITableViewController {
     
     let datePicker = UIDatePicker()
 
-    let cancelAlert = UIAlertController(title: "Confirm Cancel?", message: "You have unsaved changes.", preferredStyle: .actionSheet)
-    let deleteAlert = UIAlertController(title: "Confirm Delete?", message: "This action can not be undone.", preferredStyle: .actionSheet)
-    let editAlert   = UIAlertController(title: "Incomplete Information", message: "Please fill out all fields before proceeding.", preferredStyle: .actionSheet)
+    let cancelAlert = UIAlertController(title: "Confirm Cancel?", message: "You have unsaved changes.", preferredStyle: .alert)
+    let deleteAlert = UIAlertController(title: "Confirm Delete?", message: "This action can not be undone.", preferredStyle: .alert)
+    let editAlert   = UIAlertController(title: "Incomplete Information", message: "Please fill out all fields before proceeding.", preferredStyle: .alert)
     
     var expiryDate : Date?
     
@@ -69,6 +69,23 @@ class InventoryDetailTableViewController: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.section {
+        case 0:
+            nameField.becomeFirstResponder()
+        case 1:
+            amountField.becomeFirstResponder()
+        case 2:
+            doseField.becomeFirstResponder()
+        case 3:
+            expiryDatePicker.becomeFirstResponder()
+        case 4:
+            notesField.becomeFirstResponder()
+        default:
+            break
+        }
     }
     
     // SETUP FUNCTIONS FOR DATE PICKER

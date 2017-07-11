@@ -378,7 +378,7 @@
                         <sections>
                             <tableViewSection headerTitle="Name" id="bgh-8s-SC6">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="baR-jV-p6Z">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="baR-jV-p6Z">
                                         <rect key="frame" x="0.0" y="56" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="baR-jV-p6Z" id="SyP-A6-YFA">
@@ -404,7 +404,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Amount" id="iXS-Br-IUA">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="xCz-Pr-OGi">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="xCz-Pr-OGi">
                                         <rect key="frame" x="0.0" y="156" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xCz-Pr-OGi" id="F7V-Re-Xnc">
@@ -441,7 +441,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Dose" id="VrC-rX-TTB">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="3Go-M3-dmD">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="3Go-M3-dmD">
                                         <rect key="frame" x="0.0" y="256" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3Go-M3-dmD" id="frK-5E-Cza">
@@ -478,7 +478,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Date of Expiry" id="BxT-kZ-5zp">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="4aw-jh-aVo">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="4aw-jh-aVo">
                                         <rect key="frame" x="0.0" y="356" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4aw-jh-aVo" id="E91-Rw-oKA">
@@ -504,7 +504,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Notes" id="vLc-Kp-Qny">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="bc0-Sf-Wu9">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="bc0-Sf-Wu9">
                                         <rect key="frame" x="0.0" y="456" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bc0-Sf-Wu9" id="l2B-lc-5AU">
@@ -525,7 +525,7 @@
                             </tableViewSection>
                             <tableViewSection id="Gls-Cv-mtn">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="izz-tY-tkP">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="izz-tY-tkP">
                                         <rect key="frame" x="0.0" y="536" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="izz-tY-tkP" id="sc3-ZC-JVe">
