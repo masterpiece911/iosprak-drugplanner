@@ -19,6 +19,10 @@ class InventoryDetailTableViewController: UITableViewController {
     @IBOutlet weak var notesField: UITextField!
     
     let datePicker = UIDatePicker()
+
+    let cancelAlert = UIAlertController(title: "Confirm Cancel?", message: "You have unsaved changes.", preferredStyle: .actionSheet)
+    let deleteAlert = UIAlertController(title: "Confirm Delete?", message: "This action can not be undone.", preferredStyle: .actionSheet)
+    let editAlert   = UIAlertController(title: "Incomplete Information", message: "Please fill out all fields before proceeding.", preferredStyle: .actionSheet)
     
     var expiryDate : Date?
     
@@ -29,23 +33,30 @@ class InventoryDetailTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // CONFIGURE DATE FORMATTER
         dateF.dateStyle = .medium
         dateF.timeStyle = .none
         
+        // SET FIELDS TO INVENTORY ITEM VALUES
         nameField.text = item.InventoryItemName
         amountField.text = String(item.InventoryItemAmount)
         doseField.text = String(item.InventoryItemDose)
         expiryDatePicker.text = dateF.string(from: item.InventoryItemExpiryDate)
         notesField.text = item.InventoryItemNotes
         
+        // GET DESCRIPTIONS FOR INVENTORY ITEM TYPE
         let descriptions = getDrugTypeDescriptions(for: item.InventoryItemType)
         
         amountLabel.text = descriptions["amountUnit"]!
         doseLabel.text = descriptions["doseUnit"]!
         
+        // SET TITLE
         self.title = "Edit " + item.InventoryItemName
         
+        // SETUP FOR UI ELEMENTS
         createDatePicker()
+        
+        setupAlerts()
         
         expiryDatePicker.addTarget(self, action: #selector(datePickerSelected), for: .editingDidBegin)
         expiryDatePicker.addTarget(self, action: #selector(datePickerUnselected), for: .editingDidEnd)
@@ -59,6 +70,8 @@ class InventoryDetailTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    // SETUP FUNCTIONS FOR DATE PICKER
     
     func createDatePicker() {
         datePicker.datePickerMode = .date
@@ -90,13 +103,153 @@ class InventoryDetailTableViewController: UITableViewController {
             expiryDate = nil
         }
     }
-
     
+    // SETUP FUNCTIONS FOR ALERTS
+    
+    func setupAlerts() {
+        
+        let returnToListAction = UIAlertAction(title: "Cancel without saving", style: .destructive, handler: self.cancelWithoutSaveConfirmed)
+        let cancelReturnAction = UIAlertAction(title: "Continue editing", style: .cancel, handler: nil)
+        
+        cancelAlert.addAction(returnToListAction)
+        cancelAlert.addAction(cancelReturnAction)
+        
+        let confirmDeleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: self.deleteConfirmed)
+        let cancelDeleteAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        deleteAlert.addAction(confirmDeleteAction)
+        deleteAlert.addAction(cancelDeleteAction)
+        
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        
+        editAlert.addAction(okAction)
+        
+    }
     
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let identifier = segue.identifier {
+            switch identifier {
+            case "CancelInventory" :
+                break;
+            case "DeleteInventory" :
+                break;
+            case "EditInventory" :
+                item.InventoryItemName       = nameField.text!
+                item.InventoryItemAmount     = Int(amountField.text!)!
+                item.InventoryItemDose       = Int(doseField.text!)!
+                item.InventoryItemExpiryDate = dateF.date(from: expiryDatePicker.text!)!
+                if let notes = notesField.text {
+                    item.InventoryItemNotes = notes
+                }
+            default:
+                break;
+            }
+        }
+    }
+    
+    // CANCEL ACTIONS
+    
+    @IBAction func cancelButtonPressed (_ sender : Any) {
+        if (isValidEntry()) {
+            
+            if (isEdited()) {
+                
+                present(cancelAlert, animated: true, completion: nil)
+                
+            } else {
+                performSegue(withIdentifier: "CancelInventory", sender: self)
+            }
+        } else {
+            performSegue(withIdentifier: "CancelInventory", sender: self)
+        }
+    }
+    
+    func cancelWithoutSaveConfirmed (action : UIAlertAction) {
+        performSegue(withIdentifier: "CancelInventory", sender: self)
+    }
+    
+    // DONE ACTIONS
+    
+    @IBAction func doneButtonPressed (_ sender : Any) {
+        if (isValidEntry()) {
+            
+            if (isEdited()) {
+                
+                performSegue(withIdentifier: "EditInventory", sender: self)
+                
+            } else {
+                performSegue(withIdentifier: "CancelInventory", sender: self)
+            }
+        } else {
+            present(editAlert, animated: true, completion: nil)
+        }
+    }
+    
+    // DELETE ACTIONS
+    
+    @IBAction func deleteButtonPressed (_ sender : Any) {
+        present(deleteAlert, animated: true, completion: nil)
+    }
+    
+    func deleteConfirmed (action : UIAlertAction) {
+        performSegue(withIdentifier: "DeleteInventory", sender: self)
+    }
+    
+    // HELPER FUNCTIONS FOR ACTIONS
+    
+    func isEdited() -> Bool {
+        var edited = false
         
+        let currentName       = nameField.text!
+        let currentAmount     = Int(amountField.text!)!
+        let currentDose       = Int(doseField.text!)!
+        let currentExpiryDate = dateF.date(from: expiryDatePicker.text!)!
+        
+        if (
+            currentName       != item.InventoryItemName   ||
+            currentAmount     != item.InventoryItemAmount ||
+            currentDose       != item.InventoryItemDose   ||
+            currentExpiryDate != item.InventoryItemExpiryDate
+            ) {
+                edited = true
+        }
+        
+        return edited
+        
+        
+    }
+    
+    func isValidEntry() -> Bool {
+    
+        var textFieldEmpty = true
+        var validEntry = false
+        
+        if  let name        = nameField.text,
+            let amount     = amountField.text,
+            let dose       = doseField.text,
+            let expiryDate = expiryDatePicker.text
+        {
+            
+            if (name != "" &&
+                amount != "" &&
+                dose != "" &&
+                expiryDate != "")
+            {
+                    textFieldEmpty = false
+            }
+            
+        }
+        
+        if (!textFieldEmpty) {
+            if  let _ = Int(amountField.text!),
+                let _ = Int(doseField.text!) {
+                validEntry = true
+            }
+        }
+        
+        return validEntry
     }
 
 }
