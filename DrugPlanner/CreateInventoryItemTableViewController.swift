@@ -65,7 +65,7 @@ class CreateInventoryItemTableViewController: UITableViewController {
         
         expiryDatePicker.addTarget(self, action: #selector(datePickerSelected), for: .editingDidBegin)
         expiryDatePicker.addTarget(self, action: #selector(datePickerUnselected), for: .editingDidEnd)
-        expiryDatePicker.addTarget(self, action: #selector(datePickerChanged), for: .valueChanged)
+        datePicker.addTarget(self, action: #selector(datePickerChanged), for: .valueChanged)
 
         
 
