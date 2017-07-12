@@ -278,7 +278,7 @@
         <scene sceneID="KoR-sx-RSy">
             <objects>
                 <navigationController id="5pw-C7-Nsh" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="C5u-O2-dgG">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="C5u-O2-dgG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -346,6 +346,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="drugImage" destination="49C-gM-PjT" id="7it-gT-mKJ"/>
                                     <outlet property="drugNameLabel" destination="3DH-pb-uLw" id="5WM-mL-9BK"/>
                                     <outlet property="expiryDateLabel" destination="hrf-MO-m9M" id="8vS-un-aru"/>
                                     <outlet property="numberLabel" destination="2eR-sU-4kd" id="9gk-q0-fSi"/>
@@ -913,7 +914,7 @@
             <objects>
                 <navigationController id="KIW-h3-qyz" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Settings" image="Settings" selectedImage="Settings-Filled" id="Wif-Gp-fhk"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="4OP-CQ-UcY">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4OP-CQ-UcY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -952,7 +953,7 @@
                 <navigationController title="Inventory" automaticallyAdjustsScrollViewInsets="NO" id="jps-65-Yyk" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Inventory" image="Inventory" selectedImage="Inventory-Filled" id="aDF-Ls-ivg"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="SbT-FG-Q8W">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="SbT-FG-Q8W">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -971,7 +972,7 @@
                 <navigationController title="Agenda" automaticallyAdjustsScrollViewInsets="NO" id="mcS-bC-fsA" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Agenda" image="Agenda" selectedImage="Agenda-Filled" id="acW-dT-cKf"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Gfd-xE-6MM">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gfd-xE-6MM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1071,7 +1072,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Xht-9M-PsC" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="T8N-uQ-eAC">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="T8N-uQ-eAC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
