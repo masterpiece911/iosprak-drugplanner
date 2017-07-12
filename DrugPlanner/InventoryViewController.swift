@@ -30,11 +30,22 @@ class InventoryViewController: UITableViewController {
             
             for val in (value)! {
                 
-                var obj = val.value as! NSDictionary
+                let obj = val.value as! NSDictionary
+                
+                /*
                 var date = obj["expiryDate"] as? String
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateStyle = .medium
                 let dateFormatted = dateFormatter.date(from: date!)!
+                */
+                
+                //INT TO DATE
+                let date = obj["expiryDate"] as? Int
+                // convert Int to Double
+                let timeInterval = Double(date!)
+                // create NSDate from Double (NSTimeInterval)
+                let dateFormatted = Date(timeIntervalSince1970: timeInterval)
+                
                 let item = InventoryItem(key: val.key as! String,name: (obj["name"] as? String)!, type: DrugType(rawValue: (obj["type"] as? String)!)!, amount: (obj["amount"] as? Int)!, dose: (obj["dose"] as? Int)!, expiryDate: dateFormatted, notes: (obj["notes"] as? String)!)
                 
                 for i in self.items{
@@ -189,8 +200,15 @@ class InventoryViewController: UITableViewController {
             let dateF = DateFormatter()
             dateF.dateStyle = .medium
             dateF.timeStyle = .none
-            let date = dateF.string(from: unformattedItem.InventoryItemExpiryDate)
             
+            // convert Date to TimeInterval
+           let timeInterval = unformattedItem.InventoryItemExpiryDate.timeIntervalSince1970
+            // convert to Integer
+            let dateInt = Int(timeInterval)
+            
+           
+            //let date = dateF.string(from: unformattedItem.InventoryItemExpiryDate)
+        
             
             items.append(unformattedItem);
             
@@ -198,7 +216,7 @@ class InventoryViewController: UITableViewController {
                            "amount": unformattedItem.InventoryItemAmount,
                            "dose": unformattedItem.InventoryItemDose,
                            "notes": unformattedItem.InventoryItemNotes,
-                           "expiryDate": date,
+                           "expiryDate": dateInt,
                            "type": unformattedItem.InventoryItemType.rawValue] as [String : Any]
             
             let usersRef = self.ref.child("Users").child(userID).child("Inventory");
