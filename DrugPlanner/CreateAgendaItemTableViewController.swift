@@ -11,14 +11,12 @@ import UIKit
 class CreateAgendaItemTableViewController: UITableViewController {
     
     @IBOutlet weak var timeTextField: UITextField!
-    
-    @IBOutlet weak var detailDrugLabel: UILabel!
-    @IBOutlet weak var drugNameLabel: UILabel!
-    @IBOutlet weak var doseSelectLabel: UIStackView!
-    @IBOutlet weak var dayDetailLabel: UILabel!
-    @IBOutlet weak var daysSelectLabel: UILabel!
-    @IBOutlet weak var doseLabel: UILabel!
     @IBOutlet weak var endDateTextField: UITextField!
+    
+    @IBOutlet weak var drugNameLabel : UILabel!
+    @IBOutlet weak var doseField : UITextField!
+    @IBOutlet weak var doseUnitLabel : UILabel!
+    @IBOutlet weak var daysLabel : UILabel!
     
     let timePicker = UIDatePicker()
     var timeDate : Date?
@@ -28,6 +26,16 @@ class CreateAgendaItemTableViewController: UITableViewController {
     var endDate : Date?
     let datePicker = UIDatePicker()
 
+    var drug : InventoryItem? {
+        didSet{
+            if let drugName = drug?.InventoryItemName,
+                let drugType = drug?.InventoryItemType {
+                drugNameLabel.text? = drugName
+                doseUnitLabel.text? = getDrugTypeDescriptions(for: drugType)["doseUnit"]!
+            }
+        }
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -104,8 +112,6 @@ class CreateAgendaItemTableViewController: UITableViewController {
         }
     }
     
-    
-    
     func createDatePicker(){
         datePicker.datePickerMode = .date
         datePicker.minimumDate = Date(timeIntervalSinceNow: 24 * 60 * 60)
@@ -135,6 +141,15 @@ class CreateAgendaItemTableViewController: UITableViewController {
         } else {
             endDate = nil
         }
+    }
+    
+    @IBAction func undwindWithSelectedDrug (segue: UIStoryboardSegue) {
+        if let drugPickerController = segue.source as? ChooseDrugTableViewController {
+            if let selectedDrug = drugPickerController.selectedDrug {
+                drug = selectedDrug
+            }
+        }
+        
     }
 
 }
