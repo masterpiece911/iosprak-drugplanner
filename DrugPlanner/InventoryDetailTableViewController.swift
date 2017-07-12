@@ -42,6 +42,11 @@ class InventoryDetailTableViewController: UITableViewController {
         amountField.text = String(item.InventoryItemAmount)
         doseField.text = String(item.InventoryItemDose)
         expiryDatePicker.text = dateF.string(from: item.InventoryItemExpiryDate)
+        
+        if (item.InventoryItemExpiryDate < Date(timeIntervalSinceNow: 0)) {
+            expiryDatePicker.isEnabled = false
+        }
+        
         notesField.text = item.InventoryItemNotes
         
         // GET DESCRIPTIONS FOR INVENTORY ITEM TYPE
@@ -58,9 +63,11 @@ class InventoryDetailTableViewController: UITableViewController {
         
         setupAlerts()
         
-        expiryDatePicker.addTarget(self, action: #selector(datePickerSelected), for: .editingDidBegin)
-        expiryDatePicker.addTarget(self, action: #selector(datePickerUnselected), for: .editingDidEnd)
-        expiryDatePicker.addTarget(self, action: #selector(datePickerChanged), for: .valueChanged)
+        expiryDatePicker.addTarget(self, action: #selector(detailDatePickerSelected), for: .editingDidBegin)
+        expiryDatePicker.addTarget(self, action: #selector(detailDatePickerUnselected), for: .editingDidEnd)
+        datePicker.addTarget(self, action: #selector(detailDatePickerChanged), for: .valueChanged)
+
+ 
         
         
         
@@ -96,12 +103,12 @@ class InventoryDetailTableViewController: UITableViewController {
         expiryDatePicker.inputView = datePicker
     }
     
-    func datePickerChanged() {
+    func detailDatePickerChanged() {
         expiryDatePicker.text = dateF.string(from: datePicker.date)
         expiryDate = datePicker.date
     }
     
-    func datePickerSelected() {
+    func detailDatePickerSelected() {
         if let dPtext = expiryDatePicker.text {
             
             if let previousDate = dateF.date(from : dPtext) {
@@ -113,7 +120,7 @@ class InventoryDetailTableViewController: UITableViewController {
         }
     }
     
-    func datePickerUnselected() {
+    func detailDatePickerUnselected() {
         if expiryDatePicker.text != "" && expiryDate != nil {
             expiryDate = datePicker.date
         } else {
@@ -125,8 +132,8 @@ class InventoryDetailTableViewController: UITableViewController {
     
     func setupAlerts() {
         
-        let returnToListAction = UIAlertAction(title: "Cancel without saving", style: .destructive, handler: self.cancelWithoutSaveConfirmed)
-        let cancelReturnAction = UIAlertAction(title: "Continue editing", style: .cancel, handler: nil)
+        let returnToListAction = UIAlertAction(title: "Yes", style: .destructive, handler: self.cancelWithoutSaveConfirmed)
+        let cancelReturnAction = UIAlertAction(title: "No", style: .cancel, handler: nil)
         
         cancelAlert.addAction(returnToListAction)
         cancelAlert.addAction(cancelReturnAction)
@@ -243,7 +250,7 @@ class InventoryDetailTableViewController: UITableViewController {
         var textFieldEmpty = true
         var validEntry = false
         
-        if  let name        = nameField.text,
+        if  let name       = nameField.text,
             let amount     = amountField.text,
             let dose       = doseField.text,
             let expiryDate = expiryDatePicker.text
