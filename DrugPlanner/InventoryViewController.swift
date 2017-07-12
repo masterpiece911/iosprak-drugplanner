@@ -189,8 +189,15 @@ class InventoryViewController: UITableViewController {
             let dateF = DateFormatter()
             dateF.dateStyle = .medium
             dateF.timeStyle = .none
-            let date = dateF.string(from: unformattedItem.InventoryItemExpiryDate)
             
+            // convert Date to TimeInterval
+            let timeInterval = unformattedItem.InventoryItemExpiryDate.timeIntervalSince1970
+            // convert to Integer
+            let dateInt = Int(timeInterval)
+            
+           
+          /*  let date = dateF.string(from: unformattedItem.InventoryItemExpiryDate)
+            */
             
             items.append(unformattedItem);
             
@@ -198,7 +205,7 @@ class InventoryViewController: UITableViewController {
                            "amount": unformattedItem.InventoryItemAmount,
                            "dose": unformattedItem.InventoryItemDose,
                            "notes": unformattedItem.InventoryItemNotes,
-                           "expiryDate": date,
+                           "expiryDate": dateInt,
                            "type": unformattedItem.InventoryItemType.rawValue] as [String : Any]
             
             let usersRef = self.ref.child("Users").child(userID).child("Inventory");
