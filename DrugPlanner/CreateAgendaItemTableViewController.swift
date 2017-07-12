@@ -18,6 +18,10 @@ class CreateAgendaItemTableViewController: UITableViewController {
     @IBOutlet weak var doseUnitLabel : UILabel!
     @IBOutlet weak var daysLabel : UILabel!
     
+    let daysLabelPrefix = "Take on "
+    let daysLabelDefault = "Select days of the week"
+    let drugsLabelDefault = "Select a drug"
+    
     let timePicker = UIDatePicker()
     var timeDate : Date?
     var dateF : DateFormatter = DateFormatter()
@@ -36,13 +40,19 @@ class CreateAgendaItemTableViewController: UITableViewController {
         }
     }
     
+    var weekdays : [AgendaItem.Weekday : Bool]? {
+        didSet {
+            weekdaysSet()
+        }
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         dateF = DateFormatter()
         dateF.dateStyle = .none
-        dateF.timeStyle = .medium
+        dateF.timeStyle = .short
         dateE = DateFormatter()
         dateE.dateStyle = .medium
         dateE.timeStyle = .none
@@ -57,28 +67,31 @@ class CreateAgendaItemTableViewController: UITableViewController {
         endDateTextField.addTarget(self, action: #selector(datePickerUnselected), for: .editingDidEnd)
         datePicker.addTarget(self, action: #selector(datePickerChanged), for: .valueChanged)
 
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        weekdays = AgendaItem.generateWeekdayDictionary()
+        daysLabel.text = daysLabelDefault
+        drugNameLabel.text = drugsLabelDefault
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        switch indexPath.row {
+        case 1:
+            doseField.becomeFirstResponder()
+        case 2:
+            timeTextField.becomeFirstResponder()
+        case 4:
+            endDateTextField.becomeFirstResponder()
+        default:
+            break;
+        }
+        
     }
-    */
     
     func createTimePicker(){
         timePicker.datePickerMode = .time
@@ -143,6 +156,47 @@ class CreateAgendaItemTableViewController: UITableViewController {
         }
     }
     
+    func weekdaysSet() {
+        
+        var dayString = daysLabelPrefix
+        
+        for weekdayIndex in 0...6 {
+            
+            let weekday = AgendaItem.getWeekday(for: weekdayIndex)
+            
+            if let boolean = (weekdays?[weekday]) {
+                if(boolean){
+                    if(dayString == daysLabelPrefix) {
+                        dayString += weekday.rawValue
+                    } else {
+                        dayString += ", " + weekday.rawValue
+                    }
+                    
+                }
+            }
+            
+        }
+        
+        if (dayString != daysLabelPrefix) {
+            daysLabel.text = dayString
+        } else {
+            daysLabel.text = daysLabelDefault
+        }
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if (segue.identifier == "ChooseWeekdays" ) {
+            
+            if let weekdayChooserController = segue.destination as? ChooseDays {
+                weekdayChooserController.weekdays = weekdays
+            }
+            
+        }
+        
+    }
+    
     @IBAction func undwindWithSelectedDrug (segue: UIStoryboardSegue) {
         if let drugPickerController = segue.source as? ChooseDrugTableViewController {
             if let selectedDrug = drugPickerController.selectedDrug {
@@ -151,5 +205,13 @@ class CreateAgendaItemTableViewController: UITableViewController {
         }
         
     }
+    
+    @IBAction func unwindWithSelectedWeekdays (segue : UIStoryboardSegue) {
+        if let weekdayPickerController = segue.source as? ChooseDays {
+            self.weekdays = weekdayPickerController.weekdays
+        }
+    }
+    
+
 
 }

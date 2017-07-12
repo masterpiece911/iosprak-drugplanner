@@ -10,12 +10,14 @@ import UIKit
 
 class ChooseDays: UITableViewController {
 
-    var weekdays : [AgendaItem.Weekday : Bool] = AgendaItem.generateWeekdayDictionary()
+    var weekdays : [AgendaItem.Weekday : Bool]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-            }
+        
+        
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -56,24 +58,30 @@ class ChooseDays: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "WeekdayCell")!
-        
-        let weekday = AgendaItem.getWeekday(for: indexPath.row)
-        
-        weekdays[weekday]! = !weekdays[weekday]!
-        
-        if(weekdays[weekday]!) {
-            cell.accessoryType = .checkmark
-        } else {
-            cell.accessoryType = .none
+        tableView.deselectRow(at: indexPath, animated: true)
+        if let cell = tableView.cellForRow(at: indexPath){
+            
+            let weekday = AgendaItem.getWeekday(for: indexPath.row)
+            
+            weekdays[weekday]! = !weekdays[weekday]!
+            
+            if(weekdays[weekday]!) {
+                cell.accessoryType = .checkmark
+            } else {
+                cell.accessoryType = .none
+            }
+            
         }
+        
+        
         
     }
 
+    /*
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-
+     */
 }
