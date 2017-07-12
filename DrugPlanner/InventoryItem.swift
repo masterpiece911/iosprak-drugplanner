@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class InventoryItem: NSObject, NSCoding {
     
@@ -20,6 +21,7 @@ class InventoryItem: NSObject, NSCoding {
         static let Dose = "dose";
         static let ExpiryDate = "expiryDate";
         static let Notes = "notes";
+        static let Photo = "photo";
     }
     
     private var key : String!
@@ -29,6 +31,7 @@ class InventoryItem: NSObject, NSCoding {
     private var dose : Int!
     private var expiryDate : Date!
     private var notes : String!
+    private var photo : UIImage?
     
     override init() {}
     
