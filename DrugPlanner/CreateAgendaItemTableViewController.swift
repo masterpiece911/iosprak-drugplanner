@@ -41,12 +41,12 @@ class CreateAgendaItemTableViewController: UITableViewController {
         createTimePicker()
         createDatePicker()
         
-        timePicker.addTarget(self, action: #selector(timePickerSelected), for: .editingDidBegin)
-        timePicker.addTarget(self, action: #selector(timePickerUnselected), for: .editingDidEnd)
+        timeTextField.addTarget(self, action: #selector(timePickerSelected), for: .editingDidBegin)
+        timeTextField.addTarget(self, action: #selector(timePickerUnselected), for: .editingDidEnd)
         timePicker.addTarget(self, action: #selector(timePickerChanged), for: .valueChanged)
         
-        datePicker.addTarget(self, action: #selector(datePickerSelected), for: .editingDidBegin)
-        datePicker.addTarget(self, action: #selector(datePickerUnselected), for: .editingDidEnd)
+        endDateTextField.addTarget(self, action: #selector(datePickerSelected), for: .editingDidBegin)
+        endDateTextField.addTarget(self, action: #selector(datePickerUnselected), for: .editingDidEnd)
         datePicker.addTarget(self, action: #selector(datePickerChanged), for: .valueChanged)
 
 
