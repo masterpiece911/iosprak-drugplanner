@@ -19,6 +19,9 @@ class CreateInventoryItemTableViewController: UITableViewController {
     @IBOutlet weak var expiryDatePicker: UITextField!
     @IBOutlet weak var noteField: UITextField!
     
+    @IBAction func addPictureButton(_ sender: UIButton) {
+    }
+    
     var type:String = "" {
         didSet {
             typeLabel.text? = type
@@ -49,7 +52,7 @@ class CreateInventoryItemTableViewController: UITableViewController {
     
     var dateF : DateFormatter = DateFormatter()
     
-    
+     var imagePicker: UIImagePickerController = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -203,6 +206,9 @@ class CreateInventoryItemTableViewController: UITableViewController {
         
         return entered
     }
+    
+    
+    
 
 }
 
