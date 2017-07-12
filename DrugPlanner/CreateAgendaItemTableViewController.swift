@@ -74,9 +74,11 @@ class CreateAgendaItemTableViewController: UITableViewController {
     
     func createTimePicker(){
         timePicker.datePickerMode = .time
-        timePicker.minimumDate = Date(timeIntervalSinceNow: 24 * 60 * 60)
+        timePicker.minimumDate = Date(timeIntervalSinceReferenceDate: 0)
+        timePicker.maximumDate = Date(timeIntervalSinceReferenceDate: 24 * 60 * 60)
         timeTextField.inputView = timePicker
     }
+    
     func timePickerChanged() {
         timeTextField.text = dateF.string(from: timePicker.date)
         timeDate = timePicker.date

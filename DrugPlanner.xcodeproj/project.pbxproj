@@ -10,6 +10,7 @@
 		6742310372BA213BDD780B2B /* Pods_DrugPlannerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B39F3B70FE7DDC2C0F299B1F /* Pods_DrugPlannerUITests.framework */; };
 		7F73776B4E178FA0C07D1C7D /* Pods_DrugPlanner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6239CF361B80DB6CA7CCE126 /* Pods_DrugPlanner.framework */; };
 		849D02721ED6430F0093CA15 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849D02711ED6430F0093CA15 /* Main.storyboard */; };
+		84A0D46E1F1640ED00572F43 /* AgendaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A0D46D1F1640ED00572F43 /* AgendaItem.swift */; };
 		84A3AE781F162E8C0098D918 /* ChooseDrugTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A3AE771F162E8C0098D918 /* ChooseDrugTableViewController.swift */; };
 		84B9E4A91EDED3940070BB7D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84B9E4A81EDED3940070BB7D /* GoogleService-Info.plist */; };
 		84B9E4AD1EE7FBC80070BB7D /* AgendaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B9E4AC1EE7FBC80070BB7D /* AgendaViewController.swift */; };
@@ -62,6 +63,7 @@
 		3C9A457204B3CD450D32B3B6 /* Pods-DrugPlanner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrugPlanner.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DrugPlanner/Pods-DrugPlanner.debug.xcconfig"; sourceTree = "<group>"; };
 		6239CF361B80DB6CA7CCE126 /* Pods_DrugPlanner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DrugPlanner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		849D02711ED6430F0093CA15 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		84A0D46D1F1640ED00572F43 /* AgendaItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgendaItem.swift; sourceTree = "<group>"; };
 		84A3AE771F162E8C0098D918 /* ChooseDrugTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseDrugTableViewController.swift; sourceTree = "<group>"; };
 		84B9E4A81EDED3940070BB7D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		84B9E4AC1EE7FBC80070BB7D /* AgendaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgendaViewController.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				84D60AFB1F0CE34200D9D3F1 /* CreateAgendaItemTableViewController.swift */,
 				84DE1F391F162B3E00948878 /* ChooseDays.swift */,
 				84A3AE771F162E8C0098D918 /* ChooseDrugTableViewController.swift */,
+				84A0D46D1F1640ED00572F43 /* AgendaItem.swift */,
 			);
 			name = "Agenda Views";
 			sourceTree = "<group>";
@@ -559,6 +562,7 @@
 				F04907C01EF8F6ED001852D0 /* HistoryContentTableViewCell.swift in Sources */,
 				84DE1F3A1F162B3E00948878 /* ChooseDays.swift in Sources */,
 				84B9E4B11EE7FC5D0070BB7D /* InventoryViewController.swift in Sources */,
+				84A0D46E1F1640ED00572F43 /* AgendaItem.swift in Sources */,
 				F001E44A1F03C980005DACF4 /* InventoryDetailTableViewController.swift in Sources */,
 				F340908E1ED5FB7D00548661 /* AppDelegate.swift in Sources */,
 				F04907C41EF90949001852D0 /* InventoryItem.swift in Sources */,
