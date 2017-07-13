@@ -46,6 +46,8 @@ class CreateAgendaItemTableViewController: UITableViewController {
         }
     }
     
+    var agendaItem : AgendaItem?
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -204,6 +206,12 @@ class CreateAgendaItemTableViewController: UITableViewController {
             }
         }
         
+    }
+    @IBAction func AgendaConfirm(_ sender: Any) {
+        
+        agendaItem = AgendaItem(for: (drug?.InventoryItemName)!, with: Int(doseField.text!)!, at: timeDate!, on: weekdays!, until: endDate!, using: "")
+        
+        performSegue(withIdentifier: "SaveAgendaItem", sender: self)
     }
     
     @IBAction func unwindWithSelectedWeekdays (segue : UIStoryboardSegue) {

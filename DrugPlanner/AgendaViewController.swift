@@ -14,6 +14,16 @@ class AgendaViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let dateFormatter2 = DateFormatter()
+        dateFormatter2.dateStyle = .short
+        dateFormatter2.timeStyle = .none
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .none
+        dateFormatter.timeStyle = .short
+        var time1 = dateFormatter.date(from: "11:45 PM")
+        var date1 = dateFormatter2.date(from: "11/5/2020")
+        
+        items = [AgendaItem(for: "Aspirin"  , with: 10, at: time1!, on: AgendaItem.generateWeekdayDictionary(), until: date1!, using: "wawwawaw")]
         
     }
 
@@ -36,11 +46,12 @@ class AgendaViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "AgendaCell", for: indexPath) as! AgendaTableViewCell
 
         let agendaItem = items[indexPath.row]
         
-        cell.textLabel?.text = agendaItem.agendaDrug.InventoryItemName
+        cell.nameLabel?.text = agendaItem.agendaDrug
+        cell.hintLabel?.text = agendaItem.agendaKey
 
         return cell
     }

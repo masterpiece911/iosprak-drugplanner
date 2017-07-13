@@ -17,13 +17,13 @@ class AgendaItem {
     }
     
     private var key : String!
-    private var drug : InventoryItem!
+    private var drug : String!
     private var dose : Int!
     private var endDate : Date!
     private var time : Date!
     private var weekdays : [Weekday : Bool]!
     
-    init(for drug : InventoryItem, with dose : Int, at time : Date, on weekdays : [Weekday : Bool], until endDate : Date, using key : String) {
+    init(for drug : String, with dose : Int, at time : Date, on weekdays : [Weekday : Bool], until endDate : Date, using key : String) {
         
         self.key = key
         self.drug = drug
@@ -43,7 +43,7 @@ class AgendaItem {
         }
     }
     
-    var agendaDrug : InventoryItem {
+    var agendaDrug : String {
         get {
             return self.drug
         }
