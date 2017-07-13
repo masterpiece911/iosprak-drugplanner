@@ -14,17 +14,17 @@ class AgendaViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let dateFormatter2 = DateFormatter()
+        /*let dateFormatter2 = DateFormatter()
         dateFormatter2.dateStyle = .short
         dateFormatter2.timeStyle = .none
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .none
         dateFormatter.timeStyle = .short
-        var time1 = dateFormatter.date(from: "11:45 PM")
-        var date1 = dateFormatter2.date(from: "11/5/2020")
+        let time1 = dateFormatter.date(from: "11:45 PM")
+        let date1 = dateFormatter2.date(from: "11/5/2020")
         
-        items = [AgendaItem(for: "Aspirin"  , with: 10, at: time1!, on: AgendaItem.generateWeekdayDictionary(), until: date1!, using: "wawwawaw")]
-        
+        items = [AgendaItem(for: "Aspirin"  , with: 10, at: time1!, on: AgendaItem.generateWeekdayDictionary(), until: date1!, using: "wawwawaw"),AgendaItem(for: "Ibu"  , with: 10, at: time1!, on: AgendaItem.generateWeekdayDictionary(), until: date1!, using: "wawwawaw")]*/
+     
     }
 
     override func didReceiveMemoryWarning() {
@@ -50,9 +50,9 @@ class AgendaViewController: UITableViewController {
 
         let agendaItem = items[indexPath.row]
         
-        cell.nameLabel?.text = agendaItem.agendaDrug
-        cell.hintLabel?.text = agendaItem.agendaKey
-
+        cell.nameLabel?.text = agendaItem.agendaDrug.InventoryItemName
+        cell.hintLabel?.text = agendaItem.agendaDrug.InventoryItemNotes
+        
         return cell
     }
     
@@ -105,7 +105,14 @@ class AgendaViewController: UITableViewController {
     
     @IBAction func saveNewAgendaItem (segue : UIStoryboardSegue) {
         
-    }
+        if let createAgendaController = segue.source as? CreateAgendaItemTableViewController {
+            
+            let item = createAgendaController.agendaItem
+            items.append(item!)
+            
+            self.tableView.reloadData()
+            
+        }   }
     
     @IBAction func cancelAgendaItem (segue : UIStoryboardSegue) {
         

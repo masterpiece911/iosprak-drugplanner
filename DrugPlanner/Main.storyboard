@@ -265,7 +265,6 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="7Qw-p8-Dz5">
                             <connections>
                                 <action selector="AgendaConfirm:" destination="5of-T5-lJZ" id="TBs-O1-TVo"/>
-                                <segue destination="SHi-zJ-KLC" kind="unwind" identifier="SaveAgendaItem" unwindAction="saveNewAgendaItemWithSegue:" id="Slv-Um-b17"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -277,6 +276,7 @@
                         <outlet property="drugNameLabel" destination="YS9-H9-spu" id="cVW-j9-hBE"/>
                         <outlet property="endDateTextField" destination="MHB-b0-Z4E" id="yKP-sT-Mfu"/>
                         <outlet property="timeTextField" destination="gKQ-Ck-ens" id="9IS-RK-NxR"/>
+                        <segue destination="SHi-zJ-KLC" kind="unwind" identifier="saveAgendaItem" unwindAction="saveNewAgendaItemWithSegue:" id="eLQ-un-ySL"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bfo-3G-ll5" userLabel="First Responder" sceneMemberID="firstResponder"/>

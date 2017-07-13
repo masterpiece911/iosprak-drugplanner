@@ -207,11 +207,12 @@ class CreateAgendaItemTableViewController: UITableViewController {
         }
         
     }
+    
     @IBAction func AgendaConfirm(_ sender: Any) {
         
-        agendaItem = AgendaItem(for: (drug?.InventoryItemName)!, with: Int(doseField.text!)!, at: timeDate!, on: weekdays!, until: endDate!, using: "")
+        agendaItem = AgendaItem(for: (drug)!, with: Int(doseField.text!)!, at: timeDate!, on: weekdays!, until: endDate!, using: "")
         
-        performSegue(withIdentifier: "SaveAgendaItem", sender: self)
+        performSegue(withIdentifier: "saveAgendaItem", sender: self)
     }
     
     @IBAction func unwindWithSelectedWeekdays (segue : UIStoryboardSegue) {
