@@ -14,11 +14,8 @@ class SettingsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        NotificationCenter.default.addObserver(forName: Notification.Name(LoginStrings.LOGOUT_FAILED), object: nil, queue: nil, using: logoutFailed)
+    
     }
     
     override func didReceiveMemoryWarning() {
@@ -26,8 +23,6 @@ class SettingsViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK: - Table view data source
-
     
     @IBAction func logout(_ sender: Any) {
         
@@ -46,6 +41,18 @@ class SettingsViewController: UITableViewController {
         }
     }
 
+    func logoutFailed(notification: Notification) {
+    
+        let errormessage = notification.object as! String
+        
+        let logoutAlert = UIAlertController(title: "Alert", message: errormessage, preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        
+        logoutAlert.addAction(okAction)
+        
+        present(logoutAlert, animated: true, completion: nil)
+    }
     
     /*
      // MARK: - Navigation
