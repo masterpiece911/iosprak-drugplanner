@@ -21,6 +21,8 @@ class User {
         
         if let userID = Auth.auth().currentUser?.uid {
             self.ID = userID
+        } else {
+            self.ID = nil
         }
         
     }
