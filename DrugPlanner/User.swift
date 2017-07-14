@@ -17,7 +17,7 @@ class User {
     
     let nc = NotificationCenter.default
     
-    init() {
+    private init() {
         
         if let userID = Auth.auth().currentUser?.uid {
             self.ID = userID
