@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CreateInventoryItemTableViewController: UITableViewController {
+class CreateInventoryItemTableViewController: UITableViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var typeLabel: UILabel!
@@ -20,9 +20,38 @@ class CreateInventoryItemTableViewController: UITableViewController {
     @IBOutlet weak var noteField: UITextField!
     // Fotos Section
     @IBAction func importImage(_ sender: Any) {
+        let image = UIImagePickerController()
+        image.delegate = self
+        
+        image.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        image.allowsEditing = false
+        self.present(image, animated: true)
+       
     }
     @IBOutlet var myImageView: UIImageView!
+    @IBAction func takeImage(_ sender: UIButton) {
+        let image = UIImagePickerController()
+        image.delegate = self
+        
+        image.sourceType = UIImagePickerControllerSourceType.camera
+        image.cameraCaptureMode = .photo
+        image.modalPresentationStyle = .fullScreen
+
+        image.allowsEditing = false
+        self.present(image, animated: true, completion: nil)
+    }
     
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            myImageView.image = image
+        }
+        else
+        {
+            // Display error
+        }
+        
+        self.dismiss(animated: true, completion: nil)
+    }
     var type:String = "" {
         didSet {
             typeLabel.text? = type
