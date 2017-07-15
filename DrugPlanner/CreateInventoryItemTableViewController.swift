@@ -18,9 +18,10 @@ class CreateInventoryItemTableViewController: UITableViewController {
     @IBOutlet weak var doseUnitLabel: UILabel!
     @IBOutlet weak var expiryDatePicker: UITextField!
     @IBOutlet weak var noteField: UITextField!
-    
-    @IBAction func addPictureButton(_ sender: UIButton) {
+    // Fotos Section
+    @IBAction func importImage(_ sender: Any) {
     }
+    @IBOutlet var myImageView: UIImageView!
     
     var type:String = "" {
         didSet {
