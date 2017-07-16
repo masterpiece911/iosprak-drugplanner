@@ -9,7 +9,12 @@
 /* Begin PBXBuildFile section */
 		6742310372BA213BDD780B2B /* Pods_DrugPlannerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B39F3B70FE7DDC2C0F299B1F /* Pods_DrugPlannerUITests.framework */; };
 		7F73776B4E178FA0C07D1C7D /* Pods_DrugPlanner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6239CF361B80DB6CA7CCE126 /* Pods_DrugPlanner.framework */; };
+		843023211F18057500BC9EED /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843023201F18057500BC9EED /* Inventory.swift */; };
+		844DAACE1F19616D008CC4EF /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844DAACD1F19616D008CC4EF /* DateExtension.swift */; };
 		849D02721ED6430F0093CA15 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849D02711ED6430F0093CA15 /* Main.storyboard */; };
+		849F65EA1F1AD3F0005E150D /* InventoryStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F65E91F1AD3F0005E150D /* InventoryStrings.swift */; };
+		849F65EC1F1B7C07005E150D /* Agenda.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F65EB1F1B7C07005E150D /* Agenda.swift */; };
+		849F65EE1F1B8627005E150D /* AgendaStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F65ED1F1B8627005E150D /* AgendaStrings.swift */; };
 		84A0D46E1F1640ED00572F43 /* AgendaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A0D46D1F1640ED00572F43 /* AgendaItem.swift */; };
 		84A3AE781F162E8C0098D918 /* ChooseDrugTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A3AE771F162E8C0098D918 /* ChooseDrugTableViewController.swift */; };
 		84B9E4A91EDED3940070BB7D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84B9E4A81EDED3940070BB7D /* GoogleService-Info.plist */; };
@@ -20,6 +25,9 @@
 		84B9E4B81EE7FFDA0070BB7D /* AgendaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B9E4B71EE7FFDA0070BB7D /* AgendaTableViewCell.swift */; };
 		84D60AFC1F0CE34200D9D3F1 /* CreateAgendaItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D60AFB1F0CE34200D9D3F1 /* CreateAgendaItemTableViewController.swift */; };
 		84DE1F3A1F162B3E00948878 /* ChooseDays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DE1F391F162B3E00948878 /* ChooseDays.swift */; };
+		84F63A6D1F1768CA004F4C09 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F63A6C1F1768CA004F4C09 /* Repository.swift */; };
+		84F63A701F17709B004F4C09 /* LoginStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F63A6F1F17709B004F4C09 /* LoginStrings.swift */; };
+		84F63A721F177BC2004F4C09 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F63A711F177BC2004F4C09 /* User.swift */; };
 		E7F5438527B59468692A44BD /* Pods_DrugPlannerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EBD4FD25B3CA40A5D1551B1 /* Pods_DrugPlannerTests.framework */; };
 		F001E44A1F03C980005DACF4 /* InventoryDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F001E4491F03C980005DACF4 /* InventoryDetailTableViewController.swift */; };
 		F04907BE1EF8F6D5001852D0 /* HistoryHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04907BD1EF8F6D5001852D0 /* HistoryHeaderTableViewCell.swift */; };
@@ -63,7 +71,12 @@
 		2A4DD3D20A90B65201C53441 /* Pods-DrugPlannerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrugPlannerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DrugPlannerUITests/Pods-DrugPlannerUITests.release.xcconfig"; sourceTree = "<group>"; };
 		3C9A457204B3CD450D32B3B6 /* Pods-DrugPlanner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrugPlanner.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DrugPlanner/Pods-DrugPlanner.debug.xcconfig"; sourceTree = "<group>"; };
 		6239CF361B80DB6CA7CCE126 /* Pods_DrugPlanner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DrugPlanner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		843023201F18057500BC9EED /* Inventory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Inventory.swift; sourceTree = "<group>"; };
+		844DAACD1F19616D008CC4EF /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		849D02711ED6430F0093CA15 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		849F65E91F1AD3F0005E150D /* InventoryStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryStrings.swift; sourceTree = "<group>"; };
+		849F65EB1F1B7C07005E150D /* Agenda.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Agenda.swift; sourceTree = "<group>"; };
+		849F65ED1F1B8627005E150D /* AgendaStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgendaStrings.swift; sourceTree = "<group>"; };
 		84A0D46D1F1640ED00572F43 /* AgendaItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgendaItem.swift; sourceTree = "<group>"; };
 		84A3AE771F162E8C0098D918 /* ChooseDrugTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseDrugTableViewController.swift; sourceTree = "<group>"; };
 		84B9E4A81EDED3940070BB7D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -74,6 +87,9 @@
 		84B9E4B71EE7FFDA0070BB7D /* AgendaTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgendaTableViewCell.swift; sourceTree = "<group>"; };
 		84D60AFB1F0CE34200D9D3F1 /* CreateAgendaItemTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAgendaItemTableViewController.swift; sourceTree = "<group>"; };
 		84DE1F391F162B3E00948878 /* ChooseDays.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseDays.swift; sourceTree = "<group>"; };
+		84F63A6C1F1768CA004F4C09 /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		84F63A6F1F17709B004F4C09 /* LoginStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginStrings.swift; sourceTree = "<group>"; };
+		84F63A711F177BC2004F4C09 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		9EBD4FD25B3CA40A5D1551B1 /* Pods_DrugPlannerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DrugPlannerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B39F3B70FE7DDC2C0F299B1F /* Pods_DrugPlannerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DrugPlannerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6DBAEFE5AAB9A0B959F4BFB /* Pods-DrugPlanner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrugPlanner.release.xcconfig"; path = "Pods/Target Support Files/Pods-DrugPlanner/Pods-DrugPlanner.release.xcconfig"; sourceTree = "<group>"; };
@@ -154,6 +170,20 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		849F65EF1F1B904E005E150D /* Database Functions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Database Functions";
+			sourceTree = "<group>";
+		};
+		849F65F01F1B90B1005E150D /* NotificationCenter Static Strings */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "NotificationCenter Static Strings";
+			sourceTree = "<group>";
+		};
 		84B9E4B41EE7FF340070BB7D /* Agenda Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,7 +192,6 @@
 				84D60AFB1F0CE34200D9D3F1 /* CreateAgendaItemTableViewController.swift */,
 				84DE1F391F162B3E00948878 /* ChooseDays.swift */,
 				84A3AE771F162E8C0098D918 /* ChooseDrugTableViewController.swift */,
-				84A0D46D1F1640ED00572F43 /* AgendaItem.swift */,
 			);
 			name = "Agenda Views";
 			sourceTree = "<group>";
@@ -173,7 +202,6 @@
 				84B9E4B01EE7FC5D0070BB7D /* InventoryViewController.swift */,
 				F332EF1F1EF16C360040714C /* InventoryTableViewCell.swift */,
 				F04907C11EF9084F001852D0 /* CreateInventoryItemTableViewController.swift */,
-				F04907C31EF90949001852D0 /* InventoryItem.swift */,
 				F04907C91EFA6F2F001852D0 /* ChooseTypeTableViewController.swift */,
 				F001E4491F03C980005DACF4 /* InventoryDetailTableViewController.swift */,
 				F321162B1F1B76D40052414A /* InventoryEditController.swift */,
@@ -189,6 +217,30 @@
 				F04907BF1EF8F6ED001852D0 /* HistoryContentTableViewCell.swift */,
 			);
 			name = "History Views";
+			sourceTree = "<group>";
+		};
+		84F63A6B1F176876004F4C09 /* Database Functions */ = {
+			isa = PBXGroup;
+			children = (
+				F04907C31EF90949001852D0 /* InventoryItem.swift */,
+				84A0D46D1F1640ED00572F43 /* AgendaItem.swift */,
+				84F63A6C1F1768CA004F4C09 /* Repository.swift */,
+				84F63A711F177BC2004F4C09 /* User.swift */,
+				843023201F18057500BC9EED /* Inventory.swift */,
+				844DAACD1F19616D008CC4EF /* DateExtension.swift */,
+				849F65EB1F1B7C07005E150D /* Agenda.swift */,
+			);
+			name = "Database Functions";
+			sourceTree = "<group>";
+		};
+		84F63A6E1F17706C004F4C09 /* NotificationCenter Static Strings */ = {
+			isa = PBXGroup;
+			children = (
+				84F63A6F1F17709B004F4C09 /* LoginStrings.swift */,
+				849F65E91F1AD3F0005E150D /* InventoryStrings.swift */,
+				849F65ED1F1B8627005E150D /* AgendaStrings.swift */,
+			);
+			name = "NotificationCenter Static Strings";
 			sourceTree = "<group>";
 		};
 		F31674A01EE98BFA00355FFD /* Login View */ = {
@@ -234,6 +286,8 @@
 		F340908C1ED5FB7D00548661 /* DrugPlanner */ = {
 			isa = PBXGroup;
 			children = (
+				84F63A6E1F17706C004F4C09 /* NotificationCenter Static Strings */,
+				84F63A6B1F176876004F4C09 /* Database Functions */,
 				F33E087D1EFA84E500CAF516 /* Settings View */,
 				F31674A01EE98BFA00355FFD /* Login View */,
 				84B9E4B61EE7FF6E0070BB7D /* History Views */,
@@ -552,6 +606,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				844DAACE1F19616D008CC4EF /* DateExtension.swift in Sources */,
+				849F65EC1F1B7C07005E150D /* Agenda.swift in Sources */,
+				843023211F18057500BC9EED /* Inventory.swift in Sources */,
 				F321162C1F1B76D40052414A /* InventoryEditController.swift in Sources */,
 				F04907CA1EFA6F2F001852D0 /* ChooseTypeTableViewController.swift in Sources */,
 				F31674A41EE98C4100355FFD /* LoginViewController.swift in Sources */,
@@ -562,12 +619,17 @@
 				84B9E4AF1EE7FC280070BB7D /* MainViewController.swift in Sources */,
 				84B9E4B81EE7FFDA0070BB7D /* AgendaTableViewCell.swift in Sources */,
 				F31674AA1EEBEA1E00355FFD /* RegisterViewController.swift in Sources */,
+				849F65EA1F1AD3F0005E150D /* InventoryStrings.swift in Sources */,
 				F33E087F1EFA851000CAF516 /* SettingsViewController.swift in Sources */,
 				84A3AE781F162E8C0098D918 /* ChooseDrugTableViewController.swift in Sources */,
 				F04907C01EF8F6ED001852D0 /* HistoryContentTableViewCell.swift in Sources */,
+				84F63A721F177BC2004F4C09 /* User.swift in Sources */,
 				84DE1F3A1F162B3E00948878 /* ChooseDays.swift in Sources */,
 				84B9E4B11EE7FC5D0070BB7D /* InventoryViewController.swift in Sources */,
+				84F63A6D1F1768CA004F4C09 /* Repository.swift in Sources */,
+				849F65EE1F1B8627005E150D /* AgendaStrings.swift in Sources */,
 				84A0D46E1F1640ED00572F43 /* AgendaItem.swift in Sources */,
+				84F63A701F17709B004F4C09 /* LoginStrings.swift in Sources */,
 				F001E44A1F03C980005DACF4 /* InventoryDetailTableViewController.swift in Sources */,
 				F340908E1ED5FB7D00548661 /* AppDelegate.swift in Sources */,
 				F04907C41EF90949001852D0 /* InventoryItem.swift in Sources */,

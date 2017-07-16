@@ -8,10 +8,11 @@
 
 import Foundation
 import UIKit
+import Firebase
 
 class InventoryItem: NSObject, NSCoding {
     
-    
+
     
     struct ItemKeys{
         static let Key = "key";
@@ -44,6 +45,31 @@ class InventoryItem: NSObject, NSCoding {
         self.expiryDate = expiryDate;
         self.notes = notes;
         self.photo = photo
+    }
+    
+    init(with key : String, with parameters : NSDictionary) {
+        
+        
+        self.key        = key
+        self.name       = parameters[ItemKeys.Name]! as! String
+        self.type       = DrugType(rawValue: parameters[ItemKeys.ItemType]! as! String)
+        self.amount     = parameters[ItemKeys.Amount] as! Int
+        self.dose       = parameters[ItemKeys.Dose] as! Int
+        self.expiryDate = Date(from: parameters[ItemKeys.ExpiryDate]! as! Int)
+        self.notes      = parameters[ItemKeys.Notes] as! String
+        
+    }
+    
+    func toDictionary() -> NSDictionary {
+        
+        return [
+            ItemKeys.Name       : self.name ,
+            ItemKeys.Amount     : self.amount ,
+            ItemKeys.Dose       : self.dose ,
+            ItemKeys.ExpiryDate : self.expiryDate.transformToInt() ,
+            ItemKeys.ItemType   : self.type.rawValue ,
+            ItemKeys.Notes      : self.notes
+        ]
     }
     
     required init?(coder decoder: NSCoder) {
@@ -165,6 +191,27 @@ class InventoryItem: NSObject, NSCoding {
     
 }    
 
+extension Array where Element : InventoryItem {
+    
+    func hasItem(with key : String) -> Bool {
+        for item in self {
+            if item.InventoryItemKey == key {
+                return true
+            }
+        }
+        return false
+    }
+    
+    func getItem(with key : String) -> InventoryItem? {
+        for item in self {
+            if item.InventoryItemKey == key {
+                return item
+            }
+        }
+        return nil
+    }
+        
+}
 
 
 enum DrugType : String{
@@ -193,13 +240,3 @@ func getDrugTypeDescriptions(for drug : DrugType) -> [String:String] {
     return descriptions
     
 }
-
-/*
-func getInventoryItems() -> [InventoryItem] {
-    
-    var items : [InventoryItem] = []
-    items.append(InventoryItem(key: "test1", name: "Iboprofen", type: DrugType.pill, amount: 50, dose: 400, expiryDate: Date.init(timeIntervalSinceNow: 31557600), notes: "take with water"))
-    items.append(InventoryItem(key: "test2", name: "Aspirin", type: DrugType.pill, amount: 18, dose: 500, expiryDate: Date.init(timeIntervalSinceNow: 31557600), notes: "take with water"))
-    return items
-}
-*/

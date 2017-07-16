@@ -17,7 +17,11 @@ class RegisterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        let nc = NotificationCenter.default
+        
+        nc.addObserver(forName: Notification.Name(rawValue: LoginStrings.REGISTER_SUCCESS), object: nil, queue: nil, using: registerUserSuccess)
+        nc.addObserver(forName: Notification.Name(rawValue: LoginStrings.REGISTER_FAILED), object: nil, queue: nil, using: registerUserFailed)
+    
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,49 +41,48 @@ class RegisterViewController: UIViewController {
             
             
             // Display alert message
-            displayMyAlertMessage(userMessage: "All fields are required");
-
+            displayMyAlert(title: "Alert", message: "All fields are required")
+            
             return
         }
         
         // Check if passwords match
         if(password != passwordRepeat){
             //Display alert message
-            displayMyAlertMessage(userMessage: "Passwords do not match");
-
+            displayMyAlert(title: "Alert", message: "Passwords don't match")
+            
             return
         }
         
         
-        // Store Data
-        
-            // [START create_user]
-            Auth.auth().createUser(withEmail: email!, password: password!) { (user, error) in
-                // [START_EXCLUDE]
-                    if let error = error {
-                        self.displayMyAlertMessage(userMessage: error.localizedDescription)
-                        return
-                    }
-                    print("\(user!.email!) created")
-                    self.displayMyAlertMessage(userMessage: "\(user!.email!) created")
-
-                
-                // [END_EXCLUDE]
-            }
-            // [END create_user]
-        
-        
-        // Alert Message Confirmation
-        
+        User.instance.register(with: email, with: password)
         
         
     }
     
+    func registerUserSuccess(notification: Notification) {
+        
+        let usermail = notification.object as! String
+        
+        displayMyAlert(title: "Success!", message: "\(usermail) created")
+        
+        performSegue(withIdentifier: "returnToLogin", sender: self)
+        
+    }
     
-    func displayMyAlertMessage(userMessage:String)
+    func registerUserFailed(notification: Notification) {
+        
+        let errormessage = notification.object as! String
+        
+        displayMyAlert(title: "Alert", message: errormessage)
+        
+    }
+    
+    
+    func displayMyAlert(title: String, message:String)
     {
         
-        let myAlert = UIAlertController(title:"Alert", message:userMessage, preferredStyle: UIAlertControllerStyle.alert);
+        let myAlert = UIAlertController(title:title, message: message, preferredStyle: UIAlertControllerStyle.alert);
         
         let okAction = UIAlertAction(title:"Ok", style:UIAlertActionStyle.default, handler:nil);
         

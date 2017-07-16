@@ -12,19 +12,36 @@ import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow?
     
     var ref : DatabaseReference!
+    
+    var mainRepository : Repository!
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
         
-//        window?.tintColor = UIColor.red
         FirebaseApp.configure()
         
         ref = Database.database().reference()
+        
+        NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: LoginStrings.USER_LOGGED_IN), object:nil, queue:nil) {
+            notification in
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let mainController = storyboard.instantiateViewController(withIdentifier: "Main") as UIViewController
+            self.window?.rootViewController = mainController
+        }
+        
+        NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: LoginStrings.LOGOUT_SUCCESS), object: nil, queue: nil) {
+            notification in
+            let storyboard = UIStoryboard(name: "Login", bundle: nil)
+            let loginController = storyboard.instantiateViewController(withIdentifier: "Login") as UIViewController
+            self.window?.rootViewController = loginController
+        }
+        
+        mainRepository = Repository(referencing: ref)
+        
         
         return true
     }
