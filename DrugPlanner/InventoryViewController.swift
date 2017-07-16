@@ -12,16 +12,16 @@ import Firebase
 class InventoryViewController: UITableViewController {
     
     var items = [InventoryItem]()
-    var ref : DatabaseReference!
-    let delegate = UIApplication.shared.delegate as! AppDelegate
-    var userID : String!
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        userID = Auth.auth().currentUser?.uid
+        NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: InventoryStrings.INVENTORY_UPDATE), object: nil, queue: nil, using: listDidUpdate)
         
-        ref = delegate.ref;
+        items = Inventory.instance.items!
+        
+        self.tableView.reloadData()
         
         ref.child("Users").child(userID!).child("Inventory").observe(DataEventType.value, with: { (snapshot) in
             
@@ -69,29 +69,6 @@ class InventoryViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    
-    var filePath: String {
-        let manager = FileManager.default;
-        let url = manager.urls(for: .documentDirectory, in: .userDomainMask).first; // URL Array mit Pfaden; empfohlen: erstes
-        return url!.appendingPathComponent("InventoryItems").path;
-    }
-    
-    private func loadData(){
-        if let myItems = NSKeyedUnarchiver.unarchiveObject(withFile: filePath) as? [InventoryItem]{
-            items = myItems;
-        }
-    }
-    
-    // Daten werden in das File gespeichert
-    private func saveData(inventoryItem: InventoryItem){
-        items.append(inventoryItem);
-        NSKeyedArchiver.archiveRootObject(items, toFile: filePath); // Speicherung vom Array ins File
-    }
-
-    
-    // TODO: Add new Med Action
-
-    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -104,9 +81,6 @@ class InventoryViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return items.count
     }
-    
-    
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "inventoryCell", for: indexPath) as! InventoryTableViewCell
@@ -164,6 +138,8 @@ class InventoryViewController: UITableViewController {
 
         
         if let createInventoryController = segue.source as? CreateInventoryItemTableViewController {
+
+            Inventory.instance.add(inventory: createInventoryController.inventoryItem)
             
             let unformattedItem = createInventoryController.inventoryItem
             
@@ -200,9 +176,18 @@ class InventoryViewController: UITableViewController {
     
     @IBAction func editInventoryItem(segue:UIStoryboardSegue) {
         
+        
+        
     }
     
     @IBAction func deleteInventoryItem(segue:UIStoryboardSegue) {
+        
+    }
+    
+    func listDidUpdate(notification: Notification) {
+        
+        self.items = Inventory.instance.items!
+        self.tableView.reloadData()
         
     }
     

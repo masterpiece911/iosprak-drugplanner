@@ -18,15 +18,13 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let nc = NotificationCenter.default
         
-        if Auth.auth().currentUser != nil {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let mainController = storyboard.instantiateViewController(withIdentifier: "Main") as UIViewController
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            appDelegate.window?.rootViewController = mainController
-        }
+        nc.addObserver(forName: Notification.Name(LoginStrings.LOGIN_SUCCESS), object: nil, queue: nil, using: userLoginSuccess)
+        nc.addObserver(forName: Notification.Name(LoginStrings.LOGIN_FAILED), object: nil, queue: nil, using: userLoginFailed)
         
-
+        nc.addObserver(forName: Notification.Name(LoginStrings.PASSWORD_RESET_SUCCESS), object: nil, queue: nil, using: passwordResetSuccess)
+        nc.addObserver(forName: Notification.Name(LoginStrings.PASSWORD_RESET_FAILED), object: nil, queue: nil, using: passwordResetFailed)
        
     }
     
@@ -44,24 +42,26 @@ class LoginViewController: UIViewController {
         
         if((email?.isEmpty)! || (password?.isEmpty)!){
             
-            
             // Display alert message
-            displayMyAlertMessage(userMessage: "Both fields are required");
-            
+            displayMyAlert(alertTitle: "Alert", message: "Both fields are required")
             return
         }
         
-        Auth.auth().signIn(withEmail: email!, password: password!) { (user, error) in
-                if let error = error {
-                    self.displayMyAlertMessage(userMessage: error.localizedDescription);
-                    return
-                }
-            
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let mainController = storyboard.instantiateViewController(withIdentifier: "Main") as UIViewController
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            appDelegate.window?.rootViewController = mainController
-        }
+        User.instance.login(with: email!, with: password!)
+        
+    }
+    
+    func userLoginSuccess(notification: Notification) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let mainController = storyboard.instantiateViewController(withIdentifier: "Main") as UIViewController
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.window?.rootViewController = mainController
+    }
+    
+    func userLoginFailed(notification: Notification) {
+        
+        let alertMessage = notification.object as! String
+        displayMyAlert(alertTitle: "Alert", message: alertMessage)
         
     }
 
@@ -76,35 +76,26 @@ class LoginViewController: UIViewController {
             present(alertController, animated: true, completion: nil)
             
         } else {
-            Auth.auth().sendPasswordReset(withEmail: self.emailTxtFld.text!, completion: { (error) in
-                
-                var title = ""
-                var message = ""
-                
-                if error != nil {
-                    title = "Error!"
-                    message = (error?.localizedDescription)!
-                } else {
-                    title = "Success!"
-                    message = "Password reset email sent."
-                    self.emailTxtFld.text = ""
-                }
-                
-                let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-                
-                let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                alertController.addAction(defaultAction)
-                
-                self.present(alertController, animated: true, completion: nil)
-            })
+            User.instance.resetPassword(of: emailTxtFld.text)
         }
         
     }
     
-    func displayMyAlertMessage(userMessage:String)
-    {
+    func passwordResetSuccess (notification : Notification) {
+        displayMyAlert(alertTitle: "Success!", message: "Password reset mail sent.")
+        self.emailTxtFld.text = ""
+    }
+    
+    func passwordResetFailed (notification : Notification) {
         
-        let myAlert = UIAlertController(title:"Alert", message:userMessage, preferredStyle: UIAlertControllerStyle.alert);
+        let errormessage = notification.object as! String
+        displayMyAlert(alertTitle: "Alert", message: errormessage)
+        self.emailTxtFld.text = ""
+    }
+    
+    func displayMyAlert(alertTitle: String, message:String) {
+        
+        let myAlert = UIAlertController(title:alertTitle, message:message, preferredStyle: UIAlertControllerStyle.alert);
         
         let okAction = UIAlertAction(title:"Ok", style:UIAlertActionStyle.default, handler:nil);
         
@@ -114,5 +105,8 @@ class LoginViewController: UIViewController {
         
     }
 
-
+    @IBAction func returnToLogin(segue: UIStoryboardSegue) {
+        
+    }
+    
 }
