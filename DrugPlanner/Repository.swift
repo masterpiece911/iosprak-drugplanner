@@ -27,6 +27,7 @@ class Repository {
         if (User.instance.ID != nil) {
             
             NotificationCenter.default.post(name: Notification.Name(rawValue: LoginStrings.USER_LOGGED_IN), object: nil)
+            inventory.populate(from: self.ref)
             
         }
         

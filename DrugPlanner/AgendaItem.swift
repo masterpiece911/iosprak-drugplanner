@@ -10,9 +10,14 @@ import Foundation
 
 class AgendaItem {
     
-    struct itemKeys {
+    struct ItemKeys {
         
-        
+        static let Key      = "key"
+        static let drug     = "drug"
+        static let dose     = "dose"
+        static let endDate  = "endDate"
+        static let time     = "time"
+        static let weekdays = "weekdays"
         
     }
     
@@ -32,6 +37,28 @@ class AgendaItem {
         self.weekdays = weekdays
         self.endDate = endDate
         
+    }
+    
+    init(with key : String, with parameters: NSDictionary) {
+        
+        self.key      = key
+        self.drug     = Inventory.instance.items?.getItem(with: parameters[ItemKeys.drug] as! String)
+        self.dose     = parameters[ItemKeys.dose] as! Int
+        self.time     = Date(from: parameters[ItemKeys.time] as! Int)
+        self.weekdays = AgendaItem.getWeekdayDictionary(from: parameters[ItemKeys.weekdays] as! NSDictionary)
+        self.endDate  = Date(from: parameters[ItemKeys.endDate] as! Int)
+        
+    }
+    
+    func toDictionary() -> NSDictionary {
+        
+        return [
+            ItemKeys.drug     : self.drug.InventoryItemKey ,
+            ItemKeys.dose     : self.dose ,
+            ItemKeys.endDate  : self.agendaEndDate.transformToInt() ,
+            ItemKeys.time     : self.agendaTime.transformToInt() ,
+            ItemKeys.weekdays : self.weekdays as NSDictionary
+        ]
     }
     
     var agendaKey : String {
@@ -98,6 +125,20 @@ class AgendaItem {
             .Saturday : false,
             .Sunday : false
         ]
+    }
+    
+    static func getWeekdayDictionary(from dict: NSDictionary) -> [Weekday : Bool] {
+       
+        var weekdayDictionary = [Weekday : Bool] ()
+        
+        for weekdayIndex in 0...6 {
+            
+            let weekday = AgendaItem.getWeekday(for: weekdayIndex)
+            weekdayDictionary[weekday] = dict[weekday.rawValue] as? Bool
+            
+        }
+        
+        return weekdayDictionary
     }
     
     static func getWeekday(for index : Int) -> Weekday {

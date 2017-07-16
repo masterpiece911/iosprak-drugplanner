@@ -13,6 +13,8 @@
 		844DAACE1F19616D008CC4EF /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844DAACD1F19616D008CC4EF /* DateExtension.swift */; };
 		849D02721ED6430F0093CA15 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849D02711ED6430F0093CA15 /* Main.storyboard */; };
 		849F65EA1F1AD3F0005E150D /* InventoryStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F65E91F1AD3F0005E150D /* InventoryStrings.swift */; };
+		849F65EC1F1B7C07005E150D /* Agenda.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F65EB1F1B7C07005E150D /* Agenda.swift */; };
+		849F65EE1F1B8627005E150D /* AgendaStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F65ED1F1B8627005E150D /* AgendaStrings.swift */; };
 		84A0D46E1F1640ED00572F43 /* AgendaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A0D46D1F1640ED00572F43 /* AgendaItem.swift */; };
 		84A3AE781F162E8C0098D918 /* ChooseDrugTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A3AE771F162E8C0098D918 /* ChooseDrugTableViewController.swift */; };
 		84B9E4A91EDED3940070BB7D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84B9E4A81EDED3940070BB7D /* GoogleService-Info.plist */; };
@@ -72,6 +74,8 @@
 		844DAACD1F19616D008CC4EF /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		849D02711ED6430F0093CA15 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		849F65E91F1AD3F0005E150D /* InventoryStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryStrings.swift; sourceTree = "<group>"; };
+		849F65EB1F1B7C07005E150D /* Agenda.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Agenda.swift; sourceTree = "<group>"; };
+		849F65ED1F1B8627005E150D /* AgendaStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgendaStrings.swift; sourceTree = "<group>"; };
 		84A0D46D1F1640ED00572F43 /* AgendaItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgendaItem.swift; sourceTree = "<group>"; };
 		84A3AE771F162E8C0098D918 /* ChooseDrugTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseDrugTableViewController.swift; sourceTree = "<group>"; };
 		84B9E4A81EDED3940070BB7D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -207,6 +211,7 @@
 				84F63A711F177BC2004F4C09 /* User.swift */,
 				843023201F18057500BC9EED /* Inventory.swift */,
 				844DAACD1F19616D008CC4EF /* DateExtension.swift */,
+				849F65EB1F1B7C07005E150D /* Agenda.swift */,
 			);
 			name = "Database Functions";
 			sourceTree = "<group>";
@@ -216,6 +221,7 @@
 			children = (
 				84F63A6F1F17709B004F4C09 /* LoginStrings.swift */,
 				849F65E91F1AD3F0005E150D /* InventoryStrings.swift */,
+				849F65ED1F1B8627005E150D /* AgendaStrings.swift */,
 			);
 			name = "NotificationCenter Static Strings";
 			sourceTree = "<group>";
@@ -583,6 +589,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				844DAACE1F19616D008CC4EF /* DateExtension.swift in Sources */,
+				849F65EC1F1B7C07005E150D /* Agenda.swift in Sources */,
 				843023211F18057500BC9EED /* Inventory.swift in Sources */,
 				F04907CA1EFA6F2F001852D0 /* ChooseTypeTableViewController.swift in Sources */,
 				F31674A41EE98C4100355FFD /* LoginViewController.swift in Sources */,
@@ -601,6 +608,7 @@
 				84DE1F3A1F162B3E00948878 /* ChooseDays.swift in Sources */,
 				84B9E4B11EE7FC5D0070BB7D /* InventoryViewController.swift in Sources */,
 				84F63A6D1F1768CA004F4C09 /* Repository.swift in Sources */,
+				849F65EE1F1B8627005E150D /* AgendaStrings.swift in Sources */,
 				84A0D46E1F1640ED00572F43 /* AgendaItem.swift in Sources */,
 				84F63A701F17709B004F4C09 /* LoginStrings.swift in Sources */,
 				F001E44A1F03C980005DACF4 /* InventoryDetailTableViewController.swift in Sources */,

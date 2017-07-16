@@ -17,12 +17,13 @@ class Inventory : RepositoryClass {
     
     var items : [InventoryItem]? {
         willSet{
+                    }
+        didSet{
             items?.sort(by: {
                 (lhs: InventoryItem, rhs: InventoryItem) in
                 return lhs.InventoryItemExpiryDate.transformToInt() < rhs.InventoryItemExpiryDate.transformToInt()
             })
-        }
-        didSet{
+
             NotificationCenter.default.post(name: Notification.Name(rawValue: InventoryStrings.INVENTORY_UPDATE), object: nil)
         }
     }
@@ -37,7 +38,7 @@ class Inventory : RepositoryClass {
     
     func populate(from ref : DatabaseReference) {
         
-        self.inventoryReference = ref.child(Inventory.inventoryKey)
+        self.inventoryReference = ref.child("Users").child(User.instance.ID!).child(Inventory.inventoryKey)
         
         items = [InventoryItem]()
         
@@ -47,34 +48,36 @@ class Inventory : RepositoryClass {
             
             if snapshot.value != nil {
                 
-                let inventoryDictionary = snapshot.value as! NSDictionary
-
-                for fItem in (inventoryDictionary) {
-                    
-                    let inventoryItem = InventoryItem(with: fItem as! (key: String, value: Any))
-                    
-                    if self.items!.hasItem(with: inventoryItem.InventoryItemKey) {
-                        
-                        self.items!.append(inventoryItem)
-                        
-                    }
-                    
-                }
-            }
+                var newItems = [InventoryItem]()
             
-        })
+                let inventoryDictionary = snapshot.value as? NSDictionary
+                
+                for fItem in (inventoryDictionary)! {
+                    
+                    let newItem = InventoryItem(with: fItem.key as! String, with: fItem.value as! NSDictionary)
+            
+                    newItems.append(newItem)
+            
+                }
+                
+                self.items = newItems
+            
+            }
         
+        })
+
     }
     
     func purge() {
-        
+    
         items = nil
+        inventoryReference?.removeAllObservers()
         inventoryReference = nil
-        
+    
     }
     
     func add(inventory item : InventoryItem) {
-        
+    
         inventoryReference?.childByAutoId().setValue(item.toDictionary())
         
     }

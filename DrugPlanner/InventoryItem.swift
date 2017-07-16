@@ -46,12 +46,10 @@ class InventoryItem: NSObject, NSCoding {
         self.notes = notes;
     }
     
-    init(with inventoryItem : Dictionary<String, Any>.Iterator.Element) {
-        
-        let parameters = inventoryItem.value as! NSDictionary
+    init(with key : String, with parameters : NSDictionary) {
         
         
-        self.key        = inventoryItem.key
+        self.key        = key
         self.name       = parameters[ItemKeys.Name]! as! String
         self.type       = DrugType(rawValue: parameters[ItemKeys.ItemType]! as! String)
         self.amount     = parameters[ItemKeys.Amount] as! Int
@@ -191,6 +189,15 @@ extension Array where Element : InventoryItem {
         return false
     }
     
+    func getItem(with key : String) -> InventoryItem? {
+        for item in self {
+            if item.InventoryItemKey == key {
+                return item
+            }
+        }
+        return nil
+    }
+        
 }
 
 enum DrugType : String{
