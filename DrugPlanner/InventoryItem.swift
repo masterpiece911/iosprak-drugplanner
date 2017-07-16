@@ -32,11 +32,11 @@ class InventoryItem: NSObject, NSCoding {
     private var dose : Int!
     private var expiryDate : Date!
     private var notes : String!
-    private var photo : UIImage?
+    private var photo : String?
     
     override init() {}
     
-    init(key: String, name: String, type: DrugType, amount: Int, dose: Int, expiryDate: Date, notes: String){
+    init(key: String, name: String, type: DrugType, amount: Int, dose: Int, expiryDate: Date, notes: String, photo:String){
         self.key = key;
         self.name = name;
         self.type = type;
@@ -44,6 +44,7 @@ class InventoryItem: NSObject, NSCoding {
         self.dose = dose;
         self.expiryDate = expiryDate;
         self.notes = notes;
+        self.photo = photo
     }
     
     init(with key : String, with parameters : NSDictionary) {
@@ -100,6 +101,10 @@ class InventoryItem: NSObject, NSCoding {
             as? String {
             notes = notesObj;
         }
+        if let photoObj = decoder.decodeObject(forKey: ItemKeys.Photo)
+            as? String {
+            photo = photoObj;
+        }
     }
     
     func encode(with coder: NSCoder) {
@@ -109,6 +114,7 @@ class InventoryItem: NSObject, NSCoding {
         coder.encode(dose, forKey: ItemKeys.Dose);
         coder.encode(expiryDate, forKey: ItemKeys.ExpiryDate);
         coder.encode(notes, forKey: ItemKeys.Notes);
+        coder.encode(photo, forKey: ItemKeys.Photo);
 
     }
     
@@ -174,9 +180,16 @@ class InventoryItem: NSObject, NSCoding {
         }
     }
     
+    var InventoryItemPhoto: String {
+        get{
+            return photo!;
+        }
+        set{
+            photo = newValue;
+        }
+    }
     
-    
-}
+}    
 
 extension Array where Element : InventoryItem {
     
@@ -199,6 +212,7 @@ extension Array where Element : InventoryItem {
     }
         
 }
+
 
 enum DrugType : String{
     

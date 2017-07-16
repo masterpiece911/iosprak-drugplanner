@@ -56,7 +56,7 @@ class ChooseDrugTableViewController: UITableViewController {
                 // create NSDate from Double (NSTimeInterval)
                 let dateFormatted = Date(timeIntervalSince1970: timeInterval)
                 
-                let item = InventoryItem(key: val.key as! String,name: (obj["name"] as? String)!, type: DrugType(rawValue: (obj["type"] as? String)!)!, amount: (obj["amount"] as? Int)!, dose: (obj["dose"] as? Int)!, expiryDate: dateFormatted, notes: (obj["notes"] as? String)!)
+                let item = InventoryItem(key: val.key as! String,name: (obj["name"] as? String)!, type: DrugType(rawValue: (obj["type"] as? String)!)!, amount: (obj["amount"] as? Int)!, dose: (obj["dose"] as? Int)!, expiryDate: dateFormatted, notes: (obj["notes"] as? String)!, photo: (obj["photo"] as? String)!)
                 
                 for i in self.drugs{
                     if(i.InventoryItemKey == item.InventoryItemKey){

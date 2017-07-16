@@ -57,6 +57,12 @@ class InventoryViewController: UITableViewController {
         
         cell.numberLabel.text = String(item.InventoryItemAmount)
         
+        let photoString = String(item.InventoryItemPhoto)
+        let dataDecoded : Data = Data(base64Encoded: photoString!, options: .ignoreUnknownCharacters)!
+        let decodedimage = UIImage(data: dataDecoded)
+        
+        cell.drugImage.image = decodedimage
+        
         return cell
     }
     
