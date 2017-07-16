@@ -30,6 +30,7 @@
 		F31674A41EE98C4100355FFD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31674A31EE98C4100355FFD /* LoginViewController.swift */; };
 		F31674A61EE98C9400355FFD /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F31674A51EE98C9400355FFD /* Login.storyboard */; };
 		F31674AA1EEBEA1E00355FFD /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31674A91EEBEA1E00355FFD /* RegisterViewController.swift */; };
+		F321162C1F1B76D40052414A /* InventoryEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F321162B1F1B76D40052414A /* InventoryEditController.swift */; };
 		F332EF201EF16C360040714C /* InventoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F332EF1F1EF16C360040714C /* InventoryTableViewCell.swift */; };
 		F33E087F1EFA851000CAF516 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33E087E1EFA851000CAF516 /* SettingsViewController.swift */; };
 		F340908E1ED5FB7D00548661 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F340908D1ED5FB7D00548661 /* AppDelegate.swift */; };
@@ -85,6 +86,7 @@
 		F31674A31EE98C4100355FFD /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F31674A51EE98C9400355FFD /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		F31674A91EEBEA1E00355FFD /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		F321162B1F1B76D40052414A /* InventoryEditController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryEditController.swift; sourceTree = "<group>"; };
 		F332EF1F1EF16C360040714C /* InventoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryTableViewCell.swift; sourceTree = "<group>"; };
 		F33E087E1EFA851000CAF516 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		F340908A1ED5FB7D00548661 /* DrugPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrugPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -171,6 +173,7 @@
 				F04907C31EF90949001852D0 /* InventoryItem.swift */,
 				F04907C91EFA6F2F001852D0 /* ChooseTypeTableViewController.swift */,
 				F001E4491F03C980005DACF4 /* InventoryDetailTableViewController.swift */,
+				F321162B1F1B76D40052414A /* InventoryEditController.swift */,
 			);
 			name = "Inventory Views";
 			sourceTree = "<group>";
@@ -545,6 +548,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F321162C1F1B76D40052414A /* InventoryEditController.swift in Sources */,
 				F04907CA1EFA6F2F001852D0 /* ChooseTypeTableViewController.swift in Sources */,
 				F31674A41EE98C4100355FFD /* LoginViewController.swift in Sources */,
 				F332EF201EF16C360040714C /* InventoryTableViewCell.swift in Sources */,

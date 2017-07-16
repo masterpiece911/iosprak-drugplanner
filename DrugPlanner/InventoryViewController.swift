@@ -61,11 +61,7 @@ class InventoryViewController: UITableViewController {
             }
         })
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
@@ -114,9 +110,6 @@ class InventoryViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "inventoryCell", for: indexPath) as! InventoryTableViewCell
-
-//        let user = Auth.auth().addStateDidChangeListener{ (auth, user) in
-        
         let item = items[indexPath.row]
         
         cell.drugNameLabel.text = item.InventoryItemName
@@ -132,40 +125,6 @@ class InventoryViewController: UITableViewController {
         return cell
     }
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 
     
     
@@ -173,13 +132,21 @@ class InventoryViewController: UITableViewController {
 
         if(segue.identifier == "InventoryDetail") {
             
+            print("destination")
+            print(segue.destination)
             if let cell = sender as? UITableViewCell {
+                print(cell)
                 let indexPath = tableView.indexPath(for: cell)
                 if let index = indexPath?.row {
                     
                     let selectedItem = items[index]
-                    if let destination = segue.destination as? InventoryDetailTableViewController {
-                        destination.item = selectedItem
+                    print("destination")
+                    print(selectedItem.InventoryItemName)
+                    print(segue.destination)
+                    if let destination = segue.destination as? UINavigationController {
+                        if let topDestination = destination.topViewController as? InventoryDetailTableViewController{
+                            topDestination.item = selectedItem
+                        }
                     }
                 }
             }
@@ -187,6 +154,8 @@ class InventoryViewController: UITableViewController {
         }
         
     }
+    
+
     
     
     
@@ -206,9 +175,6 @@ class InventoryViewController: UITableViewController {
             // convert to Integer
             let dateInt = Int(timeInterval)
             
-           
-            //let date = dateF.string(from: unformattedItem.InventoryItemExpiryDate)
-        
             
             items.append(unformattedItem);
             
@@ -226,8 +192,9 @@ class InventoryViewController: UITableViewController {
       
     }
   
-    @IBAction func cancelInventoryItem(segue:UIStoryboardSegue) {
-     
+
+    @IBAction func cancelInventoryItemDetail(segue:UIStoryboardSegue) {
+        
     }
     
     @IBAction func editInventoryItem(segue:UIStoryboardSegue) {
