@@ -46,7 +46,7 @@ class InventoryViewController: UITableViewController {
                 // create NSDate from Double (NSTimeInterval)
                 let dateFormatted = Date(timeIntervalSince1970: timeInterval)
                 
-                let item = InventoryItem(key: val.key as! String,name: (obj["name"] as? String)!, type: DrugType(rawValue: (obj["type"] as? String)!)!, amount: (obj["amount"] as? Int)!, dose: (obj["dose"] as? Int)!, expiryDate: dateFormatted, notes: (obj["notes"] as? String)!)
+                let item = InventoryItem(key: val.key as! String,name: (obj["name"] as? String)!, type: DrugType(rawValue: (obj["type"] as? String)!)!, amount: (obj["amount"] as? Int)!, dose: (obj["dose"] as? Int)!, expiryDate: dateFormatted, notes: (obj["notes"] as? String)!, photo: (obj["photo"] as? String)!)
                 
                 for i in self.items{
                     if(i.InventoryItemKey == item.InventoryItemKey){
@@ -58,6 +58,7 @@ class InventoryViewController: UITableViewController {
                     self.items.append(item);
                 }
                 self.tableView.reloadData()
+ 
             }
         })
 
@@ -110,8 +111,6 @@ class InventoryViewController: UITableViewController {
     }
     
     
-
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "inventoryCell", for: indexPath) as! InventoryTableViewCell
 
@@ -128,6 +127,12 @@ class InventoryViewController: UITableViewController {
         cell.expiryDateLabel.text = formatter.string(from: item.InventoryItemExpiryDate)
         
         cell.numberLabel.text = String(item.InventoryItemAmount)
+        
+        let photoString = String(item.InventoryItemPhoto)
+        let dataDecoded : Data = Data(base64Encoded: photoString!, options: .ignoreUnknownCharacters)!
+        let decodedimage = UIImage(data: dataDecoded)
+        
+        cell.drugImage.image = decodedimage
         
         return cell
     }
@@ -217,7 +222,8 @@ class InventoryViewController: UITableViewController {
                            "dose": unformattedItem.InventoryItemDose,
                            "notes": unformattedItem.InventoryItemNotes,
                            "expiryDate": dateInt,
-                           "type": unformattedItem.InventoryItemType.rawValue] as [String : Any]
+                           "type": unformattedItem.InventoryItemType.rawValue,
+                           "photo":unformattedItem.InventoryItemPhoto] as [String : Any]
             
             let usersRef = self.ref.child("Users").child(userID).child("Inventory");
             

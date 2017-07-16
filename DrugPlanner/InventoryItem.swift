@@ -31,11 +31,11 @@ class InventoryItem: NSObject, NSCoding {
     private var dose : Int!
     private var expiryDate : Date!
     private var notes : String!
-    private var photo : UIImage?
+    private var photo : String?
     
     override init() {}
     
-    init(key: String, name: String, type: DrugType, amount: Int, dose: Int, expiryDate: Date, notes: String){
+    init(key: String, name: String, type: DrugType, amount: Int, dose: Int, expiryDate: Date, notes: String, photo:String){
         self.key = key;
         self.name = name;
         self.type = type;
@@ -43,6 +43,7 @@ class InventoryItem: NSObject, NSCoding {
         self.dose = dose;
         self.expiryDate = expiryDate;
         self.notes = notes;
+        self.photo = photo
     }
     
     required init?(coder decoder: NSCoder) {
@@ -74,6 +75,10 @@ class InventoryItem: NSObject, NSCoding {
             as? String {
             notes = notesObj;
         }
+        if let photoObj = decoder.decodeObject(forKey: ItemKeys.Photo)
+            as? String {
+            photo = photoObj;
+        }
     }
     
     func encode(with coder: NSCoder) {
@@ -83,6 +88,7 @@ class InventoryItem: NSObject, NSCoding {
         coder.encode(dose, forKey: ItemKeys.Dose);
         coder.encode(expiryDate, forKey: ItemKeys.ExpiryDate);
         coder.encode(notes, forKey: ItemKeys.Notes);
+        coder.encode(photo, forKey: ItemKeys.Photo);
 
     }
     
@@ -148,9 +154,17 @@ class InventoryItem: NSObject, NSCoding {
         }
     }
     
+    var InventoryItemPhoto: String {
+        get{
+            return photo!;
+        }
+        set{
+            photo = newValue;
+        }
+    }
     
-    
-}
+}    
+
 
 
 enum DrugType : String{
@@ -180,6 +194,7 @@ func getDrugTypeDescriptions(for drug : DrugType) -> [String:String] {
     
 }
 
+/*
 func getInventoryItems() -> [InventoryItem] {
     
     var items : [InventoryItem] = []
@@ -187,3 +202,4 @@ func getInventoryItems() -> [InventoryItem] {
     items.append(InventoryItem(key: "test2", name: "Aspirin", type: DrugType.pill, amount: 18, dose: 500, expiryDate: Date.init(timeIntervalSinceNow: 31557600), notes: "take with water"))
     return items
 }
+*/

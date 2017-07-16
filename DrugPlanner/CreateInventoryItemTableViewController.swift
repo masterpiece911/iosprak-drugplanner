@@ -18,6 +18,9 @@ class CreateInventoryItemTableViewController: UITableViewController, UINavigatio
     @IBOutlet weak var doseUnitLabel: UILabel!
     @IBOutlet weak var expiryDatePicker: UITextField!
     @IBOutlet weak var noteField: UITextField!
+    
+    var photoString64: String?
+    
     // Fotos Section
     @IBAction func importImage(_ sender: Any) {
         let image = UIImagePickerController()
@@ -26,9 +29,10 @@ class CreateInventoryItemTableViewController: UITableViewController, UINavigatio
         image.sourceType = UIImagePickerControllerSourceType.photoLibrary
         image.allowsEditing = false
         self.present(image, animated: true)
-       
     }
+    
     @IBOutlet var myImageView: UIImageView!
+    
     @IBAction func takeImage(_ sender: UIButton) {
         let image = UIImagePickerController()
         image.delegate = self
@@ -44,11 +48,17 @@ class CreateInventoryItemTableViewController: UITableViewController, UINavigatio
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             myImageView.image = image
-        }
+        
+            let imageData:NSData = UIImagePNGRepresentation(image)! as NSData
+            let strBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
+            photoString64 = strBase64
+            }
+            
         else
         {
             // Display error
         }
+
         
         self.dismiss(animated: true, completion: nil)
     }
@@ -82,7 +92,6 @@ class CreateInventoryItemTableViewController: UITableViewController, UINavigatio
     
     var dateF : DateFormatter = DateFormatter()
     
-     var imagePicker: UIImagePickerController = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -177,7 +186,7 @@ class CreateInventoryItemTableViewController: UITableViewController, UINavigatio
                 typePickerViewController.selectedType = type
             }
         } else if (segue.identifier == "SaveInventoryItem") {
-            item = InventoryItem(key: "test", name: nameField.text!, type: DrugType(rawValue: typeLabel.text!)!, amount: Int(amountField.text!)!, dose: Int(doseField.text!)!, expiryDate: expiryDate!, notes: noteField.text!)
+            item = InventoryItem(key: "test", name: nameField.text!, type: DrugType(rawValue: typeLabel.text!)!, amount: Int(amountField.text!)!, dose: Int(doseField.text!)!, expiryDate: expiryDate!, notes: noteField.text!, photo: photoString64!)
         }
         
     }
