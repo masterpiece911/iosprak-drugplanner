@@ -145,6 +145,7 @@ class InventoryViewController: UITableViewController {
                     print(segue.destination)
                     if let destination = segue.destination as? UINavigationController {
                         if let topDestination = destination.topViewController as? InventoryDetailTableViewController{
+                            print(topDestination)
                             topDestination.item = selectedItem
                         }
                     }

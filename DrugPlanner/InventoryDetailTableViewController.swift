@@ -10,13 +10,7 @@ import UIKit
 
 class InventoryDetailTableViewController: UITableViewController {
 
-    @IBOutlet weak var nameField: UITextField!
-    @IBOutlet weak var amountField: UITextField!
-    @IBOutlet weak var amountLabel: UILabel!
-    @IBOutlet weak var doseField: UITextField!
-    @IBOutlet weak var doseLabel: UILabel!
-    @IBOutlet weak var expiryDatePicker: UITextField!
-    @IBOutlet weak var notesField: UITextField!
+
     
     @IBOutlet weak var nameDetail: UILabel!
     @IBOutlet weak var amountDetail: UILabel!
