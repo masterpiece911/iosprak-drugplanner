@@ -32,14 +32,14 @@ class InventoryViewController: UITableViewController {
                 
                 let obj = val.value as! NSDictionary
                 
-                /*
+                /* STRING-DATE FORMATTED TO DATE
                 var date = obj["expiryDate"] as? String
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateStyle = .medium
                 let dateFormatted = dateFormatter.date(from: date!)!
                 */
                 
-                //INT TO DATE
+                //the INT from Firebase TO DATE
                 let date = obj["expiryDate"] as? Int
                 // convert Int to Double
                 let timeInterval = Double(date!)
