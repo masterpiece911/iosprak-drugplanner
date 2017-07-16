@@ -161,6 +161,13 @@
 			name = "Database Functions";
 			sourceTree = "<group>";
 		};
+		849F65F01F1B90B1005E150D /* NotificationCenter Static Strings */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "NotificationCenter Static Strings";
+			sourceTree = "<group>";
+		};
 		84B9E4B41EE7FF340070BB7D /* Agenda Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -241,6 +248,7 @@
 		F340908C1ED5FB7D00548661 /* DrugPlanner */ = {
 			isa = PBXGroup;
 			children = (
+				849F65F01F1B90B1005E150D /* NotificationCenter Static Strings */,
 				849F65EF1F1B904E005E150D /* Database Functions */,
 				F33E087D1EFA84E500CAF516 /* Settings View */,
 				F31674A01EE98BFA00355FFD /* Login View */,
