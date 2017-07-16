@@ -55,9 +55,14 @@ class InventoryDetailTableViewController: UITableViewController {
         doseDetailLabel.text = descriptions["doseUnit"]!
         
         
+        NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: InventoryStrings.ITEM_UPDATE.appending(item.InventoryItemKey)), object: nil, queue: nil, using: inventoryItemDidChange)
+        
+        Inventory.instance.listenToChanges(in: self.item)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        Inventory.instance.stopListening(to: self.item)
         
         if(segue.identifier == "InventoryEdit") {
             let selectedItem = item
@@ -79,7 +84,27 @@ class InventoryDetailTableViewController: UITableViewController {
 
     @IBAction func cancelInventoryItemEdit(segue: UIStoryboardSegue) {
         
+    }
+    
+    @IBAction func editInventoryItem(segue: UIStoryboardSegue) {
         
+        if let inventoryEditController = segue.source as? InventoryEditController {
+            
+            Inventory.instance.edit(inventory: inventoryEditController.item)
+            
+        }
+        
+    }
+    
+    func inventoryItemDidChange(notification: Notification) {
+        
+        self.item = Inventory.instance.items?.getItem(with: self.item.InventoryItemKey)
+        
+        nameDetail.text = item.InventoryItemName
+        amountDetail.text = String(item.InventoryItemAmount)
+        doseDetail.text = String(item.InventoryItemDose)
+        expiryDateDetail.text = dateF.string(from: item.InventoryItemExpiryDate)
+        notesDetail.text = item.InventoryItemNotes
         
     }
     

@@ -286,8 +286,8 @@
 		F340908C1ED5FB7D00548661 /* DrugPlanner */ = {
 			isa = PBXGroup;
 			children = (
-				849F65F01F1B90B1005E150D /* NotificationCenter Static Strings */,
-				849F65EF1F1B904E005E150D /* Database Functions */,
+				84F63A6E1F17706C004F4C09 /* NotificationCenter Static Strings */,
+				84F63A6B1F176876004F4C09 /* Database Functions */,
 				F33E087D1EFA84E500CAF516 /* Settings View */,
 				F31674A01EE98BFA00355FFD /* Login View */,
 				84B9E4B61EE7FF6E0070BB7D /* History Views */,
@@ -606,6 +606,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				844DAACE1F19616D008CC4EF /* DateExtension.swift in Sources */,
+				849F65EC1F1B7C07005E150D /* Agenda.swift in Sources */,
+				843023211F18057500BC9EED /* Inventory.swift in Sources */,
 				F321162C1F1B76D40052414A /* InventoryEditController.swift in Sources */,
 				F04907CA1EFA6F2F001852D0 /* ChooseTypeTableViewController.swift in Sources */,
 				F31674A41EE98C4100355FFD /* LoginViewController.swift in Sources */,

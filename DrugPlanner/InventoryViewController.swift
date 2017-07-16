@@ -23,45 +23,6 @@ class InventoryViewController: UITableViewController {
         
         self.tableView.reloadData()
         
-        ref.child("Users").child(userID!).child("Inventory").observe(DataEventType.value, with: { (snapshot) in
-            
-            let value = snapshot.value as? NSDictionary
-            var alreadyIn = false;
-            
-            for val in (value)! {
-                
-                let obj = val.value as! NSDictionary
-                
-                /* STRING-DATE FORMATTED TO DATE
-                var date = obj["expiryDate"] as? String
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateStyle = .medium
-                let dateFormatted = dateFormatter.date(from: date!)!
-                */
-                
-                //the INT from Firebase TO DATE
-                let date = obj["expiryDate"] as? Int
-                // convert Int to Double
-                let timeInterval = Double(date!)
-                // create NSDate from Double (NSTimeInterval)
-                let dateFormatted = Date(timeIntervalSince1970: timeInterval)
-                
-                let item = InventoryItem(key: val.key as! String,name: (obj["name"] as? String)!, type: DrugType(rawValue: (obj["type"] as? String)!)!, amount: (obj["amount"] as? Int)!, dose: (obj["dose"] as? Int)!, expiryDate: dateFormatted, notes: (obj["notes"] as? String)!)
-                
-                for i in self.items{
-                    if(i.InventoryItemKey == item.InventoryItemKey){
-                        alreadyIn = true;
-                    }
-                }
-                
-                if(!alreadyIn){
-                    self.items.append(item);
-                }
-                self.tableView.reloadData()
-            }
-        })
-
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -98,18 +59,13 @@ class InventoryViewController: UITableViewController {
         
         return cell
     }
-
-
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
         if(segue.identifier == "InventoryDetail") {
             
-            print("destination")
-            print(segue.destination)
             if let cell = sender as? UITableViewCell {
-                print(cell)
                 let indexPath = tableView.indexPath(for: cell)
                 if let index = indexPath?.row {
                     
@@ -130,8 +86,6 @@ class InventoryViewController: UITableViewController {
         
     }
     
-
-    
     
     
     @IBAction func saveNewInventoryItem(segue:UIStoryboardSegue) {
@@ -141,30 +95,6 @@ class InventoryViewController: UITableViewController {
 
             Inventory.instance.add(inventory: createInventoryController.inventoryItem)
             
-            let unformattedItem = createInventoryController.inventoryItem
-            
-            let dateF = DateFormatter()
-            dateF.dateStyle = .medium
-            dateF.timeStyle = .none
-            
-            // convert Date to TimeInterval
-           let timeInterval = unformattedItem.InventoryItemExpiryDate.timeIntervalSince1970
-            // convert to Integer
-            let dateInt = Int(timeInterval)
-            
-            
-            items.append(unformattedItem);
-            
-            let newItem = ["name": unformattedItem.InventoryItemName,
-                           "amount": unformattedItem.InventoryItemAmount,
-                           "dose": unformattedItem.InventoryItemDose,
-                           "notes": unformattedItem.InventoryItemNotes,
-                           "expiryDate": dateInt,
-                           "type": unformattedItem.InventoryItemType.rawValue] as [String : Any]
-            
-            let usersRef = self.ref.child("Users").child(userID).child("Inventory");
-            
-            usersRef.childByAutoId().setValue(newItem)
         }
       
     }
@@ -174,13 +104,13 @@ class InventoryViewController: UITableViewController {
         
     }
     
-    @IBAction func editInventoryItem(segue:UIStoryboardSegue) {
-        
-        
-        
-    }
-    
     @IBAction func deleteInventoryItem(segue:UIStoryboardSegue) {
+        
+        if let editInventoryController = segue.source as? InventoryEditController {
+            
+            Inventory.instance.remove(inventory: editInventoryController.item)
+            
+        }
         
     }
     

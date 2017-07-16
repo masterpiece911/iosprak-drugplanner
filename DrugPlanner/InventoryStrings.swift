@@ -10,4 +10,6 @@ class InventoryStrings {
     
     static let INVENTORY_UPDATE = "inventory_update"
     
+    static let ITEM_UPDATE = "inventory_item_update"
+    
 }

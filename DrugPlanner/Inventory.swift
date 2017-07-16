@@ -50,17 +50,21 @@ class Inventory : RepositoryClass {
                 
                 var newItems = [InventoryItem]()
             
-                let inventoryDictionary = snapshot.value as? NSDictionary
-                
-                for fItem in (inventoryDictionary)! {
+                if let inventoryDictionary = snapshot.value as? NSDictionary {
                     
-                    let newItem = InventoryItem(with: fItem.key as! String, with: fItem.value as! NSDictionary)
-            
-                    newItems.append(newItem)
-            
+                    for fItem in (inventoryDictionary) {
+                        
+                        let newItem = InventoryItem(with: fItem.key as! String, with: fItem.value as! NSDictionary)
+                        
+                        newItems.append(newItem)
+                        
+                    }
+                    
+                    self.items = newItems
+                    
                 }
                 
-                self.items = newItems
+                
             
             }
         
@@ -91,5 +95,27 @@ class Inventory : RepositoryClass {
     func remove(inventory item : InventoryItem) {
         
         inventoryReference?.child(item.InventoryItemKey).removeValue()
+    }
+    
+    func listenToChanges(in item : InventoryItem) {
+        
+        inventoryReference?.child(item.InventoryItemKey).observe(.value, with: {
+            
+            (snapshot) in
+            
+            let newItem = InventoryItem(with: snapshot.key, with: snapshot.value as! NSDictionary)
+            
+            self.items![self.items!.index(of: self.items!.getItem(with: item.InventoryItemKey)!)!] = newItem
+            
+            NotificationCenter.default.post(name: Notification.Name(rawValue: (InventoryStrings.ITEM_UPDATE.appending(item.InventoryItemKey))), object: nil)
+            
+            
+        })
+    }
+    
+    func stopListening(to item : InventoryItem) {
+        
+        inventoryReference?.child(item.InventoryItemKey).removeAllObservers()
+        
     }
 }
