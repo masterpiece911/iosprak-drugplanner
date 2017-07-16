@@ -31,6 +31,7 @@ class InventoryViewController: UITableViewController {
             for val in (value)! {
                 
                 let obj = val.value as! NSDictionary
+                val
                 
                 /* STRING-DATE FORMATTED TO DATE
                 var date = obj["expiryDate"] as? String
@@ -197,15 +198,10 @@ class InventoryViewController: UITableViewController {
             
             let unformattedItem = createInventoryController.inventoryItem
             
-            let dateF = DateFormatter()
-            dateF.dateStyle = .medium
-            dateF.timeStyle = .none
-            
             // convert Date to TimeInterval
-           let timeInterval = unformattedItem.InventoryItemExpiryDate.timeIntervalSince1970
+            let timeInterval = unformattedItem.InventoryItemExpiryDate.timeIntervalSince1970
             // convert to Integer
             let dateInt = Int(timeInterval)
-            
            
             //let date = dateF.string(from: unformattedItem.InventoryItemExpiryDate)
         
