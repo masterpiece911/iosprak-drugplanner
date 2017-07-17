@@ -25,7 +25,25 @@ class LoginViewController: UIViewController {
         
         nc.addObserver(forName: Notification.Name(LoginStrings.PASSWORD_RESET_SUCCESS), object: nil, queue: nil, using: passwordResetSuccess)
         nc.addObserver(forName: Notification.Name(LoginStrings.PASSWORD_RESET_FAILED), object: nil, queue: nil, using: passwordResetFailed)
-       
+        
+        nc.addObserver(self, selector: #selector(LoginViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        nc.addObserver(self, selector: #selector(LoginViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0{
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y != 0{
+                self.view.frame.origin.y += keyboardSize.height
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {
