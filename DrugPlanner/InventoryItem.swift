@@ -32,7 +32,7 @@ class InventoryItem: NSObject, NSCoding {
     private var dose : Int!
     private var expiryDate : Date!
     private var notes : String!
-    private var photo : String?
+    private var photo : String!
     
     override init() {}
     
@@ -57,6 +57,7 @@ class InventoryItem: NSObject, NSCoding {
         self.dose       = parameters[ItemKeys.Dose] as! Int
         self.expiryDate = Date(from: parameters[ItemKeys.ExpiryDate]! as! Int)
         self.notes      = parameters[ItemKeys.Notes] as! String
+        self.photo      = parameters[ItemKeys.Photo] as! String
         
     }
     
@@ -68,7 +69,8 @@ class InventoryItem: NSObject, NSCoding {
             ItemKeys.Dose       : self.dose ,
             ItemKeys.ExpiryDate : self.expiryDate.transformToInt() ,
             ItemKeys.ItemType   : self.type.rawValue ,
-            ItemKeys.Notes      : self.notes
+            ItemKeys.Notes      : self.notes,
+            ItemKeys.Photo      : self.photo
         ]
     }
     
@@ -182,7 +184,7 @@ class InventoryItem: NSObject, NSCoding {
     
     var InventoryItemPhoto: String {
         get{
-            return photo!;
+            return photo;
         }
         set{
             photo = newValue;
