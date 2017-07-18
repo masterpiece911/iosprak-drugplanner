@@ -11,6 +11,7 @@ import UIKit
 class InventoryTableViewCell: UITableViewCell {
 
     @IBOutlet weak var numberLabel: UILabel!
+    @IBOutlet weak var dosesLabel: UILabel!
     @IBOutlet weak var expiryDateLabel: UILabel!
     @IBOutlet weak var drugNameLabel: UILabel!
     @IBOutlet weak var drugImage: UIImageView!
