@@ -42,7 +42,7 @@ class AgendaItem {
     init(with key : String, with parameters: NSDictionary) {
         
         self.key      = key
-        self.drug     = Inventory.instance.items?.getItem(with: parameters[ItemKeys.drug] as! String)
+        self.drug     = Inventory.instance.items!.getItem(with: parameters[ItemKeys.drug] as! String)
         self.dose     = parameters[ItemKeys.dose] as! Int
         self.time     = Date(from: parameters[ItemKeys.time] as! Int)
         self.weekdays = AgendaItem.getWeekdayDictionary(from: parameters[ItemKeys.weekdays] as! NSDictionary)
@@ -52,12 +52,22 @@ class AgendaItem {
     
     func toDictionary() -> NSDictionary {
         
+        let weekdayDic = [
+            Weekday.Monday.rawValue    : weekdays[.Monday] ,
+            Weekday.Tuesday.rawValue   : weekdays[.Tuesday] ,
+            Weekday.Wednesday.rawValue : weekdays[.Wednesday] ,
+            Weekday.Thursday.rawValue  : weekdays[.Thursday] ,
+            Weekday.Friday.rawValue    : weekdays[.Friday] ,
+            Weekday.Saturday.rawValue  : weekdays[.Saturday] ,
+            Weekday.Sunday.rawValue    : weekdays[.Sunday]
+        ]
+        
         return [
             ItemKeys.drug     : self.drug.InventoryItemKey ,
             ItemKeys.dose     : self.dose ,
             ItemKeys.endDate  : self.agendaEndDate.transformToInt() ,
             ItemKeys.time     : self.agendaTime.transformToInt() ,
-            ItemKeys.weekdays : self.weekdays as NSDictionary
+            ItemKeys.weekdays : weekdayDic
         ]
     }
     

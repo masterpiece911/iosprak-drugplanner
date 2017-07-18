@@ -24,6 +24,10 @@ class Agenda : RepositoryClass {
     
     var agendaReference : DatabaseReference?
     
+    var databaseHandlers = [DatabaseHandle]()
+    
+    var inventoryListener : Any?
+    
     private init() {
         
     }
@@ -34,39 +38,56 @@ class Agenda : RepositoryClass {
         
         items = [AgendaItem]()
         
-        agendaReference?.observe(.value, with: {
+        inventoryListener = NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: InventoryStrings.INVENTORY_POPULATED), object: nil, queue: nil, using: inventoryDidPopulate)
+        
+    }
+    
+    func purge() {
+        
+        items = nil
+        for handle in databaseHandlers {
+            agendaReference?.removeObserver(withHandle: handle)
+        }
+        agendaReference = nil
+        inventoryListener = nil
+        
+    }
+    
+    func inventoryDidPopulate (notification: Notification) {
+        
+        if let handle = agendaReference?.observe(.value, with: {
             (snapshot) in
             
             if snapshot.value != nil {
                 
                 var newItems = [AgendaItem]()
                 
-                let agendaDictionary = snapshot.value as? NSDictionary
-                
-                for fItem in (agendaDictionary)! {
+                if let agendaDictionary = snapshot.value as? NSDictionary {
                     
-                    let newItem = AgendaItem(with: fItem.key as! String, with: fItem.value as! NSDictionary)
+                    for fItem in (agendaDictionary) {
+                        
+                        let newItem = AgendaItem(with: fItem.key as! String, with: fItem.value as! NSDictionary)
+                        
+                        newItems.append(newItem)
+                    }
                     
-                    newItems.append(newItem)
+                    self.items = newItems
+                    
+                    
                 }
                 
-                self.items = newItems
                 
             }
-        })
-    }
-    
-    func purge() {
-        
-        agendaReference?.removeAllObservers()
-        items = nil
-        agendaReference = nil
-        
+        }) {
+            databaseHandlers.append(handle)
+        }
+
     }
     
     func add(new item: AgendaItem) {
         
-        agendaReference?.childByAutoId().setValue(item.toDictionary())
+        let dicItem = item.toDictionary()
+        agendaReference?.childByAutoId().setValue(dicItem)
         
     }
     

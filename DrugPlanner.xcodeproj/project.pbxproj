@@ -44,8 +44,6 @@
 		F33E087F1EFA851000CAF516 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33E087E1EFA851000CAF516 /* SettingsViewController.swift */; };
 		F340908E1ED5FB7D00548661 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F340908D1ED5FB7D00548661 /* AppDelegate.swift */; };
 		F34090951ED5FB7D00548661 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F34090941ED5FB7D00548661 /* Assets.xcassets */; };
-		F34090A31ED5FB7D00548661 /* DrugPlannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34090A21ED5FB7D00548661 /* DrugPlannerTests.swift */; };
-		F34090AE1ED5FB7D00548661 /* DrugPlannerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34090AD1ED5FB7D00548661 /* DrugPlannerUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,10 +110,8 @@
 		F34090941ED5FB7D00548661 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F34090991ED5FB7D00548661 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F340909E1ED5FB7D00548661 /* DrugPlannerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DrugPlannerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F34090A21ED5FB7D00548661 /* DrugPlannerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugPlannerTests.swift; sourceTree = "<group>"; };
 		F34090A41ED5FB7D00548661 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F34090A91ED5FB7D00548661 /* DrugPlannerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DrugPlannerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F34090AD1ED5FB7D00548661 /* DrugPlannerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrugPlannerUITests.swift; sourceTree = "<group>"; };
 		F34090AF1ED5FB7D00548661 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -168,20 +164,6 @@
 				B39F3B70FE7DDC2C0F299B1F /* Pods_DrugPlannerUITests.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		849F65EF1F1B904E005E150D /* Database Functions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "Database Functions";
-			sourceTree = "<group>";
-		};
-		849F65F01F1B90B1005E150D /* NotificationCenter Static Strings */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "NotificationCenter Static Strings";
 			sourceTree = "<group>";
 		};
 		84B9E4B41EE7FF340070BB7D /* Agenda Views */ = {
@@ -307,7 +289,6 @@
 		F34090A11ED5FB7D00548661 /* DrugPlannerTests */ = {
 			isa = PBXGroup;
 			children = (
-				F34090A21ED5FB7D00548661 /* DrugPlannerTests.swift */,
 				F34090A41ED5FB7D00548661 /* Info.plist */,
 			);
 			path = DrugPlannerTests;
@@ -316,7 +297,6 @@
 		F34090AC1ED5FB7D00548661 /* DrugPlannerUITests */ = {
 			isa = PBXGroup;
 			children = (
-				F34090AD1ED5FB7D00548661 /* DrugPlannerUITests.swift */,
 				F34090AF1ED5FB7D00548661 /* Info.plist */,
 			);
 			path = DrugPlannerUITests;
@@ -642,7 +622,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F34090A31ED5FB7D00548661 /* DrugPlannerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -650,7 +629,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F34090AE1ED5FB7D00548661 /* DrugPlannerUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
