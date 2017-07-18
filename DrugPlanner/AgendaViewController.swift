@@ -12,6 +12,8 @@ class AgendaViewController: UITableViewController {
 
     var items : [AgendaItem] = [AgendaItem]()
     
+    var observer : Any?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         /*let dateFormatter2 = DateFormatter()
@@ -24,6 +26,10 @@ class AgendaViewController: UITableViewController {
         let date1 = dateFormatter2.date(from: "11/5/2020")
         
         items = [AgendaItem(for: "Aspirin"  , with: 10, at: time1!, on: AgendaItem.generateWeekdayDictionary(), until: date1!, using: "wawwawaw"),AgendaItem(for: "Ibu"  , with: 10, at: time1!, on: AgendaItem.generateWeekdayDictionary(), until: date1!, using: "wawwawaw")]*/
+        
+        items = Agenda.instance.items!
+        
+        self.observer = NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: AgendaStrings.AGENDA_UPDATE), object: nil, queue: nil, using: agendaListDidUpdate)
      
     }
 
@@ -54,6 +60,13 @@ class AgendaViewController: UITableViewController {
         cell.hintLabel?.text = agendaItem.agendaDrug.InventoryItemNotes
         
         return cell
+    }
+    
+    func agendaListDidUpdate (notification: Notification) {
+        
+        self.items = Agenda.instance.items!
+        self.tableView.reloadData()
+        
     }
     
 
@@ -102,17 +115,41 @@ class AgendaViewController: UITableViewController {
     
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        
+        super.viewDidAppear(animated)
+        
+        if self.observer == nil {
+            self.observer = NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: AgendaStrings.AGENDA_UPDATE), object: nil, queue: nil, using: agendaListDidUpdate)
+
+        }
+        
+        self.items = Agenda.instance.items!
+        tableView.reloadData()
+        
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        
+        super.viewDidDisappear(animated)
+        
+        if let obs = self.observer {
+            NotificationCenter.default.removeObserver(obs)
+            self.observer = nil
+        }
+
+    }
+    
     
     @IBAction func saveNewAgendaItem (segue : UIStoryboardSegue) {
         
         if let createAgendaController = segue.source as? CreateAgendaItemTableViewController {
             
-            let item = createAgendaController.agendaItem
-            items.append(item!)
+            Agenda.instance.add(new: createAgendaController.agendaItem!)
             
-            self.tableView.reloadData()
-            
-        }   }
+        }
+        
+    }
     
     @IBAction func cancelAgendaItem (segue : UIStoryboardSegue) {
         

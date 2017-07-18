@@ -7,21 +7,22 @@
 //
 
 import UIKit
-import Firebase
 
 class InventoryViewController: UITableViewController {
     
     var items = [InventoryItem]()
+    
+    var observer : Any?
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: InventoryStrings.INVENTORY_UPDATE), object: nil, queue: nil, using: listDidUpdate)
+        self.observer = NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: InventoryStrings.INVENTORY_UPDATE), object: nil, queue: nil, using: listDidUpdate)
         
         items = Inventory.instance.items!
-        
-        self.tableView.reloadData()
+        tableView.reloadData()
+
         
     }
 
@@ -68,7 +69,7 @@ class InventoryViewController: UITableViewController {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
+        
         if(segue.identifier == "InventoryDetail") {
             
             if let cell = sender as? UITableViewCell {
@@ -92,7 +93,28 @@ class InventoryViewController: UITableViewController {
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        
+        super.viewDidAppear(animated)
+        if self.observer == nil {
+            self.observer = NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: InventoryStrings.INVENTORY_UPDATE), object: nil, queue: nil, using: listDidUpdate)
+            
+            items = Inventory.instance.items!
+            tableView.reloadData()
+        }
+        
+    }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        
+        super.viewDidDisappear(animated)
+        
+        if let obs = self.observer {
+            NotificationCenter.default.removeObserver(obs)
+            self.observer = nil
+        }
+
+    }
     
     @IBAction func saveNewInventoryItem(segue:UIStoryboardSegue) {
 

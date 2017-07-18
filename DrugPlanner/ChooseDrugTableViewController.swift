@@ -7,14 +7,10 @@
 //
 
 import UIKit
-import Firebase
 
 class ChooseDrugTableViewController: UITableViewController {
 
     var drugs = [InventoryItem]()
-    let delegate = UIApplication.shared.delegate as! AppDelegate
-    var ref : DatabaseReference!
-    var userID : String!
     
     var selectedDrug : InventoryItem? {
         didSet{
@@ -26,50 +22,14 @@ class ChooseDrugTableViewController: UITableViewController {
     
     var selectedDrugIndex : Int?
     
+    var observer :  Any?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        userID = Auth.auth().currentUser?.uid
+        self.drugs = Inventory.instance.items!
         
-        ref = delegate.ref
-        
-        ref.child("Users").child(userID!).child("Inventory").observe(DataEventType.value, with: { (snapshot) in
-            
-            let value = snapshot.value as? NSDictionary
-            var alreadyIn = false;
-            
-            for val in (value)! {
-                
-                let obj = val.value as! NSDictionary
-                
-                /*
-                 var date = obj["expiryDate"] as? String
-                 let dateFormatter = DateFormatter()
-                 dateFormatter.dateStyle = .medium
-                 let dateFormatted = dateFormatter.date(from: date!)!
-                 */
-                
-                //INT TO DATE
-                let date = obj["expiryDate"] as? Int
-                // convert Int to Double
-                let timeInterval = Double(date!)
-                // create NSDate from Double (NSTimeInterval)
-                let dateFormatted = Date(timeIntervalSince1970: timeInterval)
-                
-                let item = InventoryItem(key: val.key as! String,name: (obj["name"] as? String)!, type: DrugType(rawValue: (obj["type"] as? String)!)!, amount: (obj["amount"] as? Int)!, dose: (obj["dose"] as? Int)!, expiryDate: dateFormatted, notes: (obj["notes"] as? String)!, photo: (obj["photo"] as? String)!)
-                
-                for i in self.drugs{
-                    if(i.InventoryItemKey == item.InventoryItemKey){
-                        alreadyIn = true;
-                    }
-                }
-                
-                if(!alreadyIn){
-                    self.drugs.append(item);
-                }
-                self.tableView.reloadData()
-            }
-        })
+        self.observer = NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: InventoryStrings.INVENTORY_UPDATE), object: nil, queue: nil, using: drugListDidUpdate)
         
     }
 
@@ -122,12 +82,22 @@ class ChooseDrugTableViewController: UITableViewController {
         cell?.accessoryType = .checkmark
         
     }
+    
+    func drugListDidUpdate(notification: Notification) {
+        self.drugs = Inventory.instance.items!
+        self.tableView.reloadData()
+    }
 
     
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let obs = self.observer {
+            NotificationCenter.default.removeObserver(obs)
+            self.observer = nil
+        }
         
         if segue.identifier == "SaveSelectedDrug" {
             if let cell = sender as? UITableViewCell {

@@ -34,6 +34,10 @@ class InventoryDetailTableViewController: UITableViewController {
     
     let dateF : DateFormatter = DateFormatter()
     
+    var observer : Any?
+    
+    var firebaseListener : UInt!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -42,11 +46,7 @@ class InventoryDetailTableViewController: UITableViewController {
         dateF.timeStyle = .none
         
         // SET FIELDS TO INVENTORY ITEM VALUES
-        nameDetail.text = item.InventoryItemName
-        amountDetail.text = String(item.InventoryItemAmount)
-        doseDetail.text = String(item.InventoryItemDose)
-        expiryDateDetail.text = dateF.string(from: item.InventoryItemExpiryDate)
-        notesDetail.text = item.InventoryItemNotes
+        updateFields()
 
         // GET DESCRIPTIONS FOR INVENTORY ITEM TYPE
         let descriptions = getDrugTypeDescriptions(for: item.InventoryItemType)
@@ -55,14 +55,17 @@ class InventoryDetailTableViewController: UITableViewController {
         doseDetailLabel.text = descriptions["doseUnit"]!
         
         
-        NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: InventoryStrings.ITEM_UPDATE.appending(item.InventoryItemKey)), object: nil, queue: nil, using: inventoryItemDidChange)
+        self.observer = NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: InventoryStrings.ITEM_UPDATE.appending(item.InventoryItemKey)), object: nil, queue: nil, using: inventoryItemDidChange)
         
-        Inventory.instance.listenToChanges(in: self.item)
+        self.firebaseListener = Inventory.instance.listenToChanges(in: self.item)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        Inventory.instance.stopListening(to: self.item)
         
         if(segue.identifier == "InventoryEdit") {
             let selectedItem = item
@@ -75,11 +78,33 @@ class InventoryDetailTableViewController: UITableViewController {
         }
         
     }
-    
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewDidAppear(_ animated: Bool) {
+        
+        super.viewDidAppear(animated)
+        
+        if self.observer == nil {
+            self.observer = NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: InventoryStrings.ITEM_UPDATE.appending(item.InventoryItemKey)), object: nil, queue: nil, using: inventoryItemDidChange)
+        }
+        
+        if self.firebaseListener == nil {
+            self.firebaseListener = Inventory.instance.listenToChanges(in: self.item)
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        
+        super.viewDidDisappear(animated)
+        
+        Inventory.instance.stopListening(to: item, using: self.firebaseListener)
+        self.firebaseListener = nil
+        
+        if let obs = self.observer {
+            NotificationCenter.default.removeObserver(obs)
+            self.observer = nil
+        }
+
+        
     }
 
     @IBAction func cancelInventoryItemEdit(segue: UIStoryboardSegue) {
@@ -91,6 +116,8 @@ class InventoryDetailTableViewController: UITableViewController {
         if let inventoryEditController = segue.source as? InventoryEditController {
             
             Inventory.instance.edit(inventory: inventoryEditController.item)
+            self.item = inventoryEditController.item
+            self.updateFields()
             
         }
         
@@ -99,13 +126,18 @@ class InventoryDetailTableViewController: UITableViewController {
     func inventoryItemDidChange(notification: Notification) {
         
         self.item = Inventory.instance.items?.getItem(with: self.item.InventoryItemKey)
+        updateFields()
+        
+    }
+    
+    private func updateFields() {
         
         nameDetail.text = item.InventoryItemName
         amountDetail.text = String(item.InventoryItemAmount)
         doseDetail.text = String(item.InventoryItemDose)
         expiryDateDetail.text = dateF.string(from: item.InventoryItemExpiryDate)
         notesDetail.text = item.InventoryItemNotes
-        
+
     }
     
 }

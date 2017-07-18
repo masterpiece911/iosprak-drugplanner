@@ -17,7 +17,12 @@ class Inventory : RepositoryClass {
     
     var items : [InventoryItem]? {
         willSet{
-                    }
+            if let items = self.items {
+                if items == [] {
+                    self.didPopulate = true
+                }
+            }
+        }
         didSet{
             items?.sort(by: {
                 (lhs: InventoryItem, rhs: InventoryItem) in
@@ -28,7 +33,17 @@ class Inventory : RepositoryClass {
         }
     }
     
+    var didPopulate : Bool = false {
+        didSet {
+            if didPopulate {
+                NotificationCenter.default.post(name: Notification.Name(rawValue: InventoryStrings.INVENTORY_POPULATED), object: nil)
+            }
+        }
+    }
+    
     var inventoryReference : DatabaseReference?
+    
+    var databaseHandlers = [DatabaseHandle]()
     
     private init() {
     
@@ -42,14 +57,14 @@ class Inventory : RepositoryClass {
         
         items = [InventoryItem]()
         
-        inventoryReference?.observe(.value, with: {
+        if let handle = inventoryReference?.observe(.value, with: {
             
             (snapshot) in
             
             if snapshot.value != nil {
                 
                 var newItems = [InventoryItem]()
-            
+                
                 if let inventoryDictionary = snapshot.value as? NSDictionary {
                     
                     for fItem in (inventoryDictionary) {
@@ -65,18 +80,24 @@ class Inventory : RepositoryClass {
                 }
                 
                 
-            
+                
             }
-        
-        })
+            
+        }) {
+            databaseHandlers.append(handle)
+        }
 
     }
     
     func purge() {
     
         items = nil
-        inventoryReference?.removeAllObservers()
+        for handler in databaseHandlers {
+            //TODO REMOVE OBSERVERS AT THE CORRECT CHILD ITEMS.
+            inventoryReference?.removeObserver(withHandle: handler)
+        }
         inventoryReference = nil
+        didPopulate = false
     
     }
     
@@ -97,9 +118,9 @@ class Inventory : RepositoryClass {
         inventoryReference?.child(item.InventoryItemKey).removeValue()
     }
     
-    func listenToChanges(in item : InventoryItem) {
+    func listenToChanges(in item : InventoryItem) -> DatabaseHandle? {
         
-        inventoryReference?.child(item.InventoryItemKey).observe(.value, with: {
+        if let listener = inventoryReference?.child(item.InventoryItemKey).observe(.value, with: {
             
             (snapshot) in
             
@@ -110,12 +131,19 @@ class Inventory : RepositoryClass {
             NotificationCenter.default.post(name: Notification.Name(rawValue: (InventoryStrings.ITEM_UPDATE.appending(item.InventoryItemKey))), object: nil)
             
             
-        })
+        }) {
+            
+            databaseHandlers.append(listener)
+            return listener
+            
+        }
+        return nil
     }
     
-    func stopListening(to item : InventoryItem) {
+    func stopListening(to item : InventoryItem, using handle : DatabaseHandle) {
         
-        inventoryReference?.child(item.InventoryItemKey).removeAllObservers()
+        inventoryReference?.child(item.InventoryItemKey).removeObserver(withHandle: handle)
+        databaseHandlers.remove(at: databaseHandlers.index(of: handle)!)
         
     }
 }
