@@ -132,6 +132,10 @@ class InventoryViewController: UITableViewController {
         
     }
     
+    @IBAction func cancelInventoryItemAdd(segue:UIStoryboardSegue) {
+        
+    }
+    
     @IBAction func deleteInventoryItem(segue:UIStoryboardSegue) {
         
         if let editInventoryController = segue.source as? InventoryEditController {
