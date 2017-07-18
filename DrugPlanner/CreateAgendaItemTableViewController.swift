@@ -112,9 +112,11 @@ class CreateAgendaItemTableViewController: UITableViewController {
             
             if let previousDate = dateF.date(from: dPtext) {
                 timePicker.setDate(previousDate, animated: false)
+                timeDate = timePicker.date
             } else {
                 timePicker.setDate(timePicker.minimumDate!, animated: false)
                 timeTextField.text = dateF.string(from: timePicker.date)
+                timeDate = timePicker.date
             }
         }
     }
@@ -143,9 +145,11 @@ class CreateAgendaItemTableViewController: UITableViewController {
             
             if let previousDate = dateE.date(from: dPtext) {
                 datePicker.setDate(previousDate, animated: false)
+                endDate = datePicker.date
             } else {
                 datePicker.setDate(datePicker.minimumDate!, animated: false)
                 endDateTextField.text = dateE.string(from: datePicker.date)
+                endDate = datePicker.date
             }
         }
     }
