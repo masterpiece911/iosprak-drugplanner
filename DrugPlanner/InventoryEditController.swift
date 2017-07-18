@@ -116,9 +116,11 @@ class InventoryEditController: UITableViewController {
             
             if let previousDate = dateF.date(from : dPtext) {
                 datePicker.setDate(previousDate, animated: false)
+                expiryDate = datePicker.date
             } else {
                 datePicker.setDate(datePicker.minimumDate!, animated: false)
                 expiryDatePicker.text = dateF.string(from: datePicker.date)
+                expiryDate = datePicker.date
             }
         }
     }
