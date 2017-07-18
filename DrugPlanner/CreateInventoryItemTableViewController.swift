@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MobileCoreServices
 
 class CreateInventoryItemTableViewController: UITableViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
@@ -27,7 +28,10 @@ class CreateInventoryItemTableViewController: UITableViewController, UINavigatio
         image.delegate = self
         
         image.sourceType = UIImagePickerControllerSourceType.photoLibrary
-        image.allowsEditing = false
+        //TRY
+        image.mediaTypes = [kUTTypeImage as String]
+        
+        image.allowsEditing = true
         self.present(image, animated: true)
     }
     
@@ -38,10 +42,11 @@ class CreateInventoryItemTableViewController: UITableViewController, UINavigatio
         image.delegate = self
         
         image.sourceType = UIImagePickerControllerSourceType.camera
+        
         image.cameraCaptureMode = .photo
         image.modalPresentationStyle = .fullScreen
 
-        image.allowsEditing = false
+        image.allowsEditing = true
         self.present(image, animated: true, completion: nil)
     }
     
@@ -58,9 +63,10 @@ class CreateInventoryItemTableViewController: UITableViewController, UINavigatio
         {
             // Display error
         }
-
         
         self.dismiss(animated: true, completion: nil)
+        
+        
     }
     var type:String = "" {
         didSet {
