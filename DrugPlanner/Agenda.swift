@@ -24,9 +24,11 @@ class Agenda : RepositoryClass {
     
     var agendaReference : DatabaseReference?
     
-    var databaseHandlers = [DatabaseHandle]()
+    var databaseHandlers = [(DatabaseHandle, AgendaItem?)]()
     
     var inventoryListener : Any?
+    
+    var inventoryItemListeners = [AgendaInventoryListener]()
     
     private init() {
         
@@ -45,8 +47,12 @@ class Agenda : RepositoryClass {
     func purge() {
         
         items = nil
-        for handle in databaseHandlers {
-            agendaReference?.removeObserver(withHandle: handle)
+        for (handle,item) in databaseHandlers {
+            if let ref = agendaReference?.child((item?.agendaKey)!) {
+                ref.removeObserver(withHandle: handle)
+            } else {
+                agendaReference?.removeObserver(withHandle: handle)
+            }
         }
         agendaReference = nil
         inventoryListener = nil
@@ -68,7 +74,22 @@ class Agenda : RepositoryClass {
                         
                         let newItem = AgendaItem(with: fItem.key as! String, with: fItem.value as! NSDictionary)
                         
+                        let drugHandler = Inventory.instance.listenToChanges(in: newItem.agendaDrug)
+                        
+                        let notificationHandle = NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: (InventoryStrings.ITEM_UPDATE.appending(newItem.agendaDrug.InventoryItemKey))), object: nil, queue: nil, using: self.inventoryItemOfAgendaItemDidChange)
+                        
                         newItems.append(newItem)
+                        
+                        if self.inventoryItemListeners.containsAgenda(with: newItem.agendaKey) {
+                            
+                            self.inventoryItemListeners.getListenerWithAgenda(with: newItem.agendaKey)?.replaceListeners(with: drugHandler!, with: notificationHandle)
+                            
+                        } else {
+                            
+                            self.inventoryItemListeners.append(AgendaInventoryListener.init(drugHandler!, notificationHandle, newItem, newItem.agendaDrug))
+                            
+                        }
+                        
                     }
                     
                     self.items = newItems
@@ -79,15 +100,14 @@ class Agenda : RepositoryClass {
                 
             }
         }) {
-            databaseHandlers.append(handle)
+            databaseHandlers.append((handle, nil))
         }
 
     }
     
     func add(new item: AgendaItem) {
         
-        let dicItem = item.toDictionary()
-        agendaReference?.childByAutoId().setValue(dicItem)
+        agendaReference?.childByAutoId().setValue(item.toDictionary())
         
     }
     
@@ -100,6 +120,52 @@ class Agenda : RepositoryClass {
     func delete(_ item: AgendaItem) {
         
         agendaReference?.child(item.agendaKey).removeValue()
+        
+    }
+    
+    func inventoryItemOfAgendaItemDidChange (notification: Notification) {
+        
+        let notificationString = notification.name.rawValue
+        let inventoryItemKey = notificationString.replacingOccurrences(of: InventoryStrings.ITEM_UPDATE, with: "")
+        var newAgendaItem : AgendaItem?
+        for listener in inventoryItemListeners {
+            if listener.inventoryItem.InventoryItemKey == inventoryItemKey {
+                
+                newAgendaItem = listener.agendaItem
+                newAgendaItem?.agendaDrug = (Inventory.instance.items?.getItem(with: listener.inventoryItem.InventoryItemKey))!
+                
+            }
+        }
+
+        NotificationCenter.default.post(name: Notification.Name(rawValue: AgendaStrings.AGENDA_UPDATE), object: nil)
+        
+    }
+    
+}
+
+extension Array where Element : AgendaInventoryListener {
+    
+    func containsAgenda(with key: String) -> Bool {
+        
+        for listener in self {
+            if listener.agendaItem.agendaKey == key {
+                return true
+            }
+        }
+        
+        return false
+        
+    }
+    
+    func getListenerWithAgenda(with key: String) -> Element? {
+        
+        for listener in self {
+            if listener.agendaItem.agendaKey == key {
+                return listener
+            }
+        }
+        
+        return nil
         
     }
     

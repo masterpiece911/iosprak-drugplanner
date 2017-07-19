@@ -230,10 +230,10 @@ func getDrugTypeDescriptions(for drug : DrugType) -> [String:String] {
     switch drug {
     case .mg:
         descriptions["doseUnit"] = "mg"
-        descriptions["amountUnit"] = "mg"
+        descriptions["amountUnit"] = "Doses"
     case .ml:
         descriptions["doseUnit"] = "ml"
-        descriptions["amountUnit"] = "ml"
+        descriptions["amountUnit"] = "Doses"
     case .pill:
         descriptions["doseUnit"] = "mg"
         descriptions["amountUnit"] = "Pills"
