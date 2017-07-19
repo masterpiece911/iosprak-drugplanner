@@ -221,6 +221,8 @@ enum DrugType : String{
     case mg = "Powder"
     case ml = "Drops"
     case pill = "Pills"
+    case syrup = "Syrup"
+    case injection = "Injection"
     
 }
 
@@ -230,13 +232,19 @@ func getDrugTypeDescriptions(for drug : DrugType) -> [String:String] {
     switch drug {
     case .mg:
         descriptions["doseUnit"] = "mg"
-        descriptions["amountUnit"] = "mg"
+        descriptions["amountUnit"] = "Doses"
     case .ml:
         descriptions["doseUnit"] = "ml"
-        descriptions["amountUnit"] = "ml"
+        descriptions["amountUnit"] = "Doses"
     case .pill:
         descriptions["doseUnit"] = "mg"
         descriptions["amountUnit"] = "Pills"
+    case .syrup:
+        descriptions["doseUnit"] = "cl"
+        descriptions["amountUnit"] = "Doses"
+    case .injection :
+        descriptions["doseUnit"] = "mg"
+        descriptions["amountUnit"] = "Injections"
     }
     
     return descriptions

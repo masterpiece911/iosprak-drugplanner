@@ -43,7 +43,7 @@ class Inventory : RepositoryClass {
     
     var inventoryReference : DatabaseReference?
     
-    var databaseHandlers = [DatabaseHandle]()
+    var databaseHandlers = [(DatabaseHandle,InventoryItem?)]()
     
     private init() {
     
@@ -84,7 +84,7 @@ class Inventory : RepositoryClass {
             }
             
         }) {
-            databaseHandlers.append(handle)
+            databaseHandlers.append((handle, nil))
         }
 
     }
@@ -92,9 +92,12 @@ class Inventory : RepositoryClass {
     func purge() {
     
         items = nil
-        for handler in databaseHandlers {
-            //TODO REMOVE OBSERVERS AT THE CORRECT CHILD ITEMS.
-            inventoryReference?.removeObserver(withHandle: handler)
+        for (handle,item) in databaseHandlers {
+            if let ref = inventoryReference?.child((item?.InventoryItemKey)!){
+                ref.removeObserver(withHandle: handle)
+            } else {
+                inventoryReference?.removeObserver(withHandle: handle)
+            }
         }
         inventoryReference = nil
         didPopulate = false
@@ -128,12 +131,12 @@ class Inventory : RepositoryClass {
             
             self.items![self.items!.index(of: self.items!.getItem(with: item.InventoryItemKey)!)!] = newItem
             
-            NotificationCenter.default.post(name: Notification.Name(rawValue: (InventoryStrings.ITEM_UPDATE.appending(item.InventoryItemKey))), object: nil)
+            NotificationCenter.default.post(name: Notification.Name(rawValue: (InventoryStrings.ITEM_UPDATE.appending(item.InventoryItemKey))), object: newItem)
             
             
         }) {
             
-            databaseHandlers.append(listener)
+            databaseHandlers.append((listener,item))
             return listener
             
         }
@@ -143,7 +146,15 @@ class Inventory : RepositoryClass {
     func stopListening(to item : InventoryItem, using handle : DatabaseHandle) {
         
         inventoryReference?.child(item.InventoryItemKey).removeObserver(withHandle: handle)
-        databaseHandlers.remove(at: databaseHandlers.index(of: handle)!)
+        databaseHandlers.remove(at: databaseHandlers.index(where: {
+            
+            (itemHandle, inventoryItem) in
+            
+            let handlesEqual = itemHandle == handle
+            
+            return handlesEqual
+            
+        })!)
         
     }
 }

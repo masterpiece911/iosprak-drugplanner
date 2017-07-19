@@ -10,6 +10,7 @@
 		6742310372BA213BDD780B2B /* Pods_DrugPlannerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B39F3B70FE7DDC2C0F299B1F /* Pods_DrugPlannerUITests.framework */; };
 		7F73776B4E178FA0C07D1C7D /* Pods_DrugPlanner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6239CF361B80DB6CA7CCE126 /* Pods_DrugPlanner.framework */; };
 		843023211F18057500BC9EED /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843023201F18057500BC9EED /* Inventory.swift */; };
+		843D8E891F1E7E5F00EDE32F /* AgendaInventoryListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843D8E881F1E7E5F00EDE32F /* AgendaInventoryListener.swift */; };
 		844DAACE1F19616D008CC4EF /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844DAACD1F19616D008CC4EF /* DateExtension.swift */; };
 		849D02721ED6430F0093CA15 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849D02711ED6430F0093CA15 /* Main.storyboard */; };
 		849F65EA1F1AD3F0005E150D /* InventoryStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F65E91F1AD3F0005E150D /* InventoryStrings.swift */; };
@@ -70,6 +71,7 @@
 		3C9A457204B3CD450D32B3B6 /* Pods-DrugPlanner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrugPlanner.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DrugPlanner/Pods-DrugPlanner.debug.xcconfig"; sourceTree = "<group>"; };
 		6239CF361B80DB6CA7CCE126 /* Pods_DrugPlanner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DrugPlanner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		843023201F18057500BC9EED /* Inventory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Inventory.swift; sourceTree = "<group>"; };
+		843D8E881F1E7E5F00EDE32F /* AgendaInventoryListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgendaInventoryListener.swift; sourceTree = "<group>"; };
 		844DAACD1F19616D008CC4EF /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		849D02711ED6430F0093CA15 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		849F65E91F1AD3F0005E150D /* InventoryStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryStrings.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 				843023201F18057500BC9EED /* Inventory.swift */,
 				844DAACD1F19616D008CC4EF /* DateExtension.swift */,
 				849F65EB1F1B7C07005E150D /* Agenda.swift */,
+				843D8E881F1E7E5F00EDE32F /* AgendaInventoryListener.swift */,
 			);
 			name = "Database Functions";
 			sourceTree = "<group>";
@@ -592,6 +595,7 @@
 				F321162C1F1B76D40052414A /* InventoryEditController.swift in Sources */,
 				F04907CA1EFA6F2F001852D0 /* ChooseTypeTableViewController.swift in Sources */,
 				F31674A41EE98C4100355FFD /* LoginViewController.swift in Sources */,
+				843D8E891F1E7E5F00EDE32F /* AgendaInventoryListener.swift in Sources */,
 				F332EF201EF16C360040714C /* InventoryTableViewCell.swift in Sources */,
 				84D60AFC1F0CE34200D9D3F1 /* CreateAgendaItemTableViewController.swift in Sources */,
 				F04907BE1EF8F6D5001852D0 /* HistoryHeaderTableViewCell.swift in Sources */,

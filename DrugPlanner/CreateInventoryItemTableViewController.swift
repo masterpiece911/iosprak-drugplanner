@@ -192,7 +192,11 @@ class CreateInventoryItemTableViewController: UITableViewController, UINavigatio
                 typePickerViewController.selectedType = type
             }
         } else if (segue.identifier == "SaveInventoryItem") {
-            item = InventoryItem(key: "test", name: nameField.text!, type: DrugType(rawValue: typeLabel.text!)!, amount: Int(amountField.text!)!, dose: Int(doseField.text!)!, expiryDate: expiryDate!, notes: noteField.text!, photo: photoString64!)
+            
+            if let photostring = photoString64{
+                item = InventoryItem(key: "test", name: nameField.text!, type: DrugType(rawValue: typeLabel.text!)!, amount: Int(amountField.text!)!, dose: Int(doseField.text!)!, expiryDate: expiryDate!, notes: noteField.text!, photo: photostring)} else {
+                item = InventoryItem(key: "test", name: nameField.text!, type: DrugType(rawValue: typeLabel.text!)!, amount: Int(amountField.text!)!, dose: Int(doseField.text!)!, expiryDate: expiryDate!, notes: noteField.text!, photo: "")
+            }
         }
         
     }
