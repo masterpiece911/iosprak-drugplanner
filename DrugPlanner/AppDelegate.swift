@@ -23,8 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         FirebaseApp.configure()
-        
+        Database.database().isPersistenceEnabled = true;
         ref = Database.database().reference()
+
         
         NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: LoginStrings.USER_LOGGED_IN), object:nil, queue:nil) {
             notification in

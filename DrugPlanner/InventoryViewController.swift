@@ -57,6 +57,7 @@ class InventoryViewController: UITableViewController {
         cell.expiryDateLabel.text = formatter.string(from: item.InventoryItemExpiryDate)
         
         cell.numberLabel.text = String(item.InventoryItemAmount)
+        cell.dosesLabel.text = " " + getDrugTypeDescriptions(for: item.InventoryItemType)["amountUnit"]!
         
         let photoString = String(item.InventoryItemPhoto)
         let dataDecoded : Data = Data(base64Encoded: photoString!, options: .ignoreUnknownCharacters)!
@@ -77,12 +78,8 @@ class InventoryViewController: UITableViewController {
                 if let index = indexPath?.row {
                     
                     let selectedItem = items[index]
-                    print("destination")
-                    print(selectedItem.InventoryItemName)
-                    print(segue.destination)
                     if let destination = segue.destination as? UINavigationController {
                         if let topDestination = destination.topViewController as? InventoryDetailTableViewController{
-                            print(topDestination)
                             topDestination.item = selectedItem
                         }
                     }
