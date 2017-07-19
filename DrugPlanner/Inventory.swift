@@ -150,7 +150,9 @@ class Inventory : RepositoryClass {
             
             (itemHandle, inventoryItem) in
             
-            return itemHandle == handle && inventoryItem == item
+            let handlesEqual = itemHandle == handle
+            
+            return handlesEqual
             
         })!)
         

@@ -13,7 +13,9 @@ class ChooseTypeTableViewController: UITableViewController {
     var types : [String] = [
         DrugType.mg.rawValue,
         DrugType.ml.rawValue,
-        DrugType.pill.rawValue
+        DrugType.pill.rawValue,
+        DrugType.injection.rawValue,
+        DrugType.syrup.rawValue
     ]
     
     var selectedType:String? {
