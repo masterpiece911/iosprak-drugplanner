@@ -52,6 +52,10 @@ class InventoryEditController: UITableViewController {
         
         notesField.text = item.InventoryItemNotes
         
+        if item.InventoryItemPhoto != "" {
+            imageView.image = item.convertStringToImage(photoAsString: item.InventoryItemPhoto)
+        }
+        
         // GET DESCRIPTIONS FOR INVENTORY ITEM TYPE
         let descriptions = getDrugTypeDescriptions(for: item.InventoryItemType)
         
@@ -216,6 +220,11 @@ class InventoryEditController: UITableViewController {
         }
     }
     
+    //PHOTO SECTION
+    
+    @IBOutlet var imageView: UIImageView!
+    
+    
     // DELETE ACTIONS
     
     @IBAction func deleteButtonPressed (_ sender : Any) {
@@ -225,6 +234,8 @@ class InventoryEditController: UITableViewController {
     func deleteConfirmed (action : UIAlertAction) {
         performSegue(withIdentifier: "DeleteInventory", sender: self)
     }
+    
+    
     
     // HELPER FUNCTIONS FOR ACTIONS
     
