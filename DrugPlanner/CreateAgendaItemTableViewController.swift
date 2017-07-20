@@ -206,7 +206,7 @@ class CreateAgendaItemTableViewController: UITableViewController {
     @IBAction func undwindWithSelectedDrug (segue: UIStoryboardSegue) {
         if let drugPickerController = segue.source as? ChooseDrugTableViewController {
             if let selectedDrug = drugPickerController.selectedDrug {
-                drug = selectedDrug
+                self.drug = selectedDrug
             }
         }
         
