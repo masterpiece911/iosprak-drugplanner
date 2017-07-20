@@ -166,7 +166,7 @@ class CreateAgendaItemTableViewController: UITableViewController {
         
         var dayString = daysLabelPrefix
         
-        for weekdayIndex in 0...6 {
+        for weekdayIndex in 1...7 {
             
             let weekday = AgendaItem.getWeekday(for: weekdayIndex)
             
@@ -206,7 +206,7 @@ class CreateAgendaItemTableViewController: UITableViewController {
     @IBAction func undwindWithSelectedDrug (segue: UIStoryboardSegue) {
         if let drugPickerController = segue.source as? ChooseDrugTableViewController {
             if let selectedDrug = drugPickerController.selectedDrug {
-                drug = selectedDrug
+                self.drug = selectedDrug
             }
         }
         

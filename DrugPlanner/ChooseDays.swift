@@ -42,7 +42,7 @@ class ChooseDays: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "WeekdayCell")!
             
-        let weekday = AgendaItem.getWeekday(for: indexPath.row)
+        let weekday = AgendaItem.getWeekday(for: indexPath.row + 1)
             
         cell.textLabel?.text = weekday.rawValue
             
@@ -61,7 +61,7 @@ class ChooseDays: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         if let cell = tableView.cellForRow(at: indexPath){
             
-            let weekday = AgendaItem.getWeekday(for: indexPath.row)
+            let weekday = AgendaItem.getWeekday(for: indexPath.row + 1)
             
             weekdays[weekday]! = !weekdays[weekday]!
             

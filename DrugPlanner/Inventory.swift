@@ -118,6 +118,12 @@ class Inventory : RepositoryClass {
     
     func remove(inventory item : InventoryItem) {
         
+        for (handler, inventoryItem) in databaseHandlers {
+            if inventoryItem?.InventoryItemKey == item.InventoryItemKey {
+                stopListening(to: item, using: handler)
+                break;
+            }
+        }
         inventoryReference?.child(item.InventoryItemKey).removeValue()
     }
     
@@ -127,18 +133,23 @@ class Inventory : RepositoryClass {
             
             (snapshot) in
             
-            let newItem = InventoryItem(with: snapshot.key, with: snapshot.value as! NSDictionary)
-            
-            //self.items![self.items!.index(of: self.items!.getItem(with: item.InventoryItemKey)!)!] = newItem
-
-            for (index, item) in self.items!.enumerated() {
-                if (newItem.InventoryItemKey == item.InventoryItemKey) {
-                    self.items![index] = newItem
+            if let parameters = snapshot.value as? NSDictionary {
+                
+                let newItem = InventoryItem(with: snapshot.key, with: parameters)
+                
+                
+                
+                //self.items![self.items!.index(of: self.items!.getItem(with: item.InventoryItemKey)!)!] = newItem
+                
+                for (index, item) in self.items!.enumerated() {
+                    if (newItem.InventoryItemKey == item.InventoryItemKey) {
+                        self.items![index] = newItem
+                    }
                 }
+                
+                NotificationCenter.default.post(name: Notification.Name(rawValue: (InventoryStrings.ITEM_UPDATE.appending(item.InventoryItemKey))), object: newItem)
+                
             }
-            
-            NotificationCenter.default.post(name: Notification.Name(rawValue: (InventoryStrings.ITEM_UPDATE.appending(item.InventoryItemKey))), object: newItem)
-            
             
         }) {
             
