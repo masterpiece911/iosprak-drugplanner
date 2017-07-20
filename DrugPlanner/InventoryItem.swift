@@ -120,6 +120,14 @@ class InventoryItem: NSObject, NSCoding {
 
     }
     
+    func convertStringToImage(photoAsString: String) -> UIImage{
+        
+        let dataDecoded : Data = Data(base64Encoded: photoAsString, options: .ignoreUnknownCharacters)!
+        let decodedimage = UIImage(data: dataDecoded)
+        return decodedimage!;
+        
+    }
+    
     var InventoryItemKey: String {
         get{
             return key;

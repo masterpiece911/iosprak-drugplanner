@@ -28,8 +28,6 @@ class CreateInventoryItemTableViewController: UITableViewController, UINavigatio
         image.delegate = self
         
         image.sourceType = UIImagePickerControllerSourceType.photoLibrary
-        //TRY
-        image.mediaTypes = [kUTTypeImage as String]
         
         image.allowsEditing = true
         self.present(image, animated: true)
@@ -54,7 +52,7 @@ class CreateInventoryItemTableViewController: UITableViewController, UINavigatio
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             myImageView.image = image
         
-            let imageData:NSData = UIImagePNGRepresentation(image)! as NSData
+            let imageData:NSData = UIImageJPEGRepresentation(image, 0.8)! as NSData
             let strBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
             photoString64 = strBase64
             }

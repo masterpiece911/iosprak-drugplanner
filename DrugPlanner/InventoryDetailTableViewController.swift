@@ -19,6 +19,7 @@ class InventoryDetailTableViewController: UITableViewController {
     @IBOutlet weak var doseDetail: UILabel!
     @IBOutlet weak var doseDetailLabel: UILabel!
     @IBOutlet weak var notesDetail: UILabel!
+    @IBOutlet var imageView: UIImageView!
 
     
     
@@ -137,6 +138,9 @@ class InventoryDetailTableViewController: UITableViewController {
         doseDetail.text = String(item.InventoryItemDose)
         expiryDateDetail.text = dateF.string(from: item.InventoryItemExpiryDate)
         notesDetail.text = item.InventoryItemNotes
+        if item.InventoryItemPhoto != "" {
+        imageView.image = item.convertStringToImage(photoAsString: item.InventoryItemPhoto)
+        }
 
     }
     

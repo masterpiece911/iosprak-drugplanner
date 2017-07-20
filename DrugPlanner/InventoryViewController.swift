@@ -58,12 +58,10 @@ class InventoryViewController: UITableViewController {
         
         cell.numberLabel.text = String(item.InventoryItemAmount)
         cell.dosesLabel.text = " " + getDrugTypeDescriptions(for: item.InventoryItemType)["amountUnit"]!
-        
-        let photoString = String(item.InventoryItemPhoto)
-        let dataDecoded : Data = Data(base64Encoded: photoString!, options: .ignoreUnknownCharacters)!
-        let decodedimage = UIImage(data: dataDecoded)
-        
-        cell.drugImage.image = decodedimage
+        if String(item.InventoryItemPhoto) != "" {
+                    cell.drugImage.image = item.convertStringToImage(photoAsString: item.InventoryItemPhoto)
+        }
+
         
         return cell
     }
