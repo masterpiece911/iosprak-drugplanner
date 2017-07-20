@@ -225,6 +225,8 @@ class InventoryEditController: UITableViewController {
     
     @IBOutlet var imageView: UIImageView!
     
+    
+    // PHOTO SECTION - image TAPPED -> FullScreen:
     @IBAction func imageTapped(_ sender: UITapGestureRecognizer) {
         
         let MainStory:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -234,8 +236,8 @@ class InventoryEditController: UITableViewController {
         
         self.navigationController?.pushViewController(desVC!, animated: true)
         
-        
     }
+    //DELETE PHOTO Section
     
     
     
