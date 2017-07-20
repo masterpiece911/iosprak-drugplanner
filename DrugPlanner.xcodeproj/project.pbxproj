@@ -36,6 +36,7 @@
 		F04907C21EF9084F001852D0 /* CreateInventoryItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04907C11EF9084F001852D0 /* CreateInventoryItemTableViewController.swift */; };
 		F04907C41EF90949001852D0 /* InventoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04907C31EF90949001852D0 /* InventoryItem.swift */; };
 		F04907CA1EFA6F2F001852D0 /* ChooseTypeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04907C91EFA6F2F001852D0 /* ChooseTypeTableViewController.swift */; };
+		F0CC68641F21160100AF2BF4 /* DetailPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CC68631F21160100AF2BF4 /* DetailPhotoViewController.swift */; };
 		F316749F1EE7FBF800355FFD /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = F316749E1EE7FBF800355FFD /* .gitignore */; };
 		F31674A41EE98C4100355FFD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31674A31EE98C4100355FFD /* LoginViewController.swift */; };
 		F31674A61EE98C9400355FFD /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F31674A51EE98C9400355FFD /* Login.storyboard */; };
@@ -100,6 +101,7 @@
 		F04907C11EF9084F001852D0 /* CreateInventoryItemTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateInventoryItemTableViewController.swift; sourceTree = "<group>"; };
 		F04907C31EF90949001852D0 /* InventoryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryItem.swift; sourceTree = "<group>"; };
 		F04907C91EFA6F2F001852D0 /* ChooseTypeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseTypeTableViewController.swift; sourceTree = "<group>"; };
+		F0CC68631F21160100AF2BF4 /* DetailPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailPhotoViewController.swift; sourceTree = "<group>"; };
 		F316749E1EE7FBF800355FFD /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		F31674A31EE98C4100355FFD /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F31674A51EE98C9400355FFD /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				F04907C91EFA6F2F001852D0 /* ChooseTypeTableViewController.swift */,
 				F001E4491F03C980005DACF4 /* InventoryDetailTableViewController.swift */,
 				F321162B1F1B76D40052414A /* InventoryEditController.swift */,
+				F0CC68631F21160100AF2BF4 /* DetailPhotoViewController.swift */,
 			);
 			name = "Inventory Views";
 			sourceTree = "<group>";
@@ -618,6 +621,7 @@
 				F340908E1ED5FB7D00548661 /* AppDelegate.swift in Sources */,
 				F04907C41EF90949001852D0 /* InventoryItem.swift in Sources */,
 				84B9E4B31EE7FC880070BB7D /* HistoryViewController.swift in Sources */,
+				F0CC68641F21160100AF2BF4 /* DetailPhotoViewController.swift in Sources */,
 				84B9E4AD1EE7FBC80070BB7D /* AgendaViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

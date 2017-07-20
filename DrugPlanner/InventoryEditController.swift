@@ -220,9 +220,23 @@ class InventoryEditController: UITableViewController {
         }
     }
     
+    
     //PHOTO SECTION
     
     @IBOutlet var imageView: UIImageView!
+    
+    @IBAction func imageTapped(_ sender: UITapGestureRecognizer) {
+        
+        let MainStory:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let desVC = MainStory.instantiateViewController(withIdentifier: "DetailPhotoViewController") as? DetailPhotoViewController
+        
+        desVC?.getImage = imageView.image!
+        
+        self.navigationController?.pushViewController(desVC!, animated: true)
+        
+        
+    }
+    
     
     
     // DELETE ACTIONS
