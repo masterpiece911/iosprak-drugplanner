@@ -141,7 +141,7 @@ class AgendaItem {
        
         var weekdayDictionary = [Weekday : Bool] ()
         
-        for weekdayIndex in 0...6 {
+        for weekdayIndex in 1...7 {
             
             let weekday = AgendaItem.getWeekday(for: weekdayIndex)
             weekdayDictionary[weekday] = dict[weekday.rawValue] as? Bool
@@ -153,19 +153,19 @@ class AgendaItem {
     
     static func getWeekday(for index : Int) -> Weekday {
         switch (index) {
-        case 0:
-            return .Monday
-        case 1:
-            return .Tuesday
         case 2:
-            return .Wednesday
+            return .Monday
         case 3:
-            return .Thursday
+            return .Tuesday
         case 4:
-            return .Friday
+            return .Wednesday
         case 5:
-            return .Saturday
+            return .Thursday
         case 6:
+            return .Friday
+        case 7:
+            return .Saturday
+        case 1:
             return .Sunday
         default:
             print("weird weekday selected")

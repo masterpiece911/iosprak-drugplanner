@@ -166,7 +166,7 @@ class CreateAgendaItemTableViewController: UITableViewController {
         
         var dayString = daysLabelPrefix
         
-        for weekdayIndex in 0...6 {
+        for weekdayIndex in 1...7 {
             
             let weekday = AgendaItem.getWeekday(for: weekdayIndex)
             
