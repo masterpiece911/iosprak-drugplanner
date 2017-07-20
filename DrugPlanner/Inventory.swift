@@ -129,7 +129,13 @@ class Inventory : RepositoryClass {
             
             let newItem = InventoryItem(with: snapshot.key, with: snapshot.value as! NSDictionary)
             
-            self.items![self.items!.index(of: self.items!.getItem(with: item.InventoryItemKey)!)!] = newItem
+            //self.items![self.items!.index(of: self.items!.getItem(with: item.InventoryItemKey)!)!] = newItem
+
+            for (index, item) in self.items!.enumerated() {
+                if (newItem.InventoryItemKey == item.InventoryItemKey) {
+                    self.items![index] = newItem
+                }
+            }
             
             NotificationCenter.default.post(name: Notification.Name(rawValue: (InventoryStrings.ITEM_UPDATE.appending(item.InventoryItemKey))), object: newItem)
             

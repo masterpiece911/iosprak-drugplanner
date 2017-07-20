@@ -178,3 +178,31 @@ class AgendaItem {
     }
     
 }
+
+extension Array where Element : AgendaItem {
+    
+    func getAgenda(with key : String) -> AgendaItem? {
+        
+        for item in self {
+            
+            if item.agendaKey == key {
+                return item
+            }
+
+        }
+        return nil
+    }
+    
+    func hasAgenda(with key : String) -> Bool {
+        
+        for item in self {
+            
+            if item.agendaKey == key {
+                return true
+            }
+            
+        }
+        return false
+    }
+    
+}

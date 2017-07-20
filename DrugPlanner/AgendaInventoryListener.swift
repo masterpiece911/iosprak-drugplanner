@@ -11,18 +11,18 @@ import Firebase
 
 class AgendaInventoryListener {
     
-    typealias NCListener = NSObjectProtocol
+    typealias NCObserver = NSObjectProtocol
     
     var databaseHandle : DatabaseHandle?
     
-    var ncListener : NCListener?
+    var ncListener : NCObserver?
     
     var agendaItem : AgendaItem
     
     var inventoryItem : InventoryItem
     
     
-    init(_ handle : DatabaseHandle, _ listener : NCListener, _ agendaItem : AgendaItem, _ inventoryItem : InventoryItem  ) {
+    init(_ handle : DatabaseHandle, _ listener : NCObserver, _ agendaItem : AgendaItem, _ inventoryItem : InventoryItem  ) {
         
         self.databaseHandle = handle
         self.ncListener = listener
@@ -31,7 +31,14 @@ class AgendaInventoryListener {
         
     }
     
-    func replaceListeners(with handle : DatabaseHandle, with listener : NCListener) {
+    init(_ agendaItem : AgendaItem, _ inventoryItem : InventoryItem) {
+        self.agendaItem = agendaItem
+        self.inventoryItem = inventoryItem
+        self.databaseHandle = nil
+        self.ncListener = nil
+    }
+    
+    func replaceListeners(with handle : DatabaseHandle, with listener : NCObserver) {
         
         self.databaseHandle = handle
         self.ncListener = listener
@@ -40,8 +47,10 @@ class AgendaInventoryListener {
     
     func stopListening (){
         
-        Inventory.instance.stopListening(to: self.inventoryItem, using: self.databaseHandle!)
-        NotificationCenter.default.removeObserver(ncListener!)
+        if let handle = self.databaseHandle, let listener = self.ncListener {
+            Inventory.instance.stopListening(to: self.inventoryItem, using: handle)
+            NotificationCenter.default.removeObserver(listener)
+        }
         
         self.databaseHandle = nil
         self.ncListener = nil

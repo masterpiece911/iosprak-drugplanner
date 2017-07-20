@@ -74,27 +74,29 @@ class Agenda : RepositoryClass {
                         
                         let newItem = AgendaItem(with: fItem.key as! String, with: fItem.value as! NSDictionary)
                         
-                        let drugHandler = Inventory.instance.listenToChanges(in: newItem.agendaDrug)
+                        var inventoryListener : AgendaInventoryListener
+                        
+                        if (self.inventoryItemListeners.containsAgenda(with: newItem.agendaKey)) {
+                            inventoryListener = self.inventoryItemListeners.getListenerWithAgenda(with: newItem.agendaKey)!
+                        } else {
+                            inventoryListener = AgendaInventoryListener(newItem, newItem.agendaDrug)
+                            self.inventoryItemListeners.append(inventoryListener)
+                        }
+                        
+                        inventoryListener.stopListening()
+                        
+                        let drugHandle = Inventory.instance.listenToChanges(in: newItem.agendaDrug)
                         
                         let notificationHandle = NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: (InventoryStrings.ITEM_UPDATE.appending(newItem.agendaDrug.InventoryItemKey))), object: nil, queue: nil, using: self.inventoryItemOfAgendaItemDidChange)
                         
-                        newItems.append(newItem)
+                        inventoryListener.replaceListeners(with: drugHandle!, with: notificationHandle)
                         
-                        if self.inventoryItemListeners.containsAgenda(with: newItem.agendaKey) {
-                            
-                            self.inventoryItemListeners.getListenerWithAgenda(with: newItem.agendaKey)?.replaceListeners(with: drugHandler!, with: notificationHandle)
-                            
-                        } else {
-                            
-                            self.inventoryItemListeners.append(AgendaInventoryListener.init(drugHandler!, notificationHandle, newItem, newItem.agendaDrug))
-                            
-                        }
+                        newItems.append(newItem)
                         
                     }
                     
                     self.items = newItems
-                    
-                    
+                                        
                 }
                 
                 
@@ -126,18 +128,24 @@ class Agenda : RepositoryClass {
     func inventoryItemOfAgendaItemDidChange (notification: Notification) {
         
         let notificationString = notification.name.rawValue
+        let newInventoryItem = notification.object as! InventoryItem
         let inventoryItemKey = notificationString.replacingOccurrences(of: InventoryStrings.ITEM_UPDATE, with: "")
-        var newAgendaItem : AgendaItem?
         for listener in inventoryItemListeners {
             if listener.inventoryItem.InventoryItemKey == inventoryItemKey {
                 
-                newAgendaItem = listener.agendaItem
-                newAgendaItem?.agendaDrug = (Inventory.instance.items?.getItem(with: listener.inventoryItem.InventoryItemKey))!
+                let newAgendaItem = listener.agendaItem
+                //newAgendaItem?.agendaDrug = (Inventory.instance.items?.getItem(with: listener.inventoryItem.InventoryItemKey))!
+                newAgendaItem.agendaDrug = newInventoryItem
                 
+                for (index, item) in self.items!.enumerated() {
+                    if item.agendaKey == newAgendaItem.agendaKey {
+                        items?[index] = newAgendaItem
+                        break;
+                    }
+                }
+                break
             }
         }
-
-        NotificationCenter.default.post(name: Notification.Name(rawValue: AgendaStrings.AGENDA_UPDATE), object: nil)
         
     }
     
