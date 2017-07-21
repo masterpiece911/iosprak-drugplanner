@@ -228,12 +228,12 @@
 				F04907C31EF90949001852D0 /* InventoryItem.swift */,
 				84A0D46D1F1640ED00572F43 /* AgendaItem.swift */,
 				84E4291D1F21EBF30096E665 /* EventItem.swift */,
+				844DAACD1F19616D008CC4EF /* DateExtension.swift */,
+				843D8E881F1E7E5F00EDE32F /* AgendaInventoryListener.swift */,
 				84F63A6C1F1768CA004F4C09 /* Repository.swift */,
 				84F63A711F177BC2004F4C09 /* User.swift */,
 				843023201F18057500BC9EED /* Inventory.swift */,
-				844DAACD1F19616D008CC4EF /* DateExtension.swift */,
 				849F65EB1F1B7C07005E150D /* Agenda.swift */,
-				843D8E881F1E7E5F00EDE32F /* AgendaInventoryListener.swift */,
 				84E4291B1F21E9CD0096E665 /* Events.swift */,
 			);
 			name = "Database Functions";

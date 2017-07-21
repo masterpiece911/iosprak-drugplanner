@@ -10,4 +10,6 @@ class AgendaStrings {
     
     static let AGENDA_UPDATE = "agenda_update"
     
+    static let AGENDA_POPULATED = "agenda_populated"
+    
 }

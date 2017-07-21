@@ -23,7 +23,9 @@ class Events : RepositoryClass {
     
     var eventsReference : DatabaseReference?
     
-    var databaseHandlers = [(DatabaseHandle, EventItem)]()
+    var databaseHandlers = [(DatabaseHandle, EventItem?)]()
+    
+    var agendaListener : NCListener?
     
     private init() {
         
@@ -31,8 +33,11 @@ class Events : RepositoryClass {
     
     func populate(from ref: DatabaseReference) {
         
-        //TODO
-        print("events populated")
+        self.eventsReference = ref.child(User.instance.ID!).child(Events.eventsKey)
+        
+        items = [EventItem]()
+        
+        self.agendaListener = NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: AgendaStrings.AGENDA_POPULATED), object: nil, queue: nil, using: agendaDidPopulate)
         
     }
     
@@ -41,4 +46,36 @@ class Events : RepositoryClass {
         // TODO
         print("events purged")
     }
+    
+    func agendaDidPopulate ( notification : Notification) {
+        
+        if let handle = eventsReference?.observe(.value, with: {
+            (snapshot) in
+            
+            if snapshot.value != nil {
+                
+                var newItems = [EventItem]()
+                
+                if let eventDictionary = snapshot.value as? NSDictionary {
+                    
+                    for fItem in (eventDictionary) {
+                        
+                        let newItem = EventItem(fItem.key as! String, with: fItem.value as! NSDictionary)
+                        
+                        
+                        
+                    }
+                    
+                }
+                
+            }
+            
+            
+        }) {
+            databaseHandlers.append((handle, nil))
+        }
+        
+    }
+    
+    typealias NCListener = NSObjectProtocol
 }

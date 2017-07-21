@@ -18,7 +18,7 @@ class Inventory : RepositoryClass {
     var items : [InventoryItem]? {
         willSet{
             if let items = self.items {
-                if items == [] {
+                if items.isEmpty {
                     self.didPopulate = true
                 }
             }

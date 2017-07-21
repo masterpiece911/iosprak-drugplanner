@@ -31,20 +31,20 @@ class UserNotifications : NSObject{
         
         center.setNotificationCategories([agendaCategory, inventoryExpiredCategory, inventoryRanoutCategory])
         
-//        center.delegate = self
+        center.delegate = self
     }
     
     
 }
 
-//extension UserNotifications : UNUserNotificationCenterDelegate {
-//    
-//    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-//        <#code#>
-//    }
-//    
-//    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-//        <#code#>
-//    }
-//    
-//}
+extension UserNotifications : UNUserNotificationCenterDelegate {
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        
+    }
+    
+}

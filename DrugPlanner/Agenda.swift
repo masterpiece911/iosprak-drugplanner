@@ -16,6 +16,13 @@ class Agenda : RepositoryClass {
     static let agendaKey = "Agenda"
     
     var items : [AgendaItem]? {
+        willSet{
+            if let items = self.items {
+                if items.isEmpty {
+                    self.didPopulate = true
+                }
+            }
+        }
         didSet{
             // TODO: IMPLEMENT ORDER HERE
             NotificationCenter.default.post(name: Notification.Name(rawValue: AgendaStrings.AGENDA_UPDATE), object: nil)
@@ -27,6 +34,14 @@ class Agenda : RepositoryClass {
     var databaseHandlers = [(DatabaseHandle, AgendaItem?)]()
     
     var inventoryListener : Any?
+    
+    var didPopulate : Bool = false {
+        didSet {
+            if didPopulate {
+                NotificationCenter.default.post(name: Notification.Name(rawValue: AgendaStrings.AGENDA_POPULATED), object: nil)
+            }
+        }
+    }
     
     var inventoryItemListeners = [AgendaInventoryListener]()
     

@@ -10,10 +10,9 @@ import Foundation
 import UIKit
 import Firebase
 
-class InventoryItem: NSObject, NSCoding {
+class InventoryItem  {
     
 
-    
     struct ItemKeys{
         static let Key = "key";
         static let Name = "name";
@@ -33,8 +32,6 @@ class InventoryItem: NSObject, NSCoding {
     private var expiryDate : Date!
     private var notes : String!
     private var photo : String!
-    
-    override init() {}
     
     init(key: String, name: String, type: DrugType, amount: Int, dose: Int, expiryDate: Date, notes: String, photo:String){
         self.key = key;
@@ -72,52 +69,6 @@ class InventoryItem: NSObject, NSCoding {
             ItemKeys.Notes      : self.notes,
             ItemKeys.Photo      : self.photo
         ]
-    }
-    
-    required init?(coder decoder: NSCoder) {
-        if let keyObj = decoder.decodeObject(forKey: ItemKeys.Key)
-            as? String {
-            key = keyObj;
-        }
-        if let nameObj = decoder.decodeObject(forKey: ItemKeys.Name)
-            as? String {
-            name = nameObj;
-        }
-        if let typeObj = decoder.decodeObject(forKey: ItemKeys.ItemType)
-            as? DrugType {
-            type = typeObj;
-        }
-        if let amountObj = decoder.decodeObject(forKey: ItemKeys.Amount)
-            as? Int {
-            amount = amountObj;
-        }
-        if let doseObj = decoder.decodeObject(forKey: ItemKeys.Dose)
-            as? Int {
-            dose = doseObj;
-        }
-        if let expiryDateObj = decoder.decodeObject(forKey: ItemKeys.ExpiryDate)
-            as? Date {
-            expiryDate = expiryDateObj;
-        }
-        if let notesObj = decoder.decodeObject(forKey: ItemKeys.Notes)
-            as? String {
-            notes = notesObj;
-        }
-        if let photoObj = decoder.decodeObject(forKey: ItemKeys.Photo)
-            as? String {
-            photo = photoObj;
-        }
-    }
-    
-    func encode(with coder: NSCoder) {
-        coder.encode(name, forKey: ItemKeys.Name);
-        coder.encode(type, forKey: ItemKeys.ItemType);
-        coder.encode(amount, forKey: ItemKeys.Amount);
-        coder.encode(dose, forKey: ItemKeys.Dose);
-        coder.encode(expiryDate, forKey: ItemKeys.ExpiryDate);
-        coder.encode(notes, forKey: ItemKeys.Notes);
-        coder.encode(photo, forKey: ItemKeys.Photo);
-
     }
     
     func convertStringToImage(photoAsString: String) -> UIImage{

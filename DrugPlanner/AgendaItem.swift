@@ -8,7 +8,7 @@
 
 import Foundation
 
-class AgendaItem {
+class AgendaItem  {
     
     struct ItemKeys {
         
