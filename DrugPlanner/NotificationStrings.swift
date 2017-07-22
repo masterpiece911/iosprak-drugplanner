@@ -8,10 +8,10 @@
 
 class NotificationStrings {
     
-    static let AGENDA_REMINDER = EventItem.type.AGENDA_REMINDER.rawValue
+    static let AGENDA_REMINDER = EventItem.EventType.AGENDA_REMINDER.rawValue
     static let AGENDA_FOLLOWED_ACTION = "agenda_followed_action"
     static let AGENDA_IGNORED_ACTION = "agenda_ignored_action"
     
-    static let INVENTORY_EXPIRED = EventItem.type.INVENTORY_EXPIRED.rawValue
-    static let INVENTORY_RANOUT  = EventItem.type.INVENTORY_RANOUT.rawValue
+    static let INVENTORY_EXPIRED = EventItem.EventType.INVENTORY_EXPIRED.rawValue
+    static let INVENTORY_RANOUT  = EventItem.EventType.INVENTORY_RANOUT.rawValue
 }
