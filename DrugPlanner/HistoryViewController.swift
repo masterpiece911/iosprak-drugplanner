@@ -36,7 +36,16 @@ class HistoryViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return 0
     }
-
+    @IBAction func saveNewHistoryItem (segue : UIStoryboardSegue) {
+        
+        if let createHistoryController = segue.source as? CreateHistoryItemController {
+            
+            
+           /* Agenda.instance.add(new: createAgendaController.agendaItem!)
+            */
+        }
+        
+    }
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
