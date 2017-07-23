@@ -20,6 +20,8 @@ class InventoryItem  {
         static let Amount = "amount";
         static let Dose = "dose";
         static let ExpiryDate = "expiryDate";
+        static let DoctorName = "doctorName";
+        static let DoctorPhone = "doctorPhone";
         static let Notes = "notes";
         static let Photo = "photo";
     }
@@ -30,16 +32,20 @@ class InventoryItem  {
     private var amount : Int!
     private var dose : Int!
     private var expiryDate : Date!
+    private var doctorName : String!
+    private var doctorPhone : String!
     private var notes : String!
     private var photo : String!
     
-    init(key: String, name: String, type: DrugType, amount: Int, dose: Int, expiryDate: Date, notes: String, photo:String){
+    init(key: String, name: String, type: DrugType, amount: Int, dose: Int, expiryDate: Date, doctorName: String, doctorPhone: String, notes: String, photo:String){
         self.key = key;
         self.name = name;
         self.type = type;
         self.amount = amount;
         self.dose = dose;
         self.expiryDate = expiryDate;
+        self.doctorName = doctorName;
+        self.doctorPhone = doctorPhone;
         self.notes = notes;
         self.photo = photo
     }
@@ -53,6 +59,8 @@ class InventoryItem  {
         self.amount     = parameters[ItemKeys.Amount] as! Int
         self.dose       = parameters[ItemKeys.Dose] as! Int
         self.expiryDate = Date(from: parameters[ItemKeys.ExpiryDate]! as! Int)
+        self.doctorName = parameters[ItemKeys.DoctorName] as! String
+        self.doctorPhone = parameters[ItemKeys.DoctorPhone] as! String
         self.notes      = parameters[ItemKeys.Notes] as! String
         self.photo      = parameters[ItemKeys.Photo] as! String
         
@@ -66,6 +74,8 @@ class InventoryItem  {
             ItemKeys.Dose       : self.dose ,
             ItemKeys.ExpiryDate : self.expiryDate.transformToInt() ,
             ItemKeys.ItemType   : self.type.rawValue ,
+            ItemKeys.DoctorName : self.doctorName,
+            ItemKeys.DoctorPhone: self.doctorPhone,
             ItemKeys.Notes      : self.notes,
             ItemKeys.Photo      : self.photo
         ]
@@ -75,6 +85,7 @@ class InventoryItem  {
         
         let dataDecoded : Data = Data(base64Encoded: photoAsString, options: .ignoreUnknownCharacters)!
         let decodedimage = UIImage(data: dataDecoded)
+        print(photoAsString)
         return decodedimage!;
         
     }
@@ -129,6 +140,24 @@ class InventoryItem  {
         }
         set{
             expiryDate = newValue;
+        }
+    }
+    
+    var InventoryItemDoctorName: String {
+        get{
+            return doctorName;
+        }
+        set{
+            doctorName = newValue;
+        }
+    }
+    
+    var InventoryItemDoctorPhone: String {
+        get{
+            return doctorPhone;
+        }
+        set{
+            doctorPhone = newValue;
         }
     }
     

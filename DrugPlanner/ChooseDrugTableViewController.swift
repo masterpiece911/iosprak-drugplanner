@@ -15,7 +15,15 @@ class ChooseDrugTableViewController: UITableViewController {
     var selectedDrug : InventoryItem? {
         didSet{
             if let drug = selectedDrug {
-               // selectedDrugIndex = drugs.index(of: drug)
+                selectedDrugIndex = drugs.index(where: {
+                    drugItem in
+                    if drug.InventoryItemKey == drugItem.InventoryItemKey {
+                        return true
+                    } else {
+                        return false
+                    }
+                    
+                })
             }
         }
     }
