@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6742310372BA213BDD780B2B /* Pods_DrugPlannerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B39F3B70FE7DDC2C0F299B1F /* Pods_DrugPlannerUITests.framework */; };
-		7F73776B4E178FA0C07D1C7D /* Pods_DrugPlanner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6239CF361B80DB6CA7CCE126 /* Pods_DrugPlanner.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		78A372031F24A41F00405634 /* Scheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A372021F24A41F00405634 /* Scheduler.swift */; };
+		7F73776B4E178FA0C07D1C7D /* Pods_DrugPlanner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6239CF361B80DB6CA7CCE126 /* Pods_DrugPlanner.framework */; };
 		843023211F18057500BC9EED /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843023201F18057500BC9EED /* Inventory.swift */; };
 		843D8E891F1E7E5F00EDE32F /* AgendaInventoryListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843D8E881F1E7E5F00EDE32F /* AgendaInventoryListener.swift */; };
 		844DAACE1F19616D008CC4EF /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844DAACD1F19616D008CC4EF /* DateExtension.swift */; };
@@ -235,13 +236,15 @@
 		84F63A6B1F176876004F4C09 /* Database Functions */ = {
 			isa = PBXGroup;
 			children = (
+				F04907C31EF90949001852D0 /* InventoryItem.swift */,
+				84A0D46D1F1640ED00572F43 /* AgendaItem.swift */,
+				84E4291D1F21EBF30096E665 /* EventItem.swift */,
+				844DAACD1F19616D008CC4EF /* DateExtension.swift */,
+				843D8E881F1E7E5F00EDE32F /* AgendaInventoryListener.swift */,
 				84F63A6C1F1768CA004F4C09 /* Repository.swift */,
 				84F63A711F177BC2004F4C09 /* User.swift */,
-				F04907C31EF90949001852D0 /* InventoryItem.swift */,
 				843023201F18057500BC9EED /* Inventory.swift */,
-				84A0D46D1F1640ED00572F43 /* AgendaItem.swift */,
 				849F65EB1F1B7C07005E150D /* Agenda.swift */,
-				84E4291D1F21EBF30096E665 /* EventItem.swift */,
 				84E4291B1F21E9CD0096E665 /* Events.swift */,
 				F0A41BD31F24BD5B0053FD61 /* HistoryItem.swift */,
 			);
@@ -414,7 +417,7 @@
 				TargetAttributes = {
 					F34090891ED5FB7D00548661 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = 4LZHRCY488;
+						DevelopmentTeam = 6P3H8CGW6L;
 						ProvisioningStyle = Automatic;
 					};
 					F340909D1ED5FB7D00548661 = {
@@ -794,11 +797,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 4LZHRCY488;
+				DEVELOPMENT_TEAM = 6P3H8CGW6L;
 				INFOPLIST_FILE = DrugPlanner/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.sahin.DrugPlanner;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.DrugPlanner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
@@ -812,11 +815,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 4LZHRCY488;
+				DEVELOPMENT_TEAM = 6P3H8CGW6L;
 				INFOPLIST_FILE = DrugPlanner/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.sahin.DrugPlanner;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.DrugPlanner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;

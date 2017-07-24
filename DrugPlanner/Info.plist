@@ -20,6 +20,10 @@
 	<string>1</string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>tel</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
@@ -34,10 +38,6 @@
 	<array>
 		<string>armv7</string>
 	</array>
-    <key>LSApplicationQueriesSchemes</key>
-    <array>
-        <string>tel</string>
-    </array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
