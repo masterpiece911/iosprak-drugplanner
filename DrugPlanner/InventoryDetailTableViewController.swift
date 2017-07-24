@@ -152,6 +152,7 @@ class InventoryDetailTableViewController: UITableViewController {
         }
         notesDetail.text = item.InventoryItemNotes
         if item.InventoryItemPhoto != "" {
+            imageView.contentMode = .scaleAspectFit
         imageView.image = item.convertStringToImage(photoAsString: item.InventoryItemPhoto)
         }
 
@@ -179,11 +180,15 @@ class InventoryDetailTableViewController: UITableViewController {
     
     @IBAction func imageTapped(_ sender: UITapGestureRecognizer) {
         let imageView = sender.view as! UIImageView
-        let newImageView = UIImageView(image: imageView.image)
+        
+        let newImageView = UIImageView()
+        
         newImageView.frame = UIScreen.main.bounds
         newImageView.backgroundColor = .black
-        newImageView.contentMode = .scaleToFill
+        newImageView.contentMode = .scaleAspectFit
         newImageView.isUserInteractionEnabled = true
+        
+        newImageView.image = imageView.image
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
         newImageView.addGestureRecognizer(tap)
