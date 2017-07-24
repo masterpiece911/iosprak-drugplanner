@@ -50,6 +50,8 @@
 		F33E087F1EFA851000CAF516 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33E087E1EFA851000CAF516 /* SettingsViewController.swift */; };
 		F340908E1ED5FB7D00548661 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F340908D1ED5FB7D00548661 /* AppDelegate.swift */; };
 		F34090951ED5FB7D00548661 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F34090941ED5FB7D00548661 /* Assets.xcassets */; };
+		F35832971F24D44700167439 /* AgendaDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35832961F24D44700167439 /* AgendaDetailTableViewController.swift */; };
+		F35832991F26286D00167439 /* AgendaEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35832981F26286D00167439 /* AgendaEditController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,6 +127,8 @@
 		F34090A41ED5FB7D00548661 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F34090A91ED5FB7D00548661 /* DrugPlannerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DrugPlannerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F34090AF1ED5FB7D00548661 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F35832961F24D44700167439 /* AgendaDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgendaDetailTableViewController.swift; sourceTree = "<group>"; };
+		F35832981F26286D00167439 /* AgendaEditController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgendaEditController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +198,8 @@
 				84D60AFB1F0CE34200D9D3F1 /* CreateAgendaItemTableViewController.swift */,
 				84DE1F391F162B3E00948878 /* ChooseDays.swift */,
 				84A3AE771F162E8C0098D918 /* ChooseDrugTableViewController.swift */,
+				F35832961F24D44700167439 /* AgendaDetailTableViewController.swift */,
+				F35832981F26286D00167439 /* AgendaEditController.swift */,
 			);
 			name = "Agenda Views";
 			sourceTree = "<group>";
@@ -614,6 +620,8 @@
 			files = (
 				844DAACE1F19616D008CC4EF /* DateExtension.swift in Sources */,
 				849F65EC1F1B7C07005E150D /* Agenda.swift in Sources */,
+				F35832991F26286D00167439 /* AgendaEditController.swift in Sources */,
+				F35832971F24D44700167439 /* AgendaDetailTableViewController.swift in Sources */,
 				843023211F18057500BC9EED /* Inventory.swift in Sources */,
 				F321162C1F1B76D40052414A /* InventoryEditController.swift in Sources */,
 				F04907CA1EFA6F2F001852D0 /* ChooseTypeTableViewController.swift in Sources */,

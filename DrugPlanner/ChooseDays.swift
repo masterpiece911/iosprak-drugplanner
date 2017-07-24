@@ -11,6 +11,7 @@ import UIKit
 class ChooseDays: UITableViewController {
 
     var weekdays : [AgendaItem.Weekday : Bool]!
+    var source : UIViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,6 +78,14 @@ class ChooseDays: UITableViewController {
         
     }
 
+    @IBAction func donePressed(_ sender: Any) {
+        if let _ = source as? AgendaEditController {
+            performSegue(withIdentifier: "UnwindToAgendaEdit", sender: self)
+        }
+        if let _ = source as? CreateAgendaItemTableViewController {
+            performSegue(withIdentifier: "UnwindToAgendaCreation", sender: self)
+        }
+    }
     /*
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

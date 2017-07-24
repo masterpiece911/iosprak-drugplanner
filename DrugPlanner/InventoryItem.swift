@@ -85,7 +85,6 @@ class InventoryItem  {
         
         let dataDecoded : Data = Data(base64Encoded: photoAsString, options: .ignoreUnknownCharacters)!
         let decodedimage = UIImage(data: dataDecoded)
-        print(photoAsString)
         return decodedimage!;
         
     }
