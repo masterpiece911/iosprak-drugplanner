@@ -102,8 +102,7 @@ class AgendaEditController: UITableViewController {
         }
         
         if (dayString != daysLabelPrefix) {
-            print("Test")
-            print(dayString)
+
             weekdaysLabel.text = dayString
         } else {
             weekdaysLabel.text = daysLabelDefault

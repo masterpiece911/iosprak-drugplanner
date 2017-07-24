@@ -91,7 +91,6 @@ class AgendaDetailTableViewController: UITableViewController {
             let weekday = AgendaItem.getWeekday(for: weekdayIndex)
         
             if let boolean = (weekdays?[weekday]) {
-                print(boolean)
                 if(boolean){
                     if(dayString == daysLabelPrefix) {
                         dayString += weekday.rawValue
@@ -105,8 +104,7 @@ class AgendaDetailTableViewController: UITableViewController {
         }
         
         if (dayString != daysLabelPrefix) {
-            print("Test")
-            print(dayString)
+
             daysDetail.text = dayString
         } else {
             daysDetail.text = daysLabelDefault
