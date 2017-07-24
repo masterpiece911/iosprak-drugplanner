@@ -2,7 +2,7 @@
 //  DateExtension.swift
 //  DrugPlanner
 //
-//  Created by admin on 14.07.17.
+//  Created by Noyan Tillman Sahin on 14.07.17.
 //  Copyright © 2017 Gruppe 9. All rights reserved.
 //
 

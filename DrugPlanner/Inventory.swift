@@ -2,7 +2,7 @@
 //  Inventory.swift
 //  DrugPlanner
 //
-//  Created by Admin on 13.07.17.
+//  Created by Noyan Tillman Sahin on 13.07.17.
 //  Copyright © 2017 Gruppe 9. All rights reserved.
 //
 

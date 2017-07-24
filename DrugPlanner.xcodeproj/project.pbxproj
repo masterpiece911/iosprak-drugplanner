@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6742310372BA213BDD780B2B /* Pods_DrugPlannerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B39F3B70FE7DDC2C0F299B1F /* Pods_DrugPlannerUITests.framework */; };
+		78A372031F24A41F00405634 /* Scheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A372021F24A41F00405634 /* Scheduler.swift */; };
 		7F73776B4E178FA0C07D1C7D /* Pods_DrugPlanner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6239CF361B80DB6CA7CCE126 /* Pods_DrugPlanner.framework */; };
 		843023211F18057500BC9EED /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843023201F18057500BC9EED /* Inventory.swift */; };
 		843D8E891F1E7E5F00EDE32F /* AgendaInventoryListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843D8E881F1E7E5F00EDE32F /* AgendaInventoryListener.swift */; };
@@ -40,6 +41,9 @@
 		F04907C21EF9084F001852D0 /* CreateInventoryItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04907C11EF9084F001852D0 /* CreateInventoryItemTableViewController.swift */; };
 		F04907C41EF90949001852D0 /* InventoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04907C31EF90949001852D0 /* InventoryItem.swift */; };
 		F04907CA1EFA6F2F001852D0 /* ChooseTypeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04907C91EFA6F2F001852D0 /* ChooseTypeTableViewController.swift */; };
+		F0A41BD21F24A8400053FD61 /* CreateHistoryItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A41BD11F24A8400053FD61 /* CreateHistoryItemController.swift */; };
+		F0A41BD41F24BD5B0053FD61 /* HistoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A41BD31F24BD5B0053FD61 /* HistoryItem.swift */; };
+		F0A41BD61F24CD3B0053FD61 /* HistoryDrugChooseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A41BD51F24CD3B0053FD61 /* HistoryDrugChooseTableViewController.swift */; };
 		F0CC68641F21160100AF2BF4 /* DetailPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CC68631F21160100AF2BF4 /* DetailPhotoViewController.swift */; };
 		F316749F1EE7FBF800355FFD /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = F316749E1EE7FBF800355FFD /* .gitignore */; };
 		F31674A41EE98C4100355FFD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31674A31EE98C4100355FFD /* LoginViewController.swift */; };
@@ -77,6 +81,7 @@
 		2A4DD3D20A90B65201C53441 /* Pods-DrugPlannerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrugPlannerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DrugPlannerUITests/Pods-DrugPlannerUITests.release.xcconfig"; sourceTree = "<group>"; };
 		3C9A457204B3CD450D32B3B6 /* Pods-DrugPlanner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrugPlanner.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DrugPlanner/Pods-DrugPlanner.debug.xcconfig"; sourceTree = "<group>"; };
 		6239CF361B80DB6CA7CCE126 /* Pods_DrugPlanner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DrugPlanner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		78A372021F24A41F00405634 /* Scheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scheduler.swift; sourceTree = "<group>"; };
 		843023201F18057500BC9EED /* Inventory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Inventory.swift; sourceTree = "<group>"; };
 		843D8E881F1E7E5F00EDE32F /* AgendaInventoryListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgendaInventoryListener.swift; sourceTree = "<group>"; };
 		844DAACD1F19616D008CC4EF /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
@@ -111,6 +116,9 @@
 		F04907C11EF9084F001852D0 /* CreateInventoryItemTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateInventoryItemTableViewController.swift; sourceTree = "<group>"; };
 		F04907C31EF90949001852D0 /* InventoryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryItem.swift; sourceTree = "<group>"; };
 		F04907C91EFA6F2F001852D0 /* ChooseTypeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseTypeTableViewController.swift; sourceTree = "<group>"; };
+		F0A41BD11F24A8400053FD61 /* CreateHistoryItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateHistoryItemController.swift; sourceTree = "<group>"; };
+		F0A41BD31F24BD5B0053FD61 /* HistoryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryItem.swift; sourceTree = "<group>"; };
+		F0A41BD51F24CD3B0053FD61 /* HistoryDrugChooseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryDrugChooseTableViewController.swift; sourceTree = "<group>"; };
 		F0CC68631F21160100AF2BF4 /* DetailPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailPhotoViewController.swift; sourceTree = "<group>"; };
 		F316749E1EE7FBF800355FFD /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		F31674A31EE98C4100355FFD /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -186,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				848315801F212F5A001D7E9F /* UserNotifications.swift */,
+				78A372021F24A41F00405634 /* Scheduler.swift */,
 			);
 			name = "User Notifications";
 			sourceTree = "<group>";
@@ -224,6 +233,8 @@
 				84B9E4B21EE7FC880070BB7D /* HistoryViewController.swift */,
 				F04907BD1EF8F6D5001852D0 /* HistoryHeaderTableViewCell.swift */,
 				F04907BF1EF8F6ED001852D0 /* HistoryContentTableViewCell.swift */,
+				F0A41BD11F24A8400053FD61 /* CreateHistoryItemController.swift */,
+				F0A41BD51F24CD3B0053FD61 /* HistoryDrugChooseTableViewController.swift */,
 			);
 			name = "History Views";
 			sourceTree = "<group>";
@@ -241,6 +252,7 @@
 				843023201F18057500BC9EED /* Inventory.swift */,
 				849F65EB1F1B7C07005E150D /* Agenda.swift */,
 				84E4291B1F21E9CD0096E665 /* Events.swift */,
+				F0A41BD31F24BD5B0053FD61 /* HistoryItem.swift */,
 			);
 			name = "Database Functions";
 			sourceTree = "<group>";
@@ -303,9 +315,9 @@
 				84F63A6E1F17706C004F4C09 /* Static Strings */,
 				84F63A6B1F176876004F4C09 /* Database Functions */,
 				F33E087D1EFA84E500CAF516 /* Settings View */,
+				84B9E4B51EE7FF580070BB7D /* Inventory Views */,
 				F31674A01EE98BFA00355FFD /* Login View */,
 				84B9E4B61EE7FF6E0070BB7D /* History Views */,
-				84B9E4B51EE7FF580070BB7D /* Inventory Views */,
 				84B9E4B41EE7FF340070BB7D /* Agenda Views */,
 				F340908D1ED5FB7D00548661 /* AppDelegate.swift */,
 				849D02711ED6430F0093CA15 /* Main.storyboard */,
@@ -623,11 +635,14 @@
 				F35832991F26286D00167439 /* AgendaEditController.swift in Sources */,
 				F35832971F24D44700167439 /* AgendaDetailTableViewController.swift in Sources */,
 				843023211F18057500BC9EED /* Inventory.swift in Sources */,
+				F0A41BD21F24A8400053FD61 /* CreateHistoryItemController.swift in Sources */,
 				F321162C1F1B76D40052414A /* InventoryEditController.swift in Sources */,
+				78A372031F24A41F00405634 /* Scheduler.swift in Sources */,
 				F04907CA1EFA6F2F001852D0 /* ChooseTypeTableViewController.swift in Sources */,
 				848315831F212FC4001D7E9F /* NotificationStrings.swift in Sources */,
 				F31674A41EE98C4100355FFD /* LoginViewController.swift in Sources */,
 				843D8E891F1E7E5F00EDE32F /* AgendaInventoryListener.swift in Sources */,
+				F0A41BD41F24BD5B0053FD61 /* HistoryItem.swift in Sources */,
 				F332EF201EF16C360040714C /* InventoryTableViewCell.swift in Sources */,
 				84D60AFC1F0CE34200D9D3F1 /* CreateAgendaItemTableViewController.swift in Sources */,
 				F04907BE1EF8F6D5001852D0 /* HistoryHeaderTableViewCell.swift in Sources */,
@@ -653,6 +668,7 @@
 				F04907C41EF90949001852D0 /* InventoryItem.swift in Sources */,
 				84B9E4B31EE7FC880070BB7D /* HistoryViewController.swift in Sources */,
 				F0CC68641F21160100AF2BF4 /* DetailPhotoViewController.swift in Sources */,
+				F0A41BD61F24CD3B0053FD61 /* HistoryDrugChooseTableViewController.swift in Sources */,
 				84B9E4AD1EE7FBC80070BB7D /* AgendaViewController.swift in Sources */,
 				84E4291E1F21EBF30096E665 /* EventItem.swift in Sources */,
 			);
@@ -788,13 +804,16 @@
 			baseConfigurationReference = 3C9A457204B3CD450D32B3B6 /* Pods-DrugPlanner.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 6P3H8CGW6L;
 				INFOPLIST_FILE = DrugPlanner/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.DrugPlanner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -803,13 +822,16 @@
 			baseConfigurationReference = C6DBAEFE5AAB9A0B959F4BFB /* Pods-DrugPlanner.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 6P3H8CGW6L;
 				INFOPLIST_FILE = DrugPlanner/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.DrugPlanner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

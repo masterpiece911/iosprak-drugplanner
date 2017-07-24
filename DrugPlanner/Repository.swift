@@ -2,7 +2,7 @@
 //  Repository.swift
 //  DrugPlanner
 //
-//  Created by admin on 13.07.17.
+//  Created by Noyan Tillman Sahin on 13.07.17.
 //  Copyright © 2017 Gruppe 9. All rights reserved.
 //
 
@@ -24,8 +24,8 @@ class Repository {
         
         let repositories : [RepositoryClass] = [
             Inventory.instance,
-            Agenda.instance
-            //TODO ADD HISTORY HERE
+            Agenda.instance,
+            Events.instance
         ]
         
         repositorySubclasses.append(contentsOf: repositories)
