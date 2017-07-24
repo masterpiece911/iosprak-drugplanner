@@ -63,12 +63,12 @@ class CreateInventoryItemTableViewController: UITableViewController, UINavigatio
         let image = UIImagePickerController()
         image.delegate = self
         
+        image.allowsEditing = true
         image.sourceType = UIImagePickerControllerSourceType.camera
         
         image.cameraCaptureMode = .photo
         image.modalPresentationStyle = .fullScreen
 
-        image.allowsEditing = true
         self.present(image, animated: true, completion: nil)
     }
     
@@ -81,7 +81,7 @@ class CreateInventoryItemTableViewController: UITableViewController, UINavigatio
             photoString64 = strBase64
             }
             
-        else
+        else 
         {
             // Display error
         }
