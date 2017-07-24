@@ -86,11 +86,9 @@ class AgendaEditController: UITableViewController {
         for weekdayIndex in 1...7 {
             
             let weekday = AgendaItem.getWeekday(for: weekdayIndex)
-            print(weekday)
-            print(weekdayIndex)
+
             
             if let boolean = (weekdays?[weekday]) {
-                print(boolean)
                 if(boolean){
                     if(dayString == daysLabelPrefix) {
                         dayString += weekday.rawValue

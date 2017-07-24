@@ -73,7 +73,7 @@ class AgendaViewController: UITableViewController {
                 cell.dateLabel?.text = "tomorrow"
             }else{
                 while(!agendaItem.agendaWeekdays[day]! && weekdayCount < 8){
-                    if(weekday == 8){
+                    if(weekday == 7){
                         weekday = 1;
                     }else{
                         weekday = weekday + 1
