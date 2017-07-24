@@ -61,9 +61,9 @@ class Inventory : RepositoryClass {
             
             (snapshot) in
             
+            var newItems = [InventoryItem]()
+            
             if snapshot.value != nil {
-                
-                var newItems = [InventoryItem]()
                 
                 if let inventoryDictionary = snapshot.value as? NSDictionary {
                     
@@ -75,13 +75,11 @@ class Inventory : RepositoryClass {
                         
                     }
                     
-                    self.items = newItems
-                    
                 }
                 
-                
-                
             }
+            
+            self.items = newItems
             
         }) {
             databaseHandlers.append((handle, nil))
