@@ -35,7 +35,7 @@ class CreateAgendaItemTableViewController: UITableViewController {
             if let drugName = drug?.InventoryItemName,
                 let drugType = drug?.InventoryItemType {
                 drugNameLabel.text? = drugName
-                doseUnitLabel.text? = getDrugTypeDescriptions(for: drugType)["doseUnit"]!
+                doseUnitLabel.text? = getDrugTypeDescriptions(for: drugType)["amountUnit"]!
             }
         }
     }
@@ -196,6 +196,7 @@ class CreateAgendaItemTableViewController: UITableViewController {
         if (segue.identifier == "ChooseWeekdays" ) {
             
             if let weekdayChooserController = segue.destination as? ChooseDays {
+                weekdayChooserController.source = segue.source
                 weekdayChooserController.weekdays = weekdays
             }
             
@@ -219,7 +220,7 @@ class CreateAgendaItemTableViewController: UITableViewController {
         performSegue(withIdentifier: "saveAgendaItem", sender: self)
     }
     
-    @IBAction func unwindWithSelectedWeekdays (segue : UIStoryboardSegue) {
+    @IBAction func unwindWithSelectedWeekdaysForCreation (segue : UIStoryboardSegue) {
         if let weekdayPickerController = segue.source as? ChooseDays {
             self.weekdays = weekdayPickerController.weekdays
         }

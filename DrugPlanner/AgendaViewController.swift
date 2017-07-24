@@ -16,16 +16,6 @@ class AgendaViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        /*let dateFormatter2 = DateFormatter()
-        dateFormatter2.dateStyle = .short
-        dateFormatter2.timeStyle = .none
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .none
-        dateFormatter.timeStyle = .short
-        let time1 = dateFormatter.date(from: "11:45 PM")
-        let date1 = dateFormatter2.date(from: "11/5/2020")
-        
-        items = [AgendaItem(for: "Aspirin"  , with: 10, at: time1!, on: AgendaItem.generateWeekdayDictionary(), until: date1!, using: "wawwawaw"),AgendaItem(for: "Ibu"  , with: 10, at: time1!, on: AgendaItem.generateWeekdayDictionary(), until: date1!, using: "wawwawaw")]*/
         
         items = Agenda.instance.items!
         
@@ -55,13 +45,16 @@ class AgendaViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AgendaCell", for: indexPath) as! AgendaTableViewCell
 
         let agendaItem = items[indexPath.row]
-//        print(agendaItem.agendaDrug.InventoryItemPhoto)
-//        cell.drugImage?.image = agendaItem.agendaDrug.convertStringToImage(photoAsString: agendaItem.agendaDrug.InventoryItemPhoto)
-        
+
+        if String(agendaItem.agendaDrug.InventoryItemPhoto) != "" {
+            cell.drugImage?.image = agendaItem.agendaDrug.convertStringToImage(photoAsString: agendaItem.agendaDrug.InventoryItemPhoto)
+        }
         cell.nameLabel?.text = agendaItem.agendaDrug.InventoryItemName
         var weekday = getDayOfWeek(today: Date())
         var day = AgendaItem.getWeekday(for: weekday)
-        let timeOlder = Date().transformToInt() < agendaItem.agendaTime.transformToInt()
+        let timeOlder = Date() < agendaItem.agendaTime
+        
+        print(timeOlder)
         if(agendaItem.agendaWeekdays[day]! && timeOlder){
             cell.dateLabel?.text = "today"
         }else{
@@ -79,8 +72,7 @@ class AgendaViewController: UITableViewController {
                     }
                     day = AgendaItem.getWeekday(for: weekday)
                 }
-                print(agendaItem.agendaDrug.InventoryItemName)
-                print(day.rawValue)
+
                 cell.dateLabel?.text = day.rawValue
             }
         }
@@ -151,9 +143,24 @@ class AgendaViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
         
-    
+        if(segue.identifier == "AgendaDetail") {
+            
+            if let cell = sender as? UITableViewCell {
+                let indexPath = tableView.indexPath(for: cell)
+                if let index = indexPath?.row {
+                    
+                    let selectedItem = items[index]
+                    if let destination = segue.destination as? UINavigationController {
+                        if let topDestination = destination.topViewController as? AgendaDetailTableViewController{
+                            topDestination.item = selectedItem
+                        }
+                    }
+                }
+            }
+            
+        }
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -192,15 +199,19 @@ class AgendaViewController: UITableViewController {
         
     }
     
-    @IBAction func cancelAgendaItem (segue : UIStoryboardSegue) {
+    @IBAction func unwindAgendaItemDetail (segue : UIStoryboardSegue) {
+
         
     }
-    
-    @IBAction func editAgendaItem (segue : UIStoryboardSegue) {
-        
-    }
+
     
     @IBAction func deleteAgendaItem (segue : UIStoryboardSegue) {
+        
+        if let editAgendaController = segue.source as? AgendaEditController {
+            
+            Agenda.instance.delete(editAgendaController.item)
+            
+        }
         
     }
     
