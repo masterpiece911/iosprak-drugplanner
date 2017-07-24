@@ -89,11 +89,11 @@ class AgendaDetailTableViewController: UITableViewController {
         for weekdayIndex in 1...7 {
             
             let weekday = AgendaItem.getWeekday(for: weekdayIndex)
-            print(weekday)
-            print(weekdayIndex)
+//            print(weekday)
+//            print(weekdayIndex)
             
             if let boolean = (weekdays?[weekday]) {
-                print(boolean)
+//                print(boolean)
                 if(boolean){
                     if(dayString == daysLabelPrefix) {
                         dayString += weekday.rawValue
@@ -107,8 +107,8 @@ class AgendaDetailTableViewController: UITableViewController {
         }
         
         if (dayString != daysLabelPrefix) {
-            print("Test")
-            print(dayString)
+//            print("Test")
+//            print(dayString)
             daysDetail.text = dayString
         } else {
             daysDetail.text = daysLabelDefault
@@ -205,7 +205,7 @@ class AgendaDetailTableViewController: UITableViewController {
                 }
             }))
             alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (alert) in
-                print("User Canceld")
+//                print("User Canceld")
             }))
             present(alert, animated: true, completion: nil)
             return false

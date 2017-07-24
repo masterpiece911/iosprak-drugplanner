@@ -70,6 +70,8 @@ class Scheduler {
         
         var index = 0
         
+        print(" WILL SCHEDULE THESE NOTIFICATIONS: ")
+
         for event in self.allEvents {
             
             if (index < 64) {
@@ -83,6 +85,7 @@ class Scheduler {
         
         print(index)
         
+        print("HAVE SCHEDULED THESE NOTIFICATIONS: ")
         UNUserNotificationCenter.current().getPendingNotificationRequests(completionHandler: {
             (notificationRequests) in
             

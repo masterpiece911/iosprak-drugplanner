@@ -77,6 +77,7 @@ class UserNotifications : NSObject{
         let center = UNUserNotificationCenter.current()
         center.add(request, withCompletionHandler: {
             error in
+            print(request.debugDescription)
             if error != nil {
                 print(error!.localizedDescription)
             }

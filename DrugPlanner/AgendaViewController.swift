@@ -54,7 +54,7 @@ class AgendaViewController: UITableViewController {
         var day = AgendaItem.getWeekday(for: weekday)
         let timeOlder = Date() < agendaItem.agendaTime
         
-        print(timeOlder)
+//        print(timeOlder)
         if(agendaItem.agendaWeekdays[day]! && timeOlder){
             cell.dateLabel?.text = "today"
         }else{
