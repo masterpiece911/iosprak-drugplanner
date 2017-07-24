@@ -2,7 +2,7 @@
 //  AgendaItem.swift
 //  DrugPlanner
 //
-//  Created by admin on 12.07.17.
+//  Created by Noyan Tillman Sahin on 12.07.17.
 //  Copyright © 2017 Gruppe 9. All rights reserved.
 //
 
