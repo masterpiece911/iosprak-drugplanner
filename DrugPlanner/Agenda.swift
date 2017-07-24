@@ -80,10 +80,10 @@ class Agenda : RepositoryClass {
         
         if let handle = agendaReference?.observe(.value, with: {
             (snapshot) in
-            
+            var newItems = [AgendaItem]()
+
             if snapshot.value != nil {
                 
-                var newItems = [AgendaItem]()
                 
                 if let agendaDictionary = snapshot.value as? NSDictionary {
                     
@@ -112,10 +112,10 @@ class Agenda : RepositoryClass {
                         
                     }
                     
-                    self.items = newItems
-                                        
+                    
                 }
-                
+                self.items = newItems
+
                 
             }
         }) {
