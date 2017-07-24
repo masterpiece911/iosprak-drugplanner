@@ -203,6 +203,11 @@ class AgendaViewController: UITableViewController {
 
         
     }
+    
+    @IBAction func cancelAgendaCreate (Segue : UIStoryboardSegue) {
+        
+        
+    }
 
     
     @IBAction func deleteAgendaItem (segue : UIStoryboardSegue) {
