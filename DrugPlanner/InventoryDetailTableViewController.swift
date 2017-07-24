@@ -18,6 +18,8 @@ class InventoryDetailTableViewController: UITableViewController {
     @IBOutlet weak var expiryDateDetail: UILabel!
     @IBOutlet weak var doseDetail: UILabel!
     @IBOutlet weak var doseDetailLabel: UILabel!
+    @IBOutlet weak var doctorNameField: UILabel!
+    @IBOutlet weak var doctorPhoneField: UITextView!
     @IBOutlet weak var notesDetail: UILabel!
     @IBOutlet var imageView: UIImageView!
 
@@ -137,11 +139,42 @@ class InventoryDetailTableViewController: UITableViewController {
         amountDetail.text = String(item.InventoryItemAmount)
         doseDetail.text = String(item.InventoryItemDose)
         expiryDateDetail.text = dateF.string(from: item.InventoryItemExpiryDate)
+        if (item.InventoryItemDoctorName == ""){
+            doctorNameField.text = "No Doctor"
+            doctorPhoneField.text = "No Phone"
+        }else{
+            
+            doctorNameField.text = item.InventoryItemDoctorName
+            doctorPhoneField.text = item.InventoryItemDoctorPhone
+            
+            doctorPhoneField.isEditable = false;
+            doctorPhoneField.dataDetectorTypes = UIDataDetectorTypes.all;
+        }
         notesDetail.text = item.InventoryItemNotes
         if item.InventoryItemPhoto != "" {
         imageView.image = item.convertStringToImage(photoAsString: item.InventoryItemPhoto)
         }
 
+    }
+    
+    func textView(textView: UITextView, shouldInteractWithURL URL: NSURL, inRange characterRange: NSRange) -> Bool {
+        
+        if (URL.scheme == "tel"){
+            let phoneNumber = URL.absoluteString?.replacingOccurrences(of: "tel:", with: "")
+            let alert = UIAlertController(title: phoneNumber, message: nil, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Call", style: .default, handler: { (alert) in
+                if UIApplication.shared.canOpenURL(URL as URL) {
+                    UIApplication.shared.openURL(URL as URL)
+                }
+            }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (alert) in
+                print("User Canceld")
+            }))
+            present(alert, animated: true, completion: nil)
+            return false
+        }
+        
+        return true
     }
     
     @IBAction func imageTapped(_ sender: UITapGestureRecognizer) {

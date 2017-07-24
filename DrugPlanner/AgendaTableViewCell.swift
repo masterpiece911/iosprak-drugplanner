@@ -13,6 +13,8 @@ class AgendaTableViewCell: UITableViewCell {
     @IBOutlet var drugImage : UIImageView?
     @IBOutlet var nameLabel : UILabel?
     @IBOutlet var hintLabel : UILabel?
+    @IBOutlet var dateLabel: UILabel!
+    @IBOutlet var timeLabel: UILabel!
     
     var scheduleID : Int!
 
