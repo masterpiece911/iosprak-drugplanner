@@ -2,7 +2,7 @@
 //  MainViewController.swift
 //  
 //
-//  Created by admin on 07.06.17.
+//  Created by Noyan Tillman Sahin on 07.06.17.
 //
 //
 

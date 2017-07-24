@@ -39,7 +39,6 @@ class InventoryEditController: UITableViewController {
         dateF.dateStyle = .medium
         dateF.timeStyle = .none
         
-        print(item.InventoryItemName)
         // SET FIELDS TO INVENTORY ITEM VALUES
         nameField.text = item.InventoryItemName
         amountField.text = String(item.InventoryItemAmount)

@@ -2,7 +2,7 @@
 //  InventoryViewController.swift
 //  DrugPlanner
 //
-//  Created by admin on 07.06.17.
+//  Created by Noyan Tillman Sahin on 07.06.17.
 //  Copyright © 2017 Gruppe 9. All rights reserved.
 //
 
@@ -39,7 +39,6 @@ class InventoryViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(items)
         // #warning Incomplete implementation, return the number of rows
         return items.count
     }

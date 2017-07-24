@@ -70,7 +70,9 @@ class Agenda : RepositoryClass {
             }
         }
         agendaReference = nil
+        NotificationCenter.default.removeObserver(inventoryListener!)
         inventoryListener = nil
+        
         
     }
     
@@ -124,19 +126,31 @@ class Agenda : RepositoryClass {
     
     func add(new item: AgendaItem) {
         
-        agendaReference?.childByAutoId().setValue(item.toDictionary())
+        let itemKey = agendaReference?.childByAutoId().key
+        agendaReference?.child(itemKey!).setValue(item.toDictionary())
+        item.agendaKey = itemKey!
+        
+        Events.instance.add(EventItem(EventItem.EventType.AGENDA_REMINDER, for: item, using: itemKey!))
         
     }
     
     func edit(_ item: AgendaItem) {
         
         agendaReference?.child(item.agendaKey).setValue(item.toDictionary())
+        if let agendaEvent = Events.instance.items?.getItem(with: item.agendaKey) {
+            Events.instance.edit(agendaEvent)
+        } else {
+            Events.instance.add(EventItem(EventItem.EventType.AGENDA_REMINDER, for: item, using: item.agendaKey))
+        }
         
     }
     
     func delete(_ item: AgendaItem) {
         
         agendaReference?.child(item.agendaKey).removeValue()
+        if let agendaEvent = Events.instance.items?.getItem(with: item.agendaKey) {
+            Events.instance.delete(agendaEvent)
+        }
         
     }
     
