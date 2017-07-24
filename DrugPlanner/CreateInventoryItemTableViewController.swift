@@ -20,8 +20,32 @@ class CreateInventoryItemTableViewController: UITableViewController, UINavigatio
     @IBOutlet weak var expiryDatePicker: UITextField!
     @IBOutlet weak var noteField: UITextField!
     
+    @IBOutlet weak var doctorNameField: UITextField!
+    @IBOutlet weak var doctorPhoneField: UITextField!
+   
+    @IBOutlet weak var cellDoctorName: UITableViewCell!
+
+    @IBOutlet weak var cellDoctorPhone: UITableViewCell!
     var photoString64: String?
     
+    @IBAction func prescriptionNeededSwitch(_ sender: UISwitch) {
+        if (sender.isOn == true){
+            doctorNameField.isEnabled = true;
+            doctorPhoneField.isEnabled = true;
+            doctorNameField.isUserInteractionEnabled = true;
+            doctorPhoneField.isUserInteractionEnabled = true;
+            
+            cellDoctorName.isUserInteractionEnabled = true;
+            cellDoctorPhone.isUserInteractionEnabled = true;
+        }else{
+            doctorNameField.isEnabled = false;
+            doctorPhoneField.isEnabled = false;
+            doctorNameField.isUserInteractionEnabled = false;
+            doctorPhoneField.isUserInteractionEnabled = false;
+            cellDoctorName.isUserInteractionEnabled = false;
+            cellDoctorPhone.isUserInteractionEnabled = false;
+        }
+    }
     // Fotos Section
     @IBAction func importImage(_ sender: Any) {
         let image = UIImagePickerController()
@@ -108,6 +132,10 @@ class CreateInventoryItemTableViewController: UITableViewController, UINavigatio
         
         amountUnitLabel.text = ""
         doseUnitLabel.text = ""
+        cellDoctorName.isUserInteractionEnabled = false;
+        cellDoctorPhone.isUserInteractionEnabled = false;
+        
+
         
         expiryDatePicker.addTarget(self, action: #selector(datePickerSelected), for: .editingDidBegin)
         expiryDatePicker.addTarget(self, action: #selector(datePickerUnselected), for: .editingDidEnd)
@@ -194,8 +222,8 @@ class CreateInventoryItemTableViewController: UITableViewController, UINavigatio
         } else if (segue.identifier == "SaveInventoryItem") {
             
             if let photostring = photoString64{
-                item = InventoryItem(key: "test", name: nameField.text!, type: DrugType(rawValue: typeLabel.text!)!, amount: Int(amountField.text!)!, dose: Int(doseField.text!)!, expiryDate: expiryDate!, notes: noteField.text!, photo: photostring)} else {
-                item = InventoryItem(key: "test", name: nameField.text!, type: DrugType(rawValue: typeLabel.text!)!, amount: Int(amountField.text!)!, dose: Int(doseField.text!)!, expiryDate: expiryDate!, notes: noteField.text!, photo: "")
+                item = InventoryItem(key: "test", name: nameField.text!, type: DrugType(rawValue: typeLabel.text!)!, amount: Int(amountField.text!)!, dose: Int(doseField.text!)!, expiryDate: expiryDate!,doctorName: doctorNameField.text!, doctorPhone: doctorPhoneField.text!, notes: noteField.text!, photo: photostring)} else {
+                item = InventoryItem(key: "test", name: nameField.text!, type: DrugType(rawValue: typeLabel.text!)!, amount: Int(amountField.text!)!, dose: Int(doseField.text!)!, expiryDate: expiryDate!, doctorName: doctorNameField.text!, doctorPhone: doctorPhoneField.text!, notes: noteField.text!, photo: "")
             }
         }
         
@@ -248,6 +276,18 @@ class CreateInventoryItemTableViewController: UITableViewController, UINavigatio
         if let text = expiryDatePicker.text, !text.isEmpty {
         } else {
             entered = false
+        }
+        
+        if doctorNameField.isUserInteractionEnabled, let text = doctorNameField.text, !text.isEmpty{
+            
+        }else{
+            entered = false;
+        }
+        
+        if doctorPhoneField.isUserInteractionEnabled, let text = doctorPhoneField.text, !text.isEmpty{
+            
+        }else{
+            entered = false;
         }
         if type == "" {
             entered = false

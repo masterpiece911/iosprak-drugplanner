@@ -53,13 +53,13 @@ class AgendaItem  {
     func toDictionary() -> NSDictionary {
         
         let weekdayDic = [
+            Weekday.Sunday.rawValue    : weekdays[.Sunday],
             Weekday.Monday.rawValue    : weekdays[.Monday] ,
             Weekday.Tuesday.rawValue   : weekdays[.Tuesday] ,
             Weekday.Wednesday.rawValue : weekdays[.Wednesday] ,
             Weekday.Thursday.rawValue  : weekdays[.Thursday] ,
             Weekday.Friday.rawValue    : weekdays[.Friday] ,
-            Weekday.Saturday.rawValue  : weekdays[.Saturday] ,
-            Weekday.Sunday.rawValue    : weekdays[.Sunday]
+            Weekday.Saturday.rawValue  : weekdays[.Saturday]
         ]
         
         return [
@@ -127,13 +127,13 @@ class AgendaItem  {
     
     static func generateWeekdayDictionary() -> [Weekday : Bool] {
         return [
+            .Sunday : false,
             .Monday : false,
             .Tuesday : false,
             .Wednesday : false,
             .Thursday : false,
             .Friday : false,
-            .Saturday : false,
-            .Sunday : false
+            .Saturday : false
         ]
     }
     

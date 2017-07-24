@@ -55,10 +55,41 @@ class AgendaViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AgendaCell", for: indexPath) as! AgendaTableViewCell
 
         let agendaItem = items[indexPath.row]
+//        print(agendaItem.agendaDrug.InventoryItemPhoto)
+//        cell.drugImage?.image = agendaItem.agendaDrug.convertStringToImage(photoAsString: agendaItem.agendaDrug.InventoryItemPhoto)
         
         cell.nameLabel?.text = agendaItem.agendaDrug.InventoryItemName
-        cell.hintLabel?.text = agendaItem.agendaDrug.InventoryItemNotes
+        var weekday = getDayOfWeek(today: Date())
+        var day = AgendaItem.getWeekday(for: weekday)
+        let timeOlder = Date().transformToInt() < agendaItem.agendaTime.transformToInt()
+        if(agendaItem.agendaWeekdays[day]! && timeOlder){
+            cell.dateLabel?.text = "today"
+        }else{
+            
+            weekday = weekday + 1;
+            day = AgendaItem.getWeekday(for: weekday)
+            if(agendaItem.agendaWeekdays[day]!){
+                cell.dateLabel?.text = "tomorrow"
+            }else{
+                while(!agendaItem.agendaWeekdays[day]! && weekday <= 8){
+                    if(weekday == 8){
+                        weekday = 1;
+                    }else{
+                        weekday = weekday + 1
+                    }
+                    day = AgendaItem.getWeekday(for: weekday)
+                }
+                print(agendaItem.agendaDrug.InventoryItemName)
+                print(day.rawValue)
+                cell.dateLabel?.text = day.rawValue
+            }
+        }
         
+        let formatter = DateFormatter()
+        formatter.dateStyle = .none
+        formatter.timeStyle = .short
+        cell.timeLabel?.text = formatter.string(from: agendaItem.agendaTime)
+        cell.hintLabel?.text = agendaItem.agendaDrug.InventoryItemNotes
         return cell
     }
     
@@ -69,6 +100,16 @@ class AgendaViewController: UITableViewController {
         
     }
     
+    func getDayOfWeek(today:Date)->Int {
+        
+        let formatter  = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let todayDate = today
+        let myCalendar = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)!
+        let myComponents = myCalendar.components(.weekday, from: todayDate)
+        let weekDay = myComponents.weekday
+        return weekDay!
+    }
 
     /*
     // Override to support conditional editing of the table view.
