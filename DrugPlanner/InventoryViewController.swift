@@ -84,7 +84,6 @@ class InventoryViewController: UITableViewController {
             }
             
         }
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
