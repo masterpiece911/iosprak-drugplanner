@@ -35,6 +35,10 @@ class Agenda : RepositoryClass {
     
     var inventoryListener : Any?
     
+    var confirmedListener : Any?
+    
+    var ignoredListener : Any?
+    
     var didPopulate : Bool = false {
         didSet {
             if didPopulate {
@@ -56,6 +60,10 @@ class Agenda : RepositoryClass {
         items = [AgendaItem]()
         
         inventoryListener = NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: InventoryStrings.INVENTORY_POPULATED), object: nil, queue: nil, using: inventoryDidPopulate)
+        
+        confirmedListener = NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: NotificationStrings.AGENDA_FOLLOWED_ACTION), object: nil, queue: nil, using: agendaWasConfirmed)
+        
+        ignoredListener = NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: NotificationStrings.AGENDA_IGNORED_ACTION), object: nil, queue: nil, using: agendaWasIgnored)
         
     }
     
@@ -137,8 +145,9 @@ class Agenda : RepositoryClass {
     func edit(_ item: AgendaItem) {
         
         agendaReference?.child(item.agendaKey).setValue(item.toDictionary())
-        if let agendaEvent = Events.instance.items?.getItem(with: item.agendaKey) {
-            Events.instance.edit(agendaEvent)
+        if let _ = Events.instance.items?.getItem(with: item.agendaKey) {
+            
+            Events.instance.edit(EventItem(.AGENDA_REMINDER, for: item, using: item.agendaKey))
         } else {
             Events.instance.add(EventItem(EventItem.EventType.AGENDA_REMINDER, for: item, using: item.agendaKey))
         }
@@ -220,6 +229,31 @@ class Agenda : RepositoryClass {
                 break
             }
         }
+        
+    }
+    
+    func agendaWasConfirmed (notification: Notification) {
+        
+        let identifier = notification.object as! String
+        
+        for item in items! {
+            
+            if (identifier.hasPrefix(item.agendaKey)) {
+                let inventoryItem = item.agendaDrug
+                print(inventoryItem.InventoryItemAmount)
+                inventoryItem.InventoryItemAmount -= item.agendaDose
+                print(inventoryItem.InventoryItemAmount)
+                Inventory.instance.edit(inventory: inventoryItem)
+            }
+            
+        }
+        
+        
+    }
+    
+    func agendaWasIgnored (notification: Notification) {
+        
+        
         
     }
     
