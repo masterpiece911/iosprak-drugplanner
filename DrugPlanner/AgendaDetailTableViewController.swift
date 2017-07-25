@@ -201,7 +201,7 @@ class AgendaDetailTableViewController: UITableViewController {
                 }
             }))
             alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (alert) in
-                print("User Canceld")
+//                print("User Canceld")
             }))
             present(alert, animated: true, completion: nil)
             return false

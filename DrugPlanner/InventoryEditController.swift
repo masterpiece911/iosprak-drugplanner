@@ -261,11 +261,13 @@ class InventoryEditController: UITableViewController {
         let currentAmount     = Int(amountField.text!)!
         let currentDose       = Int(doseField.text!)!
         let currentExpiryDate = dateF.date(from: expiryDatePicker.text!)!
+        let currentNotes      = notesField.text!
         
         if (
-            currentName       != item.InventoryItemName   ||
+                currentName       != item.InventoryItemName   ||
                 currentAmount     != item.InventoryItemAmount ||
                 currentDose       != item.InventoryItemDose   ||
+                currentNotes      != item.InventoryItemNotes  ||
                 currentExpiryDate != item.InventoryItemExpiryDate
             ) {
             edited = true

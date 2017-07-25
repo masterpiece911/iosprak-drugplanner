@@ -34,7 +34,7 @@ class UserNotifications : NSObject{
         center.delegate = self
     }
     
-    func add(_ eventItem : (Date,EventItem)) {
+    func add(_ eventItem : (Date,EventItem), with index : Int) {
         
         let content = UNMutableNotificationContent()
         content.sound = UNNotificationSound.default()
@@ -73,10 +73,11 @@ class UserNotifications : NSObject{
             
         }
         
-        let request = UNNotificationRequest(identifier: eventItem.1.key, content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: (eventItem.1.key + index.description), content: content, trigger: trigger)
         let center = UNUserNotificationCenter.current()
         center.add(request, withCompletionHandler: {
             error in
+            print(request.debugDescription)
             if error != nil {
                 print(error!.localizedDescription)
             }
@@ -89,10 +90,37 @@ extension UserNotifications : UNUserNotificationCenterDelegate {
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         print("I recieved a notification")
+        switch(response.notification.request.content.categoryIdentifier) {
+        case NotificationStrings.AGENDA_REMINDER :
+            
+            switch (response.actionIdentifier) {
+            case UNNotificationDismissActionIdentifier : print("Notification dismissed")
+            case UNNotificationDefaultActionIdentifier : print("App launched")
+            case NotificationStrings.AGENDA_FOLLOWED_ACTION : print("Agenda Event confirmed")
+            case NotificationStrings.AGENDA_IGNORED_ACTION : print("Agenda Event ignored")
+                
+            default: print("Action identifier: \(response.actionIdentifier)")
+            }
+            
+            
+            
+        case NotificationStrings.INVENTORY_EXPIRED :
+            
+            print("reacted to Inventory Expired Notification")
+            
+        case NotificationStrings.INVENTORY_RANOUT :
+            
+            print("reacted to Inventory will run out Notification")
+            
+        default: print("Notification Category: \(response.notification.request.content.categoryIdentifier)")
+        }
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         print("I will present a notification")
+        
+        completionHandler(.sound)
+        completionHandler(.alert)
     }
     
 }

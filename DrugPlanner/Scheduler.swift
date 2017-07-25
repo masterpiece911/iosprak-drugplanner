@@ -70,10 +70,12 @@ class Scheduler {
         
         var index = 0
         
+        print(" WILL SCHEDULE THESE NOTIFICATIONS: ")
+
         for event in self.allEvents {
             
             if (index < 64) {
-                UserNotifications.instance.add(event)
+                UserNotifications.instance.add(event, with: index)
                 index = index + 1
             } else {
                 break
@@ -86,6 +88,8 @@ class Scheduler {
         UNUserNotificationCenter.current().getPendingNotificationRequests(completionHandler: {
             (notificationRequests) in
             
+            print("HAVE SCHEDULED THESE NOTIFICATIONS: ")
+
             for request in notificationRequests {
                 print(request.trigger.debugDescription)
             }
