@@ -25,7 +25,8 @@ class Repository {
         let repositories : [RepositoryClass] = [
             Inventory.instance,
             Agenda.instance,
-            Events.instance
+            Events.instance,
+            History.instance
         ]
         
         repositorySubclasses.append(contentsOf: repositories)

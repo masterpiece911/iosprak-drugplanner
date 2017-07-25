@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6742310372BA213BDD780B2B /* Pods_DrugPlannerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B39F3B70FE7DDC2C0F299B1F /* Pods_DrugPlannerUITests.framework */; };
+		7893EDA91F27F0A500BB283D /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7893EDA81F27F0A500BB283D /* History.swift */; };
+		7893EDAB1F27F85200BB283D /* HistoryStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7893EDAA1F27F85200BB283D /* HistoryStrings.swift */; };
 		78A372031F24A41F00405634 /* Scheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A372021F24A41F00405634 /* Scheduler.swift */; };
 		7F73776B4E178FA0C07D1C7D /* Pods_DrugPlanner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6239CF361B80DB6CA7CCE126 /* Pods_DrugPlanner.framework */; };
 		843023211F18057500BC9EED /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843023201F18057500BC9EED /* Inventory.swift */; };
@@ -81,6 +83,8 @@
 		2A4DD3D20A90B65201C53441 /* Pods-DrugPlannerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrugPlannerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DrugPlannerUITests/Pods-DrugPlannerUITests.release.xcconfig"; sourceTree = "<group>"; };
 		3C9A457204B3CD450D32B3B6 /* Pods-DrugPlanner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrugPlanner.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DrugPlanner/Pods-DrugPlanner.debug.xcconfig"; sourceTree = "<group>"; };
 		6239CF361B80DB6CA7CCE126 /* Pods_DrugPlanner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DrugPlanner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7893EDA81F27F0A500BB283D /* History.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
+		7893EDAA1F27F85200BB283D /* HistoryStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryStrings.swift; sourceTree = "<group>"; };
 		78A372021F24A41F00405634 /* Scheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scheduler.swift; sourceTree = "<group>"; };
 		843023201F18057500BC9EED /* Inventory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Inventory.swift; sourceTree = "<group>"; };
 		843D8E881F1E7E5F00EDE32F /* AgendaInventoryListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgendaInventoryListener.swift; sourceTree = "<group>"; };
@@ -253,6 +257,7 @@
 				849F65EB1F1B7C07005E150D /* Agenda.swift */,
 				84E4291B1F21E9CD0096E665 /* Events.swift */,
 				F0A41BD31F24BD5B0053FD61 /* HistoryItem.swift */,
+				7893EDA81F27F0A500BB283D /* History.swift */,
 			);
 			name = "Database Functions";
 			sourceTree = "<group>";
@@ -264,6 +269,7 @@
 				849F65E91F1AD3F0005E150D /* InventoryStrings.swift */,
 				849F65ED1F1B8627005E150D /* AgendaStrings.swift */,
 				848315821F212FC4001D7E9F /* NotificationStrings.swift */,
+				7893EDAA1F27F85200BB283D /* HistoryStrings.swift */,
 			);
 			name = "Static Strings";
 			sourceTree = "<group>";
@@ -632,6 +638,7 @@
 			files = (
 				844DAACE1F19616D008CC4EF /* DateExtension.swift in Sources */,
 				849F65EC1F1B7C07005E150D /* Agenda.swift in Sources */,
+				7893EDAB1F27F85200BB283D /* HistoryStrings.swift in Sources */,
 				F35832991F26286D00167439 /* AgendaEditController.swift in Sources */,
 				F35832971F24D44700167439 /* AgendaDetailTableViewController.swift in Sources */,
 				843023211F18057500BC9EED /* Inventory.swift in Sources */,
@@ -660,6 +667,7 @@
 				84DE1F3A1F162B3E00948878 /* ChooseDays.swift in Sources */,
 				84B9E4B11EE7FC5D0070BB7D /* InventoryViewController.swift in Sources */,
 				84F63A6D1F1768CA004F4C09 /* Repository.swift in Sources */,
+				7893EDA91F27F0A500BB283D /* History.swift in Sources */,
 				849F65EE1F1B8627005E150D /* AgendaStrings.swift in Sources */,
 				84A0D46E1F1640ED00572F43 /* AgendaItem.swift in Sources */,
 				84F63A701F17709B004F4C09 /* LoginStrings.swift in Sources */,
