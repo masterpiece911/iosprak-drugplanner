@@ -154,6 +154,51 @@ class Agenda : RepositoryClass {
         
     }
     
+    func listenToChanges (in item : AgendaItem) -> DatabaseHandle? {
+        
+        if let listener = agendaReference?.child(item.agendaKey).observe(.value, with: {
+            
+            (snapshot) in
+            
+            if let parameters = snapshot.value as? NSDictionary {
+                
+                let newItem = AgendaItem(with: snapshot.key, with: parameters)
+                
+                for(index, item) in self.items!.enumerated() {
+                    if (newItem.agendaKey == item.agendaKey) {
+                        self.items![index] = newItem
+                    }
+                }
+                
+                NotificationCenter.default.post(name: Notification.Name(rawValue: (AgendaStrings.ITEM_UPDATE.appending(item.agendaKey))), object: newItem)
+                
+            }
+            
+        }) {
+            
+            databaseHandlers.append((listener, item))
+            return listener
+            
+        }
+        
+        return nil
+        
+    }
+    
+    func stopListening (to item: AgendaItem, using handle: DatabaseHandle) {
+        
+        agendaReference?.child(item.agendaKey).removeObserver(withHandle: handle)
+        databaseHandlers.remove(at: databaseHandlers.index(where: {
+            
+            (itemHandle, inventoryItem) in
+            
+            let handlesEqual = itemHandle == handle
+            
+            return handlesEqual
+        })!)
+        
+    }
+    
     func inventoryItemOfAgendaItemDidChange (notification: Notification) {
         
         let notificationString = notification.name.rawValue
