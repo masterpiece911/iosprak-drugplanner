@@ -63,7 +63,6 @@ class AgendaViewController: UITableViewController {
         
         
         
-//        print(timeOlder)
         if(agendaItem.agendaWeekdays[day]! && timeOlder){
             cell.dateLabel?.text = "today"
         }else{
