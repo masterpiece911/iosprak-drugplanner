@@ -77,7 +77,6 @@ class UserNotifications : NSObject{
         let center = UNUserNotificationCenter.current()
         center.add(request, withCompletionHandler: {
             error in
-            print(request.debugDescription)
             if error != nil {
                 print(error!.localizedDescription)
             }
@@ -94,10 +93,22 @@ extension UserNotifications : UNUserNotificationCenterDelegate {
         case NotificationStrings.AGENDA_REMINDER :
             
             switch (response.actionIdentifier) {
-            case UNNotificationDismissActionIdentifier : print("Notification dismissed")
+            case UNNotificationDismissActionIdentifier :
+                
+                NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationStrings.AGENDA_IGNORED_ACTION), object: response.notification.request.identifier)
+                print("Notification dismissed")
+
             case UNNotificationDefaultActionIdentifier : print("App launched")
-            case NotificationStrings.AGENDA_FOLLOWED_ACTION : print("Agenda Event confirmed")
-            case NotificationStrings.AGENDA_IGNORED_ACTION : print("Agenda Event ignored")
+            case NotificationStrings.AGENDA_FOLLOWED_ACTION :
+                
+                NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationStrings.AGENDA_FOLLOWED_ACTION), object: response.notification.request.identifier)
+                
+                print("Agenda Event confirmed")
+                completionHandler()
+            case NotificationStrings.AGENDA_IGNORED_ACTION :
+                
+                NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationStrings.AGENDA_IGNORED_ACTION), object: response.notification.request.identifier)
+                print("Agenda Event ignored")
                 
             default: print("Action identifier: \(response.actionIdentifier)")
             }
@@ -119,8 +130,9 @@ extension UserNotifications : UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         print("I will present a notification")
         
-        completionHandler(.sound)
         completionHandler(.alert)
+        completionHandler(.sound)
+        
     }
     
 }
