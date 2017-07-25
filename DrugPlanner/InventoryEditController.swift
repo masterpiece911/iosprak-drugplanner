@@ -17,6 +17,8 @@ class InventoryEditController: UITableViewController {
     @IBOutlet weak var doseLabel: UILabel!
     @IBOutlet weak var expiryDatePicker: UITextField!
     @IBOutlet weak var notesField: UITextField!
+    @IBOutlet weak var imageView: UIImageView!
+
     
     
     
@@ -27,6 +29,8 @@ class InventoryEditController: UITableViewController {
     let editAlert   = UIAlertController(title: "Incomplete Information", message: "Please fill out all fields before proceeding.", preferredStyle: .alert)
     
     var expiryDate : Date?
+    
+    var currentPhoto : String?
     
     var item : InventoryItem!
     
@@ -172,6 +176,7 @@ class InventoryEditController: UITableViewController {
                 item.InventoryItemAmount     = Int(amountField.text!)!
                 item.InventoryItemDose       = Int(doseField.text!)!
                 item.InventoryItemExpiryDate = dateF.date(from: expiryDatePicker.text!)!
+                item.InventoryItemPhoto      = self.currentPhoto!
                 if let notes = notesField.text {
                     item.InventoryItemNotes = notes
                 }
@@ -222,7 +227,6 @@ class InventoryEditController: UITableViewController {
     
     //PHOTO SECTION
     
-    @IBOutlet var imageView: UIImageView!
     
     
     // PHOTO SECTION - image TAPPED -> FullScreen:
@@ -231,14 +235,31 @@ class InventoryEditController: UITableViewController {
         let MainStory:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let desVC = MainStory.instantiateViewController(withIdentifier: "DetailPhotoViewController") as? DetailPhotoViewController
         
-        desVC?.getImage = imageView.image!
+        desVC?.image = imageView.image!
         
         self.navigationController?.pushViewController(desVC!, animated: true)
         
     }
-    //DELETE PHOTO Section
     
-    
+    @IBAction func inventoryEditImageUpdated (segue : UIStoryboardSegue) {
+        
+        if let source = segue.source as? DetailPhotoViewController {
+            
+           if let newImage = source.image {
+                
+                self.imageView.image = newImage
+                
+             } else {
+                
+                self.imageView.image = #imageLiteral(resourceName: "AppIcon")
+                
+            }
+            
+            
+        }
+        
+    }
+
     
     // DELETE ACTIONS
     
@@ -257,6 +278,11 @@ class InventoryEditController: UITableViewController {
     func isEdited() -> Bool {
         var edited = false
         
+        let imageData:NSData = UIImageJPEGRepresentation(self.imageView.image!, 0.4)! as NSData
+        let strBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
+        self.currentPhoto = strBase64
+
+        
         let currentName       = nameField.text!
         let currentAmount     = Int(amountField.text!)!
         let currentDose       = Int(doseField.text!)!
@@ -268,6 +294,7 @@ class InventoryEditController: UITableViewController {
                 currentAmount     != item.InventoryItemAmount ||
                 currentDose       != item.InventoryItemDose   ||
                 currentNotes      != item.InventoryItemNotes  ||
+                currentPhoto      != item.InventoryItemPhoto  ||
                 currentExpiryDate != item.InventoryItemExpiryDate
             ) {
             edited = true
