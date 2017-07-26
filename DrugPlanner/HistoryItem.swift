@@ -20,11 +20,11 @@ class HistoryItem {
         
     }
     
-    private var key : String!
-    private var date : Date!
-    private var name : String!
-    private var dose : Int!
-    private var notes : String!
+    var key : String!
+    var date : Date!
+    var name : String!
+    var dose : Int!
+    var notes : String!
     
     init(for name : String, with dose : Int, at date : Date,with notes : String, using key : String) {
         
