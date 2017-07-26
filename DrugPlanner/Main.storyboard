@@ -1635,8 +1635,8 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Name" id="VUW-p6-OX6" userLabel="Name">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="SxT-Zp-HRM">
-                                        <rect key="frame" x="0.0" y="156" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="SxT-Zp-HRM">
+                                        <rect key="frame" x="0.0" y="157" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SxT-Zp-HRM" id="XlY-ii-yBZ">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
