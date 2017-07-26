@@ -219,7 +219,7 @@ class CreateAgendaItemTableViewController: UITableViewController {
     }
     
     
-    @IBAction func confirmInventory(_ sender: Any) {
+    @IBAction func confirmAgenda(_ sender: Any) {
         
         if (agendaItemEntered()) {
             agendaItem = AgendaItem(for: (drug)!, with: Int(doseField.text!)!, at: timeDate!, on: weekdays!, until: endDate!, using: "")

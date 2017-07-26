@@ -325,7 +325,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="7Qw-p8-Dz5">
                             <connections>
-                                <action selector="confirmInventory:" destination="5of-T5-lJZ" id="hh6-0A-SL8"/>
+                                <action selector="confirmAgenda:" destination="5of-T5-lJZ" id="mDh-Bn-ri2"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -816,7 +816,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hYe-s6-6FT">
-                                                    <rect key="frame" x="4" y="-11" width="146" height="158"/>
+                                                    <rect key="frame" x="3" y="-14" width="145" height="159"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                     <connections>
                                                         <outletCollection property="gestureRecognizers" destination="EhK-BA-JJW" appends="YES" id="YUn-t1-sRU"/>
