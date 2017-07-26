@@ -38,7 +38,6 @@
 		84F63A721F177BC2004F4C09 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F63A711F177BC2004F4C09 /* User.swift */; };
 		E7F5438527B59468692A44BD /* Pods_DrugPlannerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EBD4FD25B3CA40A5D1551B1 /* Pods_DrugPlannerTests.framework */; };
 		F001E44A1F03C980005DACF4 /* InventoryDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F001E4491F03C980005DACF4 /* InventoryDetailTableViewController.swift */; };
-		F04907BE1EF8F6D5001852D0 /* HistoryHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04907BD1EF8F6D5001852D0 /* HistoryHeaderTableViewCell.swift */; };
 		F04907C01EF8F6ED001852D0 /* HistoryContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04907BF1EF8F6ED001852D0 /* HistoryContentTableViewCell.swift */; };
 		F04907C21EF9084F001852D0 /* CreateInventoryItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04907C11EF9084F001852D0 /* CreateInventoryItemTableViewController.swift */; };
 		F04907C41EF90949001852D0 /* InventoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04907C31EF90949001852D0 /* InventoryItem.swift */; };
@@ -47,6 +46,7 @@
 		F0A41BD41F24BD5B0053FD61 /* HistoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A41BD31F24BD5B0053FD61 /* HistoryItem.swift */; };
 		F0A41BD61F24CD3B0053FD61 /* HistoryDrugChooseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A41BD51F24CD3B0053FD61 /* HistoryDrugChooseTableViewController.swift */; };
 		F0CC68641F21160100AF2BF4 /* DetailPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CC68631F21160100AF2BF4 /* DetailPhotoViewController.swift */; };
+		F0D7ACF91F28BA7A00535FA6 /* HistoryHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D7ACF81F28BA7A00535FA6 /* HistoryHeaderTableViewCell.swift */; };
 		F316749F1EE7FBF800355FFD /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = F316749E1EE7FBF800355FFD /* .gitignore */; };
 		F31674A41EE98C4100355FFD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31674A31EE98C4100355FFD /* LoginViewController.swift */; };
 		F31674A61EE98C9400355FFD /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F31674A51EE98C9400355FFD /* Login.storyboard */; };
@@ -115,7 +115,6 @@
 		C6DBAEFE5AAB9A0B959F4BFB /* Pods-DrugPlanner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrugPlanner.release.xcconfig"; path = "Pods/Target Support Files/Pods-DrugPlanner/Pods-DrugPlanner.release.xcconfig"; sourceTree = "<group>"; };
 		D0F67A4B79DBDC7A78589EF6 /* Pods-DrugPlannerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DrugPlannerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DrugPlannerUITests/Pods-DrugPlannerUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F001E4491F03C980005DACF4 /* InventoryDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryDetailTableViewController.swift; sourceTree = "<group>"; };
-		F04907BD1EF8F6D5001852D0 /* HistoryHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		F04907BF1EF8F6ED001852D0 /* HistoryContentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryContentTableViewCell.swift; sourceTree = "<group>"; };
 		F04907C11EF9084F001852D0 /* CreateInventoryItemTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateInventoryItemTableViewController.swift; sourceTree = "<group>"; };
 		F04907C31EF90949001852D0 /* InventoryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InventoryItem.swift; sourceTree = "<group>"; };
@@ -124,6 +123,7 @@
 		F0A41BD31F24BD5B0053FD61 /* HistoryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryItem.swift; sourceTree = "<group>"; };
 		F0A41BD51F24CD3B0053FD61 /* HistoryDrugChooseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryDrugChooseTableViewController.swift; sourceTree = "<group>"; };
 		F0CC68631F21160100AF2BF4 /* DetailPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailPhotoViewController.swift; sourceTree = "<group>"; };
+		F0D7ACF81F28BA7A00535FA6 /* HistoryHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		F316749E1EE7FBF800355FFD /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		F31674A31EE98C4100355FFD /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F31674A51EE98C9400355FFD /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -235,10 +235,10 @@
 			isa = PBXGroup;
 			children = (
 				84B9E4B21EE7FC880070BB7D /* HistoryViewController.swift */,
-				F04907BD1EF8F6D5001852D0 /* HistoryHeaderTableViewCell.swift */,
 				F04907BF1EF8F6ED001852D0 /* HistoryContentTableViewCell.swift */,
 				F0A41BD11F24A8400053FD61 /* CreateHistoryItemController.swift */,
 				F0A41BD51F24CD3B0053FD61 /* HistoryDrugChooseTableViewController.swift */,
+				F0D7ACF81F28BA7A00535FA6 /* HistoryHeaderTableViewCell.swift */,
 			);
 			name = "History Views";
 			sourceTree = "<group>";
@@ -652,7 +652,6 @@
 				F0A41BD41F24BD5B0053FD61 /* HistoryItem.swift in Sources */,
 				F332EF201EF16C360040714C /* InventoryTableViewCell.swift in Sources */,
 				84D60AFC1F0CE34200D9D3F1 /* CreateAgendaItemTableViewController.swift in Sources */,
-				F04907BE1EF8F6D5001852D0 /* HistoryHeaderTableViewCell.swift in Sources */,
 				F04907C21EF9084F001852D0 /* CreateInventoryItemTableViewController.swift in Sources */,
 				84E4291C1F21E9CD0096E665 /* Events.swift in Sources */,
 				84B9E4AF1EE7FC280070BB7D /* MainViewController.swift in Sources */,
@@ -670,6 +669,7 @@
 				7893EDA91F27F0A500BB283D /* History.swift in Sources */,
 				849F65EE1F1B8627005E150D /* AgendaStrings.swift in Sources */,
 				84A0D46E1F1640ED00572F43 /* AgendaItem.swift in Sources */,
+				F0D7ACF91F28BA7A00535FA6 /* HistoryHeaderTableViewCell.swift in Sources */,
 				84F63A701F17709B004F4C09 /* LoginStrings.swift in Sources */,
 				F001E44A1F03C980005DACF4 /* InventoryDetailTableViewController.swift in Sources */,
 				F340908E1ED5FB7D00548661 /* AppDelegate.swift in Sources */,
