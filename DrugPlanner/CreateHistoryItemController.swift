@@ -109,8 +109,16 @@ class CreateHistoryItemController: UITableViewController {
         performSegue(withIdentifier: "saveHistoryItem", sender: self)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "ChooseDrugCreateHistory"){
+            if let chooseDrugController = segue.destination as? ChooseDrugTableViewController{
+                chooseDrugController.source = segue.source
+            }
+        }
+    }
+    
     @IBAction func undwindWithSelectedDrugHistory (segue: UIStoryboardSegue) {
-        if let drugPickerController = segue.source as? HistoryDrugChooseTableViewController {
+        if let drugPickerController = segue.source as? ChooseDrugTableViewController {
             if let selectedDrug = drugPickerController.selectedDrug {
                 self.drugName = selectedDrug.InventoryItemName
                 self.drug = selectedDrug

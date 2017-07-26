@@ -13,27 +13,27 @@ class HistoryItem {
     
     struct ItemKeys {
         
-        static let Key          =   "key"
-        static let Date         =   "date"
-        static let DrugName     =   "drugName"
-        static let Dose         =   "dose"
-        static let Notes        =   "notes"
+        static let Key = "key"
+        static let Date = "date"
+        static let Name = "name"
+        static let Dose = "dose"
+        static let Notes = "notes"
         
     }
     
-    var key         :   String!
-    var date        :   Date!
-    var drugName    :   String!
-    var dose        :   Int!
-    var notes       :   String!
+    var key : String!
+    var date : Date!
+    var name : String!
+    var dose : Int!
+    var notes : String!
     
-    init (for drugName : String, with dose : Int, at date : Date, with notes : String, using key : String) {
+    init(for name : String, with dose : Int, at date : Date,with notes : String, using key : String) {
         
-        self.key        =   key
-        self.drugName 	= 	drugName
-        self.dose     	=   dose
-        self.notes    	=   notes
-        self.date     	=   date
+        self.key = key
+        self.name = name
+        self.dose = dose
+        self.notes = notes
+        self.date = date
         
     }
     
@@ -51,12 +51,12 @@ class HistoryItem {
     
     convenience init (withKey key : String, withParameters parameters : NSDictionary) {
         
-        let drugName        =   parameters[ItemKeys.DrugName]   as! String
+        let name        =   parameters[ItemKeys.Name]   as! String
         let dose            =   parameters[ItemKeys.Dose]       as! Int
         let notes           =   parameters[ItemKeys.Notes]      as! String
         let date            =   Date(from: parameters[ItemKeys.Date] as! Int)
         
-        self.init(for: drugName, with: dose, at: date, with: notes, using: key)
+        self.init(for: name, with: dose, at: date, with: notes, using: key)
         
     }
     
@@ -64,7 +64,7 @@ class HistoryItem {
         
         return [
         
-            ItemKeys.DrugName   :   self.drugName,
+            ItemKeys.Name   :   self.name,
             ItemKeys.Date       :   self.date.transformToInt(),
             ItemKeys.Dose       :   self.dose,
             ItemKeys.Notes      :   self.notes

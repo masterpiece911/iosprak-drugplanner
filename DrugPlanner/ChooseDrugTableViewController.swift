@@ -12,6 +12,7 @@ class ChooseDrugTableViewController: UITableViewController {
     
     //an array with the list with all drugs
     var drugs = [InventoryItem]()
+    var source : UIViewController?
     
     var selectedDrug : InventoryItem? {
         didSet{
@@ -110,10 +111,8 @@ class ChooseDrugTableViewController: UITableViewController {
                 if let index = indexPath?.row {
                     selectedDrug = drugs[index]
                 }
-                
             }
         }
-        
     }
     
 

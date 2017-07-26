@@ -13,19 +13,13 @@ class Scheduler {
     
     static var instance = Scheduler()
     
-    var currentNotifications = [UNNotificationRequest]() {
-        didSet {
-            currentNotifications.sort(by: Events.notificationRequestDatesAreInIncreasingOrder(lhs:rhs:))
-        }
-    }
-    
     var allEvents = [(Date, EventItem)]() {
         didSet {
             self.allEvents.sort(by: {
                 lhs, rhs in
                 return lhs.0 < rhs.0
             })
-            NotificationCenter.default.post(name: Notification.Name(rawValue: AgendaStrings.AGENDA_UPDATE), object: nil)
+            NotificationCenter.default.post(name: Notification.Name(rawValue: EventStrings.EVENT_UPDATE), object: nil)
         }
     }
     
@@ -33,19 +27,6 @@ class Scheduler {
         
     }
     
-    func populateCurrentNotifications() {
-        
-        UNUserNotificationCenter.current().getPendingNotificationRequests(completionHandler: {
-            requests in
-            let newRequests = requests.filter({
-                element in
-                return !self.currentNotifications.contains(element)
-            })
-            self.currentNotifications.append(contentsOf: newRequests)
-            
-        })
-    }
-
     func scheduleNotifications(for items : [EventItem]) {
         
         var allEvents = [(Date, EventItem)]()
@@ -54,11 +35,33 @@ class Scheduler {
         
         for item in items {
             
-            for component in item.dates {
+            if(item.type == .INVENTORY_EXPIRED) {
                 
-                let date = cal.nextDate(after: Date(), matching: component, matchingPolicy: .strict)
+                let date = cal.nextDate(after: Date(), matching: item.dates[0], matchingPolicy: .strict)
                 
                 allEvents.append((date!, item))
+                
+                if item.dates.count > 1 {
+                    let correspondingRanoutEvent = EventItem(.INVENTORY_RANOUT, for: item.inventory!, using: item.key)
+                    correspondingRanoutEvent.dates[0] = item.dates[1]
+                    if let date = cal.nextDate(after: Date(), matching: correspondingRanoutEvent.dates[0], matchingPolicy: .strict) {
+                        allEvents.append((date, correspondingRanoutEvent))
+                    } else {
+                        allEvents.append((Date(timeIntervalSinceNow: 5 * 60), correspondingRanoutEvent))
+                    }
+                    
+                    
+                }
+                
+            } else {
+                
+                for component in item.dates {
+                    
+                    let date = cal.nextDate(after: Date(), matching: component, matchingPolicy: .strict)
+                    
+                    allEvents.append((date!, item))
+                    
+                }
                 
             }
             
@@ -81,19 +84,20 @@ class Scheduler {
             
         }
         
-        print(index)
-        
         UNUserNotificationCenter.current().getPendingNotificationRequests(completionHandler: {
             (notificationRequests) in
             
-            print("HAVE SCHEDULED THESE NOTIFICATIONS: ")
-
             for request in notificationRequests {
-                print(request.trigger.debugDescription)
+                print(request.content.categoryIdentifier)
+                print(request.identifier)
+                let date = request.trigger as! UNCalendarNotificationTrigger
+                print(date.dateComponents)
             }
             
         })
         
+        print("\(index) NOTIFICATIONS HAVE BEEN SCHEDULED.")
+
         
     }
     

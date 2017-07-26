@@ -39,6 +39,10 @@ class Agenda : RepositoryClass {
     
     var ignoredListener : Any?
     
+    var applaunchListener : Any?
+    
+    var ncListeners : [Any?]
+    
     var didPopulate : Bool = false {
         didSet {
             if didPopulate {
@@ -50,6 +54,8 @@ class Agenda : RepositoryClass {
     var inventoryItemListeners = [AgendaInventoryListener]()
     
     private init() {
+    
+        self.ncListeners = [ inventoryListener, confirmedListener, ignoredListener, applaunchListener]
         
     }
     
@@ -65,6 +71,8 @@ class Agenda : RepositoryClass {
         
         ignoredListener = NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: NotificationStrings.AGENDA_IGNORED_ACTION), object: nil, queue: nil, using: agendaWasIgnored)
         
+        applaunchListener = NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: NotificationStrings.AGENDA_APPLAUNCH_ACTION), object: nil, queue: nil, using: appWasLaunchedFromAgendaNotification(notification:))
+        
     }
     
     func purge() {
@@ -78,9 +86,14 @@ class Agenda : RepositoryClass {
             }
         }
         agendaReference = nil
-        NotificationCenter.default.removeObserver(inventoryListener!)
+
+        for listener in ncListeners {
+            NotificationCenter.default.removeObserver(listener!)
+        }
         inventoryListener = nil
-        
+        confirmedListener = nil
+        ignoredListener = nil
+        applaunchListener = nil
         
     }
     
@@ -145,11 +158,11 @@ class Agenda : RepositoryClass {
     func edit(_ item: AgendaItem) {
         
         agendaReference?.child(item.agendaKey).setValue(item.toDictionary())
-        if let _ = Events.instance.items?.getItem(with: item.agendaKey) {
-            
-            Events.instance.edit(EventItem(.AGENDA_REMINDER, for: item, using: item.agendaKey))
+        
+        if let eventItem = Events.instance.items?.getItem(withAgenda: item.agendaKey) {
+            Events.instance.edit(EventItem(.AGENDA_REMINDER, for: item, using: eventItem.key))
         } else {
-            Events.instance.add(EventItem(EventItem.EventType.AGENDA_REMINDER, for: item, using: item.agendaKey))
+            Events.instance.add(EventItem(.AGENDA_REMINDER, for: item, using: item.agendaKey))
         }
         
     }
@@ -157,7 +170,7 @@ class Agenda : RepositoryClass {
     func delete(_ item: AgendaItem) {
         
         agendaReference?.child(item.agendaKey).removeValue()
-        if let agendaEvent = Events.instance.items?.getItem(with: item.agendaKey) {
+        if let agendaEvent = Events.instance.items?.getItem(withAgenda: item.agendaKey) {
             Events.instance.delete(agendaEvent)
         }
         
@@ -236,13 +249,11 @@ class Agenda : RepositoryClass {
         
         let identifier = notification.object as! String
         
-        for item in items! {
+        for item in Events.instance.items!.filter(Events.filterAgendaReminderEvents(elem:)) {
             
-            if (identifier.hasPrefix(item.agendaKey)) {
-                let inventoryItem = item.agendaDrug
-                print(inventoryItem.InventoryItemAmount)
-                inventoryItem.InventoryItemAmount -= item.agendaDose
-                print(inventoryItem.InventoryItemAmount)
+            if (identifier.hasPrefix((item.agenda?.agendaKey)!)) {
+                let inventoryItem = (item.agenda?.agendaDrug)!
+                inventoryItem.InventoryItemAmount -= (item.agenda?.agendaDose)!
                 Inventory.instance.edit(inventory: inventoryItem)
             }
             
@@ -253,6 +264,10 @@ class Agenda : RepositoryClass {
     
     func agendaWasIgnored (notification: Notification) {
         
+        
+    }
+    
+    func appWasLaunchedFromAgendaNotification (notification: Notification) {
         
         
     }

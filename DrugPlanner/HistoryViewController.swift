@@ -46,6 +46,11 @@ class HistoryViewController: UITableViewController {
         }
         
     }
+    
+    @IBAction func cancelCreateHistoryEvent(segue:UIStoryboardSegue) {
+        
+    }
+    
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
