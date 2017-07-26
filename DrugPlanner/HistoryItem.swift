@@ -14,9 +14,9 @@ class HistoryItem {
         
         static let Key = "key"
         static let Date = "date"
-        static let name = "name"
-        static let dose = "dose"
-        static let notes = "notes"
+        static let Name = "name"
+        static let Dose = "dose"
+        static let Notes = "notes"
         
     }
     
