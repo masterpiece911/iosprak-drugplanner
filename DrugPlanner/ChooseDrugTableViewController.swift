@@ -97,6 +97,14 @@ class ChooseDrugTableViewController: UITableViewController {
         self.tableView.reloadData()
     }
 
+    @IBAction func donePressedChoosedDrug(_ sender: Any) {
+        if let _ = source as? CreateHistoryItemController {
+            performSegue(withIdentifier: "SaveSelectedDrugToCreateHistory", sender: self)
+        }
+        if let _ = source as? CreateAgendaItemTableViewController {
+            performSegue(withIdentifier: "SaveSelectedDrugToACreategenda", sender: self)
+        }
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         

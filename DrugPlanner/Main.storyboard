@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -347,7 +347,7 @@
             </objects>
             <point key="canvasLocation" x="-258" y="-3183"/>
         </scene>
-        <!--Choose Drug Table View Controller-->
+        <!--Choose a Drug-->
         <scene sceneID="IrS-zu-tvI">
             <objects>
                 <tableViewController id="uqe-Bh-jSd" customClass="ChooseDrugTableViewController" customModule="DrugPlanner" customModuleProvider="target" sceneMemberID="viewController">
@@ -373,6 +373,17 @@
                             <outlet property="delegate" destination="uqe-Bh-jSd" id="0pa-iD-K7U"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Choose a Drug" id="qdh-pX-GT3">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="V4d-3E-Pwz">
+                            <connections>
+                                <action selector="donePressedChoosedDrug:" destination="uqe-Bh-jSd" id="BCQ-O2-BMU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="E57-Rp-O1g" kind="unwind" unwindAction="unwindWithSelectedDrugToHistoryWithSegue:" id="mmb-ok-Tu2"/>
+                        <segue destination="E57-Rp-O1g" kind="unwind" unwindAction="undwindWithSelectedDrugWithSegue:" id="ExU-F3-aEt"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lO1-ba-fAv" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="E57-Rp-O1g" userLabel="Exit" sceneMemberID="exit"/>
@@ -458,11 +469,11 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="edc-vx-VX6" id="6Wq-Xa-keQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="100"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="99"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="49C-gM-PjT">
-                                            <rect key="frame" x="18" y="10.5" width="80" height="80"/>
+                                            <rect key="frame" x="18" y="11" width="80" height="80"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="49C-gM-PjT" secondAttribute="height" multiplier="80:80" id="rdi-Zv-R9o"/>
                                                 <constraint firstAttribute="width" constant="80" id="udv-NK-Gbi"/>
@@ -480,25 +491,25 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="250" text="Expiry Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jwd-VK-Bh6">
-                                            <rect key="frame" x="108" y="49.5" width="69.5" height="16"/>
+                                            <rect key="frame" x="108" y="50" width="70" height="16"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remaining" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RCZ-9t-x8q">
-                                            <rect key="frame" x="270.5" y="68.5" width="63.5" height="16"/>
+                                            <rect key="frame" x="270" y="69" width="64" height="16"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="743" text="Haltbarkeit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hrf-MO-m9M">
-                                            <rect key="frame" x="108" y="68.5" width="67" height="16"/>
+                                            <rect key="frame" x="108" y="69" width="67" height="16"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="333" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2eR-sU-4kd">
-                                            <rect key="frame" x="276" y="10" width="58" height="38.5"/>
+                                            <rect key="frame" x="276" y="10" width="58" height="39"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -1124,7 +1135,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="OwT-gm-Mhg">
-                                                    <rect key="frame" x="296" y="6" width="51" height="37.5"/>
+                                                    <rect key="frame" x="296" y="6" width="51" height="37"/>
                                                     <connections>
                                                         <action selector="prescriptionNeededSwitched:" destination="eFu-16-zrN" eventType="valueChanged" id="72M-Fn-J6V"/>
                                                     </connections>
@@ -1692,7 +1703,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c42-h3-tqR" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="GI4-eV-KrH" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="885.60000000000002" y="1082.608695652174"/>
+            <point key="canvasLocation" x="570" y="1083"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DqO-A2-CLC">
@@ -2546,7 +2557,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aep-9s-YX0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-87" y="1083"/>
+            <point key="canvasLocation" x="-258" y="1083"/>
         </scene>
     </scenes>
     <resources>

@@ -117,14 +117,16 @@ class CreateHistoryItemController: UITableViewController {
         }
     }
     
-    @IBAction func undwindWithSelectedDrugHistory (segue: UIStoryboardSegue) {
+    @IBAction func unwindWithSelectedDrugToHistory (segue: UIStoryboardSegue) {
         if let drugPickerController = segue.source as? ChooseDrugTableViewController {
             if let selectedDrug = drugPickerController.selectedDrug {
-                self.drugName = selectedDrug.InventoryItemName
+                //self.drugName = selectedDrug.InventoryItemName
                 self.drug = selectedDrug
             }
         }
         
     }
+    
+
    
 }
