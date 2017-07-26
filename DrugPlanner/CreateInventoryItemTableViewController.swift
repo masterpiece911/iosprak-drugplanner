@@ -75,7 +75,7 @@ class CreateInventoryItemTableViewController: UITableViewController, UINavigatio
         if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
             myImageView.image = image
         
-            let imageData:NSData = UIImageJPEGRepresentation(image, 0.4)! as NSData
+            let imageData:NSData = UIImageJPEGRepresentation(image, 0.7)! as NSData
             let strBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
             photoString64 = strBase64
             }
