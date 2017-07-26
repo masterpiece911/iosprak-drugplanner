@@ -28,24 +28,23 @@ class CreateInventoryItemTableViewController: UITableViewController, UINavigatio
     @IBOutlet weak var cellDoctorPhone: UITableViewCell!
     var photoString64: String?
     
-    @IBAction func prescriptionNeededSwitch(_ sender: UISwitch) {
+    @IBAction func prescriptionNeededSwitched(_ sender: UISwitch) {
         if (sender.isOn == true){
-            doctorNameField.isEnabled = true;
-            doctorPhoneField.isEnabled = true;
-            doctorNameField.isUserInteractionEnabled = true;
-            doctorPhoneField.isUserInteractionEnabled = true;
-            
             cellDoctorName.isUserInteractionEnabled = true;
             cellDoctorPhone.isUserInteractionEnabled = true;
+            
+            cellDoctorName.backgroundColor = UIColor.white
+            cellDoctorPhone.backgroundColor = UIColor.white
         }else{
-            doctorNameField.isEnabled = false;
-            doctorPhoneField.isEnabled = false;
-            doctorNameField.isUserInteractionEnabled = false;
-            doctorPhoneField.isUserInteractionEnabled = false;
             cellDoctorName.isUserInteractionEnabled = false;
             cellDoctorPhone.isUserInteractionEnabled = false;
+            cellDoctorName.backgroundColor = UIColor.init(red: 239, green: 239, blue: 244, alpha: 0)
+            cellDoctorPhone.backgroundColor = UIColor.init(red: 239, green: 239, blue: 244, alpha: 0)
         }
     }
+    
+    @IBOutlet weak var prescriptionNeededSwitch: UISwitch!
+    
     // Fotos Section
     @IBAction func importImage(_ sender: Any) {
         let image = UIImagePickerController()
@@ -220,11 +219,21 @@ class CreateInventoryItemTableViewController: UITableViewController, UINavigatio
                 typePickerViewController.selectedType = type
             }
         } else if (segue.identifier == "SaveInventoryItem") {
+            var photostringTmp = "";
+            var doctorNameTmp = "";
+            var doctorPhoneTmp = "";
             
             if let photostring = photoString64{
-                item = InventoryItem(key: "test", name: nameField.text!, type: DrugType(rawValue: typeLabel.text!)!, amount: Int(amountField.text!)!, dose: Int(doseField.text!)!, expiryDate: expiryDate!,doctorName: doctorNameField.text!, doctorPhone: doctorPhoneField.text!, notes: noteField.text!, photo: photostring)} else {
-                item = InventoryItem(key: "test", name: nameField.text!, type: DrugType(rawValue: typeLabel.text!)!, amount: Int(amountField.text!)!, dose: Int(doseField.text!)!, expiryDate: expiryDate!, doctorName: doctorNameField.text!, doctorPhone: doctorPhoneField.text!, notes: noteField.text!, photo: "")
+                photostringTmp = photostring
             }
+            if prescriptionNeededSwitch.isOn {
+                doctorNameTmp = doctorNameField.text!
+                doctorPhoneTmp = doctorPhoneField.text!
+            }
+
+            item = InventoryItem(key: "tmpKey", name: nameField.text!, type: DrugType(rawValue: typeLabel.text!)!, amount: Int(amountField.text!)!, dose: Int(doseField.text!)!, expiryDate: expiryDate!, doctorName: doctorNameTmp, doctorPhone: doctorPhoneTmp, notes: noteField.text!, photo: photostringTmp)
+            
+            
         }
         
     }
@@ -278,17 +287,20 @@ class CreateInventoryItemTableViewController: UITableViewController, UINavigatio
             entered = false
         }
         
-        if doctorNameField.isUserInteractionEnabled, let text = doctorNameField.text, !text.isEmpty{
+        if prescriptionNeededSwitch.isOn, let text = doctorNameField.text, !text.isEmpty{
             
         }else{
-            entered = false;
+            if prescriptionNeededSwitch.isOn {
+                entered = false;
+            }
         }
         
-        if doctorPhoneField.isUserInteractionEnabled, let text = doctorPhoneField.text, !text.isEmpty{
+        if prescriptionNeededSwitch.isOn, let text = doctorPhoneField.text, !text.isEmpty{
             
         }else{
-            entered = false;
-        }
+            if prescriptionNeededSwitch.isOn {
+                entered = false;
+            }        }
         if type == "" {
             entered = false
         }
