@@ -10,6 +10,7 @@ import Foundation
 import Firebase
 
 class HistoryItem {
+    
     struct ItemKeys {
         
         static let Key = "key"
@@ -34,7 +35,40 @@ class HistoryItem {
         self.notes = notes
         self.date = date
         
+        self.init(for: inventory.InventoryItemName, with: inventory.InventoryItemDose, at: date, with: notes, using: key)
         
     }
+    
+    convenience init (withAgenda agenda: AgendaItem, atDate date: Date, withNotes notes: String, usingKey key: String) {
+        
+        self.init(for: agenda.agendaDrug.InventoryItemName, with: agenda.agendaDose, at: date, with: notes, using: key)
+
+    }
+    
+    convenience init (withKey key : String, withParameters parameters : NSDictionary) {
+        
+        let drugName        =   parameters[ItemKeys.DrugName]   as! String
+        let dose            =   parameters[ItemKeys.Dose]       as! Int
+        let notes           =   parameters[ItemKeys.Notes]      as! String
+        let date            =   Date(from: parameters[ItemKeys.Date] as! Int)
+        
+        self.init(for: drugName, with: dose, at: date, with: notes, using: key)
+        
+    }
+    
+    func toDictionary() -> NSDictionary {
+        
+        return [
+        
+            ItemKeys.DrugName   :   self.drugName,
+            ItemKeys.Date       :   self.date.transformToInt(),
+            ItemKeys.Dose       :   self.dose,
+            ItemKeys.Notes      :   self.notes
+            
+        ]
+        
+    }
+    
+    
    
-   }
+}

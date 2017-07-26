@@ -24,10 +24,7 @@ class Inventory : RepositoryClass {
             }
         }
         didSet{
-            items?.sort(by: {
-                (lhs: InventoryItem, rhs: InventoryItem) in
-                return lhs.InventoryItemExpiryDate.transformToInt() < rhs.InventoryItemExpiryDate.transformToInt()
-            })
+            items?.sort(by: Inventory.inventoryDatesAreInIncreasingOrder(lhs:rhs:))
 
             NotificationCenter.default.post(name: Notification.Name(rawValue: InventoryStrings.INVENTORY_UPDATE), object: nil)
         }
@@ -45,11 +42,7 @@ class Inventory : RepositoryClass {
     
     var databaseHandlers = [(DatabaseHandle,InventoryItem?)]()
     
-    private init() {
-    
-        
-    
-    }
+    private init() { }
     
     func populate(from ref : DatabaseReference) {
         
@@ -171,5 +164,12 @@ class Inventory : RepositoryClass {
             
         })!)
         
+    }
+    
+    
+    // STATIC HELPER SORTING FUNCTIONS
+    
+    static func inventoryDatesAreInIncreasingOrder (lhs: InventoryItem, rhs: InventoryItem) -> Bool {
+        return lhs.InventoryItemExpiryDate < rhs.InventoryItemExpiryDate
     }
 }

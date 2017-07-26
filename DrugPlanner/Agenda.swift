@@ -35,6 +35,10 @@ class Agenda : RepositoryClass {
     
     var inventoryListener : Any?
     
+    var confirmedListener : Any?
+    
+    var ignoredListener : Any?
+    
     var didPopulate : Bool = false {
         didSet {
             if didPopulate {
@@ -56,6 +60,10 @@ class Agenda : RepositoryClass {
         items = [AgendaItem]()
         
         inventoryListener = NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: InventoryStrings.INVENTORY_POPULATED), object: nil, queue: nil, using: inventoryDidPopulate)
+        
+        confirmedListener = NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: NotificationStrings.AGENDA_FOLLOWED_ACTION), object: nil, queue: nil, using: agendaWasConfirmed)
+        
+        ignoredListener = NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: NotificationStrings.AGENDA_IGNORED_ACTION), object: nil, queue: nil, using: agendaWasIgnored)
         
     }
     
@@ -137,8 +145,9 @@ class Agenda : RepositoryClass {
     func edit(_ item: AgendaItem) {
         
         agendaReference?.child(item.agendaKey).setValue(item.toDictionary())
-        if let agendaEvent = Events.instance.items?.getItem(with: item.agendaKey) {
-            Events.instance.edit(agendaEvent)
+        if let _ = Events.instance.items?.getItem(with: item.agendaKey) {
+            
+            Events.instance.edit(EventItem(.AGENDA_REMINDER, for: item, using: item.agendaKey))
         } else {
             Events.instance.add(EventItem(EventItem.EventType.AGENDA_REMINDER, for: item, using: item.agendaKey))
         }
@@ -151,6 +160,51 @@ class Agenda : RepositoryClass {
         if let agendaEvent = Events.instance.items?.getItem(with: item.agendaKey) {
             Events.instance.delete(agendaEvent)
         }
+        
+    }
+    
+    func listenToChanges (in item : AgendaItem) -> DatabaseHandle? {
+        
+        if let listener = agendaReference?.child(item.agendaKey).observe(.value, with: {
+            
+            (snapshot) in
+            
+            if let parameters = snapshot.value as? NSDictionary {
+                
+                let newItem = AgendaItem(with: snapshot.key, with: parameters)
+                
+                for(index, item) in self.items!.enumerated() {
+                    if (newItem.agendaKey == item.agendaKey) {
+                        self.items![index] = newItem
+                    }
+                }
+                
+                NotificationCenter.default.post(name: Notification.Name(rawValue: (AgendaStrings.ITEM_UPDATE.appending(item.agendaKey))), object: newItem)
+                
+            }
+            
+        }) {
+            
+            databaseHandlers.append((listener, item))
+            return listener
+            
+        }
+        
+        return nil
+        
+    }
+    
+    func stopListening (to item: AgendaItem, using handle: DatabaseHandle) {
+        
+        agendaReference?.child(item.agendaKey).removeObserver(withHandle: handle)
+        databaseHandlers.remove(at: databaseHandlers.index(where: {
+            
+            (itemHandle, inventoryItem) in
+            
+            let handlesEqual = itemHandle == handle
+            
+            return handlesEqual
+        })!)
         
     }
     
@@ -175,6 +229,31 @@ class Agenda : RepositoryClass {
                 break
             }
         }
+        
+    }
+    
+    func agendaWasConfirmed (notification: Notification) {
+        
+        let identifier = notification.object as! String
+        
+        for item in items! {
+            
+            if (identifier.hasPrefix(item.agendaKey)) {
+                let inventoryItem = item.agendaDrug
+                print(inventoryItem.InventoryItemAmount)
+                inventoryItem.InventoryItemAmount -= item.agendaDose
+                print(inventoryItem.InventoryItemAmount)
+                Inventory.instance.edit(inventory: inventoryItem)
+            }
+            
+        }
+        
+        
+    }
+    
+    func agendaWasIgnored (notification: Notification) {
+        
+        
         
     }
     

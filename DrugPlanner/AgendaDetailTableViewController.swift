@@ -41,14 +41,7 @@ class AgendaDetailTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        // CONFIGURE DATE FORMATTER
-//        dateF.dateStyle = .medium
-//        dateF.timeStyle = .none
-//        
-//        // SET FIELDS TO INVENTORY ITEM VALUES
-//        updateFields()
-//        
-//        // GET DESCRIPTIONS FOR INVENTORY ITEM TYPE
+        
         let descriptions = getDrugTypeDescriptions(for: item.agendaDrug.InventoryItemType)
         nameDetail.text = item.agendaDrug.InventoryItemName
         doseDetail.text = String(item.agendaDose)
@@ -69,12 +62,11 @@ class AgendaDetailTableViewController: UITableViewController {
         if item.agendaDrug.InventoryItemPhoto != "" {
             imageView.image = item.agendaDrug.convertStringToImage(photoAsString: item.agendaDrug.InventoryItemPhoto)
         }
-//        amountDetailLabel.text = descriptions["amountUnit"]!
-//
-//        
-//        self.observer = NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: InventoryStrings.ITEM_UPDATE.appending(item.InventoryItemKey)), object: nil, queue: nil, using: inventoryItemDidChange)
-//        
-//        self.firebaseListener = Inventory.instance.listenToChanges(in: self.item)
+
+        self.observer = NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: AgendaStrings.ITEM_UPDATE.appending(item.agendaKey)), object: nil, queue: nil, using: agendaItemDidChange)
+        
+        self.firebaseListener = Agenda.instance.listenToChanges(in: self.item)
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -131,26 +123,27 @@ class AgendaDetailTableViewController: UITableViewController {
         
         super.viewDidAppear(animated)
         
-//        if self.observer == nil {
-//            self.observer = NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: InventoryStrings.ITEM_UPDATE.appending(item.InventoryItemKey)), object: nil, queue: nil, using: inventoryItemDidChange)
-//        }
-//        
-//        if self.firebaseListener == nil {
-//            self.firebaseListener = Inventory.instance.listenToChanges(in: self.item)
-//        }
+        if self.observer == nil {
+            self.observer = NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: AgendaStrings.ITEM_UPDATE.appending(item.agendaKey)), object: nil, queue: nil, using: agendaItemDidChange)
+        }
+        
+        if self.firebaseListener == nil {
+            self.firebaseListener = Agenda.instance.listenToChanges(in: self.item)
+        }
+        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         
         super.viewDidDisappear(animated)
         
-//        Inventory.instance.stopListening(to: item, using: self.firebaseListener)
-//        self.firebaseListener = nil
-//        
-//        if let obs = self.observer {
-//            NotificationCenter.default.removeObserver(obs)
-//            self.observer = nil
-//        }
+        Agenda.instance.stopListening(to: item, using: self.firebaseListener)
+        self.firebaseListener = nil
+        
+        if let obs = self.observer {
+            NotificationCenter.default.removeObserver(obs)
+            self.observer = nil
+        }
         
         
     }
@@ -158,7 +151,9 @@ class AgendaDetailTableViewController: UITableViewController {
     
     func agendaItemDidChange(notification: Notification) {
         
-//        self.item = Agenda.instance.items?.getItem(with: self.item.agendaKey)
+        let newItem = Agenda.instance.items?.getAgenda(with: self.item.agendaKey)
+        
+        self.item = newItem
         updateFields()
         
     }
@@ -180,6 +175,14 @@ class AgendaDetailTableViewController: UITableViewController {
     private func updateFields() {
         
         nameDetail.text = item.agendaDrug.InventoryItemName
+        
+        let formatter = DateFormatter()
+        formatter.dateStyle = .none
+        formatter.timeStyle = .short
+        timeDetail.text = formatter.string(from: item.agendaTime)
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
+        lastDayDetail.text = formatter.string(from: item.agendaEndDate)
 
         doseDetail.text = String(item.agendaDose)
 
