@@ -18,8 +18,13 @@ class InventoryEditController: UITableViewController {
     @IBOutlet weak var expiryDatePicker: UITextField!
     @IBOutlet weak var notesField: UITextField!
     @IBOutlet weak var imageView: UIImageView!
-
+    @IBOutlet weak var doctorNameField: UITextField!
+    @IBOutlet weak var doctorPhoneField: UITextField!
+    @IBOutlet weak var prescriptionNeededSwitch: UISwitch!
+    @IBOutlet weak var cellDoctorName: UITableViewCell!
+    @IBOutlet weak var cellDoctorPhone: UITableViewCell!
     
+
     
     
     let datePicker = UIDatePicker()
@@ -51,6 +56,14 @@ class InventoryEditController: UITableViewController {
         expiryDatePicker.text = dateF.string(from: item.InventoryItemExpiryDate)
         if (item.InventoryItemExpiryDate < Date(timeIntervalSinceNow: 0)) {
             expiryDatePicker.isEnabled = false
+        }
+        
+        if(item.InventoryItemDoctorName != ""){
+            prescriptionNeededSwitch.setOn(true, animated: true)
+            doctorNameField.text = item.InventoryItemDoctorName
+            doctorPhoneField.text = item.InventoryItemDoctorPhone
+            cellDoctorName.backgroundColor = UIColor.white
+            cellDoctorPhone.backgroundColor = UIColor.white
         }
         
         notesField.text = item.InventoryItemNotes
@@ -162,6 +175,21 @@ class InventoryEditController: UITableViewController {
         
     }
     
+    @IBAction func prescriptionNeededChanged(_ sender: UISwitch) {
+        if (sender.isOn == true){
+            cellDoctorName.isUserInteractionEnabled = true;
+            cellDoctorPhone.isUserInteractionEnabled = true;
+            
+            cellDoctorName.backgroundColor = UIColor.white
+            cellDoctorPhone.backgroundColor = UIColor.white
+        }else{
+            cellDoctorName.isUserInteractionEnabled = false;
+            cellDoctorPhone.isUserInteractionEnabled = false;
+            cellDoctorName.backgroundColor = UIColor.init(red: 239, green: 239, blue: 244, alpha: 0)
+            cellDoctorPhone.backgroundColor = UIColor.init(red: 239, green: 239, blue: 244, alpha: 0)
+        }
+    }
+    
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -177,6 +205,14 @@ class InventoryEditController: UITableViewController {
                 item.InventoryItemDose       = Int(doseField.text!)!
                 item.InventoryItemExpiryDate = dateF.date(from: expiryDatePicker.text!)!
                 item.InventoryItemPhoto      = self.currentPhoto!
+                if(prescriptionNeededSwitch.isOn){
+                    item.InventoryItemDoctorName = doctorNameField.text!
+                    item.InventoryItemDoctorPhone = doctorPhoneField.text!
+                }else{
+                    
+                    item.InventoryItemDoctorName = ""
+                    item.InventoryItemDoctorPhone = ""
+                }
                 if let notes = notesField.text {
                     item.InventoryItemNotes = notes
                 }
@@ -287,6 +323,8 @@ class InventoryEditController: UITableViewController {
         let currentAmount     = Int(amountField.text!)!
         let currentDose       = Int(doseField.text!)!
         let currentExpiryDate = dateF.date(from: expiryDatePicker.text!)!
+        let currentDoctorName = doctorNameField.text!
+        let currentDoctorPhone = doctorPhoneField.text!
         let currentNotes      = notesField.text!
         
         if (
@@ -295,7 +333,9 @@ class InventoryEditController: UITableViewController {
                 currentDose       != item.InventoryItemDose   ||
                 currentNotes      != item.InventoryItemNotes  ||
                 currentPhoto      != item.InventoryItemPhoto  ||
-                currentExpiryDate != item.InventoryItemExpiryDate
+                currentExpiryDate != item.InventoryItemExpiryDate ||
+                currentDoctorName != item.InventoryItemDoctorName ||
+                currentDoctorPhone != item.InventoryItemDoctorPhone
             ) {
             edited = true
         }
@@ -321,7 +361,14 @@ class InventoryEditController: UITableViewController {
                 dose != "" &&
                 expiryDate != "")
             {
-                textFieldEmpty = false
+                if(prescriptionNeededSwitch.isOn
+                    && doctorNameField.text != ""
+                    && doctorPhoneField.text != ""){
+                    textFieldEmpty = false
+                }
+                if(!prescriptionNeededSwitch.isOn){
+                    textFieldEmpty = false
+                }
             }
             
         }
