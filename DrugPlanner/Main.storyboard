@@ -1862,24 +1862,27 @@
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="100" id="SzB-Pb-C2e">
                                         <rect key="frame" x="0.0" y="316" width="375" height="100"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SzB-Pb-C2e" id="X5f-7H-dL1">
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="SzB-Pb-C2e" id="X5f-7H-dL1">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="99"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wEQ-on-2eD">
-                                                    <rect key="frame" x="87" y="3" width="91" height="95"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <subviews>
-                                                        <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4mR-R4-pRF">
-                                                            <rect key="frame" x="0.0" y="0.0" width="91" height="95"/>
-                                                            <connections>
-                                                                <outletCollection property="gestureRecognizers" destination="sBL-Rm-KXe" appends="YES" id="hhd-3C-Qhk"/>
-                                                            </connections>
-                                                        </imageView>
-                                                    </subviews>
-                                                </stackView>
+                                                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4mR-R4-pRF">
+                                                    <rect key="frame" x="120" y="-11" width="135" height="120"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="100" id="7Je-zL-y4D"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <outletCollection property="gestureRecognizers" destination="sBL-Rm-KXe" appends="YES" id="hhd-3C-Qhk"/>
+                                                    </connections>
+                                                </imageView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="4mR-R4-pRF" secondAttribute="bottom" id="ADO-ZO-CRK"/>
+                                                <constraint firstItem="4mR-R4-pRF" firstAttribute="top" secondItem="X5f-7H-dL1" secondAttribute="top" id="V4L-xy-XJB"/>
+                                                <constraint firstItem="4mR-R4-pRF" firstAttribute="leading" secondItem="X5f-7H-dL1" secondAttribute="leading" constant="120" id="WiQ-b6-hOB"/>
+                                                <constraint firstAttribute="trailing" secondItem="4mR-R4-pRF" secondAttribute="trailing" constant="120" id="rTG-rm-pi3"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
