@@ -166,7 +166,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="uqe-Bh-jSd" kind="show" id="sYr-dp-ZM8"/>
+                                            <segue destination="uqe-Bh-jSd" kind="show" identifier="ChooseDrugCreateAgenda" id="sYr-dp-ZM8"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -363,9 +363,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="E57-Rp-O1g" kind="unwind" identifier="SaveSelectedDrug" unwindAction="undwindWithSelectedDrugWithSegue:" id="tgi-v0-XY0"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -1585,7 +1582,7 @@
         <!--Add History Event-->
         <scene sceneID="J8D-a2-aHe">
             <objects>
-                <tableViewController id="CKh-OD-wsm" sceneMemberID="viewController">
+                <tableViewController id="CKh-OD-wsm" customClass="CreateHistoryItemController" customModule="DrugPlanner" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="vI0-Ta-xHH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1631,7 +1628,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="uqe-Bh-jSd" kind="show" id="119-zo-L8e"/>
+                                            <segue destination="uqe-Bh-jSd" kind="show" identifier="ChooseDrugToCreateHistory" id="119-zo-L8e"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -1645,13 +1642,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nx3-cm-f3c" userLabel="Dose Unit Label">
-                                                    <rect key="frame" x="144" y="14" width="86" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Dose Taken" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qNj-tA-adP" userLabel="Dose Field">
                                                     <rect key="frame" x="15" y="6" width="88" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1659,6 +1649,13 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nx3-cm-f3c" userLabel="Dose Unit Label">
+                                                    <rect key="frame" x="144" y="14" width="86" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -1699,6 +1696,13 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="k78-Uq-syI"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="DateOfTakeLabel" destination="9wi-PZ-ZcM" id="4G2-5W-TEP"/>
+                        <outlet property="DoseLabel" destination="qNj-tA-adP" id="qvb-eI-iqo"/>
+                        <outlet property="DoseUnitLabel" destination="Nx3-cm-f3c" id="at1-hx-Z04"/>
+                        <outlet property="DrugNameLabel" destination="FNj-Wv-O83" id="XhK-Ma-ozR"/>
+                        <outlet property="NotesLabel" destination="qot-Zj-bCA" id="n7B-Xe-XWF"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c42-h3-tqR" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="GI4-eV-KrH" userLabel="Exit" sceneMemberID="exit"/>
@@ -2571,7 +2575,7 @@
         <image name="Settings-Filled" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="OZ5-r0-T6y"/>
         <segue reference="119-zo-L8e"/>
+        <segue reference="OZ5-r0-T6y"/>
     </inferredMetricsTieBreakers>
 </document>

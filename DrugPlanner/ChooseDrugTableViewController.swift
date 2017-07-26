@@ -106,7 +106,7 @@ class ChooseDrugTableViewController: UITableViewController {
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+   /* override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if let obs = self.observer {
             NotificationCenter.default.removeObserver(obs)
@@ -122,6 +122,6 @@ class ChooseDrugTableViewController: UITableViewController {
             }
         }
     }
-    
+    */
 
 }
