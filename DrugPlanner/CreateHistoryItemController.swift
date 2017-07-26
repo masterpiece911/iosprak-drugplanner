@@ -31,7 +31,7 @@ class CreateHistoryItemController: UITableViewController {
                 drugName = drug?.InventoryItemName
                 let drugType = drug?.InventoryItemType
                 DrugNameLabel.text? = drugName!
-                DoseUnitLabel.text? = getDrugTypeDescriptions(for: drugType!)["doseUnit"]!
+                DoseUnitLabel.text? = getDrugTypeDescriptions(for: drugType!)["amountUnit"]!
             
         }
     }
