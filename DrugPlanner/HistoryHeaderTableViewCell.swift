@@ -2,7 +2,7 @@
 //  HistoryHeaderTableViewCell.swift
 //  DrugPlanner
 //
-//  Created by ioana-raluca pica on 20.06.17.
+//  Created by ioana-raluca pica on 26.07.17.
 //  Copyright © 2017 Gruppe 9. All rights reserved.
 //
 
@@ -10,8 +10,6 @@ import UIKit
 
 class HistoryHeaderTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var dateLabel: UILabel!
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

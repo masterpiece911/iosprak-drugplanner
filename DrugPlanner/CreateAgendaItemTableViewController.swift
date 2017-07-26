@@ -75,6 +75,11 @@ class CreateAgendaItemTableViewController: UITableViewController {
         
     }
 
+    @IBAction func addCell(_ sender: UIButton) {
+        print(sender.superview?.superview)
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -211,15 +216,58 @@ class CreateAgendaItemTableViewController: UITableViewController {
             }
         }
         
+        
+        
     }
     
-    @IBAction func AgendaConfirm(_ sender: Any) {
+    
+    @IBAction func confirmAgenda(_ sender: Any) {
         
-        agendaItem = AgendaItem(for: (drug)!, with: Int(doseField.text!)!, at: timeDate!, on: weekdays!, until: endDate!, using: "")
+        if (agendaItemEntered()) {
+            agendaItem = AgendaItem(for: (drug)!, with: Int(doseField.text!)!, at: timeDate!, on: weekdays!, until: endDate!, using: "")
+            performSegue(withIdentifier: "saveAgendaItem", sender: self)
+        } else {
+            let incompleteAgendaItemController = UIAlertController(title: "Incomplete Information", message: "Please fill out all fields before proceeding.", preferredStyle: .alert)
+            
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            
+            incompleteAgendaItemController.addAction(okAction)
+            
+            present(incompleteAgendaItemController, animated: true, completion: nil)
+        }
         
-        performSegue(withIdentifier: "saveAgendaItem", sender: self)
     }
     
+    func agendaItemEntered() -> Bool {
+        
+        var entered = true
+        
+        if let text = drug?.InventoryItemName, !text.isEmpty{
+        } else {
+            entered = false
+        }
+        if let text = doseField.text, !text.isEmpty {
+        } else {
+            entered = false
+        }
+        if let text = timeTextField.text, !text.isEmpty {
+        } else {
+            entered = false
+        }
+        if let text = endDateTextField.text, !text.isEmpty {
+        } else {
+            entered = false
+        }
+        
+        if (weekdays?.count)! > 0 {
+            
+        }else{
+            entered = false
+        }
+        return entered
+    }
+    
+
     @IBAction func unwindWithSelectedWeekdaysForCreation (segue : UIStoryboardSegue) {
         if let weekdayPickerController = segue.source as? ChooseDays {
             self.weekdays = weekdayPickerController.weekdays
