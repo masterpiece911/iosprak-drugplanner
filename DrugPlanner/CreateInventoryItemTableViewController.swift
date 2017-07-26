@@ -73,7 +73,7 @@ class CreateInventoryItemTableViewController: UITableViewController, UINavigatio
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+        if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
             myImageView.image = image
         
             let imageData:NSData = UIImageJPEGRepresentation(image, 0.4)! as NSData

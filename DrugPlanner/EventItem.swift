@@ -19,6 +19,7 @@ class EventItem {
     struct ItemKeys {
         
         static let date = "date"
+        static let endDate = "endDate"
         static let key = "key"
         static let type = "type"
         static let inventory = "inventory"
@@ -119,6 +120,7 @@ class EventItem {
         switch (type) {
         case .AGENDA_REMINDER:
             self.agenda = Agenda.instance.items?.getAgenda(with: parameters[ItemKeys.agenda] as! String)
+            self.endDate = Date(from: parameters[ItemKeys.endDate] as! Int)
             self.inventory = nil
         case .INVENTORY_EXPIRED, .INVENTORY_RANOUT:
             self.inventory = Inventory.instance.items?.getItem(with: parameters[ItemKeys.inventory] as! String)
@@ -139,6 +141,7 @@ class EventItem {
         case .AGENDA_REMINDER:
             dic[ItemKeys.agenda] = self.agenda?.agendaKey
             dic[ItemKeys.inventory] = ""
+            dic[ItemKeys.endDate] = self.endDate?.transformToInt()
         case .INVENTORY_EXPIRED, .INVENTORY_RANOUT:
             dic[ItemKeys.inventory] = self.inventory?.InventoryItemKey
             dic[ItemKeys.agenda] = ""

@@ -79,7 +79,19 @@ class Events : RepositoryClass {
                         
                     }
                     
+                    let inventoryEventItems = newItems.filter(Events.filterInventoryExpiredEvents(elem:))
+                    
+                    for item in inventoryEventItems {
+                        let newItem = self.addInventoryRanoutDate(intoInventoryEvent: item, fromItems: newItems)
+                        newItems[newItems.index(where: {
+                            oldItem in
+                            
+                            return oldItem.key == newItem.key
+                        })!] = newItem
+                    }
+                    
                     self.items = newItems
+
                     
                 }
                 
@@ -94,14 +106,15 @@ class Events : RepositoryClass {
     
     func add(_ item : EventItem) {
         
-        
-        eventsReference?.child(item.key).setValue(item.toDictionary())
+        eventsReference?.childByAutoId().setValue(item.toDictionary())
         
     }
     
     func edit (_ item : EventItem) {
         
         eventsReference?.child(item.key).setValue(item.toDictionary())
+            
+        
         
     }
     
@@ -111,6 +124,74 @@ class Events : RepositoryClass {
         
     }
     
+    func addInventoryRanoutDate(intoInventoryEvent event : EventItem, fromItems items : [EventItem]) -> EventItem {
+        
+        
+        
+        let agendaItemsForEvent = items.filter(Events.filterAgendaReminderEvents(elem:)).filter({
+            element in
+            return element.agenda?.agendaDrug.InventoryItemKey == event.inventory?.InventoryItemKey
+        })
+            let cal   = Calendar.current
+            let today = Date()
+            
+            var dates = [(Date, Int)]()
+            
+            for agenda in agendaItemsForEvent {
+                
+                for component in agenda.dates {
+                    
+                    var nextDate : Date
+                    
+                    nextDate = cal.nextDate(after: today, matching: component, matchingPolicy: .strict)!
+                    
+                    while (nextDate < agenda.endDate!) {
+                        dates.append((nextDate, (agenda.agenda?.agendaDose)!))
+                        nextDate = cal.nextDate(after: nextDate, matching: component, matchingPolicy: .strict)!
+                    }
+                    
+                }
+                
+            }
+            
+            dates.sort(by: {
+                lhs, rhs in
+                return lhs.0 < rhs.0
+            })
+            
+            var noOfInventory = (event.inventory?.InventoryItemAmount)!, index = 0, datesLength = dates.count
+            
+            var inventoryPositive = true, moreInventoryThanDates = false
+            
+            while (inventoryPositive && !moreInventoryThanDates) {
+                if (!(index < datesLength)) {
+                    moreInventoryThanDates = true
+                } else if (noOfInventory <= 0) {
+                    inventoryPositive = false
+                } else {
+                    noOfInventory -= dates[index].1
+                    index += 1
+                }
+                
+            }
+            
+            if (!moreInventoryThanDates) {
+                
+                var dateOfRunOut = cal.dateComponents([.year,.month,.day], from: dates[index-1].0)
+                dateOfRunOut.hour = 8
+                
+                
+                event.dates.append(dateOfRunOut)
+                
+            } else if (event.dates.count > 1) {
+                while event.dates.count != 1 {
+                    let _ = event.dates.popLast()
+                }
+            }
+            
+            return event
+        
+    }
     
     // STATIC HELPER SORTING FUNCTIONS
     
@@ -121,15 +202,33 @@ class Events : RepositoryClass {
     static func eventDatesAreInIncreasingOrder(lhs: EventItem, rhs: EventItem) -> Bool {
         return lhs.getEarliestDate() < rhs.getEarliestDate()
     }
-    
-    static func notificationRequestIdentifiersAreInIncreasingOrder(lhs: UNNotificationRequest, rhs: UNNotificationRequest) -> Bool {
-        return lhs.identifier < rhs.identifier
+
+    static func filterAgendaReminderEvents(elem: EventItem) -> Bool {
+        return elem.type == EventItem.EventType.AGENDA_REMINDER
     }
     
-    static func notificationRequestDatesAreInIncreasingOrder(lhs: UNNotificationRequest, rhs: UNNotificationRequest) -> Bool {
-        let rightTrigger = rhs.trigger as? UNCalendarNotificationTrigger
-        let leftTrigger = lhs.trigger as? UNCalendarNotificationTrigger
-        return (rightTrigger?.nextTriggerDate())! < (leftTrigger?.nextTriggerDate())!
+    static func filterInventoryExpiredEvents(elem: EventItem) -> Bool {
+        return elem.type == EventItem.EventType.INVENTORY_EXPIRED
+    }
+    
+    static func filterInventoryRanoutEvents(elem: EventItem) -> Bool {
+        return elem.type == EventItem.EventType.INVENTORY_RANOUT
+    }
+    
+    static func getListOfUniqueEventItemKeys (fromEventList eventList: [EventItem]) -> Set<String>{
+        
+        var addedList = Set<String>()
+        
+        for element in eventList {
+            
+            if !addedList.contains(element.key) {
+                addedList.insert(element.key)
+            }
+            
+        }
+        
+        return addedList
+        
     }
     
     // TYPEALIAS
@@ -146,6 +245,34 @@ extension Array where Element : EventItem {
         for item in self {
             
             if item.key == key {
+                return item
+            }
+            
+        }
+        
+        return nil
+        
+    }
+    
+    func getItem (withAgenda key : String) -> EventItem? {
+        
+        for item in self.filter(Events.filterAgendaReminderEvents(elem:)) {
+            
+            if item.agenda?.agendaKey == key {
+                return item
+            }
+            
+        }
+        
+        return nil
+        
+    }
+    
+    func getItem (withInventory key : String) -> EventItem? {
+        
+        for item in self.filter(Events.filterInventoryExpiredEvents(elem:)) {
+            
+            if item.inventory?.InventoryItemKey == key {
                 return item
             }
             

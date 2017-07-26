@@ -47,9 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         registerForPushNotifications()
         
         UserNotifications.instance.setUp()
-        
-        Scheduler.instance.populateCurrentNotifications()
-        
+                
         return true
     }
 

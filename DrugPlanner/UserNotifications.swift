@@ -41,10 +41,13 @@ class UserNotifications : NSObject{
         let cal = Calendar(identifier: .gregorian)
         let trigger = UNCalendarNotificationTrigger(dateMatching: cal.dateComponents([.year, .month, .day, .hour, .minute], from: eventItem.0), repeats: false)
         
+        var identifier : String
+        
         switch (eventItem.1.type) {
             
         case .AGENDA_REMINDER:
             
+            identifier     = (eventItem.1.agenda?.agendaKey)!
             let drugName   = eventItem.1.agenda!.agendaDrug.InventoryItemName
             let dose       = eventItem.1.agenda!.agendaDose
             let amountUnit = getDrugTypeDescriptions(for: (eventItem.1.agenda!.agendaDrug.InventoryItemType))["amountUnit"]!
@@ -56,6 +59,7 @@ class UserNotifications : NSObject{
             
         case .INVENTORY_EXPIRED:
             
+            identifier = (eventItem.1.inventory?.InventoryItemKey)!
             let drugName = eventItem.1.inventory!.InventoryItemName
             let dateF = DateFormatter()
             dateF.dateStyle = .medium
@@ -68,12 +72,21 @@ class UserNotifications : NSObject{
             
         case .INVENTORY_RANOUT:
             
+            identifier = (eventItem.1.inventory?.InventoryItemKey)!
+            let drugName = eventItem.1.inventory!.InventoryItemName
+            let dateF = DateFormatter()
+            dateF.dateStyle = .medium
+            dateF.timeStyle = .none
+            let date = eventItem.0
+            
             content.categoryIdentifier = NotificationStrings.INVENTORY_RANOUT
-            // TODO
+            content.title = "Your medication is running out."
+            content.body = "\(drugName) is about to run out on \(dateF.string(from: date))."
+            
             
         }
         
-        let request = UNNotificationRequest(identifier: (eventItem.1.key + index.description), content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: (identifier + index.description), content: content, trigger: trigger)
         let center = UNUserNotificationCenter.current()
         center.add(request, withCompletionHandler: {
             error in
@@ -88,7 +101,7 @@ class UserNotifications : NSObject{
 extension UserNotifications : UNUserNotificationCenterDelegate {
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        print("I recieved a notification")
+        print("I recieved a notification response")
         switch(response.notification.request.content.categoryIdentifier) {
         case NotificationStrings.AGENDA_REMINDER :
             
@@ -96,19 +109,18 @@ extension UserNotifications : UNUserNotificationCenterDelegate {
             case UNNotificationDismissActionIdentifier :
                 
                 NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationStrings.AGENDA_IGNORED_ACTION), object: response.notification.request.identifier)
-                print("Notification dismissed")
 
-            case UNNotificationDefaultActionIdentifier : print("App launched")
+            case UNNotificationDefaultActionIdentifier :
+                
+                NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationStrings.AGENDA_APPLAUNCH_ACTION), object: response.notification.request.identifier)
+                
             case NotificationStrings.AGENDA_FOLLOWED_ACTION :
                 
                 NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationStrings.AGENDA_FOLLOWED_ACTION), object: response.notification.request.identifier)
                 
-                print("Agenda Event confirmed")
-                completionHandler()
             case NotificationStrings.AGENDA_IGNORED_ACTION :
                 
                 NotificationCenter.default.post(name: Notification.Name(rawValue: NotificationStrings.AGENDA_IGNORED_ACTION), object: response.notification.request.identifier)
-                print("Agenda Event ignored")
                 
             default: print("Action identifier: \(response.actionIdentifier)")
             }
@@ -125,6 +137,9 @@ extension UserNotifications : UNUserNotificationCenterDelegate {
             
         default: print("Notification Category: \(response.notification.request.content.categoryIdentifier)")
         }
+        
+        completionHandler()
+        
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
