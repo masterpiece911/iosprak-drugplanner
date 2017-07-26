@@ -74,14 +74,10 @@ class UserNotifications : NSObject{
             
             identifier = (eventItem.1.inventory?.InventoryItemKey)!
             let drugName = eventItem.1.inventory!.InventoryItemName
-            let dateF = DateFormatter()
-            dateF.dateStyle = .medium
-            dateF.timeStyle = .none
-            let date = eventItem.0
             
             content.categoryIdentifier = NotificationStrings.INVENTORY_RANOUT
             content.title = "Your medication is running out."
-            content.body = "\(drugName) is about to run out on \(dateF.string(from: date))."
+            content.body = "Based on current schedules, you are running out on \(drugName). You need to order more to follow your schedules."
             
             
         }
@@ -136,6 +132,7 @@ extension UserNotifications : UNUserNotificationCenterDelegate {
             print("reacted to Inventory will run out Notification")
             
         default: print("Notification Category: \(response.notification.request.content.categoryIdentifier)")
+            
         }
         
         completionHandler()
@@ -145,8 +142,14 @@ extension UserNotifications : UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         print("I will present a notification")
         
-        completionHandler(.alert)
-        completionHandler(.sound)
+        switch(notification.request.content.categoryIdentifier) {
+        case NotificationStrings.INVENTORY_EXPIRED, NotificationStrings.INVENTORY_RANOUT :
+            completionHandler(.alert)
+        case NotificationStrings.AGENDA_REMINDER :
+            completionHandler(.sound)
+            completionHandler(.alert)
+        default: break
+        }
         
     }
     
