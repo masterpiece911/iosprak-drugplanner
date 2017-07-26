@@ -1652,11 +1652,16 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Add History Event" id="U8m-pH-ldZ">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="bzU-3T-4Bz"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="bzU-3T-4Bz">
+                            <connections>
+                                <segue destination="GI4-eV-KrH" kind="unwind" unwindAction="cancelCreateHistoryEventWithSegue:" id="hzN-kT-inz"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="k78-Uq-syI"/>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c42-h3-tqR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="GI4-eV-KrH" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="887" y="1083"/>
         </scene>
