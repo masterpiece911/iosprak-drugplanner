@@ -26,10 +26,6 @@ class InventoryDetailTableViewController: UITableViewController {
     
     
     let datePicker = UIDatePicker()
-
-    let cancelAlert = UIAlertController(title: "Confirm Cancel?", message: "You have unsaved changes.", preferredStyle: .alert)
-    let deleteAlert = UIAlertController(title: "Confirm Delete?", message: "This action can not be undone.", preferredStyle: .alert)
-    let editAlert   = UIAlertController(title: "Incomplete Information", message: "Please fill out all fields before proceeding.", preferredStyle: .alert)
     
     var expiryDate : Date?
     

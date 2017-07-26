@@ -230,12 +230,33 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="gSs-sz-J2m">
+                                        <rect key="frame" x="0.0" y="300" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gSs-sz-J2m" id="dkN-fu-wdI">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kZX-IK-49u">
+                                                    <rect key="frame" x="20" y="6" width="335" height="30"/>
+                                                    <state key="normal" title="Add Time"/>
+                                                    <connections>
+                                                        <action selector="addCell:" destination="5of-T5-lJZ" eventType="touchUpInside" id="obr-xe-NMX"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="kZX-IK-49u" secondAttribute="trailing" constant="20" id="bop-VM-cTA"/>
+                                                <constraint firstItem="kZX-IK-49u" firstAttribute="leading" secondItem="dkN-fu-wdI" secondAttribute="leading" constant="20" id="qDt-8v-s59"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="Day" id="Kzm-l9-sUJ">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="eP9-eW-si1" detailTextLabel="pSG-zw-CGY" style="IBUITableViewCellStyleValue1" id="qzF-iV-BYw">
-                                        <rect key="frame" x="0.0" y="359" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="400" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qzF-iV-BYw" id="HYq-Pc-SYG">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
@@ -266,7 +287,7 @@
                             <tableViewSection headerTitle="End Date" id="QTb-Uu-MNg">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="WHr-qo-p34">
-                                        <rect key="frame" x="0.0" y="460" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="500" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WHr-qo-p34" id="UUr-jy-ydG">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -304,7 +325,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="7Qw-p8-Dz5">
                             <connections>
-                                <action selector="AgendaConfirm:" destination="5of-T5-lJZ" id="TBs-O1-TVo"/>
+                                <action selector="confirmAgenda:" destination="5of-T5-lJZ" id="mDh-Bn-ri2"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -795,7 +816,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hYe-s6-6FT">
-                                                    <rect key="frame" x="3" y="-12" width="146" height="158"/>
+                                                    <rect key="frame" x="3" y="-14" width="145" height="159"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                     <connections>
                                                         <outletCollection property="gestureRecognizers" destination="EhK-BA-JJW" appends="YES" id="YUn-t1-sRU"/>
