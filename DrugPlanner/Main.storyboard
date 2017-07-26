@@ -381,8 +381,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="E57-Rp-O1g" kind="unwind" unwindAction="unwindWithSelectedDrugToHistoryWithSegue:" id="mmb-ok-Tu2"/>
-                        <segue destination="E57-Rp-O1g" kind="unwind" unwindAction="undwindWithSelectedDrugWithSegue:" id="ExU-F3-aEt"/>
+                        <segue destination="E57-Rp-O1g" kind="unwind" identifier="SaveSelectedDrugToCreateHistory" unwindAction="unwindWithSelectedDrugToHistoryWithSegue:" id="mmb-ok-Tu2"/>
+                        <segue destination="E57-Rp-O1g" kind="unwind" identifier="SaveSelectedDrugToACreateAgenda" unwindAction="undwindWithSelectedDrugWithSegue:" id="ExU-F3-aEt"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lO1-ba-fAv" userLabel="First Responder" sceneMemberID="firstResponder"/>

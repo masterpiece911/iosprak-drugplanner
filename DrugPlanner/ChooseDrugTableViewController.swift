@@ -102,7 +102,7 @@ class ChooseDrugTableViewController: UITableViewController {
             performSegue(withIdentifier: "SaveSelectedDrugToCreateHistory", sender: self)
         }
         if let _ = source as? CreateAgendaItemTableViewController {
-            performSegue(withIdentifier: "SaveSelectedDrugToACreategenda", sender: self)
+            performSegue(withIdentifier: "SaveSelectedDrugToACreateAgenda", sender: self)
         }
     }
     
