@@ -35,6 +35,10 @@ class HistoryItem {
         self.notes = notes
         self.date = date
         
+    }
+    
+    convenience init (withInventory inventory: InventoryItem, withAmount amount: Int, atDate date: Date, withNotes notes : String, usingKey key: String) {
+        
         self.init(for: inventory.InventoryItemName, with: inventory.InventoryItemDose, at: date, with: notes, using: key)
         
     }
@@ -47,12 +51,12 @@ class HistoryItem {
     
     convenience init (withKey key : String, withParameters parameters : NSDictionary) {
         
-        let drugName        =   parameters[ItemKeys.DrugName]   as! String
+        let name        =   parameters[ItemKeys.Name]   as! String
         let dose            =   parameters[ItemKeys.Dose]       as! Int
         let notes           =   parameters[ItemKeys.Notes]      as! String
         let date            =   Date(from: parameters[ItemKeys.Date] as! Int)
         
-        self.init(for: drugName, with: dose, at: date, with: notes, using: key)
+        self.init(for: name, with: dose, at: date, with: notes, using: key)
         
     }
     
@@ -60,7 +64,7 @@ class HistoryItem {
         
         return [
         
-            ItemKeys.DrugName   :   self.drugName,
+            ItemKeys.Name   :   self.name,
             ItemKeys.Date       :   self.date.transformToInt(),
             ItemKeys.Dose       :   self.dose,
             ItemKeys.Notes      :   self.notes
