@@ -97,13 +97,25 @@ class Inventory : RepositoryClass {
     
     func add(inventory item : InventoryItem) {
     
-        inventoryReference?.childByAutoId().setValue(item.toDictionary())
+        let itemKey = inventoryReference?.childByAutoId().key
+        inventoryReference?.child(itemKey!).setValue(item.toDictionary())
+        item.InventoryItemKey = itemKey!
+        
+        Events.instance.add(EventItem(.INVENTORY_EXPIRED, for: item, using: itemKey!))
         
     }
     
     func edit(inventory item : InventoryItem) {
         
         inventoryReference?.child(item.InventoryItemKey).setValue(item.toDictionary())
+        
+        if let eventItem = Events.instance.items?.getItem(withInventory: item.InventoryItemKey) {
+            
+            Events.instance.edit(EventItem(.INVENTORY_EXPIRED, for: item, using: eventItem.key))
+            
+        } else {
+            Events.instance.add(EventItem(.INVENTORY_EXPIRED, for: item, using: item.InventoryItemKey))
+        }
         
     }
     
@@ -116,6 +128,9 @@ class Inventory : RepositoryClass {
             }
         }
         inventoryReference?.child(item.InventoryItemKey).removeValue()
+        if let inventoryEvent = Events.instance.items?.getItem(withInventory: item.InventoryItemKey) {
+            Events.instance.delete(inventoryEvent)
+        }
     }
     
     func listenToChanges(in item : InventoryItem) -> DatabaseHandle? {

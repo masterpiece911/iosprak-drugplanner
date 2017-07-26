@@ -32,6 +32,7 @@ class DetailPhotoViewController: UIViewController, UINavigationControllerDelegat
         
         importMethodAlert.addAction(galleryAction)
         importMethodAlert.addAction(cameraAction)
+        importMethodAlert.addAction(cancelAction)
         
         detailedImageView.image = image
     }
