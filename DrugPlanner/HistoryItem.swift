@@ -21,12 +21,12 @@ class HistoryItem {
     }
     
     private var key : String!
-    private var date : String!
+    private var date : Date!
     private var name : String!
     private var dose : Int!
     private var notes : String!
     
-    init(for name : String, with dose : Int, at date : String,with notes : String, using key : String) {
+    init(for name : String, with dose : Int, at date : Date,with notes : String, using key : String) {
         
         self.key = key
         self.name = name
