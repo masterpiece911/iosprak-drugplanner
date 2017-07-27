@@ -62,7 +62,7 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7hT-rc-ovG" userLabel="Date Label">
-                                            <rect key="frame" x="118" y="49" width="65" height="16"/>
+                                            <rect key="frame" x="100" y="49" width="65" height="16"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
@@ -76,9 +76,9 @@
                                         <constraint firstItem="AS2-qd-d6g" firstAttribute="leading" secondItem="fmn-0J-yKm" secondAttribute="leading" constant="10" id="XZD-OZ-ndC"/>
                                         <constraint firstAttribute="trailing" secondItem="fva-pf-twY" secondAttribute="trailing" constant="10" id="bOk-io-mad"/>
                                         <constraint firstItem="Vek-eb-iww" firstAttribute="leading" secondItem="AS2-qd-d6g" secondAttribute="trailing" constant="10" id="cEX-V8-F3N"/>
+                                        <constraint firstItem="7hT-rc-ovG" firstAttribute="leading" secondItem="AS2-qd-d6g" secondAttribute="trailing" constant="10" id="cy5-wG-An6"/>
                                         <constraint firstItem="3df-Ow-qhr" firstAttribute="top" secondItem="fmn-0J-yKm" secondAttribute="top" constant="15" id="izo-2f-nUK"/>
                                         <constraint firstAttribute="trailing" secondItem="Tbv-jS-kLG" secondAttribute="trailing" constant="10" id="k88-k4-4Mf"/>
-                                        <constraint firstItem="fva-pf-twY" firstAttribute="leading" secondItem="7hT-rc-ovG" secondAttribute="trailing" constant="6" id="o74-oI-mbd"/>
                                         <constraint firstItem="Vek-eb-iww" firstAttribute="centerY" secondItem="fmn-0J-yKm" secondAttribute="centerY" constant="-7" id="tPx-ex-ASD"/>
                                         <constraint firstItem="3df-Ow-qhr" firstAttribute="leading" secondItem="AS2-qd-d6g" secondAttribute="trailing" constant="10" id="uCU-jU-1p6"/>
                                     </constraints>
@@ -1515,7 +1515,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="342" height="69"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DateLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gYv-LS-p0X">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DateLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gYv-LS-p0X" userLabel="Date Label">
                                             <rect key="frame" x="10" y="19" width="62" height="16"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -1541,7 +1541,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TimeLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KUd-vC-3M1">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TimeLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KUd-vC-3M1" userLabel="Time Label">
                                             <rect key="frame" x="10" y="35" width="63" height="16"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
