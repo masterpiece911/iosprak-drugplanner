@@ -68,7 +68,9 @@ class HistoryViewController: UITableViewController {
         //DOSE UNIT LABEL AUSFÜLLEN
         cell.DoseUnitLabel.text = String(historyItem.drugType)
         
-    
+        let image = #imageLiteral(resourceName: "Unchecked")
+        
+        cell.accessoryView = UIImageView(image: image)
         
         return cell
  
