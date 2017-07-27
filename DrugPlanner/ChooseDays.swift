@@ -46,12 +46,16 @@ class ChooseDays: UITableViewController {
         let weekday = AgendaItem.getWeekday(for: indexPath.row + 1)
             
         cell.textLabel?.text = weekday.rawValue
-            
+        
+        var image : UIImage
+        
         if(weekdays[weekday])! {
-            cell.accessoryType = .checkmark
+            image = #imageLiteral(resourceName: "OK")
         } else {
-            cell.accessoryType = .none
+            image = #imageLiteral(resourceName: "Unchecked")
         }
+        
+        cell.accessoryView = UIImageView(image: image)
         
         return cell
         
@@ -66,11 +70,15 @@ class ChooseDays: UITableViewController {
             
             weekdays[weekday]! = !weekdays[weekday]!
             
+            var image : UIImage
+            
             if(weekdays[weekday]!) {
-                cell.accessoryType = .checkmark
+                image = #imageLiteral(resourceName: "OK")
             } else {
-                cell.accessoryType = .none
+                image = #imageLiteral(resourceName: "Unchecked")
             }
+            
+            cell.accessoryView = UIImageView(image: image)
             
         }
         
