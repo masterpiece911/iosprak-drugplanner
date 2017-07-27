@@ -10,13 +10,17 @@ import UIKit
 
 class HistoryContentTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var dateOfIntakeLabel: UILabel!
+    @IBOutlet weak var DateOfTakeLabel: UILabel!
     
-    @IBOutlet weak var drugNameLabel: UILabel!
+    @IBOutlet weak var TimeOfTakeLabel: UILabel!
     
-    @IBOutlet weak var doseLabel: UILabel!
+    @IBOutlet weak var DrugNameLabel: UILabel!
     
-    @IBOutlet weak var takeLabel: UILabel!
+    @IBOutlet weak var DoseLabel: UILabel!
+    
+    @IBOutlet weak var DoseUnitLabel: UILabel!
+    
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

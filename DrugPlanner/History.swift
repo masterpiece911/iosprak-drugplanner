@@ -93,18 +93,20 @@ class History : RepositoryClass {
         
     }
     
+    // ADD HISTORY ITEM
     func add(historyItem item : HistoryItem) {
         
         historyReference?.childByAutoId().setValue(item.toDictionary())
         
     }
     
+    //EDIT HISTORY ITEM
     func edit(historyItem item : HistoryItem) {
         
         historyReference?.child(item.key).setValue(item.toDictionary())
         
     }
-    
+    //REMOVE HISTORY ITEM
     func remove(historyItem item : HistoryItem) {
         
         for (handler, historyItem) in databaseHandlers {
@@ -166,7 +168,7 @@ class History : RepositoryClass {
     // STATIC HELPER SORTING FUNCTIONS
     
     static func historyDatesAreInIncreasingOrder (lhs: HistoryItem, rhs: HistoryItem) -> Bool {
-        return lhs.date < rhs.date
+        return lhs.dateAndTime < rhs.dateAndTime
     }
     
 }

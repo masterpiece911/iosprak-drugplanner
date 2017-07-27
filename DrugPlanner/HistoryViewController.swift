@@ -43,25 +43,31 @@ class HistoryViewController: UITableViewController {
    
     
     // !!!!!STILL TO DO!!!! - DIDN't WANT TO WORK NOW AT STORYBOARD :-S
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
    
         let cell = tableView.dequeueReusableCell(withIdentifier: "historyCell", for: indexPath) as! HistoryContentTableViewCell
-        let item = items[indexPath.row]
+        let historyItem = items[indexPath.row]
         
-        cell.drugNameLabel.text = item.InventoryItemName
         
+        // DATE AND TIME AUSFÜLLEN
         let formatter = DateFormatter()
+        formatter.dateStyle = .none
+        formatter.timeStyle = .short
+        cell.TimeOfTakeLabel.text = formatter.string(from: historyItem.dateAndTime)
         formatter.dateStyle = .medium
         formatter.timeStyle = .none
-        
-        cell.expiryDateLabel.text = formatter.string(from: item.InventoryItemExpiryDate)
-        
-        cell.doseLabel.text = " " + getDrugTypeDescriptions(for: item.InventoryItemType)["amountUnit"]!
+        cell.DateOfTakeLabel.text = formatter.string(from: historyItem.dateAndTime)
+        //DRUG NAME
+        cell.DrugNameLabel.text = historyItem.drugName
+        //INTAKEN DOSE LABEL
+        cell.DoseLabel.text = String(historyItem.intakenDose)
+        //DOSE UNIT LABEL AUSFÜLLEN
+        cell.DoseUnitLabel.text = String(historyItem.drugType)
         
         return cell
  
-    }*/
+    }
     
     
     // !!!!!TO IMPLEMENT: SEGUE TO HISTORY VIEW DETAIL
