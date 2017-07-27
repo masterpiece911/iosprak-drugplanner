@@ -102,11 +102,11 @@ class ChooseDrugTableViewController: UITableViewController {
             performSegue(withIdentifier: "SaveSelectedDrugToCreateHistory", sender: self)
         }
         if let _ = source as? CreateAgendaItemTableViewController {
-            performSegue(withIdentifier: "SaveSelectedDrugToACreategenda", sender: self)
+            performSegue(withIdentifier: "SaveSelectedDrugToACreateAgenda", sender: self)
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+   /* override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if let obs = self.observer {
             NotificationCenter.default.removeObserver(obs)
@@ -122,6 +122,6 @@ class ChooseDrugTableViewController: UITableViewController {
             }
         }
     }
-    
+    */
 
 }

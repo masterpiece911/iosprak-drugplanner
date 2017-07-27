@@ -13,7 +13,9 @@ class CreateHistoryItemController: UITableViewController {
     @IBOutlet weak var DrugNameLabel: UILabel!
     @IBOutlet weak var DateOfTakeLabel: UITextField!
     @IBOutlet weak var DoseLabel: UITextField!
-    @IBOutlet weak var NotesLabel: UITextField!
+    @IBOutlet weak var NotesLabel: UITextView!
+    @IBOutlet weak var DoseUnitLabel: UILabel!
+
     
     let datePicker = UIDatePicker()
     var dateF : DateFormatter = DateFormatter()
@@ -29,7 +31,7 @@ class CreateHistoryItemController: UITableViewController {
                 drugName = drug?.InventoryItemName
                 let drugType = drug?.InventoryItemType
                 DrugNameLabel.text? = drugName!
-                DoseLabel.text? = getDrugTypeDescriptions(for: drugType!)["doseUnit"]!
+                DoseUnitLabel.text? = getDrugTypeDescriptions(for: drugType!)["amountUnit"]!
             
         }
     }
@@ -64,10 +66,9 @@ class CreateHistoryItemController: UITableViewController {
         datePicker.maximumDate = Date(timeIntervalSinceNow: 12 * 60 * 60)
         let currentCalendar = NSCalendar.current
         let dateComponents = NSDateComponents()
-        dateComponents.month = -1
-        let oneMonthBack = currentCalendar.date(byAdding: dateComponents as DateComponents, to: NSDate() as Date)!
-        //minimum day is set to one month ago, in case you remember that you took a pill in a specific day
-        datePicker.minimumDate = oneMonthBack
+        dateComponents.day = -14
+        let twoWeeks = currentCalendar.date(byAdding: dateComponents as DateComponents, to: NSDate() as Date)!
+        datePicker.minimumDate = twoWeeks
         
         DateOfTakeLabel.inputView = datePicker
     }
@@ -110,7 +111,7 @@ class CreateHistoryItemController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "ChooseDrugCreateHistory"){
+        if (segue.identifier == "ChooseDrugToCreateHistory"){
             if let chooseDrugController = segue.destination as? ChooseDrugTableViewController{
                 chooseDrugController.source = segue.source
             }
@@ -120,7 +121,6 @@ class CreateHistoryItemController: UITableViewController {
     @IBAction func unwindWithSelectedDrugToHistory (segue: UIStoryboardSegue) {
         if let drugPickerController = segue.source as? ChooseDrugTableViewController {
             if let selectedDrug = drugPickerController.selectedDrug {
-                //self.drugName = selectedDrug.InventoryItemName
                 self.drug = selectedDrug
             }
         }

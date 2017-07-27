@@ -207,12 +207,18 @@ class CreateAgendaItemTableViewController: UITableViewController {
             
         }
         
+        else if (segue.identifier == "ChooseDrugCreateAgenda" ) {
+            if let chooseDrugController = segue.destination as?  ChooseDrugTableViewController {
+                chooseDrugController.source = segue.source
+        }
+        
     }
-    
+    }
     @IBAction func undwindWithSelectedDrug (segue: UIStoryboardSegue) {
         if let drugPickerController = segue.source as? ChooseDrugTableViewController {
             if let selectedDrug = drugPickerController.selectedDrug {
                 self.drug = selectedDrug
+                
             }
         }
         
