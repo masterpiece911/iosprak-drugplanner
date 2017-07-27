@@ -58,12 +58,17 @@ class HistoryViewController: UITableViewController {
         formatter.dateStyle = .medium
         formatter.timeStyle = .none
         cell.DateOfTakeLabel.text = formatter.string(from: historyItem.dateAndTime)
+        
         //DRUG NAME
         cell.DrugNameLabel.text = historyItem.drugName
+        
         //INTAKEN DOSE LABEL
         cell.DoseLabel.text = String(historyItem.intakenDose)
+        
         //DOSE UNIT LABEL AUSFÜLLEN
         cell.DoseUnitLabel.text = String(historyItem.drugType)
+        
+    
         
         return cell
  
@@ -84,7 +89,7 @@ class HistoryViewController: UITableViewController {
         }
     }
     
-    // DO WE NEED IT?
+    
     override func viewDidDisappear(_ animated: Bool) {
         
         super.viewDidDisappear(animated)

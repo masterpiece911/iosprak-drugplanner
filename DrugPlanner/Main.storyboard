@@ -688,7 +688,7 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prescription Needed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fX5-b0-rgK">
                                                     <rect key="frame" x="28" y="8" width="268" height="27"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1122,7 +1122,7 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prescription Needed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lJ9-vF-acb">
                                                     <rect key="frame" x="28" y="8" width="268" height="27"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1559,7 +1559,6 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="DateOfIntakeLabel" destination="gYv-LS-p0X" id="Rr6-cJ-yfg"/>
                                     <outlet property="DateOfTakeLabel" destination="gYv-LS-p0X" id="Jp8-ZW-tiI"/>
                                     <outlet property="DoseLabel" destination="eMQ-r1-aEh" id="LfC-t2-QYw"/>
                                     <outlet property="DoseUnitLabel" destination="gwr-Mh-uA8" id="jRa-Z3-Iv1"/>
@@ -1662,10 +1661,16 @@
                                                             <rect key="frame" x="0.0" y="13" width="80" height="17"/>
                                                             <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <textInputTraits key="textInputTraits"/>
+                                                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                         </textField>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nx3-cm-f3c" userLabel="Dose Unit Label">
-                                                            <rect key="frame" x="80" y="0.0" width="255" height="43"/>
+                                                            <rect key="frame" x="80" y="0.0" width="213" height="43"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m9b-YR-qix" userLabel="Concentration Label">
+                                                            <rect key="frame" x="293" y="11" width="42" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -1716,7 +1721,11 @@
                                 <segue destination="GI4-eV-KrH" kind="unwind" unwindAction="cancelCreateHistoryEventWithSegue:" id="hzN-kT-inz"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="k78-Uq-syI"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="k78-Uq-syI">
+                            <connections>
+                                <action selector="saveHistoryItem:" destination="CKh-OD-wsm" id="uav-3R-3vg"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="DateOfTakeLabel" destination="9wi-PZ-ZcM" id="4G2-5W-TEP"/>
@@ -1724,6 +1733,7 @@
                         <outlet property="DoseUnitLabel" destination="Nx3-cm-f3c" id="at1-hx-Z04"/>
                         <outlet property="DrugNameLabel" destination="FNj-Wv-O83" id="XhK-Ma-ozR"/>
                         <outlet property="NotesLabel" destination="qot-Zj-bCA" id="n7B-Xe-XWF"/>
+                        <segue destination="GI4-eV-KrH" kind="unwind" identifier="saveHistoryItem" unwindAction="saveNewHistoryItemWithSegue:" id="Aw5-DJ-YJC"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c42-h3-tqR" userLabel="First Responder" sceneMemberID="firstResponder"/>
