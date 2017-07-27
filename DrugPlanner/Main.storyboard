@@ -1515,34 +1515,32 @@
                                     <rect key="frame" x="0.0" y="0.0" width="342" height="69"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DateLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gYv-LS-p0X" userLabel="Date Label">
-                                            <rect key="frame" x="10" y="19" width="62" height="16"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gYv-LS-p0X" userLabel="Date ">
+                                            <rect key="frame" x="10" y="19" width="29" height="16"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DrugName Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QOB-Iz-4hc">
-                                            <rect key="frame" x="88" y="24" width="137" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DrugName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QOB-Iz-4hc" userLabel="Drug Name">
+                                            <rect key="frame" x="55" y="24" width="88" height="21"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dose Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eMQ-r1-aEh">
-                                            <rect key="frame" x="123" y="44" width="96" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="333" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eMQ-r1-aEh" userLabel="Dose ">
+                                            <rect key="frame" x="266" y="10" width="58" height="39"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Taken Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9zt-Zr-AxT">
-                                            <rect key="frame" x="232" y="54" width="102" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KUd-vC-3M1" userLabel="Time ">
+                                            <rect key="frame" x="10" y="35" width="30" height="16"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TimeLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KUd-vC-3M1" userLabel="Time Label">
-                                            <rect key="frame" x="10" y="35" width="63" height="16"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Dose Unit" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gwr-Mh-uA8">
+                                            <rect key="frame" x="264" y="45" width="60" height="16"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
@@ -1552,7 +1550,10 @@
                                         <constraint firstItem="gYv-LS-p0X" firstAttribute="leading" secondItem="hdY-vA-yvb" secondAttribute="leading" constant="10" id="EpB-0j-uaP"/>
                                         <constraint firstItem="gYv-LS-p0X" firstAttribute="centerY" secondItem="hdY-vA-yvb" secondAttribute="centerY" constant="-8" id="OdG-oJ-Hj5"/>
                                         <constraint firstItem="KUd-vC-3M1" firstAttribute="leading" secondItem="hdY-vA-yvb" secondAttribute="leading" constant="10" id="SfN-rB-vth"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="eMQ-r1-aEh" secondAttribute="trailing" constant="10" id="bXe-6X-zmG"/>
                                         <constraint firstItem="QOB-Iz-4hc" firstAttribute="centerY" secondItem="hdY-vA-yvb" secondAttribute="centerY" id="c71-FM-Fak"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="gwr-Mh-uA8" secondAttribute="trailing" constant="10" id="cFw-gn-Z1a"/>
+                                        <constraint firstItem="eMQ-r1-aEh" firstAttribute="centerY" secondItem="hdY-vA-yvb" secondAttribute="centerY" constant="-5" id="gB0-xl-T77"/>
                                         <constraint firstItem="KUd-vC-3M1" firstAttribute="centerY" secondItem="hdY-vA-yvb" secondAttribute="centerY" constant="8" id="j0d-AC-mem"/>
                                         <constraint firstItem="QOB-Iz-4hc" firstAttribute="leading" secondItem="gYv-LS-p0X" secondAttribute="trailing" constant="16" id="qfU-3x-tH2"/>
                                     </constraints>
@@ -1561,7 +1562,6 @@
                                     <outlet property="DateOfIntakeLabel" destination="gYv-LS-p0X" id="Rr6-cJ-yfg"/>
                                     <outlet property="DoseLabel" destination="eMQ-r1-aEh" id="zQn-u8-o2G"/>
                                     <outlet property="DrugNameLabel" destination="QOB-Iz-4hc" id="tJA-iw-NcU"/>
-                                    <outlet property="TakeLabel" destination="9zt-Zr-AxT" id="iO8-7J-Lbl"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1656,13 +1656,13 @@
                                                     <rect key="frame" x="20" y="0.0" width="335" height="43"/>
                                                     <subviews>
                                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Dose Taken" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qNj-tA-adP" userLabel="Dose Field">
-                                                            <rect key="frame" x="0.0" y="13" width="79" height="17"/>
+                                                            <rect key="frame" x="0.0" y="13" width="80" height="17"/>
                                                             <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits"/>
                                                         </textField>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nx3-cm-f3c" userLabel="Dose Unit Label">
-                                                            <rect key="frame" x="79" y="0.0" width="256" height="43"/>
+                                                            <rect key="frame" x="80" y="0.0" width="255" height="43"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
