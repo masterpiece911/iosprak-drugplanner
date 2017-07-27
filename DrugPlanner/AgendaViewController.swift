@@ -252,7 +252,7 @@ class AgendaViewController: UITableViewController {
                 let indexPath = tableView.indexPath(for: cell)
                 if let index = indexPath?.row {
                     
-                    let selectedItem = events[index]
+                    let selectedItem = allSections[indexPath!.section][index]
                     if let destination = segue.destination as? UINavigationController {
                         if let topDestination = destination.topViewController as? AgendaDetailTableViewController{
                             topDestination.item = selectedItem.1.agenda
@@ -279,8 +279,12 @@ class AgendaViewController: UITableViewController {
             self.eventsObserver = NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: EventStrings.EVENT_UPDATE), object: nil, queue: nil, using: eventListDidUpdate)
         }
         
-        self.events = Scheduler.instance.allEvents
+        self.events = Scheduler.instance.allEvents.filter({
+            _, eventItem in
+            return eventItem.type == .AGENDA_REMINDER
+        })
         
+        setUpSections()
         tableView.reloadData()
         
     }
