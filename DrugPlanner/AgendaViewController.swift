@@ -10,9 +10,42 @@ import UIKit
 
 class AgendaViewController: UITableViewController {
 
-    var items : [AgendaItem] = [AgendaItem]()
+    struct TimeIntervals {
+        
+        static func HALF_HOUR(event : (Date, EventItem)) -> Bool {
+            return Date().addingTimeInterval(-1 * 60 * 30) <= event.0 && event.0 <= Date().addingTimeInterval(60 * 30)
+        }
+        static func TWO_HOURS(event : (Date, EventItem)) -> Bool {
+            return Date().addingTimeInterval(60 * 30) <= event.0 && event.0 <= Date().addingTimeInterval(60 * 60 * 2)
+        }
+        static func SIX_HOURS(event : (Date, EventItem)) -> Bool {
+            return Date().addingTimeInterval(60 * 60 * 2) <= event.0 && event.0 <= Date().addingTimeInterval(60 * 60 * 6)
+        }
+        static func TODAY(event : (Date, EventItem)) -> Bool {
+            return Calendar.current.isDateInToday(event.0)
+        }
+        static func TOMORROW(event : (Date, EventItem)) -> Bool {
+            return Calendar.current.isDateInTomorrow(event.0)
+        }
+        
+    }
     
-    var observer : Any?
+    var items : [AgendaItem] = [AgendaItem]()
+    var events = [(Date, EventItem)] ()
+    
+    var section0 : [(Date, EventItem)] = []
+    var section1 : [(Date, EventItem)] = []
+    var section2 : [(Date, EventItem)] = []
+    var section3 : [(Date, EventItem)] = []
+    var allPreviousSections : [(Date, EventItem)] = []
+    var section4 : [(Date, EventItem)] = []
+    var sectionsBeforeLater : [(Date, EventItem)] = []
+    var section5 : [(Date, EventItem)] = []
+    var allSections : [[(Date, EventItem)]] = [[]]
+
+    var agendaObserver : Any?
+    var eventsObserver : Any?
+    
     var dateF : DateFormatter = DateFormatter()
 
     
@@ -20,78 +53,19 @@ class AgendaViewController: UITableViewController {
         super.viewDidLoad()
         
         items = Agenda.instance.items!
+        events = Scheduler.instance.allEvents
         dateF = DateFormatter()
         dateF.dateStyle = .none
         dateF.timeStyle = .short
-        self.observer = NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: AgendaStrings.AGENDA_UPDATE), object: nil, queue: nil, using: agendaListDidUpdate)
+        self.agendaObserver = NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: AgendaStrings.AGENDA_UPDATE), object: nil, queue: nil, using: agendaListDidUpdate)
+        self.eventsObserver = NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: EventStrings.EVENT_UPDATE), object: nil, queue: nil, using: eventListDidUpdate)
+        setUpSections()
      
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return items.count
-    }
-
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "AgendaCell", for: indexPath) as! AgendaTableViewCell
-
-        let agendaItem = items[indexPath.row]
-
-        if String(agendaItem.agendaDrug.InventoryItemPhoto) != "" {
-            cell.drugImage?.image = agendaItem.agendaDrug.convertStringToImage(photoAsString: agendaItem.agendaDrug.InventoryItemPhoto)
-        }
-        cell.nameLabel?.text = agendaItem.agendaDrug.InventoryItemName
-        var weekday = getDayOfWeek(today: Date())
-        var day = AgendaItem.getWeekday(for: weekday)
-        let timeNow = dateF.date(from: dateF.string(from: Date()))!
-        let timeOlder = timeNow < agendaItem.agendaTime
-
-        var weekdayCount = 1;
-        
-        
-        
-        if(agendaItem.agendaWeekdays[day]! && timeOlder){
-            cell.dateLabel?.text = "today"
-        }else{
-            weekdayCount = weekdayCount + 1
-            weekday = weekday + 1;
-            day = AgendaItem.getWeekday(for: weekday)
-            if(agendaItem.agendaWeekdays[day]!){
-                cell.dateLabel?.text = "tomorrow"
-            }else{
-                while(!agendaItem.agendaWeekdays[day]! && weekdayCount < 8){
-                    if(weekday == 7){
-                        weekday = 1;
-                    }else{
-                        weekday = weekday + 1
-                    }
-                    day = AgendaItem.getWeekday(for: weekday)
-                    weekdayCount = weekdayCount + 1
-                }
-
-                cell.dateLabel?.text = day.rawValue
-            }
-        }
-        
-        let formatter = DateFormatter()
-        formatter.dateStyle = .none
-        formatter.timeStyle = .short
-        cell.timeLabel?.text = formatter.string(from: agendaItem.agendaTime)
-        cell.hintLabel?.text = agendaItem.agendaDrug.InventoryItemNotes
-        return cell
     }
     
     func agendaListDidUpdate (notification: Notification) {
@@ -100,6 +74,163 @@ class AgendaViewController: UITableViewController {
         self.tableView.reloadData()
         
     }
+    
+    func eventListDidUpdate (notification: Notification) {
+        
+        self.events = Scheduler.instance.allEvents.filter({
+            _, eventItem in
+            return eventItem.type == .AGENDA_REMINDER
+        })
+        setUpSections()
+        self.tableView.reloadData()
+        
+    }
+    
+    func setUpSections() {
+        
+        self.section0 = self.events.filter(TimeIntervals.HALF_HOUR(event:))
+        self.section1 = self.events.filter(TimeIntervals.TWO_HOURS(event:))
+        self.section2 = self.events.filter(TimeIntervals.SIX_HOURS(event:))
+        self.allPreviousSections = [section0, section1, section2].flatMap { $0 }
+        self.section3 = self.events.filter(TimeIntervals.TODAY(event:)).filter({
+            element in
+            return !allPreviousSections.contains(where: {
+                otherElement in
+                return element.0 == otherElement.0 && element.1.key == otherElement.1.key
+            })
+        })
+        self.section4 = self.events.filter(TimeIntervals.TOMORROW(event:))
+        self.sectionsBeforeLater = [allPreviousSections, section3, section4].flatMap { $0 }
+        self.section5 = self.events.filter({
+            element in
+            return !sectionsBeforeLater.contains(where: {
+                otherElement in
+                return element.0 == otherElement.0 && element.1.key == otherElement.1.key
+            })
+        })
+        self.allSections = [section0, section1, section2, section3, section4, section5]
+
+    }
+
+
+    // MARK: - Table view data source
+
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 6
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        
+        switch (section) {
+        case 0: return section0.count
+        case 1: return section1.count
+        case 2: return section2.count
+        case 3: return section3.count
+        case 4: return section4.count
+        case 5: return section5.count
+        default: break;
+        }
+    
+        return 0
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch (section) {
+        case 0: return "Take now:"
+        case 1: return "In the next two hours:"
+        case 2: return "Later:"
+        case 3: return "Today:"
+        case 4: return "Tomorrow:"
+        case 5: return "This week:"
+        default: return ""
+        }
+    }
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "AgendaCell", for: indexPath) as! AgendaTableViewCell
+        
+        let event = allSections[indexPath.section][indexPath.row]
+        
+        let agendaItem = event.1.agenda!
+        
+        if String(agendaItem.agendaDrug.InventoryItemPhoto) != "" {
+            cell.drugImage?.image = agendaItem.agendaDrug.convertStringToImage(photoAsString: agendaItem.agendaDrug.InventoryItemPhoto)
+        }
+        
+        let formatter = DateFormatter()
+        formatter.dateStyle = .none
+        formatter.timeStyle = .short
+        
+        cell.nameLabel?.text = agendaItem.agendaDrug.InventoryItemName
+        cell.timeLabel?.text = formatter.string(from: event.0)
+        cell.hintLabel?.text = agendaItem.agendaDrug.InventoryItemNotes
+        
+        if(indexPath.section == 5) {
+            
+            formatter.dateStyle = .medium
+            formatter.timeStyle = .none
+            cell.dateLabel.text = formatter.string(from: event.0).appending(",")
+            
+        } else {
+            
+            cell.dateLabel.text = ""
+            
+        }
+
+        return cell
+        
+    }
+    
+//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "AgendaCell", for: indexPath) as! AgendaTableViewCell
+//
+//        let agendaItem = items[indexPath.row]
+//
+//        if String(agendaItem.agendaDrug.InventoryItemPhoto) != "" {
+//            cell.drugImage?.image = agendaItem.agendaDrug.convertStringToImage(photoAsString: agendaItem.agendaDrug.InventoryItemPhoto)
+//        }
+//        cell.nameLabel?.text = agendaItem.agendaDrug.InventoryItemName
+//        var weekday = getDayOfWeek(today: Date())
+//        var day = AgendaItem.getWeekday(for: weekday)
+//        let timeNow = dateF.date(from: dateF.string(from: Date()))!
+//        let timeOlder = timeNow < agendaItem.agendaTime
+//
+//        var weekdayCount = 1;
+//        
+//        
+//        
+//        if(agendaItem.agendaWeekdays[day]! && timeOlder){
+//            cell.dateLabel?.text = "today"
+//        }else{
+//            weekdayCount = weekdayCount + 1
+//            weekday = weekday + 1;
+//            day = AgendaItem.getWeekday(for: weekday)
+//            if(agendaItem.agendaWeekdays[day]!){
+//                cell.dateLabel?.text = "tomorrow"
+//            }else{
+//                while(!agendaItem.agendaWeekdays[day]! && weekdayCount < 8){
+//                    if(weekday == 7){
+//                        weekday = 1;
+//                    }else{
+//                        weekday = weekday + 1
+//                    }
+//                    day = AgendaItem.getWeekday(for: weekday)
+//                    weekdayCount = weekdayCount + 1
+//                }
+//
+//                cell.dateLabel?.text = day.rawValue
+//            }
+//        }
+//        
+//        let formatter = DateFormatter()
+//        formatter.dateStyle = .none
+//        formatter.timeStyle = .short
+//        cell.timeLabel?.text = formatter.string(from: agendaItem.agendaTime)
+//        cell.hintLabel?.text = agendaItem.agendaDrug.InventoryItemNotes
+//        return cell
+//    }
     
     func getDayOfWeek(today:Date)->Int {
         
@@ -121,10 +252,10 @@ class AgendaViewController: UITableViewController {
                 let indexPath = tableView.indexPath(for: cell)
                 if let index = indexPath?.row {
                     
-                    let selectedItem = items[index]
+                    let selectedItem = events[index]
                     if let destination = segue.destination as? UINavigationController {
                         if let topDestination = destination.topViewController as? AgendaDetailTableViewController{
-                            topDestination.item = selectedItem
+                            topDestination.item = selectedItem.1.agenda
                         }
                     }
                 }
@@ -138,12 +269,18 @@ class AgendaViewController: UITableViewController {
         
         super.viewDidAppear(animated)
         
-        if self.observer == nil {
-            self.observer = NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: AgendaStrings.AGENDA_UPDATE), object: nil, queue: nil, using: agendaListDidUpdate)
-
+        if self.agendaObserver == nil {
+            self.agendaObserver = NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: AgendaStrings.AGENDA_UPDATE), object: nil, queue: nil, using: agendaListDidUpdate)
         }
         
         self.items = Agenda.instance.items!
+        
+        if self.eventsObserver == nil {
+            self.eventsObserver = NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: EventStrings.EVENT_UPDATE), object: nil, queue: nil, using: eventListDidUpdate)
+        }
+        
+        self.events = Scheduler.instance.allEvents
+        
         tableView.reloadData()
         
     }
@@ -152,11 +289,13 @@ class AgendaViewController: UITableViewController {
         
         super.viewDidDisappear(animated)
         
-        if let obs = self.observer {
-            NotificationCenter.default.removeObserver(obs)
-            self.observer = nil
+        if let agObs = self.agendaObserver,
+            let evObs = self.eventsObserver {
+            NotificationCenter.default.removeObserver(agObs)
+            NotificationCenter.default.removeObserver(evObs)
         }
-
+        self.agendaObserver = nil
+        self.eventsObserver = nil
     }
     
     
