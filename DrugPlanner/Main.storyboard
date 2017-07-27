@@ -1235,12 +1235,12 @@
                                                     </constraints>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FFo-9d-zga">
-                                                    <rect key="frame" x="18" y="89" width="168" height="30"/>
+                                                    <rect key="frame" x="17" y="89" width="169" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="3EY-5M-Apa"/>
-                                                        <constraint firstAttribute="width" constant="168" id="s23-Q7-Wc1"/>
+                                                        <constraint firstAttribute="width" constant="169" id="s23-Q7-Wc1"/>
                                                     </constraints>
-                                                    <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    <inset key="titleEdgeInsets" minX="6" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     <state key="normal" title="Import from Gallery" image="Gallery Filled"/>
                                                     <connections>
                                                         <action selector="importImage:" destination="eFu-16-zrN" eventType="touchUpInside" id="m6D-Ne-2WS"/>
@@ -1264,7 +1264,7 @@
                                                 <constraint firstItem="9Rl-aL-uLI" firstAttribute="top" secondItem="ARO-qQ-teS" secondAttribute="top" constant="5" id="Dp4-hR-ibo"/>
                                                 <constraint firstAttribute="bottom" secondItem="FFo-9d-zga" secondAttribute="bottom" constant="40" id="HMo-0k-R1C"/>
                                                 <constraint firstAttribute="bottom" secondItem="9Rl-aL-uLI" secondAttribute="bottom" constant="5" id="Hoq-yj-wE6"/>
-                                                <constraint firstItem="FFo-9d-zga" firstAttribute="leading" secondItem="ARO-qQ-teS" secondAttribute="leadingMargin" constant="10" id="i97-7Y-AJ2"/>
+                                                <constraint firstItem="FFo-9d-zga" firstAttribute="leading" secondItem="ARO-qQ-teS" secondAttribute="leadingMargin" constant="9" id="i97-7Y-AJ2"/>
                                                 <constraint firstAttribute="trailing" secondItem="9Rl-aL-uLI" secondAttribute="trailing" constant="10" id="oaX-ZG-1Kz"/>
                                                 <constraint firstItem="UQJ-Rw-XR1" firstAttribute="leading" secondItem="ARO-qQ-teS" secondAttribute="leadingMargin" constant="8" id="xTS-HE-1LY"/>
                                             </constraints>
@@ -1560,8 +1560,11 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="DateOfIntakeLabel" destination="gYv-LS-p0X" id="Rr6-cJ-yfg"/>
-                                    <outlet property="DoseLabel" destination="eMQ-r1-aEh" id="zQn-u8-o2G"/>
-                                    <outlet property="DrugNameLabel" destination="QOB-Iz-4hc" id="tJA-iw-NcU"/>
+                                    <outlet property="DateOfTakeLabel" destination="gYv-LS-p0X" id="Jp8-ZW-tiI"/>
+                                    <outlet property="DoseLabel" destination="eMQ-r1-aEh" id="LfC-t2-QYw"/>
+                                    <outlet property="DoseUnitLabel" destination="gwr-Mh-uA8" id="jRa-Z3-Iv1"/>
+                                    <outlet property="DrugNameLabel" destination="QOB-Iz-4hc" id="ezl-D1-8ST"/>
+                                    <outlet property="TimeOfTakeLabel" destination="KUd-vC-3M1" id="1NI-Jd-jHv"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
