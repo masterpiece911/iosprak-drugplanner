@@ -61,8 +61,8 @@ class HistoryViewController: UITableViewController {
         
         return cell
  
-    }
-    */
+    }*/
+    
     
     // !!!!!TO IMPLEMENT: SEGUE TO HISTORY VIEW DETAIL
     
