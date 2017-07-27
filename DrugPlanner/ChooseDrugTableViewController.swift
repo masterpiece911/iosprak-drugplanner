@@ -67,11 +67,15 @@ class ChooseDrugTableViewController: UITableViewController {
         
         cell.textLabel?.text = drug.InventoryItemName
         
+        var image : UIImage
+        
         if indexPath.row == selectedDrugIndex {
-            cell.accessoryType = .checkmark
+            image = #imageLiteral(resourceName: "OK")
         } else {
-            cell.accessoryType = .none
+            image = #imageLiteral(resourceName: "Unchecked")
         }
+        
+        cell.accessoryView = UIImageView(image: image)
         
         return cell
     }
@@ -80,15 +84,18 @@ class ChooseDrugTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
+        var image : UIImage = #imageLiteral(resourceName: "Unchecked")
+        
         if let index = selectedDrugIndex {
             let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0))
-            cell?.accessoryType = .none
+            cell?.accessoryView = UIImageView(image: image)
         }
         
         selectedDrug = drugs[indexPath.row]
         
         let cell = tableView.cellForRow(at: indexPath)
-        cell?.accessoryType = .checkmark
+        image = #imageLiteral(resourceName: "OK")
+        cell?.accessoryView = UIImageView(image: image)
         
     }
     
