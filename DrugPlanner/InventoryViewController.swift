@@ -189,7 +189,7 @@ class InventoryViewController: UITableViewController, UITextFieldDelegate {
             let now = Date()
             
             Inventory.instance.edit(inventory: takenItem)
-            History.instance.add(historyItem: HistoryItem.init(withInventory: takenItem, withAmount: takenAmount, atDate: now, withNotes: "", usingKey: "tmp"))
+            History.instance.add(historyItem: HistoryItem.init(withInventory: takenItem, withIntakenDose: takenAmount, atDate: now, withNotes: "", usingKey: "tmp"))
         })
         
         alertConfirmAction.isEnabled = false
