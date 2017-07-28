@@ -33,15 +33,9 @@ class AgendaViewController: UITableViewController {
     var items : [AgendaItem] = [AgendaItem]()
     var events = [(Date, EventItem)] ()
     
-    var section0 : [(Date, EventItem)] = []
-    var section1 : [(Date, EventItem)] = []
-    var section2 : [(Date, EventItem)] = []
-    var section3 : [(Date, EventItem)] = []
-    var allPreviousSections : [(Date, EventItem)] = []
-    var section4 : [(Date, EventItem)] = []
-    var sectionsBeforeLater : [(Date, EventItem)] = []
-    var section5 : [(Date, EventItem)] = []
-    var allSections : [[(Date, EventItem)]] = [[]]
+    var allSections : [[(Date, EventItem)]] = []
+    
+    var sectionHeaders : [String] = []
 
     var agendaObserver : Any?
     var eventsObserver : Any?
@@ -88,27 +82,76 @@ class AgendaViewController: UITableViewController {
     
     func setUpSections() {
         
-        self.section0 = self.events.filter(TimeIntervals.HALF_HOUR(event:))
-        self.section1 = self.events.filter(TimeIntervals.TWO_HOURS(event:))
-        self.section2 = self.events.filter(TimeIntervals.SIX_HOURS(event:))
-        self.allPreviousSections = [section0, section1, section2].flatMap { $0 }
-        self.section3 = self.events.filter(TimeIntervals.TODAY(event:)).filter({
+        let cal = Calendar.current
+        
+        let today = cal.date(from: cal.dateComponents([.year, .month, .day], from: Date()))
+        
+        let twoDaysLater = cal.date(byAdding: .day, value: 2, to: today!)
+        
+        let dateF = DateFormatter()
+        dateF.dateStyle = .long
+        dateF.timeStyle = .none
+        
+        var allEvents = self.events
+        
+        self.allSections = []
+        self.sectionHeaders = []
+        
+        let section0 = self.events.filter(TimeIntervals.HALF_HOUR(event:))
+        
+        if(!section0.isEmpty) {
+            self.allSections.append(section0)
+            self.sectionHeaders.append( "Take now: ")
+        }
+        
+        let section1 = self.events.filter(TimeIntervals.TWO_HOURS(event:))
+        
+        if(!section1.isEmpty) {
+            self.allSections.append(section1)
+            self.sectionHeaders.append("In the next two hours: ")
+        }
+        
+        let section2 = self.events.filter(TimeIntervals.SIX_HOURS(event:))
+        
+        if(!section2.isEmpty) {
+            self.allSections.append(section2)
+            self.sectionHeaders.append("In the next six hours: ")
+        }
+        
+        let allPreviousSections = [section0, section1, section2].flatMap { $0 }
+        
+        let section3 = self.events.filter(TimeIntervals.TODAY(event:)).filter({
             element in
             return !allPreviousSections.contains(where: {
                 otherElement in
                 return element.0 == otherElement.0 && element.1.key == otherElement.1.key
             })
         })
-        self.section4 = self.events.filter(TimeIntervals.TOMORROW(event:))
-        self.sectionsBeforeLater = [allPreviousSections, section3, section4].flatMap { $0 }
-        self.section5 = self.events.filter({
+        
+        if(!section3.isEmpty) {
+            self.allSections.append(section3)
+            self.sectionHeaders.append("Today: ")
+        }
+        
+        let section4 = self.events.filter(TimeIntervals.TOMORROW(event:))
+        
+        if(!section4.isEmpty) {
+            self.allSections.append(section4)
+            self.sectionHeaders.append("Tomorrow: ")
+        }
+        let sectionsBeforeLater = [allPreviousSections, section3, section4].flatMap { $0 }
+        let section5 = self.events.filter({
             element in
             return !sectionsBeforeLater.contains(where: {
                 otherElement in
                 return element.0 == otherElement.0 && element.1.key == otherElement.1.key
             })
         })
-        self.allSections = [section0, section1, section2, section3, section4, section5]
+        
+        if(!section5.isEmpty) {
+            self.allSections.append(section5)
+            self.sectionHeaders.append("Later: ")
+        }
 
     }
 
@@ -117,41 +160,35 @@ class AgendaViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 6
+        return self.allSections.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         
-        switch (section) {
-        case 0: return section0.count
-        case 1: return section1.count
-        case 2: return section2.count
-        case 3: return section3.count
-        case 4: return section4.count
-        case 5: return section5.count
-        default: break;
-        }
-    
-        return 0
+        return self.allSections[section].count
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch (section) {
-        case 0: return "Take now:"
-        case 1: return "In the next two hours:"
-        case 2: return "Later:"
-        case 3: return "Today:"
-        case 4: return "Tomorrow:"
-        case 5: return "This week:"
-        default: return ""
-        }
+        return self.sectionHeaders[section]
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AgendaCell", for: indexPath) as! AgendaTableViewCell
         
         let event = allSections[indexPath.section][indexPath.row]
+        
+        let rightNow = Date()
+        
+        if(event.0 > rightNow.addingTimeInterval(60 * 30)) {
+            cell.backgroundColor = UIColor.clear
+        } else {
+            let difference = event.0.timeIntervalSince(rightNow)
+            let ratio = 1 - (difference / TimeInterval(60 * 30))
+            var color = UIColor.yellow
+            color = color.withAlphaComponent(CGFloat(ratio))
+            cell.backgroundColor = color
+        }
         
         let agendaItem = event.1.agenda!
         
@@ -167,17 +204,9 @@ class AgendaViewController: UITableViewController {
         cell.timeLabel?.text = formatter.string(from: event.0)
         cell.hintLabel?.text = agendaItem.agendaDrug.InventoryItemNotes
         
-        if(indexPath.section == 5) {
-            
-            formatter.dateStyle = .medium
-            formatter.timeStyle = .none
-            cell.dateLabel.text = formatter.string(from: event.0).appending(",")
-            
-        } else {
-            
-            cell.dateLabel.text = ""
-            
-        }
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
+        cell.dateLabel.text = formatter.string(from: event.0).appending(",")
 
         return cell
         

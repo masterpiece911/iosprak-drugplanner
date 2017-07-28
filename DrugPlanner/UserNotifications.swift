@@ -146,8 +146,7 @@ extension UserNotifications : UNUserNotificationCenterDelegate {
         case NotificationStrings.INVENTORY_EXPIRED, NotificationStrings.INVENTORY_RANOUT :
             completionHandler(.alert)
         case NotificationStrings.AGENDA_REMINDER :
-            completionHandler(.sound)
-            completionHandler(.alert)
+            completionHandler([.alert, .sound])
         default: break
         }
         
