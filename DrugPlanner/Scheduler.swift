@@ -37,9 +37,13 @@ class Scheduler {
             
             if(item.type == .INVENTORY_EXPIRED) {
                 
-                let date = cal.nextDate(after: Date(), matching: item.dates[0], matchingPolicy: .strict)
+                if let date = cal.nextDate(after: Date(), matching: item.dates[0], matchingPolicy: .strict) {
+                    print(item.dates[0])
+                    allEvents.append((date, item))
+                } else {
+                    allEvents.append((Date(timeIntervalSinceNow: 5 * 60), item))
+                }
                 
-                allEvents.append((date!, item))
                 
                 if item.dates.count > 1 {
                     let correspondingRanoutEvent = EventItem(.INVENTORY_RANOUT, for: item.inventory!, using: item.key)
