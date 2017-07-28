@@ -14,59 +14,71 @@ class HistoryItem {
     struct ItemKeys {
         
         static let Key = "key"
-        static let Date = "date"
-        static let Name = "name"
-        static let Dose = "dose"
+        static let DateAndTime = "dateAndTime"
+        static let DrugName = "drugName"
+        static let DrugType = "drugType"
+        static let IntakenDose = "intakeDose"
+        static let DrugConcentration = "drugConcentration"
         static let Notes = "notes"
         
     }
     
     var key : String!
-    var date : Date!
-    var name : String!
-    var dose : Int!
+    var dateAndTime : Date!
+    var drugName : String!
+    var drugType : String!
+    var intakenDose : Int!
+    var drugConcentration : Int!
     var notes : String!
     
-    init(for name : String, with dose : Int, at date : Date,with notes : String, using key : String) {
+    init(at dateAndTime : Date, for drugName : String, of drugType : String, with intakenDose : Int, having drugConcentration : Int, with notes : String, using key : String) {
         
         self.key = key
-        self.name = name
-        self.dose = dose
+        self.dateAndTime = dateAndTime
+        self.drugName = drugName
+        self.drugType = drugType
+        self.intakenDose = intakenDose
+        self.drugConcentration = drugConcentration
         self.notes = notes
-        self.date = date
         
     }
     
-    convenience init (withInventory inventory: InventoryItem, withAmount amount: Int, atDate date: Date, withNotes notes : String, usingKey key: String) {
+    
+    convenience init (withInventory inventory: InventoryItem, withIntakenDose intakenDose: Int, atDate date: Date, withNotes notes : String, usingKey key: String) {
         
-        self.init(for: inventory.InventoryItemName, with: inventory.InventoryItemDose, at: date, with: notes, using: key)
+        self.init(at: date, for: inventory.InventoryItemName, of : inventory.InventoryItemType.rawValue, with : intakenDose, having: inventory.InventoryItemDose,  with: notes, using: key)
         
     }
     
     convenience init (withAgenda agenda: AgendaItem, atDate date: Date, withNotes notes: String, usingKey key: String) {
         
-        self.init(for: agenda.agendaDrug.InventoryItemName, with: agenda.agendaDose, at: date, with: notes, using: key)
+        self.init(at: date, for: agenda.agendaDrug.InventoryItemName, of: agenda.agendaDrug.InventoryItemType.rawValue, with: agenda.agendaDose, having: agenda.agendaDrug.InventoryItemDose,  with: notes, using: key)
 
     }
     
     convenience init (withKey key : String, withParameters parameters : NSDictionary) {
-        
-        let name        =   parameters[ItemKeys.Name]   as! String
-        let dose            =   parameters[ItemKeys.Dose]       as! Int
+
+        let date            =   Date(from: parameters[ItemKeys.DateAndTime] as! Int)
+        let drugName        =   parameters[ItemKeys.DrugName]   as! String
+        let drugType        =   parameters[ItemKeys.DrugType]      as! String
+        let drugConcentration   =   parameters[ItemKeys.DrugConcentration]       as! Int
+        let intakenDose = parameters[ItemKeys.IntakenDose]      as! Int
         let notes           =   parameters[ItemKeys.Notes]      as! String
-        let date            =   Date(from: parameters[ItemKeys.Date] as! Int)
+
         
-        self.init(for: name, with: dose, at: date, with: notes, using: key)
+        self.init(at: date, for: drugName, of: drugType, with: intakenDose, having: drugConcentration, with: notes, using: key)
         
     }
     
     func toDictionary() -> NSDictionary {
         
         return [
-        
-            ItemKeys.Name   :   self.name,
-            ItemKeys.Date       :   self.date.transformToInt(),
-            ItemKeys.Dose       :   self.dose,
+            
+            ItemKeys.DrugName   :   self.drugName,
+            ItemKeys.DateAndTime       :   self.dateAndTime.transformToInt(),
+            ItemKeys.DrugType : self.drugType,
+            ItemKeys.IntakenDose :  self.intakenDose,
+            ItemKeys.DrugConcentration       :   self.intakenDose,
             ItemKeys.Notes      :   self.notes
             
         ]

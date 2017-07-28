@@ -21,14 +21,18 @@ class CreateHistoryItemController: UITableViewController {
     var dateF : DateFormatter = DateFormatter()
     var dateofTaken : Date?
     var drugName : String?
+    var drugType : String?
     var dose     : Int?
     var notes    : String?
+    var drugConcentration : Int?
     
     let drugsLabelDefault = "Select a drug"
     
     var drug : InventoryItem? {
         didSet{
                 drugName = drug?.InventoryItemName
+                drugConcentration = drug?.InventoryItemDose
+                self.drugType = drug?.InventoryItemType.rawValue
                 let drugType = drug?.InventoryItemType
                 DrugNameLabel.text? = drugName!
                 DoseUnitLabel.text? = getDrugTypeDescriptions(for: drugType!)["amountUnit"]!
@@ -101,11 +105,11 @@ class CreateHistoryItemController: UITableViewController {
     }
     
     @IBAction func saveHistoryItem(_ sender: Any) {
+        
         dose = Int(DoseLabel.text!)
         notes = NotesLabel.text
-        // TO MODIFY!!!!!!!!!!!!
-        drugName = "a"
         
+        historyItem = HistoryItem(at: dateofTaken!, for: drugName!, of: drugType!, with: dose!, having: drugConcentration!, with: notes!, using: "tmpKey")
         
         performSegue(withIdentifier: "saveHistoryItem", sender: self)
     }

@@ -688,7 +688,7 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prescription Needed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fX5-b0-rgK">
                                                     <rect key="frame" x="28" y="8" width="268" height="27"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1122,7 +1122,7 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prescription Needed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lJ9-vF-acb">
                                                     <rect key="frame" x="28" y="8" width="268" height="27"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1235,12 +1235,12 @@
                                                     </constraints>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FFo-9d-zga">
-                                                    <rect key="frame" x="18" y="89" width="168" height="30"/>
+                                                    <rect key="frame" x="17" y="89" width="169" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="3EY-5M-Apa"/>
-                                                        <constraint firstAttribute="width" constant="168" id="s23-Q7-Wc1"/>
+                                                        <constraint firstAttribute="width" constant="169" id="s23-Q7-Wc1"/>
                                                     </constraints>
-                                                    <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    <inset key="titleEdgeInsets" minX="6" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     <state key="normal" title="Import from Gallery" image="Gallery Filled"/>
                                                     <connections>
                                                         <action selector="importImage:" destination="eFu-16-zrN" eventType="touchUpInside" id="m6D-Ne-2WS"/>
@@ -1264,7 +1264,7 @@
                                                 <constraint firstItem="9Rl-aL-uLI" firstAttribute="top" secondItem="ARO-qQ-teS" secondAttribute="top" constant="5" id="Dp4-hR-ibo"/>
                                                 <constraint firstAttribute="bottom" secondItem="FFo-9d-zga" secondAttribute="bottom" constant="40" id="HMo-0k-R1C"/>
                                                 <constraint firstAttribute="bottom" secondItem="9Rl-aL-uLI" secondAttribute="bottom" constant="5" id="Hoq-yj-wE6"/>
-                                                <constraint firstItem="FFo-9d-zga" firstAttribute="leading" secondItem="ARO-qQ-teS" secondAttribute="leadingMargin" constant="10" id="i97-7Y-AJ2"/>
+                                                <constraint firstItem="FFo-9d-zga" firstAttribute="leading" secondItem="ARO-qQ-teS" secondAttribute="leadingMargin" constant="9" id="i97-7Y-AJ2"/>
                                                 <constraint firstAttribute="trailing" secondItem="9Rl-aL-uLI" secondAttribute="trailing" constant="10" id="oaX-ZG-1Kz"/>
                                                 <constraint firstItem="UQJ-Rw-XR1" firstAttribute="leading" secondItem="ARO-qQ-teS" secondAttribute="leadingMargin" constant="8" id="xTS-HE-1LY"/>
                                             </constraints>
@@ -1528,8 +1528,8 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="333" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eMQ-r1-aEh" userLabel="Dose ">
-                                            <rect key="frame" x="266" y="10" width="58" height="39"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                            <rect key="frame" x="269" y="11" width="55" height="36"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -1539,8 +1539,8 @@
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Dose Unit" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gwr-Mh-uA8">
-                                            <rect key="frame" x="264" y="45" width="60" height="16"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dose Unit" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gwr-Mh-uA8">
+                                            <rect key="frame" x="264" y="47" width="60" height="16"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
@@ -1552,16 +1552,19 @@
                                         <constraint firstItem="KUd-vC-3M1" firstAttribute="leading" secondItem="hdY-vA-yvb" secondAttribute="leading" constant="10" id="SfN-rB-vth"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="eMQ-r1-aEh" secondAttribute="trailing" constant="10" id="bXe-6X-zmG"/>
                                         <constraint firstItem="QOB-Iz-4hc" firstAttribute="centerY" secondItem="hdY-vA-yvb" secondAttribute="centerY" id="c71-FM-Fak"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="gwr-Mh-uA8" secondAttribute="trailing" constant="10" id="cFw-gn-Z1a"/>
-                                        <constraint firstItem="eMQ-r1-aEh" firstAttribute="centerY" secondItem="hdY-vA-yvb" secondAttribute="centerY" constant="-5" id="gB0-xl-T77"/>
+                                        <constraint firstItem="gwr-Mh-uA8" firstAttribute="trailing" secondItem="hdY-vA-yvb" secondAttribute="trailingMargin" constant="-10" id="cFw-gn-Z1a"/>
+                                        <constraint firstItem="eMQ-r1-aEh" firstAttribute="centerY" secondItem="hdY-vA-yvb" secondAttribute="centerY" constant="-6" id="gB0-xl-T77"/>
                                         <constraint firstItem="KUd-vC-3M1" firstAttribute="centerY" secondItem="hdY-vA-yvb" secondAttribute="centerY" constant="8" id="j0d-AC-mem"/>
                                         <constraint firstItem="QOB-Iz-4hc" firstAttribute="leading" secondItem="gYv-LS-p0X" secondAttribute="trailing" constant="16" id="qfU-3x-tH2"/>
+                                        <constraint firstItem="gwr-Mh-uA8" firstAttribute="top" secondItem="eMQ-r1-aEh" secondAttribute="bottom" id="wfb-cf-0cZ"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="DateOfIntakeLabel" destination="gYv-LS-p0X" id="Rr6-cJ-yfg"/>
-                                    <outlet property="DoseLabel" destination="eMQ-r1-aEh" id="zQn-u8-o2G"/>
-                                    <outlet property="DrugNameLabel" destination="QOB-Iz-4hc" id="tJA-iw-NcU"/>
+                                    <outlet property="DateOfTakeLabel" destination="gYv-LS-p0X" id="Jp8-ZW-tiI"/>
+                                    <outlet property="DoseLabel" destination="eMQ-r1-aEh" id="LfC-t2-QYw"/>
+                                    <outlet property="DoseUnitLabel" destination="gwr-Mh-uA8" id="jRa-Z3-Iv1"/>
+                                    <outlet property="DrugNameLabel" destination="QOB-Iz-4hc" id="ezl-D1-8ST"/>
+                                    <outlet property="TimeOfTakeLabel" destination="KUd-vC-3M1" id="1NI-Jd-jHv"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1659,10 +1662,16 @@
                                                             <rect key="frame" x="0.0" y="13" width="80" height="17"/>
                                                             <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <textInputTraits key="textInputTraits"/>
+                                                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                         </textField>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nx3-cm-f3c" userLabel="Dose Unit Label">
-                                                            <rect key="frame" x="80" y="0.0" width="255" height="43"/>
+                                                            <rect key="frame" x="80" y="0.0" width="213" height="43"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m9b-YR-qix" userLabel="Concentration Label">
+                                                            <rect key="frame" x="293" y="11" width="42" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -1713,7 +1722,11 @@
                                 <segue destination="GI4-eV-KrH" kind="unwind" unwindAction="cancelCreateHistoryEventWithSegue:" id="hzN-kT-inz"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="k78-Uq-syI"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="k78-Uq-syI">
+                            <connections>
+                                <action selector="saveHistoryItem:" destination="CKh-OD-wsm" id="uav-3R-3vg"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="DateOfTakeLabel" destination="9wi-PZ-ZcM" id="4G2-5W-TEP"/>
@@ -1721,6 +1734,7 @@
                         <outlet property="DoseUnitLabel" destination="Nx3-cm-f3c" id="at1-hx-Z04"/>
                         <outlet property="DrugNameLabel" destination="FNj-Wv-O83" id="XhK-Ma-ozR"/>
                         <outlet property="NotesLabel" destination="qot-Zj-bCA" id="n7B-Xe-XWF"/>
+                        <segue destination="GI4-eV-KrH" kind="unwind" identifier="saveHistoryItem" unwindAction="saveNewHistoryItemWithSegue:" id="Aw5-DJ-YJC"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c42-h3-tqR" userLabel="First Responder" sceneMemberID="firstResponder"/>

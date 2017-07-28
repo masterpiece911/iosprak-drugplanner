@@ -43,25 +43,38 @@ class HistoryViewController: UITableViewController {
    
     
     // !!!!!STILL TO DO!!!! - DIDN't WANT TO WORK NOW AT STORYBOARD :-S
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
    
         let cell = tableView.dequeueReusableCell(withIdentifier: "historyCell", for: indexPath) as! HistoryContentTableViewCell
-        let item = items[indexPath.row]
+        let historyItem = items[indexPath.row]
         
-        cell.drugNameLabel.text = item.InventoryItemName
         
+        // DATE AND TIME AUSFÜLLEN
         let formatter = DateFormatter()
+        formatter.dateStyle = .none
+        formatter.timeStyle = .short
+        cell.TimeOfTakeLabel.text = formatter.string(from: historyItem.dateAndTime)
         formatter.dateStyle = .medium
         formatter.timeStyle = .none
+        cell.DateOfTakeLabel.text = formatter.string(from: historyItem.dateAndTime)
         
-        cell.expiryDateLabel.text = formatter.string(from: item.InventoryItemExpiryDate)
+        //DRUG NAME
+        cell.DrugNameLabel.text = historyItem.drugName
         
-        cell.doseLabel.text = " " + getDrugTypeDescriptions(for: item.InventoryItemType)["amountUnit"]!
+        //INTAKEN DOSE LABEL
+        cell.DoseLabel.text = String(historyItem.intakenDose)
+        
+        //DOSE UNIT LABEL AUSFÜLLEN
+        cell.DoseUnitLabel.text = String(historyItem.drugType)
+        
+        let image = #imageLiteral(resourceName: "Unchecked")
+        
+        cell.accessoryView = UIImageView(image: image)
         
         return cell
  
-    }*/
+    }
     
     
     // !!!!!TO IMPLEMENT: SEGUE TO HISTORY VIEW DETAIL
@@ -78,7 +91,7 @@ class HistoryViewController: UITableViewController {
         }
     }
     
-    // DO WE NEED IT?
+    
     override func viewDidDisappear(_ animated: Bool) {
         
         super.viewDidDisappear(animated)
