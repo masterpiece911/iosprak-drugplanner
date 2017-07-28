@@ -42,8 +42,6 @@ class HistoryViewController: UITableViewController {
     }
    
     
-    // !!!!!STILL TO DO!!!! - DIDN't WANT TO WORK NOW AT STORYBOARD :-S
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
    
         let cell = tableView.dequeueReusableCell(withIdentifier: "historyCell", for: indexPath) as! HistoryContentTableViewCell
@@ -68,10 +66,16 @@ class HistoryViewController: UITableViewController {
         //DOSE UNIT LABEL AUSFÜLLEN
         cell.DoseUnitLabel.text = String(historyItem.drugType)
         
-        let image = #imageLiteral(resourceName: "Unchecked")
-        
-        cell.accessoryView = UIImageView(image: image)
-        
+        //ACCESSORY VIE IMAGE
+
+        if historyItem.taken {
+            let image = #imageLiteral(resourceName: "OK") // checked
+            cell.accessoryView = UIImageView(image: image)
+        }
+        else {
+            let image = #imageLiteral(resourceName: "Unchecked") //- not; checked
+            cell.accessoryView = UIImageView(image :image)
+        }
         return cell
  
     }
