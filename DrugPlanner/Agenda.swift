@@ -255,6 +255,7 @@ class Agenda : RepositoryClass {
                 let inventoryItem = (item.agenda?.agendaDrug)!
                 inventoryItem.InventoryItemAmount -= (item.agenda?.agendaDose)!
                 Inventory.instance.edit(inventory: inventoryItem)
+                History.instance.add(historyItem: HistoryItem(withAgenda: item.agenda!, atDate: Date(), withNotes: "", usingKey: "temp"))
             }
             
         }
