@@ -109,7 +109,7 @@ class CreateHistoryItemController: UITableViewController {
         dose = Int(DoseLabel.text!)
         notes = NotesLabel.text
         
-        historyItem = HistoryItem(at: dateofTaken!, for: drugName!, of: drugType!, with: dose!, having: drugConcentration!, with: notes!, using: "tmpKey")
+        historyItem = HistoryItem(at: dateofTaken!, for: drugName!, of: drugType!, with: dose!, having: drugConcentration!, with: notes!, using: "tmpKey", takenOrNot: true)
         
         performSegue(withIdentifier: "saveHistoryItem", sender: self)
     }

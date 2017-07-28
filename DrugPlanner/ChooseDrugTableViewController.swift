@@ -113,22 +113,5 @@ class ChooseDrugTableViewController: UITableViewController {
         }
     }
     
-   /* override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if let obs = self.observer {
-            NotificationCenter.default.removeObserver(obs)
-            self.observer = nil
-        }
-        
-        if segue.identifier == "SaveSelectedDrug" {
-            if let cell = sender as? UITableViewCell {
-                let indexPath = tableView.indexPath(for: cell)
-                if let index = indexPath?.row {
-                    selectedDrug = drugs[index]
-                }
-            }
-        }
-    }
-    */
 
 }

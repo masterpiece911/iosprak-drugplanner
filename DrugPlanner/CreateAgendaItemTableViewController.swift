@@ -136,7 +136,8 @@ class CreateAgendaItemTableViewController: UITableViewController {
     
     func createDatePicker(){
         datePicker.datePickerMode = .date
-        datePicker.minimumDate = Date(timeIntervalSinceNow: 24 * 60 * 60)
+//        datePicker.minimumDate = Date(timeIntervalSinceNow: 24 * 60 * 60)
+        datePicker.minimumDate = Date(timeIntervalSinceNow: 0)
         endDateTextField.inputView = datePicker
     }
     

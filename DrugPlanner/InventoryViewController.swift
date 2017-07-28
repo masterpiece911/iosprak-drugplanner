@@ -17,6 +17,10 @@ class InventoryViewController: UITableViewController, UITextFieldDelegate {
     var alertController : UIAlertController?
     
     var takenIndex : Int?
+    
+    var events = [(Date, EventItem)] ()
+    
+    var eventsObserver : Any?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +28,13 @@ class InventoryViewController: UITableViewController, UITextFieldDelegate {
         self.observer = NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: InventoryStrings.INVENTORY_UPDATE), object: nil, queue: nil, using: listDidUpdate)
         
         items = Inventory.instance.items!
+        
+        self.eventsObserver = NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: EventStrings.EVENT_UPDATE), object: nil, queue: nil, using: eventListDidUpdate)
+        
+        self.events = Scheduler.instance.allEvents.filter({
+            _, eventItem in
+            return eventItem.type == .INVENTORY_EXPIRED
+        })
         tableView.reloadData()
 
         
@@ -63,7 +74,56 @@ class InventoryViewController: UITableViewController, UITextFieldDelegate {
         if String(item.InventoryItemPhoto) != "" {
                     cell.drugImage.image = item.convertStringToImage(photoAsString: item.InventoryItemPhoto)
         }
+        
+        let eventWithInventoryKey = self.events.filter({
+            _, eventItem in
+            return eventItem.inventory?.InventoryItemKey == item.InventoryItemKey
+        })
 
+        var expiryDate : Date?
+        var ranoutDate : Date?
+        var today = Date()
+        let day  :TimeInterval =  86400.0
+        today = today.addingTimeInterval(day)
+        for event in eventWithInventoryKey {
+            
+            if event.1.type == .INVENTORY_EXPIRED {
+                expiryDate = event.0
+               
+            } else if event.1.type == .INVENTORY_RANOUT {
+                ranoutDate = event.0
+            }
+            
+        }
+        let week :TimeInterval =  604800
+        
+        
+        if expiryDate?.transformToInt() != nil{
+            if expiryDate! < Date().addingTimeInterval(week){
+                cell.backgroundColor = UIColor.yellow
+            }
+            if expiryDate! < today {
+            cell.backgroundColor = UIColor.red
+            }
+            
+            
+        }
+        if (cell.backgroundColor != UIColor.red && item.InventoryItemAmount == 0){
+        cell.backgroundColor = UIColor.red
+        }
+        if ranoutDate != nil{
+            if (ranoutDate! < Date().addingTimeInterval(week) && cell.backgroundColor != UIColor.red){
+                cell.backgroundColor = UIColor.yellow
+            }
+            if ranoutDate! < today {
+                cell.backgroundColor = UIColor.red
+            }
+            
+            
+        }
+        //Notifications müssen gestzt werden
+        
+        
         
         return cell
     }
@@ -111,6 +171,9 @@ class InventoryViewController: UITableViewController, UITextFieldDelegate {
     override func viewDidAppear(_ animated: Bool) {
         
         super.viewDidAppear(animated)
+        if self.eventsObserver == nil {
+            self.eventsObserver = NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: EventStrings.EVENT_UPDATE), object: nil, queue: nil, using: eventListDidUpdate)
+        }
         if self.observer == nil {
             self.observer = NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: InventoryStrings.INVENTORY_UPDATE), object: nil, queue: nil, using: listDidUpdate)
             
@@ -124,9 +187,14 @@ class InventoryViewController: UITableViewController, UITextFieldDelegate {
         
         super.viewDidDisappear(animated)
         
-        if let obs = self.observer {
+        if let obs = self.observer, let evObs = self.eventsObserver {
+            
+            NotificationCenter.default.removeObserver(evObs)
+
+            
             NotificationCenter.default.removeObserver(obs)
             self.observer = nil
+             self.eventsObserver = nil
         }
 
     }
@@ -189,7 +257,7 @@ class InventoryViewController: UITableViewController, UITextFieldDelegate {
             let now = Date()
             
             Inventory.instance.edit(inventory: takenItem)
-            History.instance.add(historyItem: HistoryItem.init(withInventory: takenItem, withIntakenDose: takenAmount, atDate: now, withNotes: "", usingKey: "tmp"))
+            History.instance.add(historyItem: HistoryItem.init(withInventory: takenItem, withIntakenDose: takenAmount, atDate: now, withNotes: "", usingKey: "tmp", takenOrNot: true))
         })
         
         alertConfirmAction.isEnabled = false
@@ -240,7 +308,16 @@ class InventoryViewController: UITableViewController, UITextFieldDelegate {
         
     }
     
-    
+    func eventListDidUpdate (notification: Notification) {
+        
+        self.events = Scheduler.instance.allEvents.filter({
+            _, eventItem in
+            return eventItem.type == .INVENTORY_EXPIRED || eventItem.type == .INVENTORY_RANOUT
+        })
+        
+        self.tableView.reloadData()
+        
+    }
     
     
     
