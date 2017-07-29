@@ -26,6 +26,7 @@ class CreateHistoryItemController: UITableViewController {
     var dose     : Int?
     var notes    : String?
     var drugConcentration : Int?
+    var concentrationUnit : String?
     
     let drugsLabelDefault = "Select a drug"
     
@@ -36,9 +37,8 @@ class CreateHistoryItemController: UITableViewController {
                 self.drugType = drug?.InventoryItemType.rawValue
                 DrugNameLabel.text? = drugName!
                 DoseUnitLabel.text? = getDrugTypeDescriptions(for: DrugType(rawValue: self.drugType!)!)["amountUnit"]!
-                DoseConcentrationLabel.text? = "a \(self.drugConcentration!)"
-            
-            
+                concentrationUnit = getDrugTypeDescriptions(for: DrugType(rawValue: self.drugType!)!)["doseUnit"]!
+                DoseConcentrationLabel.text? = "a \(self.drugConcentration!) \(self.concentrationUnit!)"
         }
     }
     

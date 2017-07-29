@@ -62,19 +62,17 @@ class HistoryViewController: UITableViewController {
         
         //INTAKEN DOSE LABEL
         cell.DoseLabel.text = String(historyItem.intakenDose)
-       // cell.DoseLabel.text = getDrugTypeDescriptions(for: item.InventoryItemType)["amountUnit"]!
         
         //DOSE UNIT LABEL AUSFÜLLEN
-        cell.DoseUnitLabel.text = String(historyItem.drugType)
+        cell.DoseUnitLabel.text = getDrugTypeDescriptions(for: DrugType(rawValue: historyItem.drugType!)!)["amountUnit"]! + " a \(historyItem.drugConcentration!)" + getDrugTypeDescriptions(for: DrugType(rawValue: historyItem.drugType!)!)["doseUnit"]!
         
-        //ACCESSORY VIE IMAGE
-
+        //ACCESSORY VIEW IMAGE
         if historyItem.taken {
             let image = #imageLiteral(resourceName: "OK") // checked 
             cell.accessoryView = UIImageView(image: image)
         }
         else {
-            let image = #imageLiteral(resourceName: "Unchecked") //- not; checked
+            let image = #imageLiteral(resourceName: "Unchecked") //- not checked
             cell.accessoryView = UIImageView(image :image)
         }
         return cell
