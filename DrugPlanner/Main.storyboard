@@ -1730,6 +1730,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="DateOfTakeLabel" destination="9wi-PZ-ZcM" id="4G2-5W-TEP"/>
+                        <outlet property="DoseConcentrationLabel" destination="m9b-YR-qix" id="jlP-HM-gz9"/>
                         <outlet property="DoseLabel" destination="qNj-tA-adP" id="qvb-eI-iqo"/>
                         <outlet property="DoseUnitLabel" destination="Nx3-cm-f3c" id="at1-hx-Z04"/>
                         <outlet property="DrugNameLabel" destination="FNj-Wv-O83" id="XhK-Ma-ozR"/>

@@ -62,6 +62,7 @@ class HistoryViewController: UITableViewController {
         
         //INTAKEN DOSE LABEL
         cell.DoseLabel.text = String(historyItem.intakenDose)
+       // cell.DoseLabel.text = getDrugTypeDescriptions(for: item.InventoryItemType)["amountUnit"]!
         
         //DOSE UNIT LABEL AUSFÜLLEN
         cell.DoseUnitLabel.text = String(historyItem.drugType)
@@ -69,7 +70,7 @@ class HistoryViewController: UITableViewController {
         //ACCESSORY VIE IMAGE
 
         if historyItem.taken {
-            let image = #imageLiteral(resourceName: "OK") // checked
+            let image = #imageLiteral(resourceName: "OK") // checked 
             cell.accessoryView = UIImageView(image: image)
         }
         else {

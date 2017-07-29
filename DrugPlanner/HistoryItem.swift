@@ -81,7 +81,7 @@ class HistoryItem {
             ItemKeys.DateAndTime       :   self.dateAndTime.transformToInt(),
             ItemKeys.DrugType : self.drugType,
             ItemKeys.IntakenDose :  self.intakenDose,
-            ItemKeys.DrugConcentration       :   self.intakenDose,
+            ItemKeys.DrugConcentration       :   self.drugConcentration,
             ItemKeys.Notes      :   self.notes,
             ItemKeys.Taken : self.taken
             

@@ -15,6 +15,7 @@ class CreateHistoryItemController: UITableViewController {
     @IBOutlet weak var DoseLabel: UITextField!
     @IBOutlet weak var NotesLabel: UITextView!
     @IBOutlet weak var DoseUnitLabel: UILabel!
+    @IBOutlet weak var DoseConcentrationLabel: UILabel!
 
     
     let datePicker = UIDatePicker()
@@ -33,9 +34,10 @@ class CreateHistoryItemController: UITableViewController {
                 drugName = drug?.InventoryItemName
                 drugConcentration = drug?.InventoryItemDose
                 self.drugType = drug?.InventoryItemType.rawValue
-                let drugType = drug?.InventoryItemType
                 DrugNameLabel.text? = drugName!
-                DoseUnitLabel.text? = getDrugTypeDescriptions(for: drugType!)["amountUnit"]!
+                DoseUnitLabel.text? = getDrugTypeDescriptions(for: DrugType(rawValue: self.drugType!)!)["amountUnit"]!
+                DoseConcentrationLabel.text? = "a \(self.drugConcentration!)"
+            
             
         }
     }
@@ -67,7 +69,7 @@ class CreateHistoryItemController: UITableViewController {
 
     func createDatePicker(){
         datePicker.datePickerMode = .dateAndTime
-        datePicker.maximumDate = Date(timeIntervalSinceNow: 12 * 60 * 60)
+        datePicker.maximumDate = Date(timeIntervalSinceNow: 60)
         let currentCalendar = NSCalendar.current
         let dateComponents = NSDateComponents()
         dateComponents.day = -14
