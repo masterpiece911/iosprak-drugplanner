@@ -34,6 +34,8 @@ class HistoryViewController: UITableViewController {
         self.tableView.dataSource = self
         
         self.tableView.rowHeight = UITableViewAutomaticDimension
+        
+        self.tableView.allowsSelectionDuringEditing = false
 
     }
 
@@ -142,7 +144,11 @@ class HistoryViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
+        if self.expandedRows.contains(indexPath.row) {
+            return true
+        } else {
+            return false
+        }
     }
     
     
