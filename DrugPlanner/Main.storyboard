@@ -214,34 +214,12 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="gSs-sz-J2m">
-                                        <rect key="frame" x="0.0" y="299.5" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gSs-sz-J2m" id="dkN-fu-wdI">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kZX-IK-49u">
-                                                    <rect key="frame" x="20" y="6" width="335" height="30"/>
-                                                    <state key="normal" title="Add Time"/>
-                                                    <connections>
-                                                        <action selector="addCell:" destination="5of-T5-lJZ" eventType="touchUpInside" id="obr-xe-NMX"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="kZX-IK-49u" firstAttribute="centerY" secondItem="dkN-fu-wdI" secondAttribute="centerY" id="Ymj-zl-uYR"/>
-                                                <constraint firstAttribute="trailing" secondItem="kZX-IK-49u" secondAttribute="trailing" constant="20" id="bop-VM-cTA"/>
-                                                <constraint firstItem="kZX-IK-49u" firstAttribute="leading" secondItem="dkN-fu-wdI" secondAttribute="leading" constant="20" id="qDt-8v-s59"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="Day" id="Kzm-l9-sUJ">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="eP9-eW-si1" detailTextLabel="pSG-zw-CGY" style="IBUITableViewCellStyleValue1" id="qzF-iV-BYw">
-                                        <rect key="frame" x="0.0" y="399.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="355.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qzF-iV-BYw" id="HYq-Pc-SYG">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
@@ -272,7 +250,7 @@
                             <tableViewSection headerTitle="End Date" id="QTb-Uu-MNg">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="WHr-qo-p34">
-                                        <rect key="frame" x="0.0" y="499.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="455.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WHr-qo-p34" id="UUr-jy-ydG">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -387,7 +365,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LfK-eI-4cP">
-                                            <rect key="frame" x="16" y="0.0" width="344" height="43.5"/>
+                                            <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -987,11 +965,11 @@
                                         <rect key="frame" x="0.0" y="155.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vuJ-z3-djx" id="poH-oL-yuT">
-                                            <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="select a type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vJL-so-9Ri">
-                                                    <rect key="frame" x="16" y="14" width="83" height="17"/>
+                                                    <rect key="frame" x="15" y="14" width="83" height="17"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="textColor"/>
@@ -1333,7 +1311,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vtu-kS-9dE">
-                                            <rect key="frame" x="16" y="0.0" width="344" height="43.5"/>
+                                            <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
