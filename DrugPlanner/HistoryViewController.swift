@@ -89,6 +89,7 @@ class HistoryViewController: UITableViewController {
         }
         else {
             let image = #imageLiteral(resourceName: "Cancel") //- not; checked
+            cell.takenSwitch.setOn(false, animated: true)
             cell.accessoryView = UIImageView(image :image)
         }
         
