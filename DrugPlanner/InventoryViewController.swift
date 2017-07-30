@@ -108,7 +108,7 @@ class InventoryViewController: UITableViewController, UITextFieldDelegate {
             }
             
         }
-        if (item.InventoryItemAmount == 0){
+        if (item.InventoryItemAmount <= 0){
             cell.backgroundColor = UIColor.red
         } else if (cell.backgroundColor != UIColor.red && item.InventoryItemAmount < 5) {
             cell.backgroundColor = UIColor.yellow

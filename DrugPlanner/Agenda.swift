@@ -327,6 +327,8 @@ class Agenda : RepositoryClass {
             
         }
         
+        rescheduleEvents()
+        
     }
     
     func rescheduleEvents() {

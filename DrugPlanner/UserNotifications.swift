@@ -98,7 +98,8 @@ class UserNotifications : NSObject{
         
         let content = UNMutableNotificationContent()
         content.sound = UNNotificationSound.default()
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 30, repeats: false)
+        let components = Calendar.current.dateComponents([.year, .month, .hour, .minute, .day, .second], from: Date(timeIntervalSinceNow: 30))
+        let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
         
         let identifier = agenda.agendaKey.appending("_").appending(date.transformToInt().description)
         
@@ -108,19 +109,37 @@ class UserNotifications : NSObject{
         let dateString = dateF.string(from: date)
         
         dateF.dateStyle = .none
-        dateF.timeStyle = .medium
+        dateF.timeStyle = .short
         let timeString = dateF.string(from: date)
         
         content.categoryIdentifier = NotificationStrings.AGENDA_IGNORED
         content.title = "You missed your schedule."
-        content.body = "You were scheduled to take \(agenda.agendaDose) \(getDrugTypeDescriptions(for: agenda.agendaDrug.InventoryItemType)["amountUnit"]!) on \(dateString) at \(timeString). This was noted in your history."
+        content.body = "You were scheduled to take \(agenda.agendaDose) \(getDrugTypeDescriptions(for: agenda.agendaDrug.InventoryItemType)["amountUnit"]!) of \(agenda.agendaDrug.InventoryItemName) on \(dateString) at \(timeString). This was noted in your history."
         
         let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: {
             error in
+            print("I scheduled a notification to tell you you missed your schedule")
             if error != nil {
                 print(error!.localizedDescription)
             }
+        })
+        
+        UNUserNotificationCenter.current().getPendingNotificationRequests(completionHandler: {
+            (notificationRequests) in
+            
+            print("START SHOWING PENDING NOTIFICATION REQUESTS")
+            print(Calendar.current.dateComponents([.hour, .minute, .second], from: Date()))
+            
+            for request in notificationRequests {
+                print(request.content.categoryIdentifier)
+                print(request.identifier)
+                let date = request.trigger as! UNCalendarNotificationTrigger
+                print(date.dateComponents)
+            }
+            
+            print("END SHOWING PENDING NOTIFICATION REQUESTS")
+            
         })
         
         
