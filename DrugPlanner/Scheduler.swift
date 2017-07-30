@@ -38,7 +38,6 @@ class Scheduler {
             if(item.type == .INVENTORY_EXPIRED) {
                 
                 if let date = cal.nextDate(after: Date(), matching: item.dates[0], matchingPolicy: .strict) {
-                    print(item.dates[0])
                     allEvents.append((date, item))
                 } else {
                     allEvents.append((Date(timeIntervalSinceNow: 5 * 60), item))
@@ -91,6 +90,9 @@ class Scheduler {
         UNUserNotificationCenter.current().getPendingNotificationRequests(completionHandler: {
             (notificationRequests) in
             
+            print("START SHOWING PENDING NOTIFICATION REQUESTS")
+            print(Calendar.current.dateComponents([.hour, .minute, .second], from: Date()))
+            
             for request in notificationRequests {
                 print(request.content.categoryIdentifier)
                 print(request.identifier)
@@ -98,10 +100,45 @@ class Scheduler {
                 print(date.dateComponents)
             }
             
+            print("END SHOWING PENDING NOTIFICATION REQUESTS")
+            
         })
         
-        print("\(index) NOTIFICATIONS HAVE BEEN SCHEDULED.")
-
+        UNUserNotificationCenter.current().getDeliveredNotifications(completionHandler: {
+            
+            (notifications) in
+            
+            var deliveredNotifications : [String] = []
+            
+            for notification in notifications {
+                let firedate = notification.date
+                
+                if firedate < Date().addingTimeInterval(-1 * 60 * 60) {
+                    
+                    let identifier = notification.request.identifier
+                    
+                    deliveredNotifications.append(identifier)
+                    
+                    for item in Events.instance.items!.filter(Events.filterAgendaReminderEvents(elem:)) {
+                        if (identifier.hasPrefix((item.agenda?.agendaKey)!)) {
+                            History.instance.add(historyItem: HistoryItem(withAgenda: item.agenda!, atDate: firedate, withNotes: "", usingKey: "temp", takenOrNot: false))
+                        
+                            UserNotifications.instance.add(item.agenda!, on: firedate)
+                            
+                            break;
+                            
+                        }
+                    }
+                
+                }
+                
+            }
+            
+            if !deliveredNotifications.isEmpty {
+                UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: deliveredNotifications)
+            }
+            
+        })
         
     }
     
