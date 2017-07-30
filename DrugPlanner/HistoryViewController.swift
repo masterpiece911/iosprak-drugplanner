@@ -15,7 +15,6 @@ class HistoryViewController: UITableViewController {
     var observer : Any?
     
     var expandedRows = Set<Int>()
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -165,7 +164,7 @@ class HistoryViewController: UITableViewController {
         if let cell = sender.superview?.superview?.superview?.superview as? HistoryContentTableViewCell {
             History.instance.remove(historyItem: cell.historyitem! )
            
-             
+            
         }
         
     }

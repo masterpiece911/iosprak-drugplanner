@@ -25,6 +25,7 @@ class History : RepositoryClass {
         }
         didSet {
             items?.sort(by: History.historyDatesAreInIncreasingOrder(lhs:rhs:))
+            NotificationCenter.default.post(name: Notification.Name(rawValue: HistoryStrings.HISTORY_UPDATE), object: nil)
         }
     }
     
