@@ -73,7 +73,7 @@ class HistoryViewController: UITableViewController {
             cell.accessoryView = UIImageView(image: image)
         }
         else {
-            let image = #imageLiteral(resourceName: "Unchecked") //- not; checked
+            let image = #imageLiteral(resourceName: "Cancel") //- not; checked
             cell.accessoryView = UIImageView(image :image)
         }
         return cell

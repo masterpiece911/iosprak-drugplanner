@@ -82,18 +82,10 @@ class AgendaViewController: UITableViewController {
     
     func setUpSections() {
         
-        let cal = Calendar.current
-        
-        let today = cal.date(from: cal.dateComponents([.year, .month, .day], from: Date()))
-        
-        let twoDaysLater = cal.date(byAdding: .day, value: 2, to: today!)
-        
         let dateF = DateFormatter()
         dateF.dateStyle = .long
         dateF.timeStyle = .none
-        
-        var allEvents = self.events
-        
+                
         self.allSections = []
         self.sectionHeaders = []
         
