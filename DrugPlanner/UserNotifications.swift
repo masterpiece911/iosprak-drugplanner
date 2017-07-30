@@ -29,7 +29,9 @@ class UserNotifications : NSObject{
         
         let inventoryRanoutCategory  = UNNotificationCategory (identifier: NotificationStrings.INVENTORY_RANOUT, actions: [], intentIdentifiers: [], options: .customDismissAction)
         
-        center.setNotificationCategories([agendaCategory, inventoryExpiredCategory, inventoryRanoutCategory])
+        let agendaIgnoredCategory = UNNotificationCategory (identifier: NotificationStrings.AGENDA_IGNORED, actions: [], intentIdentifiers: [], options: .customDismissAction)
+        
+        center.setNotificationCategories([agendaCategory, inventoryExpiredCategory, inventoryRanoutCategory, agendaIgnoredCategory])
         
         center.delegate = self
     }
@@ -92,12 +94,43 @@ class UserNotifications : NSObject{
         })
     }
     
+    func add (_ agenda : AgendaItem, on date : Date) {
+        
+        let content = UNMutableNotificationContent()
+        content.sound = UNNotificationSound.default()
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 30, repeats: false)
+        
+        let identifier = agenda.agendaKey.appending("_").appending(date.transformToInt().description)
+        
+        let dateF = DateFormatter()
+        dateF.dateStyle = .medium
+        dateF.timeStyle = .none
+        let dateString = dateF.string(from: date)
+        
+        dateF.dateStyle = .none
+        dateF.timeStyle = .medium
+        let timeString = dateF.string(from: date)
+        
+        content.categoryIdentifier = NotificationStrings.AGENDA_IGNORED
+        content.title = "You missed your schedule."
+        content.body = "You were scheduled to take \(agenda.agendaDose) \(getDrugTypeDescriptions(for: agenda.agendaDrug.InventoryItemType)["amountUnit"]!) on \(dateString) at \(timeString). This was noted in your history."
+        
+        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: {
+            error in
+            if error != nil {
+                print(error!.localizedDescription)
+            }
+        })
+        
+        
+    }
+    
 }
 
 extension UserNotifications : UNUserNotificationCenterDelegate {
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        print("I recieved a notification response")
         switch(response.notification.request.content.categoryIdentifier) {
         case NotificationStrings.AGENDA_REMINDER :
             
@@ -131,6 +164,10 @@ extension UserNotifications : UNUserNotificationCenterDelegate {
             
             print("reacted to Inventory will run out Notification")
             
+        case NotificationStrings.AGENDA_IGNORED :
+            
+            print("reacted to Agenda ignored Notification")
+            
         default: print("Notification Category: \(response.notification.request.content.categoryIdentifier)")
             
         }
@@ -140,7 +177,6 @@ extension UserNotifications : UNUserNotificationCenterDelegate {
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        print("I will present a notification")
         
         switch(notification.request.content.categoryIdentifier) {
         case NotificationStrings.INVENTORY_EXPIRED, NotificationStrings.INVENTORY_RANOUT :

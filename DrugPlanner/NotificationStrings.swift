@@ -15,4 +15,6 @@ class NotificationStrings {
     
     static let INVENTORY_EXPIRED = EventItem.EventType.INVENTORY_EXPIRED.rawValue
     static let INVENTORY_RANOUT  = EventItem.EventType.INVENTORY_RANOUT.rawValue
+    
+    static let AGENDA_IGNORED = "agenda_ignored"
 }

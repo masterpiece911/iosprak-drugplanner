@@ -168,11 +168,11 @@ class Agenda : RepositoryClass {
     }
     
     func delete(_ item: AgendaItem) {
-        
-        agendaReference?.child(item.agendaKey).removeValue()
+
         if let agendaEvent = Events.instance.items?.getItem(withAgenda: item.agendaKey) {
             Events.instance.delete(agendaEvent)
         }
+        agendaReference?.child(item.agendaKey).removeValue()
         
     }
     
@@ -256,9 +256,13 @@ class Agenda : RepositoryClass {
                 inventoryItem.InventoryItemAmount -= (item.agenda?.agendaDose)!
                 Inventory.instance.edit(inventory: inventoryItem)
                 History.instance.add(historyItem: HistoryItem(withAgenda: item.agenda!, atDate: Date(), withNotes: "", usingKey: "temp", takenOrNot: true))
+                
+                break
             }
             
         }
+        
+        rescheduleEvents()
         
         
     }
@@ -271,14 +275,63 @@ class Agenda : RepositoryClass {
             
             if (identifier.hasPrefix((item.agenda?.agendaKey)!)) {
                 History.instance.add(historyItem: HistoryItem(withAgenda: item.agenda!, atDate: Date(), withNotes: "", usingKey: "temp", takenOrNot: false))
+                break
             }
             
         }
+        
+        rescheduleEvents()
         
     }
     
     func appWasLaunchedFromAgendaNotification (notification: Notification) {
         
+        let identifier = notification.object as! String
+        
+        for item in Events.instance.items!.filter(Events.filterAgendaReminderEvents(elem:)) {
+            
+            if (identifier.hasPrefix((item.agenda?.agendaKey)!)) {
+                
+                let drugName = item.agenda!.agendaDrug.InventoryItemName
+                let dose = item.agenda!.agendaDose.description
+                let unit = getDrugTypeDescriptions(for: (item.agenda!.agendaDrug.InventoryItemType))["amountUnit"]!
+                
+                
+                let alert = UIAlertController(title: "Confirm your schedule?", message: "You're scheduled to take \(dose) \(unit) of \(drugName). Your response will be noted in your history.", preferredStyle: .alert)
+                
+                let confirmAction = UIAlertAction(title: "Confirm", style: .default, handler: { action in
+                    
+                    let inventoryItem = (item.agenda?.agendaDrug)!
+                    inventoryItem.InventoryItemAmount -= (item.agenda?.agendaDose)!
+                    Inventory.instance.edit(inventory: inventoryItem)
+                    History.instance.add(historyItem: HistoryItem(withAgenda: item.agenda!, atDate: Date(), withNotes: "", usingKey: "temp", takenOrNot: true))
+                    
+                })
+                
+                let ignoreAction = UIAlertAction(title: "Ignore", style: .destructive, handler: { action in
+                    
+                    History.instance.add(historyItem: HistoryItem(withAgenda: item.agenda!, atDate: Date(), withNotes: "", usingKey: "temp", takenOrNot: false))
+                    
+                })
+                
+                alert.addAction(confirmAction)
+                alert.addAction(ignoreAction)
+                
+                alert.show()
+            
+                
+                
+                break
+            }
+            
+            
+        }
+        
+    }
+    
+    func rescheduleEvents() {
+        
+        Scheduler.instance.scheduleNotifications(for: Events.instance.items!)
         
     }
     
@@ -310,4 +363,30 @@ extension Array where Element : AgendaInventoryListener {
         
     }
     
+}
+
+extension UIAlertController {
+    
+    func show() {
+        present(animated: true, completion: nil)
+    }
+    
+    func present(animated: Bool, completion: (() -> Void)?) {
+        if let rootVC = UIApplication.shared.keyWindow?.rootViewController {
+            presentFromController(controller: rootVC, animated: animated, completion: completion)
+        }
+    }
+    
+    private func presentFromController(controller: UIViewController, animated: Bool, completion: (() -> Void)?) {
+        if let navVC = controller as? UINavigationController,
+            let visibleVC = navVC.visibleViewController {
+            presentFromController(controller: visibleVC, animated: animated, completion: completion)
+        } else
+            if let tabVC = controller as? UITabBarController,
+                let selectedVC = tabVC.selectedViewController {
+                presentFromController(controller: selectedVC, animated: animated, completion: completion)
+            } else {
+                controller.present(self, animated: animated, completion: completion);
+        }
+    }
 }

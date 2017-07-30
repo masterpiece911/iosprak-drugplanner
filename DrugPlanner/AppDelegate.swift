@@ -37,6 +37,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: LoginStrings.LOGOUT_SUCCESS), object: nil, queue: nil) {
             notification in
+            UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+            UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
             let storyboard = UIStoryboard(name: "Login", bundle: nil)
             let loginController = storyboard.instantiateViewController(withIdentifier: "Login") as UIViewController
             self.window?.rootViewController = loginController
@@ -76,7 +78,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func registerForPushNotifications () {
         UNUserNotificationCenter.current().requestAuthorization (options: [.alert, .sound, .badge]) {
             (granted, error) in
-//            print("Permission granted: \(granted)")
             
             guard granted else { return }
             self.getNotificationSettings()
@@ -86,7 +87,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func getNotificationSettings () {
         UNUserNotificationCenter.current().getNotificationSettings{
             (settings) in
-//            print ("Notification Settings: \(settings)")
+
             guard settings.authorizationStatus == .authorized else { return }
             UIApplication.shared.registerForRemoteNotifications()
         }

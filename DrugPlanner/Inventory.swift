@@ -128,9 +128,17 @@ class Inventory : RepositoryClass {
             }
         }
         inventoryReference?.child(item.InventoryItemKey).removeValue()
+
         if let inventoryEvent = Events.instance.items?.getItem(withInventory: item.InventoryItemKey) {
             Events.instance.delete(inventoryEvent)
         }
+        
+        for agendaItem in Agenda.instance.items! {
+            if agendaItem.agendaDrug.InventoryItemKey == item.InventoryItemKey {
+                Agenda.instance.delete(agendaItem)
+            }
+        }
+        
     }
     
     func listenToChanges(in item : InventoryItem) -> DatabaseHandle? {

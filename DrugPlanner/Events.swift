@@ -64,10 +64,10 @@ class Events : RepositoryClass {
         
         if let handle = eventsReference?.observe(.value, with: {
             (snapshot) in
+
+            var newItems = [EventItem]()
             
             if snapshot.value != nil {
-                
-                var newItems = [EventItem]()
                 
                 if let eventDictionary = snapshot.value as? NSDictionary {
                     
@@ -90,13 +90,11 @@ class Events : RepositoryClass {
                         })!] = newItem
                     }
                     
-                    self.items = newItems
-
-                    
                 }
                 
             }
             
+            self.items = newItems
             
         }) {
             databaseHandlers.append((handle, nil))

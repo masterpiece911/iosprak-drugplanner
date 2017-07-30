@@ -82,9 +82,9 @@ class InventoryViewController: UITableViewController, UITextFieldDelegate {
 
         var expiryDate : Date?
         var ranoutDate : Date?
-        var today = Date()
+        let today = Date()
         let day  :TimeInterval =  86400.0
-        today = today.addingTimeInterval(day)
+        let tomorrow = today.addingTimeInterval(day)
         for event in eventWithInventoryKey {
             
             if event.1.type == .INVENTORY_EXPIRED {
@@ -97,31 +97,31 @@ class InventoryViewController: UITableViewController, UITextFieldDelegate {
         }
         let week :TimeInterval =  604800
         
+        cell.backgroundColor = UIColor.clear
         
         if expiryDate?.transformToInt() != nil{
             if expiryDate! < Date().addingTimeInterval(week){
                 cell.backgroundColor = UIColor.yellow
             }
-            if expiryDate! < today {
+            if expiryDate! < tomorrow {
             cell.backgroundColor = UIColor.red
             }
             
-            
         }
-        if (cell.backgroundColor != UIColor.red && item.InventoryItemAmount == 0){
-        cell.backgroundColor = UIColor.red
+        if (item.InventoryItemAmount == 0){
+            cell.backgroundColor = UIColor.red
+        } else if (cell.backgroundColor != UIColor.red && item.InventoryItemAmount < 5) {
+            cell.backgroundColor = UIColor.yellow
         }
+        
         if ranoutDate != nil{
             if (ranoutDate! < Date().addingTimeInterval(week) && cell.backgroundColor != UIColor.red){
                 cell.backgroundColor = UIColor.yellow
             }
-            if ranoutDate! < today {
+            if ranoutDate! < tomorrow {
                 cell.backgroundColor = UIColor.red
             }
-            
-            
         }
-        //Notifications müssen gestzt werden
         
         
         
@@ -131,7 +131,6 @@ class InventoryViewController: UITableViewController, UITextFieldDelegate {
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let markTaken = UITableViewRowAction(style: .normal, title: "Take", handler: {
             action, index in
-            print("\(self.items[index.row].InventoryItemName) as taken")
             self.takenIndex = index.row
             self.drugTakenTapped(index.row)
         })
