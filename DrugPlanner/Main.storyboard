@@ -1579,7 +1579,13 @@
                                 <rect key="frame" x="16" y="7" width="83" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Filter"/>
+                                <connections>
+                                    <action selector="ExportToPDF:" destination="WvB-fU-7Pe" eventType="touchUpInside" id="4ck-Pn-1Hz"/>
+                                </connections>
                             </button>
+                            <connections>
+                                <action selector="ExportToPDF:" destination="WvB-fU-7Pe" id="BYt-MX-IUJ"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="xUJ-O5-az4">
                             <connections>
