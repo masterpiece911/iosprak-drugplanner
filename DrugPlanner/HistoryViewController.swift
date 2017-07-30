@@ -61,6 +61,7 @@ class HistoryViewController: UITableViewController {
    
         let cell = tableView.dequeueReusableCell(withIdentifier: "historyCell", for: indexPath) as! HistoryContentTableViewCell
         let historyItem = items[indexPath.row]
+        cell.historyitem = historyItem
         
         
         // DATE AND TIME AUSFÜLLEN
@@ -96,6 +97,7 @@ class HistoryViewController: UITableViewController {
         cell.historyNoteTextField.text = historyItem.notes!
         
         cell.isExpanded = self.expandedRows.contains(indexPath.row)
+        
         
         return cell
  
@@ -150,7 +152,8 @@ class HistoryViewController: UITableViewController {
     
     @IBAction func editHistoryItem(_ sender: UIButton) {
         if let cell = sender.superview?.superview?.superview?.superview as? HistoryContentTableViewCell {
-            //TODO: edit History Item
+            cell.historyitem?.notes = cell.historyNoteTextField.text
+            History.instance.edit(historyItem: cell.historyitem!)
             
         }
     }
@@ -160,7 +163,9 @@ class HistoryViewController: UITableViewController {
         
 
         if let cell = sender.superview?.superview?.superview?.superview as? HistoryContentTableViewCell {
-            //TODO: delete History Item
+            History.instance.remove(historyItem: cell.historyitem! )
+           
+             
         }
         
     }
