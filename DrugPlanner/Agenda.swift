@@ -255,6 +255,7 @@ class Agenda : RepositoryClass {
                 let inventoryItem = (item.agenda?.agendaDrug)!
                 inventoryItem.InventoryItemAmount -= (item.agenda?.agendaDose)!
                 Inventory.instance.edit(inventory: inventoryItem)
+                History.instance.add(historyItem: HistoryItem(withAgenda: item.agenda!, atDate: Date(), withNotes: "", usingKey: "temp", takenOrNot: true))
             }
             
         }
@@ -264,6 +265,15 @@ class Agenda : RepositoryClass {
     
     func agendaWasIgnored (notification: Notification) {
         
+        let identifier = notification.object as! String
+        
+        for item in Events.instance.items!.filter(Events.filterAgendaReminderEvents(elem:)) {
+            
+            if (identifier.hasPrefix((item.agenda?.agendaKey)!)) {
+                History.instance.add(historyItem: HistoryItem(withAgenda: item.agenda!, atDate: Date(), withNotes: "", usingKey: "temp", takenOrNot: false))
+            }
+            
+        }
         
     }
     

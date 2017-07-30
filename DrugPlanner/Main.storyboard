@@ -69,6 +69,7 @@
                                         </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="Tbv-jS-kLG" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="AS2-qd-d6g" secondAttribute="trailing" constant="10" id="1aD-6v-6dM"/>
                                         <constraint firstItem="AS2-qd-d6g" firstAttribute="top" secondItem="fmn-0J-yKm" secondAttribute="top" constant="10" id="AHB-U3-aDj"/>
                                         <constraint firstAttribute="bottom" secondItem="Tbv-jS-kLG" secondAttribute="bottom" constant="15" id="Dgs-XY-lLD"/>
                                         <constraint firstItem="Tbv-jS-kLG" firstAttribute="top" secondItem="fva-pf-twY" secondAttribute="bottom" id="LGJ-bH-BoM"/>
@@ -1503,7 +1504,7 @@
         <scene sceneID="ZUv-Wa-odf">
             <objects>
                 <tableViewController title="HistoryTableViewController" id="WvB-fU-7Pe" customClass="HistoryViewController" customModule="DrugPlanner" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="256" sectionHeaderHeight="28" sectionFooterHeight="28" id="BUZ-Zs-twX">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="1" sectionHeaderHeight="28" sectionFooterHeight="28" id="BUZ-Zs-twX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1516,10 +1517,10 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="rqL-gK-O7S">
-                                            <rect key="frame" x="10" y="18" width="322" height="250"/>
+                                            <rect key="frame" x="10" y="18" width="322" height="230"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" ambiguous="YES" restorationIdentifier="HistoryOverviewCell" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ouI-fP-liu">
-                                                    <rect key="frame" x="0.0" y="0.0" width="322" height="100"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="322" height="80"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gYv-LS-p0X">
                                                             <rect key="frame" x="10" y="18" width="30" height="16"/>
@@ -1554,7 +1555,7 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstItem="gYv-LS-p0X" firstAttribute="top" secondItem="ouI-fP-liu" secondAttribute="top" constant="30" id="18Q-5V-xjr"/>
+                                                        <constraint firstItem="gYv-LS-p0X" firstAttribute="top" secondItem="ouI-fP-liu" secondAttribute="top" constant="20" id="18Q-5V-xjr"/>
                                                         <constraint firstItem="gwr-Mh-uA8" firstAttribute="top" secondItem="eMQ-r1-aEh" secondAttribute="bottom" constant="8" id="2hL-pX-3It"/>
                                                         <constraint firstItem="QOB-Iz-4hc" firstAttribute="leading" secondItem="KUd-vC-3M1" secondAttribute="trailing" constant="16" id="5mD-bz-I4D"/>
                                                         <constraint firstItem="KUd-vC-3M1" firstAttribute="leading" secondItem="ouI-fP-liu" secondAttribute="leading" constant="10" id="AP5-WE-17T"/>
@@ -1562,7 +1563,7 @@
                                                         <constraint firstItem="KUd-vC-3M1" firstAttribute="top" secondItem="gYv-LS-p0X" secondAttribute="bottom" constant="1" id="NRc-9C-Cqa"/>
                                                         <constraint firstItem="gwr-Mh-uA8" firstAttribute="top" secondItem="eMQ-r1-aEh" secondAttribute="bottom" constant="8" id="SJM-qg-U6V"/>
                                                         <constraint firstItem="eMQ-r1-aEh" firstAttribute="top" secondItem="ouI-fP-liu" secondAttribute="top" constant="8" id="hOx-Ne-Ts2"/>
-                                                        <constraint firstAttribute="height" constant="100" id="hyw-ho-ytF"/>
+                                                        <constraint firstAttribute="height" constant="80" id="hyw-ho-ytF"/>
                                                         <constraint firstItem="QOB-Iz-4hc" firstAttribute="top" secondItem="ouI-fP-liu" secondAttribute="top" constant="23" id="hzd-Dd-Ute"/>
                                                         <constraint firstItem="gYv-LS-p0X" firstAttribute="leading" secondItem="ouI-fP-liu" secondAttribute="leading" constant="10" id="jL7-AE-yxf"/>
                                                         <constraint firstItem="KUd-vC-3M1" firstAttribute="top" secondItem="gYv-LS-p0X" secondAttribute="bottom" constant="1" id="stw-ao-mV0"/>
@@ -1572,53 +1573,65 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" ambiguous="YES" restorationIdentifier="HistoryEditPart" translatesAutoresizingMaskIntoConstraints="NO" id="ljw-RM-Jzq">
-                                                    <rect key="frame" x="0.0" y="100" width="322" height="150"/>
+                                                    <rect key="frame" x="0.0" y="80" width="322" height="150"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Note:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gPh-AZ-HYk">
-                                                            <rect key="frame" x="8" y="31" width="42" height="21"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Note:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gPh-AZ-HYk">
+                                                            <rect key="frame" x="10" y="31" width="42" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="how did you vertragen it?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0wN-Ad-1xc">
-                                                            <rect key="frame" x="8" y="60" width="324" height="30"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="how did you vertragen it?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0wN-Ad-1xc">
+                                                            <rect key="frame" x="10" y="60" width="302" height="30"/>
                                                             <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits"/>
                                                         </textField>
-                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iBE-ah-aNN">
+                                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iBE-ah-aNN">
                                                             <rect key="frame" x="94" y="98" width="34" height="30"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <state key="normal" title="Save"/>
                                                             <connections>
                                                                 <action selector="editHistoryItem:" destination="WvB-fU-7Pe" eventType="touchUpInside" id="7BG-2v-jWo"/>
                                                             </connections>
                                                         </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FEV-m1-8ua">
+                                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FEV-m1-8ua">
                                                             <rect key="frame" x="195" y="98" width="45" height="30"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <state key="normal" title="Delete"/>
                                                             <connections>
                                                                 <action selector="deleteHistoryItem:" destination="WvB-fU-7Pe" eventType="touchUpInside" id="m7d-en-JSw"/>
                                                             </connections>
                                                         </button>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Taken:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uBz-gZ-lnW">
-                                                            <rect key="frame" x="8" y="0.0" width="60" height="21"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Taken:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uBz-gZ-lnW">
+                                                            <rect key="frame" x="10" y="0.0" width="100" height="21"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="100" id="Axt-FU-UM0"/>
+                                                            </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X8z-S8-Wtb">
+                                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X8z-S8-Wtb">
                                                             <rect key="frame" x="265" y="0.0" width="51" height="31"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         </switch>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
+                                                        <constraint firstItem="uBz-gZ-lnW" firstAttribute="leading" secondItem="ljw-RM-Jzq" secondAttribute="leading" constant="10" id="8U9-SW-Jbh"/>
+                                                        <constraint firstItem="0wN-Ad-1xc" firstAttribute="top" secondItem="X8z-S8-Wtb" secondAttribute="bottom" constant="27" id="CpK-O9-7Of"/>
+                                                        <constraint firstItem="0wN-Ad-1xc" firstAttribute="leading" secondItem="ljw-RM-Jzq" secondAttribute="leading" constant="10" id="IDM-di-Xon"/>
+                                                        <constraint firstAttribute="trailing" secondItem="X8z-S8-Wtb" secondAttribute="trailing" constant="8" id="JsL-n9-dU6"/>
+                                                        <constraint firstAttribute="trailing" secondItem="0wN-Ad-1xc" secondAttribute="trailing" constant="10" id="N3Z-tP-Rfq"/>
+                                                        <constraint firstItem="iBE-ah-aNN" firstAttribute="top" secondItem="0wN-Ad-1xc" secondAttribute="bottom" constant="8" id="UlZ-Je-y4a"/>
+                                                        <constraint firstItem="uBz-gZ-lnW" firstAttribute="top" secondItem="ljw-RM-Jzq" secondAttribute="top" id="Vg4-KB-vOD"/>
+                                                        <constraint firstItem="X8z-S8-Wtb" firstAttribute="top" secondItem="ljw-RM-Jzq" secondAttribute="top" constant="2" id="Xby-Ts-Pta"/>
+                                                        <constraint firstItem="0wN-Ad-1xc" firstAttribute="top" secondItem="gPh-AZ-HYk" secondAttribute="bottom" constant="8" id="YQp-Zn-39J"/>
+                                                        <constraint firstItem="gPh-AZ-HYk" firstAttribute="top" secondItem="uBz-gZ-lnW" secondAttribute="bottom" constant="10" id="d8v-TP-27C"/>
+                                                        <constraint firstItem="FEV-m1-8ua" firstAttribute="top" secondItem="0wN-Ad-1xc" secondAttribute="bottom" constant="8" id="dne-Ne-bvQ"/>
+                                                        <constraint firstItem="iBE-ah-aNN" firstAttribute="leading" secondItem="ljw-RM-Jzq" secondAttribute="leading" constant="94" id="lZM-AS-9yD"/>
+                                                        <constraint firstItem="gPh-AZ-HYk" firstAttribute="top" secondItem="uBz-gZ-lnW" secondAttribute="bottom" constant="10" id="upD-FX-CxY"/>
+                                                        <constraint firstItem="FEV-m1-8ua" firstAttribute="leading" secondItem="iBE-ah-aNN" secondAttribute="trailing" constant="67" id="uxg-9Q-k8L"/>
                                                         <constraint firstAttribute="height" constant="140" id="wqn-zf-TU1"/>
+                                                        <constraint firstItem="gPh-AZ-HYk" firstAttribute="leading" secondItem="ljw-RM-Jzq" secondAttribute="leading" constant="10" id="y74-gt-gu2"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -1657,11 +1670,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Your History" id="BeA-RC-QG2">
-                        <barButtonItem key="leftBarButtonItem" title="Filter" style="plain" id="xdB-xY-RxH">
+                        <barButtonItem key="leftBarButtonItem" title="PDF Export" style="plain" id="xdB-xY-RxH">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Ouy-n9-QCk">
                                 <rect key="frame" x="16" y="7" width="83" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Filter"/>
+                                <state key="normal" title="PDF Export"/>
                                 <connections>
                                     <action selector="ExportToPDF:" destination="WvB-fU-7Pe" eventType="touchUpInside" id="4ck-Pn-1Hz"/>
                                 </connections>

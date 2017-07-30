@@ -53,7 +53,7 @@ class HistoryViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return 100
+        return 80
         
     }
     
@@ -89,8 +89,8 @@ class HistoryViewController: UITableViewController {
             cell.accessoryView = UIImageView(image: image)
         }
         else {
+            let image = #imageLiteral(resourceName: "Cancel") //- not; checked
             cell.takenSwitch.setOn(false, animated: true)
-            let image = #imageLiteral(resourceName: "Unchecked") //- not checked
             cell.accessoryView = UIImageView(image :image)
         }
         
