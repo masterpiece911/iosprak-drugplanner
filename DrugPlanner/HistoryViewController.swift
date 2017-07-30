@@ -16,6 +16,10 @@ class HistoryViewController: UITableViewController {
     
     var expandedRows = Set<Int>()
     
+    var alertController : UIAlertController?
+    
+    var takenIndex : Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -123,7 +127,24 @@ class HistoryViewController: UITableViewController {
         
     }
     
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let markChange = UITableViewRowAction(style: .normal, title: "Change?", handler: {
+            action, index in
+            //print("\(self.items[index.row].InventoryItemName) as taken")
+            self.takenIndex = index.row
+            self.historyDrugTakenTapped(index.row)
+        })
+        
+        markChange.backgroundColor = UIColor(colorLiteralRed: 0.15294117647058825
+            , green: 0.6823529411764706, blue: 0.3764705882352941, alpha: 1)
+        
+        return [markChange]
+        
+    }
     
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
     
     
     override func viewDidAppear(_ animated: Bool) {
@@ -185,6 +206,37 @@ class HistoryViewController: UITableViewController {
     
     @IBAction func cancelCreateHistoryEvent(segue:UIStoryboardSegue) {
     }
+    
+    
+    func historyDrugTakenTapped (_ index: Int) {
+        
+        
+        self.alertController = UIAlertController(title: "Are you sure you want to change the state to (not) taken?", message: "This will change the state", preferredStyle: .alert)
+        
+        
+        let alertConfirmAction = UIAlertAction(title: "YES", style: .default, handler: {
+            action in
+            
+            let historyItem = self.items[index]
+            if historyItem.taken == true{
+            historyItem.taken = false
+            }else{
+                historyItem.taken = true
+            }
+            History.instance.edit(historyItem: historyItem)
+        
+        })
+        
+        
+        let alertCancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+        
+        alertController!.addAction(alertConfirmAction)
+        alertController!.addAction(alertCancelAction)
+        
+        present(alertController!, animated: true, completion: nil)
+        
+    }
+    
     
     
     @IBAction func ExportToPDF(_ sender: UIButton) {
