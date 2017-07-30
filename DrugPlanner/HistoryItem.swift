@@ -19,6 +19,7 @@ class HistoryItem {
         static let DrugType = "drugType"
         static let IntakenDose = "intakeDose"
         static let DrugConcentration = "drugConcentration"
+        static let ConcentrationUnit = "concentrationUnit"
         static let Notes = "notes"
         static let Taken = "taken"
         
@@ -30,6 +31,7 @@ class HistoryItem {
     var drugType : String!
     var intakenDose : Int!
     var drugConcentration : Int!
+    var concentrationUnit : String!
     var notes : String!
     var taken : Bool!
     
@@ -81,7 +83,7 @@ class HistoryItem {
             ItemKeys.DateAndTime       :   self.dateAndTime.transformToInt(),
             ItemKeys.DrugType : self.drugType,
             ItemKeys.IntakenDose :  self.intakenDose,
-            ItemKeys.DrugConcentration       :   self.intakenDose,
+            ItemKeys.DrugConcentration       :   self.drugConcentration,
             ItemKeys.Notes      :   self.notes,
             ItemKeys.Taken : self.taken
             

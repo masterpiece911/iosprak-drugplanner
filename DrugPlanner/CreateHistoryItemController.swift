@@ -15,6 +15,7 @@ class CreateHistoryItemController: UITableViewController {
     @IBOutlet weak var DoseLabel: UITextField!
     @IBOutlet weak var NotesLabel: UITextView!
     @IBOutlet weak var DoseUnitLabel: UILabel!
+    @IBOutlet weak var DoseConcentrationLabel: UILabel!
 
     
     let datePicker = UIDatePicker()
@@ -25,6 +26,7 @@ class CreateHistoryItemController: UITableViewController {
     var dose     : Int?
     var notes    : String?
     var drugConcentration : Int?
+    var concentrationUnit : String?
     
     let drugsLabelDefault = "Select a drug"
     
@@ -33,10 +35,10 @@ class CreateHistoryItemController: UITableViewController {
                 drugName = drug?.InventoryItemName
                 drugConcentration = drug?.InventoryItemDose
                 self.drugType = drug?.InventoryItemType.rawValue
-                let drugType = drug?.InventoryItemType
                 DrugNameLabel.text? = drugName!
-                DoseUnitLabel.text? = getDrugTypeDescriptions(for: drugType!)["amountUnit"]!
-            
+                DoseUnitLabel.text? = getDrugTypeDescriptions(for: DrugType(rawValue: self.drugType!)!)["amountUnit"]!
+                concentrationUnit = getDrugTypeDescriptions(for: DrugType(rawValue: self.drugType!)!)["doseUnit"]!
+                DoseConcentrationLabel.text? = "a \(self.drugConcentration!) \(self.concentrationUnit!)"
         }
     }
     
@@ -67,7 +69,7 @@ class CreateHistoryItemController: UITableViewController {
 
     func createDatePicker(){
         datePicker.datePickerMode = .dateAndTime
-        datePicker.maximumDate = Date(timeIntervalSinceNow: 12 * 60 * 60)
+        datePicker.maximumDate = Date(timeIntervalSinceNow: 60)
         let currentCalendar = NSCalendar.current
         let dateComponents = NSDateComponents()
         dateComponents.day = -14
@@ -109,9 +111,21 @@ class CreateHistoryItemController: UITableViewController {
         dose = Int(DoseLabel.text!)
         notes = NotesLabel.text
         
-        historyItem = HistoryItem(at: dateofTaken!, for: drugName!, of: drugType!, with: dose!, having: drugConcentration!, with: notes!, using: "tmpKey", takenOrNot: true)
         
-        performSegue(withIdentifier: "saveHistoryItem", sender: self)
+        if (historyItemEntered()) {
+            historyItem = HistoryItem(at: dateofTaken!, for: drugName!, of: drugType!, with: dose!, having: drugConcentration!, with: notes!, using: "tmpKey", takenOrNot: true)
+            performSegue(withIdentifier: "saveHistoryItem", sender: self)
+        } else {
+            let incompleteAgendaItemController = UIAlertController(title: "Incomplete Information", message: "Please fill out all fields before proceeding.", preferredStyle: .alert)
+            
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            
+            incompleteAgendaItemController.addAction(okAction)
+            
+            present(incompleteAgendaItemController, animated: true, completion: nil)
+        }
+
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -129,6 +143,38 @@ class CreateHistoryItemController: UITableViewController {
             }
         }
         
+    }
+    
+    func historyItemEntered() -> Bool {
+
+        
+        var entered = true
+        
+        if let text = DrugNameLabel.text, !text.isEmpty{
+        } else {
+            entered = false
+        }
+        if let text = DateOfTakeLabel.text, !text.isEmpty {
+        } else {
+            entered = false
+        }
+        if let text = DoseLabel.text, !text.isEmpty {
+        } else {
+            entered = false
+        }
+        if let text = DoseUnitLabel.text, !text.isEmpty {
+        } else {
+            entered = false
+        }
+        if let text = DoseConcentrationLabel.text, !text.isEmpty{
+        } else {
+            entered = false
+        }
+        
+
+
+        
+        return entered
     }
     
 

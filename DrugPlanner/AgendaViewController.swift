@@ -203,55 +203,7 @@ class AgendaViewController: UITableViewController {
         return cell
         
     }
-    
-//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "AgendaCell", for: indexPath) as! AgendaTableViewCell
-//
-//        let agendaItem = items[indexPath.row]
-//
-//        if String(agendaItem.agendaDrug.InventoryItemPhoto) != "" {
-//            cell.drugImage?.image = agendaItem.agendaDrug.convertStringToImage(photoAsString: agendaItem.agendaDrug.InventoryItemPhoto)
-//        }
-//        cell.nameLabel?.text = agendaItem.agendaDrug.InventoryItemName
-//        var weekday = getDayOfWeek(today: Date())
-//        var day = AgendaItem.getWeekday(for: weekday)
-//        let timeNow = dateF.date(from: dateF.string(from: Date()))!
-//        let timeOlder = timeNow < agendaItem.agendaTime
-//
-//        var weekdayCount = 1;
-//        
-//        
-//        
-//        if(agendaItem.agendaWeekdays[day]! && timeOlder){
-//            cell.dateLabel?.text = "today"
-//        }else{
-//            weekdayCount = weekdayCount + 1
-//            weekday = weekday + 1;
-//            day = AgendaItem.getWeekday(for: weekday)
-//            if(agendaItem.agendaWeekdays[day]!){
-//                cell.dateLabel?.text = "tomorrow"
-//            }else{
-//                while(!agendaItem.agendaWeekdays[day]! && weekdayCount < 8){
-//                    if(weekday == 7){
-//                        weekday = 1;
-//                    }else{
-//                        weekday = weekday + 1
-//                    }
-//                    day = AgendaItem.getWeekday(for: weekday)
-//                    weekdayCount = weekdayCount + 1
-//                }
-//
-//                cell.dateLabel?.text = day.rawValue
-//            }
-//        }
-//        
-//        let formatter = DateFormatter()
-//        formatter.dateStyle = .none
-//        formatter.timeStyle = .short
-//        cell.timeLabel?.text = formatter.string(from: agendaItem.agendaTime)
-//        cell.hintLabel?.text = agendaItem.agendaDrug.InventoryItemNotes
-//        return cell
-//    }
+
     
     func getDayOfWeek(today:Date)->Int {
         

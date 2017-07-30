@@ -123,6 +123,8 @@ class CreateInventoryItemTableViewController: UITableViewController, UINavigatio
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        myImageView.image = #imageLiteral(resourceName: "AppIcon")
+        
         dateF = DateFormatter()
         dateF.dateStyle = .medium
         dateF.timeStyle = .none
@@ -144,11 +146,6 @@ class CreateInventoryItemTableViewController: UITableViewController, UINavigatio
 
         
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
@@ -223,9 +220,15 @@ class CreateInventoryItemTableViewController: UITableViewController, UINavigatio
             var doctorNameTmp = "";
             var doctorPhoneTmp = "";
             
-            if let photostring = photoString64{
-                photostringTmp = photostring
+            if photoString64 != nil{
+                photostringTmp = photoString64!
             }
+            else{
+                let imageData:NSData = UIImageJPEGRepresentation(#imageLiteral(resourceName: "AppIcon"), 0.7)! as NSData
+                let strBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
+                photostringTmp = strBase64
+            }
+            
             if prescriptionNeededSwitch.isOn {
                 doctorNameTmp = doctorNameField.text!
                 doctorPhoneTmp = doctorPhoneField.text!

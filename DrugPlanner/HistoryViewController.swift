@@ -14,6 +14,9 @@ class HistoryViewController: UITableViewController {
     
     var observer : Any?
     
+    var expandedRows = Set<Int>()
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,6 +24,12 @@ class HistoryViewController: UITableViewController {
         
         items = History.instance.items!
         tableView.reloadData()
+        
+        self.tableView.delegate = self
+        
+        self.tableView.dataSource = self
+        
+        self.tableView.rowHeight = UITableViewAutomaticDimension
 
     }
 
@@ -41,6 +50,12 @@ class HistoryViewController: UITableViewController {
         return items.count
     }
    
+    
+    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 80
+        
+    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
    
@@ -64,24 +79,49 @@ class HistoryViewController: UITableViewController {
         cell.DoseLabel.text = String(historyItem.intakenDose)
         
         //DOSE UNIT LABEL AUSFÜLLEN
-        cell.DoseUnitLabel.text = String(historyItem.drugType)
+        cell.DoseUnitLabel.text = getDrugTypeDescriptions(for: DrugType(rawValue: historyItem.drugType!)!)["amountUnit"]! + " a \(historyItem.drugConcentration!)" + getDrugTypeDescriptions(for: DrugType(rawValue: historyItem.drugType!)!)["doseUnit"]!
         
-        //ACCESSORY VIE IMAGE
-
+        //ACCESSORY VIEW IMAGE
         if historyItem.taken {
-            let image = #imageLiteral(resourceName: "OK") // checked
+            cell.takenSwitch.setOn(true, animated: true)
+            let image = #imageLiteral(resourceName: "OK") // checked 
             cell.accessoryView = UIImageView(image: image)
         }
         else {
             let image = #imageLiteral(resourceName: "Cancel") //- not; checked
             cell.accessoryView = UIImageView(image :image)
         }
+        
+        cell.historyNoteTextField.text = historyItem.notes!
+        
+        cell.isExpanded = self.expandedRows.contains(indexPath.row)
+        
         return cell
  
     }
     
     
-    // !!!!!TO IMPLEMENT: SEGUE TO HISTORY VIEW DETAIL
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        guard let cell = tableView.cellForRow(at: indexPath) as? HistoryContentTableViewCell
+            
+            else { return }
+        switch cell.isExpanded{
+            case true:
+                self.expandedRows.remove(indexPath.row)
+            
+            case false:
+                self.expandedRows.insert(indexPath.row)
+        }
+        
+        cell.isExpanded = !cell.isExpanded
+        self.tableView.beginUpdates()
+        self.tableView.endUpdates()
+        
+    }
+    
+    
     
     
     override func viewDidAppear(_ animated: Bool) {
@@ -107,6 +147,23 @@ class HistoryViewController: UITableViewController {
         
     }
     
+    @IBAction func editHistoryItem(_ sender: UIButton) {
+        if let cell = sender.superview?.superview?.superview?.superview as? HistoryContentTableViewCell {
+            //TODO: edit History Item
+            
+        }
+    }
+    
+    
+    @IBAction func deleteHistoryItem(_ sender: UIButton) {
+        
+
+        if let cell = sender.superview?.superview?.superview?.superview as? HistoryContentTableViewCell {
+            //TODO: delete History Item
+        }
+        
+    }
+    
     @IBAction func saveNewHistoryItem (segue : UIStoryboardSegue) {
         
         if let createHistoryController = segue.source as? CreateHistoryItemController {
@@ -123,6 +180,31 @@ class HistoryViewController: UITableViewController {
     
     @IBAction func cancelCreateHistoryEvent(segue:UIStoryboardSegue) {
     }
+    
+    
+    @IBAction func ExportToPDF(_ sender: UIButton) {
+        
+        let priorBounds: CGRect = self.tableView.bounds
+        let fittedSize: CGSize = self.tableView.sizeThatFits(CGSize(width: priorBounds.size.width, height: self.tableView.contentSize.height))
+        self.tableView.bounds = CGRect(x: 0, y: 0, width: fittedSize.width, height: fittedSize.height)
+        
+        self.tableView.reloadData()
+        let pdfPageBounds: CGRect = CGRect(x: 0, y: 0, width: fittedSize.width, height: (fittedSize.height))
+        let pdfData: NSMutableData = NSMutableData()
+        UIGraphicsBeginPDFContextToData(pdfData, pdfPageBounds, nil)
+        UIGraphicsBeginPDFPageWithInfo(pdfPageBounds, nil)
+        self.tableView.layer.render(in: UIGraphicsGetCurrentContext()!)
+        UIGraphicsEndPDFContext()
+        
+        let documentDirectories = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first
+        let documentsFileName = documentDirectories! + "/" + "pdfName.pdf"
+        //let documentsFileName = "Users/ioana-pica/Desktop" + "/" + "pdfName2.pdf"
+        
+        pdfData.write(toFile: documentsFileName, atomically: true)
+        print(documentsFileName)
+
+    }
+    
     
     
     func listDidUpdate(notification: Notification) {
