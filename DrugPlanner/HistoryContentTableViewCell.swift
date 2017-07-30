@@ -26,6 +26,8 @@ class HistoryContentTableViewCell: UITableViewCell {
     @IBOutlet weak var takenSwitch: UISwitch!
     @IBOutlet weak var historyNoteTextField: UITextField!
     
+    var historyitem : HistoryItem?
+    
     var isExpanded:Bool = false
     {
         didSet

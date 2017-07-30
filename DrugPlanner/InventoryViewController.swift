@@ -136,7 +136,7 @@ class InventoryViewController: UITableViewController, UITextFieldDelegate {
         })
         
         markTaken.backgroundColor = UIColor(colorLiteralRed: 0.15294117647058825
-, green: 0.6823529411764706, blue: 0.3764705882352941, alpha: 1)
+            , green: 0.6823529411764706, blue: 0.3764705882352941, alpha: 1)
         
         return [markTaken]
         
