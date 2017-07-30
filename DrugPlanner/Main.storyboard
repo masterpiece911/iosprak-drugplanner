@@ -1675,6 +1675,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="PDF Export"/>
                             </button>
+                            <connections>
+                                <action selector="ExportToPDF:" destination="WvB-fU-7Pe" id="BYt-MX-IUJ"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="xUJ-O5-az4">
                             <connections>

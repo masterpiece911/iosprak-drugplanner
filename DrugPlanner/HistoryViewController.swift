@@ -183,6 +183,31 @@ class HistoryViewController: UITableViewController {
     }
     
     
+    @IBAction func ExportToPDF(_ sender: UIButton) {
+        
+        let priorBounds: CGRect = self.tableView.bounds
+        let fittedSize: CGSize = self.tableView.sizeThatFits(CGSize(width: priorBounds.size.width, height: self.tableView.contentSize.height))
+        self.tableView.bounds = CGRect(x: 0, y: 0, width: fittedSize.width, height: fittedSize.height)
+        
+        self.tableView.reloadData()
+        let pdfPageBounds: CGRect = CGRect(x: 0, y: 0, width: fittedSize.width, height: (fittedSize.height))
+        let pdfData: NSMutableData = NSMutableData()
+        UIGraphicsBeginPDFContextToData(pdfData, pdfPageBounds, nil)
+        UIGraphicsBeginPDFPageWithInfo(pdfPageBounds, nil)
+        self.tableView.layer.render(in: UIGraphicsGetCurrentContext()!)
+        UIGraphicsEndPDFContext()
+        
+        let documentDirectories = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first
+        let documentsFileName = documentDirectories! + "/" + "pdfName.pdf"
+        //let documentsFileName = "Users/ioana-pica/Desktop" + "/" + "pdfName2.pdf"
+        
+        pdfData.write(toFile: documentsFileName, atomically: true)
+        print(documentsFileName)
+
+    }
+    
+    
+    
     func listDidUpdate(notification: Notification) {
         
         self.items = History.instance.items!
