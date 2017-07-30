@@ -53,7 +53,7 @@ class HistoryViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return 100
+        return 80
         
     }
     
