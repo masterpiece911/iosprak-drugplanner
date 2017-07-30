@@ -14,6 +14,9 @@ class HistoryViewController: UITableViewController {
     
     var observer : Any?
     
+    var expandedRows = Set<Int>()
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,6 +24,12 @@ class HistoryViewController: UITableViewController {
         
         items = History.instance.items!
         tableView.reloadData()
+        
+        self.tableView.delegate = self
+        
+        self.tableView.dataSource = self
+        
+        self.tableView.rowHeight = UITableViewAutomaticDimension
 
     }
 
@@ -41,6 +50,12 @@ class HistoryViewController: UITableViewController {
         return items.count
     }
    
+    
+    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 100
+        
+    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
    
@@ -68,19 +83,46 @@ class HistoryViewController: UITableViewController {
         
         //ACCESSORY VIEW IMAGE
         if historyItem.taken {
+            cell.takenSwitch.setOn(true, animated: true)
             let image = #imageLiteral(resourceName: "OK") // checked 
             cell.accessoryView = UIImageView(image: image)
         }
         else {
+            cell.takenSwitch.setOn(false, animated: true)
             let image = #imageLiteral(resourceName: "Unchecked") //- not checked
             cell.accessoryView = UIImageView(image :image)
         }
+        
+        cell.historyNoteTextField.text = historyItem.notes!
+        
+        cell.isExpanded = self.expandedRows.contains(indexPath.row)
+        
         return cell
  
     }
     
     
-    // !!!!!TO IMPLEMENT: SEGUE TO HISTORY VIEW DETAIL
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        guard let cell = tableView.cellForRow(at: indexPath) as? HistoryContentTableViewCell
+            
+            else { return }
+        switch cell.isExpanded{
+            case true:
+                self.expandedRows.remove(indexPath.row)
+            
+            case false:
+                self.expandedRows.insert(indexPath.row)
+        }
+        
+        cell.isExpanded = !cell.isExpanded
+        self.tableView.beginUpdates()
+        self.tableView.endUpdates()
+        
+    }
+    
+    
     
     
     override func viewDidAppear(_ animated: Bool) {
@@ -102,6 +144,23 @@ class HistoryViewController: UITableViewController {
         if let obs = self.observer {
             NotificationCenter.default.removeObserver(obs)
             self.observer = nil
+        }
+        
+    }
+    
+    @IBAction func editHistoryItem(_ sender: UIButton) {
+        if let cell = sender.superview?.superview?.superview?.superview as? HistoryContentTableViewCell {
+            //TODO: edit History Item
+            
+        }
+    }
+    
+    
+    @IBAction func deleteHistoryItem(_ sender: UIButton) {
+        
+
+        if let cell = sender.superview?.superview?.superview?.superview as? HistoryContentTableViewCell {
+            //TODO: delete History Item
         }
         
     }

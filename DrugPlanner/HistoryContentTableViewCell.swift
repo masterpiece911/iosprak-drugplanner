@@ -20,7 +20,24 @@ class HistoryContentTableViewCell: UITableViewCell {
     
     @IBOutlet weak var DoseUnitLabel: UILabel!
     
+    @IBOutlet weak var historyDetailCell: UIView!
+    @IBOutlet weak var historyEditHeightConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var takenSwitch: UISwitch!
+    @IBOutlet weak var historyNoteTextField: UITextField!
+    
+    var isExpanded:Bool = false
+    {
+        didSet
+        {
+            if !isExpanded {
+                self.historyEditHeightConstraint.constant = 0.0
+                
+            } else {
+                self.historyEditHeightConstraint.constant = 128.0
+            }
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
