@@ -111,9 +111,21 @@ class CreateHistoryItemController: UITableViewController {
         dose = Int(DoseLabel.text!)
         notes = NotesLabel.text
         
-        historyItem = HistoryItem(at: dateofTaken!, for: drugName!, of: drugType!, with: dose!, having: drugConcentration!, with: notes!, using: "tmpKey", takenOrNot: true)
         
-        performSegue(withIdentifier: "saveHistoryItem", sender: self)
+        if (historyItemEntered()) {
+            historyItem = HistoryItem(at: dateofTaken!, for: drugName!, of: drugType!, with: dose!, having: drugConcentration!, with: notes!, using: "tmpKey", takenOrNot: true)
+            performSegue(withIdentifier: "saveHistoryItem", sender: self)
+        } else {
+            let incompleteAgendaItemController = UIAlertController(title: "Incomplete Information", message: "Please fill out all fields before proceeding.", preferredStyle: .alert)
+            
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            
+            incompleteAgendaItemController.addAction(okAction)
+            
+            present(incompleteAgendaItemController, animated: true, completion: nil)
+        }
+
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -131,6 +143,38 @@ class CreateHistoryItemController: UITableViewController {
             }
         }
         
+    }
+    
+    func historyItemEntered() -> Bool {
+
+        
+        var entered = true
+        
+        if let text = DrugNameLabel.text, !text.isEmpty{
+        } else {
+            entered = false
+        }
+        if let text = DateOfTakeLabel.text, !text.isEmpty {
+        } else {
+            entered = false
+        }
+        if let text = DoseLabel.text, !text.isEmpty {
+        } else {
+            entered = false
+        }
+        if let text = DoseUnitLabel.text, !text.isEmpty {
+        } else {
+            entered = false
+        }
+        if let text = DoseConcentrationLabel.text, !text.isEmpty{
+        } else {
+            entered = false
+        }
+        
+
+
+        
+        return entered
     }
     
 
