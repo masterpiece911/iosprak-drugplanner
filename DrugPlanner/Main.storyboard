@@ -1554,7 +1554,7 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstItem="gYv-LS-p0X" firstAttribute="top" secondItem="ouI-fP-liu" secondAttribute="top" constant="30" id="18Q-5V-xjr"/>
+                                                        <constraint firstItem="gYv-LS-p0X" firstAttribute="top" secondItem="ouI-fP-liu" secondAttribute="top" constant="20" id="18Q-5V-xjr"/>
                                                         <constraint firstItem="gwr-Mh-uA8" firstAttribute="top" secondItem="eMQ-r1-aEh" secondAttribute="bottom" constant="8" id="2hL-pX-3It"/>
                                                         <constraint firstItem="QOB-Iz-4hc" firstAttribute="leading" secondItem="KUd-vC-3M1" secondAttribute="trailing" constant="16" id="5mD-bz-I4D"/>
                                                         <constraint firstItem="KUd-vC-3M1" firstAttribute="leading" secondItem="ouI-fP-liu" secondAttribute="leading" constant="10" id="AP5-WE-17T"/>
@@ -1674,6 +1674,9 @@
                                 <rect key="frame" x="16" y="7" width="83" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="PDF Export"/>
+                                <connections>
+                                    <action selector="ExportToPDF:" destination="WvB-fU-7Pe" eventType="touchUpInside" id="4ck-Pn-1Hz"/>
+                                </connections>
                             </button>
                             <connections>
                                 <action selector="ExportToPDF:" destination="WvB-fU-7Pe" id="BYt-MX-IUJ"/>
