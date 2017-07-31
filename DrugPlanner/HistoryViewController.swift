@@ -258,75 +258,28 @@ class HistoryViewController: UITableViewController {
         self.tableView.layer.render(in: UIGraphicsGetCurrentContext()!)
         UIGraphicsEndPDFContext()
 
+        let name = "DrugPlanner History"
         
-        let documentDirectories = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first
-        let documentsFileName = documentDirectories! + "/" + "pdfName.pdf"
-       // let documentsFileName = "Users/ioana-pica/Desktop" + "/" + "pdfNameWir.pdf"
+        guard let path = FileManager.default
+            .urls(for: .documentDirectory, in: .userDomainMask).first else {
+                return
+        }
         
-        pdfData.write(toFile: documentsFileName, atomically: true)
-        print(documentsFileName)
+        let saveFileUrl = path.appendingPathComponent("/\(name).pdf")
+        pdfData.write(to: saveFileUrl, atomically: true)
         
+        let activityController = UIActivityViewController(activityItems: ["DrugPlanner History Data", saveFileUrl], applicationActivities: nil)
+        if let popoverPresentationController = activityController.popoverPresentationController {
+            popoverPresentationController.barButtonItem = sender as? UIBarButtonItem
+        }
+        present(activityController, animated: true, completion: nil)
         
-        self.alertController = UIAlertController(title: "Send the PDF Data in Email?", message: "This will attach the PDF to the email", preferredStyle: .alert)
-        
-        
-        let alertCancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
-        let alertConfirmAction = UIAlertAction(title: "YES", style: .default, handler: {
-            action in
-        
-            
-            let fileManager = FileManager.default
-            if fileManager.fileExists(atPath: documentsFileName){
-                
-                let document = NSData(contentsOfFile: documentsFileName)
-                //let pdfstring:String = document!.base64EncodedString(options: .endLineWithLineFeed)
-                
-                
-                
-                let activityViewController: UIActivityViewController = UIActivityViewController(activityItems: ["Intaken Drugs sent from the app", document!], applicationActivities: nil)
-                activityViewController.popoverPresentationController?.sourceView=self.view
-                self.present(activityViewController, animated: true, completion: nil)
-            }
-            else {
-                print("document was not found")
-            }
-            
-            
-            
-        })
-        
-        alertController!.addAction(alertConfirmAction)
-        alertController!.addAction(alertCancelAction)
-        
-        present(alertController!, animated: true, completion: nil)
 
     }
     
     
     
-    // JUST A TRY
-    /*
-    func generatePdf(string: String) throws -> CGPDFDocument {
-        
-        guard let
-            
-            data = string.data(using: String.Encoding.utf8, allowLossyConversion: false),
-            let cfData = CFDataCreate(CFAllocator as! CFAllocator!, <#T##bytes: UnsafePointer<UInt8>!##UnsafePointer<UInt8>!#>, data.count)
-            
-           // let cfData = CFDataCreate(kCFAllocatorDefault, UnsafePointer<UInt8>(data.bytes), data.length)
-            else {
-                print("")
-            }
-        
-        let cgDataProvider =  CGDataProvider(data: cfData)
-        
-        guard let cgPDFDocument = CGPDFDocument(cgDataProvider!) else {
-            
-        }
-        
-        return cgPDFDocument
-    }
-    */
+    
     func listDidUpdate(notification: Notification) {
         
         self.items = History.instance.items!
